@@ -2,13 +2,13 @@ package fmu;
 
 import java.util.List;
 
-import utils.FMU2OWLConverter;
+//import utils.FMU2OWLConverter;
 import utils.StringUtils;
 
 public class Bond extends TypedNamedEntity
 {
-	private List<String> plugNames;
-	private List<String> socketNames;
+	private List<String> plugs;
+	private List<String> sockets;
 	
 	public Bond()
 	{}
@@ -16,28 +16,28 @@ public class Bond extends TypedNamedEntity
 	public Bond(final String name, final String type, final List<String> plugNames, final List<String> socketNames)
 	{
 		super(name, type);
-		this.plugNames = plugNames;
-		this.socketNames = socketNames;
+		this.plugs = plugNames;
+		this.sockets = socketNames;
 	}
 	
-	public List<String> getPlugNames()
+	public List<String> getPlugs()
 	{
-		return plugNames;
+		return plugs;
 	}	
 
-	public List<String> getSocketNames()
+	public List<String> getSockets()
 	{
-		return socketNames;
+		return sockets;
 	}	
 
-	public void setPlugNames(final List<String> plugNames)
+	public void setPlugs(final List<String> plugs)
 	{
-		this.plugNames = plugNames;
+		this.plugs = plugs;
 	}
 
-	public void setSocketNames(final List<String> socketNames)
+	public void setSockets(final List<String> sockets)
 	{
-		this.socketNames = socketNames;
+		this.sockets = sockets;
 	}
 	
 	@Override
@@ -49,18 +49,18 @@ public class Bond extends TypedNamedEntity
 		sb.append(super.toString());
 		
 		sb.append("- plug names: ");
-		sb.append(StringUtils.toStringAsBoxedSequenceOfItems(plugNames));
+		sb.append(StringUtils.toStringAsBoxedSequenceOfItems(plugs));
 		sb.append('\n');
 
 		sb.append("- socket names: ");
-		sb.append(StringUtils.toStringAsBoxedSequenceOfItems(socketNames));
+		sb.append(StringUtils.toStringAsBoxedSequenceOfItems(sockets));
 		sb.append('\n');
 
 		return sb.toString();
 	}
 	
-	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
-	{
-		converter.convert(this, abbreviated_iri_name);
-	}
+//	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+//	{
+//		converter.convert(this, abbreviated_iri_name);
+//	}
 }

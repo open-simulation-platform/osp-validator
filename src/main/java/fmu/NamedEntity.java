@@ -1,6 +1,6 @@
 package fmu;
 
-public class NamedEntity extends AbstractOWLDescribableEntity
+public class NamedEntity
 {
 	protected String name;
 

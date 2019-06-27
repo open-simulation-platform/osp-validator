@@ -3,9 +3,9 @@ package fmu;
 import java.util.List;
 import java.util.Set;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
+//import org.semanticweb.owlapi.model.OWLAxiom;
 
-import utils.FMU2OWLConverter;
+//import utils.FMU2OWLConverter;
 
 public class Model extends NamedEntity
 {
@@ -55,52 +55,6 @@ public class Model extends NamedEntity
 		this.bonds = bonds;
 	}
 
-	public Set<OWLAxiom> getOWLDescription(final String prefix_iri_rdl, final String prefix_iri_component,
-			final String individual_name_prefix)
-	{
-		if (registry == null)
-		{
-			return null;
-		}
-
-		super.addClassAssertionAxiom(prefix_iri_rdl, prefix_iri_component, individual_name_prefix);
-
-//	public Set<OWLAxiom> addClassAssertionAxioms(final OWLOntologyManager manager, final Registry registry, final String prefix_iri_rdl, final String prefix_iri_component, final String individual_name_prefix)
-//	{
-//		Set<OWLAxiom> result = new HashSet<>();
-
-//		super.addClassAssertionAxiom(prefix_iri_rdl, prefix_iri_component, individual_name_prefix);
-
-//		String class_name_this = this.getClass().getSimpleName();
-//		OWLClass cls_Model = OWLAPIUtils.getOWLClass(manager, IRI.create(prefix_iri_rdl, class_name_this));
-//		String registered_name = registry.add(individual_name_prefix + "_" + class_name_this.toLowerCase(), this);
-//		OWLNamedIndividual ind_this = OWLAPIUtils.getOWLNamedIndividual(manager, IRI.create(prefix_iri_component, registered_name));
-//		result.add( OWLAPIUtils.getClassAssertionAxiom(manager, cls_Model, ind_this) ); 
-
-		for (Plug plug : plugs)
-		{
-//			p.addClassAssertionAxiom(manager, registry, prefix_iri_rdl, prefix_iri_component, registered_name + "_");
-			plug.setRegistry(registry);
-			axioms.addAll(plug.getOWLDescription(prefix_iri_rdl, prefix_iri_component, registered_name));
-		}
-
-		for (Socket socket : sockets)
-		{
-//			result.addAll( s.toAxioms(registry, prefix_iri_rdl, prefix_iri_component, registered_name + "_") );
-			socket.setRegistry(registry);
-			axioms.addAll(socket.getOWLDescription(prefix_iri_rdl, prefix_iri_component, registered_name));
-		}
-
-		for (Bond bond : bonds)
-		{
-//			result.addAll( b.toAxioms(registry, prefix_iri_rdl, prefix_iri_component, registered_name + "_") );
-			bond.setRegistry(registry);
-			axioms.addAll(bond.getOWLDescription(prefix_iri_rdl, prefix_iri_component, registered_name));
-		}
-
-		return axioms;
-	}
-
 	@Override
 	public String toString()
 	{
@@ -133,9 +87,9 @@ public class Model extends NamedEntity
 		return sb.toString();
 	}
 
-	public void accept(final FMU2OWLConverter converter)
-	{
-		converter.convert(this);
-	}
+//	public void accept(final FMU2OWLConverter converter)
+//	{
+//		converter.convert(this);
+//	}
 
 }
