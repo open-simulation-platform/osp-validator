@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fmu.Mapping;
 import fmu.Model;
+import utils.FMU2OWLConverter;
+import utils.StringUtils;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,5 +19,13 @@ public class JsonParser {
         Mapping mapping = objectMapper.readValue(Files.readAllBytes(Paths.get("src/main/resources/json/mapping.json")), Mapping.class);
 
         System.out.println(mapping);
+
+        FMU2OWLConverter converter = new FMU2OWLConverter("http://www.dnvgl.com/irm/osp/rdl/", "rdl:", "http://www.dnvgl.com/irm/fmu/");
+//        mapping.getPlugSocketConnections().get(0).accept(converter, "psc");
+        mapping.accept(converter);
+
+
+        System.out.println(StringUtils.toStringAsOneItemPerLine(converter.getAxioms()));
+
     }
 }

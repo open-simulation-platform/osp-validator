@@ -1,5 +1,7 @@
 package fmu;
 
+import utils.FMU2OWLConverter;
+
 public class Simulator extends NamedEntity {
 
     private String source;
@@ -24,5 +26,10 @@ public class Simulator extends NamedEntity {
         sb.append(source);
 
         return sb.toString();
+    }
+
+    public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+    {
+        converter.convert(this, abbreviated_iri_name);
     }
 }

@@ -2,7 +2,7 @@ package fmu;
 
 import java.util.List;
 
-//import utils.FMU2OWLConverter;
+import utils.FMU2OWLConverter;
 import utils.StringUtils;
 
 public class Bond extends TypedNamedEntity
@@ -59,8 +59,8 @@ public class Bond extends TypedNamedEntity
 		return sb.toString();
 	}
 	
-//	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
-//	{
-//		converter.convert(this, abbreviated_iri_name);
-//	}
+	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+	{
+		converter.convert(this, abbreviated_iri_name);
+	}
 }

@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-//import utils.FMU2OWLConverter;
+import utils.FMU2OWLConverter;
 //import utils.OWLAPIUtils;
 import utils.StringUtils;
 
@@ -62,8 +62,8 @@ public class Connector extends TypedNamedEntity
 		return sb.toString();
 	}
 	
-//	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
-//	{
-//		converter.convert(this, abbreviated_iri_name);
-//	}
+	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+	{
+		converter.convert(this, abbreviated_iri_name);
+	}
 }

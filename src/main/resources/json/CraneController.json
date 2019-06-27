@@ -1,4 +1,5 @@
 {
+    "name": "CraneController",
     "sockets": [
         {
             "type": "flow",

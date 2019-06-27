@@ -1,5 +1,7 @@
 package fmu;
 
+import utils.FMU2OWLConverter;
+
 public class PlugSocketConnection extends NamedEntity {
     private String sourceSimulator;
     private String plug;
@@ -23,6 +25,22 @@ public class PlugSocketConnection extends NamedEntity {
         this.socket = socket;
     }
 
+    public String getSourceSimulator() {
+        return sourceSimulator;
+    }
+
+    public String getPlug() {
+        return plug;
+    }
+
+    public String getTargetSimulator() {
+        return targetSimulator;
+    }
+
+    public String getSocket() {
+        return socket;
+    }
+
     @Override
     public String toString()
     {
@@ -34,5 +52,10 @@ public class PlugSocketConnection extends NamedEntity {
         sb.append("- TargetSimulator: " + targetSimulator + "\n");
         sb.append("- Socket: " + socket + "\n");
         return sb.toString();
+    }
+
+    public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+    {
+        converter.convert(this, abbreviated_iri_name);
     }
 }

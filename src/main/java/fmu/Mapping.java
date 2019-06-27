@@ -1,5 +1,7 @@
 package fmu;
 
+import utils.FMU2OWLConverter;
+
 import java.util.List;
 
 public class Mapping {
@@ -54,5 +56,25 @@ public class Mapping {
 
     public void setVariableConnections(List<VariableConnection> variableConnections) {
         this.variableConnections = variableConnections;
+    }
+
+    public List<Simulator> getSimulators() {
+        return simulators;
+    }
+
+    public List<PlugSocketConnection> getPlugSocketConnections() {
+        return plugSocketConnections;
+    }
+
+    public List<BondConnection> getBondConnections() {
+        return bondConnections;
+    }
+
+    public List<VariableConnection> getVariableConnections() {
+        return variableConnections;
+    }
+
+    public void accept(final FMU2OWLConverter converter) {
+        converter.convert(this);
     }
 }
