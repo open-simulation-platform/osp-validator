@@ -1,6 +1,6 @@
 package fmu;
 
-public class Entity extends AbstractOWLDescribableEntity 
+public class Entity
 {
 
 }
