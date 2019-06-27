@@ -1,7 +1,9 @@
 package parsing;
 
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fmu.Mapping;
 import fmu.Model;
 
 import java.nio.file.Files;
@@ -9,9 +11,11 @@ import java.nio.file.Paths;
 
 public class JsonParser {
     public static void main(String[] args) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Model model = objectMapper.readValue(Files.readAllBytes(Paths.get("src/main/resources/json/CraneController.json")), Model.class);
+        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        //Model model = objectMapper.readValue(Files.readAllBytes(Paths.get("src/main/resources/json/CraneController.json")), Model.class);
+        Model model = objectMapper.readValue(Files.readAllBytes(Paths.get("src/main/resources/json/KnuckleBoomCrane.json")), Model.class);
+        Mapping mapping = objectMapper.readValue(Files.readAllBytes(Paths.get("src/main/resources/json/mapping.json")), Mapping.class);
 
-        System.out.println(model);
+        System.out.println(mapping);
     }
 }
