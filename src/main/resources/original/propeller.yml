@@ -1,0 +1,23 @@
+model: propeller
+    plugs:
+        - name:         forcePlug
+          type:         force
+          variables:    [Fx, Fy, Fz]
+          unit:         N
+          
+        - name:         positionPlug
+          type:         position
+          variables:    [x, y, z]
+          unit:         m
+          
+    sockets:
+        - name:         velocitySocket
+          type:         velocity
+          variables:    [Vx, Vy, Vz]
+          unit:         m/s
+          
+    bonds:
+        - name:         mechanicalBond
+          type:         linearMechanicalBond
+          plugs:        [forcePlug, positionPlug]
+          sockets:      [velocitySocket]
