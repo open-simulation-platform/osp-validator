@@ -1,12 +1,12 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fmu.*;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -42,6 +42,7 @@ public class FMU2OWLConverter {
 //	private Registry registry;
 
     private Map<String, String> map_connectorName_connector;
+    private Map<String, Map<String, String>> map_simulatorName_map_connectorName_connector;
     private Set<OWLAxiom> axioms;
     private String abbreviated_prefix_iri_rdl;
     private String prefix_iri_component_library;
@@ -92,7 +93,8 @@ public class FMU2OWLConverter {
 
 //		setRegistry(new Registry());
 
-        map_connectorName_connector = new HashMap<String, String>();
+        map_connectorName_connector = new HashMap<>();
+        map_simulatorName_map_connectorName_connector = new HashMap<>();
         setAxioms(new HashSet<>());
     }
 
@@ -162,7 +164,7 @@ public class FMU2OWLConverter {
         this.axioms = axioms;
     }
 
-    public void convert(final Model model) {
+    public void convert(final Model model, final String abbreviated_iri_name) {
         if (model == null) return;
 
         String component_name = "model_" + model.getName();
@@ -174,21 +176,21 @@ public class FMU2OWLConverter {
         String class_name = model.getClass().getSimpleName();
         String abbreviated_iri_class = abbreviated_prefix_iri_rdl + class_name;
 
-        String component_instance_name = "ind_" + component_name;
-        String abbreviated_iri_component_instance_name = abbreviated_iri_component + component_instance_name;
+//        String component_instance_name = "ind_" + component_name;
+//        String abbreviated_iri_component_instance_name = abbreviated_iri_component + component_instance_name;
 
-        addOWLClassAssertionAxiom(abbreviated_iri_class, abbreviated_iri_component_instance_name);
+        addOWLClassAssertionAxiom(abbreviated_iri_class, abbreviated_iri_name);
 
 
-        addOWLDataPropertyAssertionAxiom(abbreviated_iri_component_instance_name, abbreviated_iri_hasName, model.getName());
+        addOWLDataPropertyAssertionAxiom(abbreviated_iri_name, abbreviated_iri_hasName, model.getName());
 
 
         List<Plug> plugs = model.getPlugs();
         if (plugs != null)
             for (int plug_index = 0; plug_index < plugs.size(); plug_index++) {
                 Plug plug = plugs.get(plug_index);
-                String abbreviated_iri_plug = abbreviated_iri_component_instance_name + "_plug" + Integer.toString(plug_index);
-                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_component_instance_name, abbreviated_iri_hasConnector, abbreviated_iri_plug);
+                String abbreviated_iri_plug = abbreviated_iri_name + "_plug" + Integer.toString(plug_index);
+                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_name, abbreviated_iri_hasConnector, abbreviated_iri_plug);
                 plug.accept(this, abbreviated_iri_plug);
             }
 
@@ -196,8 +198,8 @@ public class FMU2OWLConverter {
         if (sockets != null)
             for (int socket_index = 0; socket_index < sockets.size(); socket_index++) {
                 Socket socket = sockets.get(socket_index);
-                String abbreviated_iri_socket = abbreviated_iri_component_instance_name + "_socket" + Integer.toString(socket_index);
-                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_component_instance_name, abbreviated_iri_hasConnector, abbreviated_iri_socket);
+                String abbreviated_iri_socket = abbreviated_iri_name + "_socket" + Integer.toString(socket_index);
+                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_name, abbreviated_iri_hasConnector, abbreviated_iri_socket);
                 socket.accept(this, abbreviated_iri_socket);
             }
 
@@ -205,8 +207,8 @@ public class FMU2OWLConverter {
         if (bonds != null)
             for (int bond_index = 0; bond_index < bonds.size(); bond_index++) {
                 Bond bond = bonds.get(bond_index);
-                String abbreviated_iri_bond = abbreviated_iri_component_instance_name + "_bond" + Integer.toString(bond_index);
-                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_component_instance_name, abbreviated_iri_hasBond, abbreviated_iri_bond);
+                String abbreviated_iri_bond = abbreviated_iri_name + "_bond" + Integer.toString(bond_index);
+                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_name, abbreviated_iri_hasBond, abbreviated_iri_bond);
                 bond.accept(this, abbreviated_iri_bond);
             }
     }
@@ -256,7 +258,7 @@ public class FMU2OWLConverter {
         if (m == null) return;
 
 //        String component_name = "mapping_" + model.getName();
-        String component_name = "mapping";
+        String component_name = "system_structure";
 
         String iri_component = prefix_iri_component_library + component_name + '/';
         String abbreviated_iri_component = component_name + ':';
@@ -265,27 +267,55 @@ public class FMU2OWLConverter {
         String class_name = m.getClass().getSimpleName();
         String abbreviated_iri_class = abbreviated_prefix_iri_rdl + class_name;
 
-        String component_instance_name = "ind_" + component_name;
-        String abbreviated_iri_component_instance_name = abbreviated_iri_component + component_instance_name;
+        String root_instance_name = "ind_" + component_name;
+        String abbreviated_iri_root_instance_name = abbreviated_iri_component + root_instance_name;
 
-        addOWLClassAssertionAxiom(abbreviated_iri_class, abbreviated_iri_component_instance_name);
+        addOWLClassAssertionAxiom(abbreviated_iri_class, abbreviated_iri_root_instance_name);
 
+        Map<String, String> map_simulatorName_simulatorIRI = new HashMap<>();
+        Map<String, Model> map_modelFileReference_Model = new HashMap<>();
 
         List<Simulator> simulators = m.getSimulators();
         if (simulators != null)
             for (int simulator_index = 0; simulator_index < simulators.size(); simulator_index++) {
                 Simulator simulator = simulators.get(simulator_index);
-                String abbreviated_iri_simulator = abbreviated_iri_component_instance_name + "_simulator" + Integer.toString(simulator_index);
-                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_component_instance_name, abbreviated_iri_hasSimulator, abbreviated_iri_simulator);
-                simulator.accept(this, abbreviated_iri_simulator);
+                String simulatorName = simulator.getName();
+                Map<String, String> map_connectorName_connector = new HashMap<>();
+                if (map_simulatorName_map_connectorName_connector.containsKey(simulatorName)) {
+                    throw new RuntimeException("Simulator name already exists: "+ simulatorName);
+                }
+                map_simulatorName_map_connectorName_connector.put(simulatorName, map_connectorName_connector);
+
+                String modelFileReference = simulator.getModelFileReference();
+                Model model;
+                if (!map_modelFileReference_Model.containsKey(modelFileReference)) {
+                    ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                    try {
+                        model = objectMapper.readValue(Files.readAllBytes(Paths.get(modelFileReference)), Model.class);
+                        map_modelFileReference_Model.put(modelFileReference, model);
+                    } catch (IOException e) {
+                        throw new RuntimeException("Can't read file: "+ modelFileReference);
+                    }
+                } else {
+                    model = map_modelFileReference_Model.get(modelFileReference);
+                }
+                System.out.println("Parsed model name:"+model.getName());
+                model.setName(simulatorName);
+
+
+                String abbreviated_iri_simulator = abbreviated_iri_root_instance_name + "_simulator" + Integer.toString(simulator_index);
+                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_root_instance_name, abbreviated_iri_hasSimulator, abbreviated_iri_simulator);
+
+                model.accept(this, abbreviated_iri_simulator);
+                map_simulatorName_simulatorIRI.put(simulatorName, abbreviated_iri_simulator);
             }
 
         List<PlugSocketConnection> pscs = m.getPlugSocketConnections();
         if (pscs != null)
             for (int psc_index = 0; psc_index < pscs.size(); psc_index++) {
                 PlugSocketConnection psc = pscs.get(psc_index);
-                String abbreviated_iri_psc = abbreviated_iri_component_instance_name + "_plugSocketConnection" + Integer.toString(psc_index);
-                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_component_instance_name, abbreviated_iri_hasPlugSocketConnection, abbreviated_iri_psc);
+                String abbreviated_iri_psc = abbreviated_iri_root_instance_name + "_plugSocketConnection" + Integer.toString(psc_index);
+                addOWLObjectPropertyAssertionAxiom(abbreviated_iri_root_instance_name, abbreviated_iri_hasPlugSocketConnection, abbreviated_iri_psc);
                 psc.accept(this, abbreviated_iri_psc);
             }
 
@@ -483,7 +513,7 @@ public class FMU2OWLConverter {
         Model m = new Model("Hull", plugs, sockets, bonds);
 
 
-        m.accept(converter);
+        m.accept(converter, "anything");
 
         System.out.println(StringUtils.toStringAsOneItemPerLine(converter.getAxioms()));
 

@@ -8,7 +8,8 @@
                 "p_Crane.f[1]",
                 "p_Crane.f[2]",
                 "p_Crane.f[3]"
-            ]
+            ],
+            "unit": "F"
         },
         {
             "type": "abstract",
@@ -17,7 +18,8 @@
                 "Act_Limits[1]",
                 "Act_Limits[2]",
                 "Act_Limits[3]"
-            ]
+            ],
+            "unit": "NA"
         }
     ],
     "plugs": [
@@ -28,7 +30,8 @@
                 "p_Crane.e[1]",
                 "p_Crane.e[2]",
                 "p_Crane.e[3]"
-            ]
+            ],
+            "unit": "E"
         }
     ],
     "bonds": [

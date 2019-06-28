@@ -74,8 +74,8 @@ public class Model extends NamedEntity {
         return sb.toString();
     }
 
-    public void accept(final FMU2OWLConverter converter) {
-        converter.convert(this);
+    public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name) {
+        converter.convert(this, abbreviated_iri_name);
     }
 
 }

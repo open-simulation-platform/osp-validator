@@ -5,6 +5,7 @@ import utils.FMU2OWLConverter;
 public class Simulator extends NamedEntity {
 
     private String source;
+    private String model;
 
     public String getSource() {
         return source;
@@ -12,6 +13,14 @@ public class Simulator extends NamedEntity {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getModelFileReference() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     @Override
@@ -22,8 +31,8 @@ public class Simulator extends NamedEntity {
         sb.append("Simulator:\n");
         sb.append(super.toString());
 
-        sb.append("Source:\n");
-        sb.append(source);
+        sb.append("Source: "+ source + "\n");
+        sb.append("Model: "+ model + "\n");
 
         return sb.toString();
     }
