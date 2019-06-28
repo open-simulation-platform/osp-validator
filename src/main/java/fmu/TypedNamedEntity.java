@@ -2,7 +2,7 @@ package fmu;
 
 public class TypedNamedEntity extends NamedEntity 
 {
-	protected String type;
+	protected String type = "untyped";
 	
 	public TypedNamedEntity()
 	{}

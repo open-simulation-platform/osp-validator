@@ -59,8 +59,8 @@ public class Bond extends TypedNamedEntity
 		return sb.toString();
 	}
 	
-	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+	public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name, final String simulatorName)
 	{
-		converter.convert(this, abbreviated_iri_name);
+		converter.convert(this, abbreviated_iri_name, simulatorName);
 	}
 }

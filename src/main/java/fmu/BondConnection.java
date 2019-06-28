@@ -1,5 +1,7 @@
 package fmu;
 
+import utils.FMU2OWLConverter;
+
 public class BondConnection {
     private String simulatorA;
     private String bondA;
@@ -22,6 +24,22 @@ public class BondConnection {
         this.bondB = bondB;
     }
 
+    public String getSimulatorA() {
+        return simulatorA;
+    }
+
+    public String getBondA() {
+        return bondA;
+    }
+
+    public String getSimulatorB() {
+        return simulatorB;
+    }
+
+    public String getBondB() {
+        return bondB;
+    }
+
     @Override
     public String toString()
     {
@@ -33,5 +51,10 @@ public class BondConnection {
         sb.append("- SimulatorB: " + simulatorB + "\n");
         sb.append("- BondB: " + bondB + "\n");
         return sb.toString();
+    }
+
+    public void accept(final FMU2OWLConverter converter, final String abbreviated_iri_name)
+    {
+        converter.convert(this, abbreviated_iri_name);
     }
 }

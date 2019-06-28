@@ -37,6 +37,7 @@
   "bonds": [
     {
       "name": "james",
+      "type": "mechanical",
       "plugs": [
         "fpeed"
       ],
