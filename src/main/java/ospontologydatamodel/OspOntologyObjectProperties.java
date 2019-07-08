@@ -1,7 +1,7 @@
 package ospontologydatamodel;
 
 public class OspOntologyObjectProperties {
-  
+
   public static final String HAS_PLUG_MATE = "has_plug_mate";
   public static final String HAS_BOND_CONNECTOR = "has_bond_connector";
   public static final String HAS_BOND_CONNECTOR_MATE = "has_bond_connector_mate";

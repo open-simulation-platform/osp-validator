@@ -1,7 +1,7 @@
 package ospontologydatamodel;
 
 public class OspOntologyIndividuals {
-  
+
   public static final String IND_UNIT_RADIAN_PER_SECOND = "ind_unit_radian_per_second";
   public static final String IND_UNIT_METER = "ind_unit_meter";
   public static final String IND_UNIT_VOLT = "ind_unit_volt";

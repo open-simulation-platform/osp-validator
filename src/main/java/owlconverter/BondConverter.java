@@ -11,7 +11,7 @@ public class BondConverter {
     OWLDataFactory dataFactory = manager.getOWLDataFactory();
     
     OWLNamedIndividual bondIndividual = dataFactory.getOWLNamedIndividual(bond.getId(), prefixManager);
-    OWLClass bondClass = dataFactory.getOWLClass(OspOntologyClasses.BOND, prefixManager);
+    OWLClass bondClass = dataFactory.getOWLClass(OspOntologyClasses.BOND_CONNECTOR, prefixManager);
     manager.addAxiom(ontology, dataFactory.getOWLClassAssertionAxiom(bondClass, bondIndividual));
   
     bond.getPlugs().forEach(plug -> {
