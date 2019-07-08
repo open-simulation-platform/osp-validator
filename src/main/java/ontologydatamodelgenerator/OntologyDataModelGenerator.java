@@ -33,28 +33,32 @@ public class OntologyDataModelGenerator {
   
   private static String getContentForClassesDataModel(OntologyContent content) {
     StringBuilder classes = new StringBuilder();
-    content.getClasses().forEach((name, owlClass) -> classes.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n\t"));
+    content.getClasses().forEach((name, owlClass) -> addField(classes, name));
     
     return classes.toString();
   }
   
   private static String getContentForObjectPropertiesDataModel(OntologyContent content) {
     StringBuilder objectProperties = new StringBuilder();
-    content.getObjectProperties().forEach((name, owlObjectProperty) -> objectProperties.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n\t"));
+    content.getObjectProperties().forEach((name, owlObjectProperty) -> addField(objectProperties, name));
     
     return objectProperties.toString();
   }
   
+  private static StringBuilder addField(StringBuilder objectProperties, String name) {
+    return objectProperties.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n  ");
+  }
+  
   private static String getContentForDataPropertiesDataModel(OntologyContent content) {
     StringBuilder dataProperties = new StringBuilder();
-    content.getDataProperties().forEach((name, owlDataProperty) -> dataProperties.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n\t"));
+    content.getDataProperties().forEach((name, owlDataProperty) -> addField(dataProperties, name));
     
     return dataProperties.toString();
   }
   
   private static String getContentForIndividualsDataModel(OntologyContent content) {
     StringBuilder individuals = new StringBuilder();
-    content.getIndividuals().forEach((name, owlIndividual) -> individuals.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n\t"));
+    content.getIndividuals().forEach((name, owlIndividual) -> addField(individuals, name));
     
     return individuals.toString();
   }
