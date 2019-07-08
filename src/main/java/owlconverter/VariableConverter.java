@@ -2,17 +2,15 @@ package owlconverter;
 
 import datamodel.Variable;
 import org.semanticweb.owlapi.model.*;
-import ospontologydatamodel.OspOntologyClasses;
+import owlhelper.OwlHelper;
+
+import static ospontologydatamodel.OspOntologyClasses.*;
 
 public class VariableConverter {
   public static OWLNamedIndividual convert(Variable variable, OWLOntology ontology, PrefixManager prefixManager) {
-    OWLOntologyManager manager = ontology.getOWLOntologyManager();
-    OWLDataFactory dataFactory = manager.getOWLDataFactory();
+    OWLNamedIndividual variableIndividual = OwlHelper.getNamedIndividual(ontology, variable.getId(), prefixManager);
     
-    OWLNamedIndividual variableIndividual = dataFactory.getOWLNamedIndividual(variable.getId(), prefixManager);
-    OWLClass variableClass = dataFactory.getOWLClass(OspOntologyClasses.VARIABLE, prefixManager);
-    
-    manager.addAxiom(ontology, dataFactory.getOWLClassAssertionAxiom(variableClass, variableIndividual));
+    OwlHelper.addClassAssertionAxiom(ontology, variableIndividual, VARIABLE, prefixManager);
     
     return variableIndividual;
   }

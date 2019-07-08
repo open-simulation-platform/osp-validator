@@ -1,27 +1,24 @@
 package owlconverter;
 
 import datamodel.Plug;
-import org.semanticweb.owlapi.model.*;
-import ospontologydatamodel.OspOntologyClasses;
-import ospontologydatamodel.OspOntologyObjectProperties;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.PrefixManager;
+import owlhelper.OwlHelper;
+
+import static ospontologydatamodel.OspOntologyClasses.PLUG;
+import static ospontologydatamodel.OspOntologyObjectProperties.HAS_VARIABLE;
 
 public class PlugConverter {
   public static OWLNamedIndividual convert(Plug plug, OWLOntology ontology, PrefixManager prefixManager) {
-    OWLOntologyManager manager = ontology.getOWLOntologyManager();
-    OWLDataFactory dataFactory = manager.getOWLDataFactory();
+    OWLNamedIndividual plugIndividual = OwlHelper.getNamedIndividual(ontology, plug.getId(), prefixManager);
     
-    OWLNamedIndividual plugIndividual = dataFactory.getOWLNamedIndividual(plug.getId(), prefixManager);
-    
-    OWLClass plugClass = dataFactory.getOWLClass(OspOntologyClasses.PLUG, prefixManager);
-    manager.addAxiom(ontology, dataFactory.getOWLClassAssertionAxiom(plugClass, plugIndividual));
-    
-    OWLClass typeClass = dataFactory.getOWLClass(plug.getType(), prefixManager);
-    manager.addAxiom(ontology, dataFactory.getOWLClassAssertionAxiom(typeClass, plugIndividual));
+    OwlHelper.addClassAssertionAxiom(ontology, plugIndividual, PLUG, prefixManager);
+    OwlHelper.addClassAssertionAxiom(ontology, plugIndividual, plug.getType(), prefixManager);
   
     plug.getVariables().forEach((variableName, variable) -> {
       OWLNamedIndividual variableIndividual = VariableConverter.convert(variable, ontology, prefixManager);
-      OWLObjectProperty hasVariable = dataFactory.getOWLObjectProperty(OspOntologyObjectProperties.HAS_VARIABLE, prefixManager);
-      manager.addAxiom(ontology, dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariable, plugIndividual, variableIndividual));
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, plugIndividual, HAS_VARIABLE, variableIndividual, prefixManager);
     });
   
     return plugIndividual;

@@ -4,10 +4,17 @@ import datamodel.Bond;
 import datamodel.BondConnection;
 import datamodel.Plug;
 import datamodel.Socket;
-import org.semanticweb.owlapi.model.*;
-import ospontologydatamodel.OspOntologyObjectProperties;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.PrefixManager;
+import owlhelper.OwlHelper;
 
 import java.util.List;
+
+import static ospontologydatamodel.OspOntologyClasses.BOND_CONNECTOR_A;
+import static ospontologydatamodel.OspOntologyClasses.BOND_CONNECTOR_B;
+import static ospontologydatamodel.OspOntologyObjectProperties.HAS_BOND_MATE_A;
+import static ospontologydatamodel.OspOntologyObjectProperties.HAS_BOND_MATE_B;
 
 public class BondConnectionConverter {
   public static void convert(BondConnection connection, OWLOntology ontology, PrefixManager prefixManager) {
@@ -15,18 +22,14 @@ public class BondConnectionConverter {
   }
   
   public static void convert(Bond bondA, Bond bondB, OWLOntology ontology, PrefixManager prefixManager) {
-    OWLOntologyManager manager = ontology.getOWLOntologyManager();
-    OWLDataFactory dataFactory = manager.getOWLDataFactory();
-    
     OWLNamedIndividual bondAIndividual = BondConverter.convert(bondA, ontology, prefixManager);
-    
     OWLNamedIndividual bondBIndividual = BondConverter.convert(bondB, ontology, prefixManager);
     
-    OWLObjectProperty hasBondMateB = dataFactory.getOWLObjectProperty(OspOntologyObjectProperties.HAS_BOND_MATE_B, prefixManager);
-    manager.addAxiom(ontology, dataFactory.getOWLObjectPropertyAssertionAxiom(hasBondMateB, bondAIndividual, bondBIndividual));
+    OwlHelper.addClassAssertionAxiom(ontology, bondAIndividual, BOND_CONNECTOR_A, prefixManager);
+    OwlHelper.addClassAssertionAxiom(ontology, bondBIndividual, BOND_CONNECTOR_B, prefixManager);
     
-    OWLObjectProperty hasBondMateA = dataFactory.getOWLObjectProperty(OspOntologyObjectProperties.HAS_BOND_MATE_A, prefixManager);
-    manager.addAxiom(ontology, dataFactory.getOWLObjectPropertyAssertionAxiom(hasBondMateA, bondBIndividual, bondAIndividual));
+    OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondAIndividual, HAS_BOND_MATE_B, bondBIndividual, prefixManager);
+    OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondBIndividual, HAS_BOND_MATE_A, bondAIndividual, prefixManager);
     
     List<Plug> aPlugs = bondA.getPlugs();
     List<Socket> bSockets = bondB.getSockets();

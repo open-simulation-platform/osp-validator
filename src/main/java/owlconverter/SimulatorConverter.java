@@ -2,34 +2,30 @@ package owlconverter;
 
 import datamodel.Simulator;
 import org.semanticweb.owlapi.model.*;
-import ospontologydatamodel.OspOntologyClasses;
-import ospontologydatamodel.OspOntologyObjectProperties;
+import owlhelper.OwlHelper;
+
+import static ospontologydatamodel.OspOntologyClasses.*;
+import static ospontologydatamodel.OspOntologyObjectProperties.*;
 
 public class SimulatorConverter {
   public static void convert(Simulator simulator, OWLOntology ontology, PrefixManager prefixManager) {
-    OWLOntologyManager manager = ontology.getOWLOntologyManager();
-    OWLDataFactory dataFactory = manager.getOWLDataFactory();
+    OWLNamedIndividual simulatorIndividual = OwlHelper.getNamedIndividual(ontology, simulator.getId(), prefixManager);
     
-    OWLNamedIndividual simulatorIndividual = dataFactory.getOWLNamedIndividual(simulator.getId(), prefixManager);
-    OWLClass modelClass = dataFactory.getOWLClass(OspOntologyClasses.MODEL, prefixManager);
-    manager.addAxiom(ontology, dataFactory.getOWLClassAssertionAxiom(modelClass, simulatorIndividual));
+    OwlHelper.addClassAssertionAxiom(ontology, simulatorIndividual, MODEL, prefixManager);
     
     simulator.getPlugs().forEach((plugName, plug) -> {
       OWLNamedIndividual plugIndividual = PlugConverter.convert(plug, ontology, prefixManager);
-      OWLObjectProperty hasSignalConnector = dataFactory.getOWLObjectProperty(OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR, prefixManager);
-      manager.addAxiom(ontology, dataFactory.getOWLObjectPropertyAssertionAxiom(hasSignalConnector, simulatorIndividual, plugIndividual));
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, HAS_SIGNAL_CONNECTOR, plugIndividual, prefixManager);
     });
     
     simulator.getSockets().forEach((socketName, socket) -> {
       OWLNamedIndividual socketIndividual = SocketConverter.convert(socket, ontology, prefixManager);
-      OWLObjectProperty hasSignalConnector = dataFactory.getOWLObjectProperty(OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR, prefixManager);
-      manager.addAxiom(ontology, dataFactory.getOWLObjectPropertyAssertionAxiom(hasSignalConnector, simulatorIndividual, socketIndividual));
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, HAS_SIGNAL_CONNECTOR, socketIndividual, prefixManager);
     });
     
     simulator.getBonds().forEach((bondName, bond) -> {
       OWLNamedIndividual bondIndividual = BondConverter.convert(bond, ontology, prefixManager);
-      OWLObjectProperty hasBondConnector = dataFactory.getOWLObjectProperty(OspOntologyObjectProperties.HAS_BOND_CONNECTOR, prefixManager);
-      manager.addAxiom(ontology, dataFactory.getOWLObjectPropertyAssertionAxiom(hasBondConnector, simulatorIndividual, bondIndividual));
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, HAS_BOND_CONNECTOR, bondIndividual, prefixManager);
     });
   }
 }

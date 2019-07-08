@@ -73,8 +73,8 @@
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_mate_a">
         <rdfs:subPropertyOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_connector_mate"/>
-        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_b"/>
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_a"/>
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_b"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_a"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T12:00:39Z</terms:date>
     </owl:ObjectProperty>
@@ -85,8 +85,8 @@
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_mate_b">
         <rdfs:subPropertyOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_connector_mate"/>
-        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_a"/>
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_b"/>
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_a"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_b"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T12:00:46Z</terms:date>
     </owl:ObjectProperty>
@@ -362,27 +362,6 @@
     
 
 
-    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_a -->
-
-    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_a">
-        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
-        <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_b"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:31:51Z</terms:date>
-    </owl:Class>
-    
-
-
-    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_b -->
-
-    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_b">
-        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:32:00Z</terms:date>
-    </owl:Class>
-    
-
-
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector">
@@ -390,6 +369,27 @@
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:31:44Z</terms:date>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_a -->
+
+    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_a">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
+        <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_b"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:31:51Z</terms:date>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_b -->
+
+    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector_b">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:32:00Z</terms:date>
     </owl:Class>
     
 
