@@ -687,6 +687,41 @@
     
 
 
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/generic -->
+
+    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/generic">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector_mate"/>
+                <owl:allValuesFrom rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-08T13:52:52Z</terms:date>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-08T13:52:52Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector_mate"/>
+                <owl:allValuesFrom rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-08T13:52:52Z</terms:date>
+    </owl:Axiom>
+    
+
+
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/linear_mechanical_bond -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/linear_mechanical_bond">

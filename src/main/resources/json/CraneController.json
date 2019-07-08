@@ -24,7 +24,7 @@
       "unit": "F"
     },
     {
-      "type": "signal_type",
+      "type": "generic",
       "name": "Act_Limits",
       "variables": [
         "Act_Limits[1]",

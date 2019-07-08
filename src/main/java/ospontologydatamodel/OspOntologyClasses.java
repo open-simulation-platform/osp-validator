@@ -13,6 +13,7 @@ public class OspOntologyClasses {
   public static final String SIGNAL_CONNECTOR = "signal_connector";
   public static final String VELOCITY = "velocity";
   public static final String BOND_B = "bond_b";
+  public static final String GENERIC = "generic";
   public static final String BOND_TYPE = "bond_type";
   public static final String VOLTAGE = "voltage";
   public static final String BOND_A = "bond_a";
