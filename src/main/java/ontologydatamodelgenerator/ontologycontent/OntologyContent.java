@@ -1,9 +1,9 @@
-package ontologymodelgenerator.ontologycontent;
+package ontologydatamodelgenerator.ontologycontent;
 
-import ontologymodelgenerator.ontologyparser.ClassParser;
-import ontologymodelgenerator.ontologyparser.DataPropertiesParser;
-import ontologymodelgenerator.ontologyparser.IndividualsParser;
-import ontologymodelgenerator.ontologyparser.ObjectPropertiesParser;
+import ontologydatamodelgenerator.ontologyparser.ClassParser;
+import ontologydatamodelgenerator.ontologyparser.DataPropertiesParser;
+import ontologydatamodelgenerator.ontologyparser.IndividualsParser;
+import ontologydatamodelgenerator.ontologyparser.ObjectPropertiesParser;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.Map;

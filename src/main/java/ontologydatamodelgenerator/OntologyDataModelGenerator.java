@@ -1,7 +1,7 @@
-package ontologymodelgenerator;
+package ontologydatamodelgenerator;
 
-import ontologymodelgenerator.ontologycontent.OntologyContent;
-import ontologymodelgenerator.ontologyparser.OntologyParser;
+import ontologydatamodelgenerator.ontologycontent.OntologyContent;
+import ontologydatamodelgenerator.ontologyparser.OntologyParser;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 
 public class OntologyDataModelGenerator {
   
-  private static final File templateFile = new File("./src/main/java/ontologymodelgenerator/Template");
+  private static final File templateFile = new File("./src/main/java/ontologydatamodelgenerator/Template");
   
   public static void main(String[] args) throws Exception {
     File ontologyFile = new File("./src/main/resources/osp.owl");

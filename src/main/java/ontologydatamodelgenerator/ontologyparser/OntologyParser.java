@@ -1,6 +1,6 @@
-package ontologymodelgenerator.ontologyparser;
+package ontologydatamodelgenerator.ontologyparser;
 
-import ontologymodelgenerator.ontologycontent.OntologyContent;
+import ontologydatamodelgenerator.ontologycontent.OntologyContent;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;

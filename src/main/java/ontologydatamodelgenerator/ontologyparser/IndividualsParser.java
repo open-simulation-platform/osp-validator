@@ -1,4 +1,4 @@
-package ontologymodelgenerator.ontologyparser;
+package ontologydatamodelgenerator.ontologyparser;
 
 import com.google.common.base.Optional;
 import org.semanticweb.owlapi.model.IRI;
