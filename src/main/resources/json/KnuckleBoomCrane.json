@@ -12,7 +12,7 @@
       "unit": "F"
     },
     {
-      "type": "signal",
+      "type": "signal_type",
       "name": "Act_Limits",
       "variables": [
         "Act_Limits[1]",
