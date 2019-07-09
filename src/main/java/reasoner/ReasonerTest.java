@@ -29,7 +29,7 @@ public class ReasonerTest {
   private static Set<OWLNamedIndividual> getInstances(final OWLReasoner reasoner, final OWLClassExpression classExpression)
       throws OWLRuntimeException {
     Set<OWLNamedIndividual> result = new HashSet<>();
-    
+  
     NodeSet<OWLNamedIndividual> nodes = reasoner.getInstances(classExpression, true);
     
     for (Node<OWLNamedIndividual> node : nodes) {

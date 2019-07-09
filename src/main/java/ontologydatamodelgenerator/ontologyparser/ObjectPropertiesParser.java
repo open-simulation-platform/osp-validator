@@ -1,6 +1,5 @@
 package ontologydatamodelgenerator.ontologyparser;
 
-import com.google.common.base.Optional;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -9,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ObjectPropertiesParser {
   
@@ -18,15 +18,15 @@ public class ObjectPropertiesParser {
     Map<String, OWLObjectProperty> map = new HashMap<>();
     ontology.getObjectPropertiesInSignature().forEach(objectProperty -> {
       IRI iri = objectProperty.getIRI();
-      Optional<String> remainder = iri.getRemainder();
-      if (remainder.isPresent()) {
+      String fragment = iri.getFragment();
+      if (fragment != null && !Objects.equals(fragment, "")) {
         LOG.debug("Adding object property: " + iri.toString());
-        map.put(remainder.get(), objectProperty);
+        map.put(fragment, objectProperty);
       } else {
         LOG.warn("IRI of object property: " + iri.toString() + " has no remainder. Not adding");
       }
     });
     return map;
   }
-
+  
 }

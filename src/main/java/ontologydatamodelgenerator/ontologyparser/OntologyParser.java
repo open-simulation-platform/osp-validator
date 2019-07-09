@@ -11,15 +11,14 @@ import java.io.File;
 public class OntologyParser {
   public static OntologyContent parse(File ontologyFile) {
     OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-  
+    
     OWLOntology ontology;
     try {
       ontology = manager.loadOntologyFromOntologyDocument(ontologyFile);
     } catch (OWLOntologyCreationException e) {
       throw new RuntimeException("Unable to load ontolog from: " + ontologyFile.getAbsolutePath(), e);
-  
     }
-  
+    
     return new OntologyContent(ontology);
   }
 }

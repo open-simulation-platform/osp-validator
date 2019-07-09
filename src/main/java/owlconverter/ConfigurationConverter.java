@@ -5,8 +5,6 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.PrefixManager;
-import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
 import java.io.File;
 
@@ -15,19 +13,18 @@ public class ConfigurationConverter {
     try {
       OWLOntology ospOntology = OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(ospOwlFile);
       OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-      PrefixManager prefixManager = new DefaultPrefixManager(ospOntology.getOntologyID().getOntologyIRI().toString());
       OWLOntology configurationOntology = manager.createOntology(ospOntology.getAxioms(), ospOntology.getOntologyID().getOntologyIRI());
   
       configuration.getSimulators().forEach((simulatorName, simulator) -> {
-        SimulatorConverter.convert(simulator, configurationOntology, prefixManager);
+        SimulatorConverter.convert(simulator, configurationOntology);
       });
   
       configuration.getPlugSocketConnections().forEach(connection -> {
-        PlugSocketConnectionConverter.convert(connection, configurationOntology, prefixManager);
+        PlugSocketConnectionConverter.convert(connection, configurationOntology);
       });
   
       configuration.getBondConnections().forEach(connection -> {
-        BondConnectionConverter.convert(connection, configurationOntology, prefixManager);
+        BondConnectionConverter.convert(connection, configurationOntology);
       });
       
       return configurationOntology;

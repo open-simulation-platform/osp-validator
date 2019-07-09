@@ -8,19 +8,19 @@ import static ospontologydatamodel.OspOntologyClasses.BOND_CONNECTOR;
 import static ospontologydatamodel.OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR;
 
 public class BondConverter {
-  public static OWLNamedIndividual convert(Bond bond, OWLOntology ontology, PrefixManager prefixManager) {
-    OWLNamedIndividual bondIndividual = OwlHelper.getNamedIndividual(ontology, bond.getId(), prefixManager);
+  public static OWLNamedIndividual convert(Bond bond, OWLOntology ontology) {
+    OWLNamedIndividual bondIndividual = OwlHelper.getNamedIndividual(ontology, bond.getId());
     
-    OwlHelper.addClassAssertionAxiom(ontology, bondIndividual, BOND_CONNECTOR, prefixManager);
+    OwlHelper.addClassAssertionAxiom(ontology, bondIndividual, BOND_CONNECTOR);
   
     bond.getPlugs().forEach(plug -> {
-      OWLNamedIndividual plugIndividual = PlugConverter.convert(plug, ontology, prefixManager);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, HAS_SIGNAL_CONNECTOR, plugIndividual, prefixManager);
+      OWLNamedIndividual plugIndividual = PlugConverter.convert(plug, ontology);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, HAS_SIGNAL_CONNECTOR, plugIndividual);
     });
   
     bond.getSockets().forEach(socket -> {
-      OWLNamedIndividual socketIndividual = SocketConverter.convert(socket, ontology, prefixManager);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, HAS_SIGNAL_CONNECTOR, socketIndividual, prefixManager);
+      OWLNamedIndividual socketIndividual = SocketConverter.convert(socket, ontology);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, HAS_SIGNAL_CONNECTOR, socketIndividual);
     });
   
     return bondIndividual;

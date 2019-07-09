@@ -14,8 +14,8 @@ public class OspOntologyClasses {
   public static final String THING = "thing";
   public static final String SIGNAL_CONNECTOR = "signal_connector";
   public static final String VELOCITY = "velocity";
-  public static final String GENERIC = "generic";
   public static final String BOND_TYPE = "bond_type";
+  public static final String GENERIC = "generic";
   public static final String SIGNAL_TYPE = "signal_type";
   public static final String VOLTAGE = "voltage";
   public static final String ELECTRO_MAGNETIC_BOND = "electro_magnetic_bond";
