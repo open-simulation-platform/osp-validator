@@ -2,6 +2,9 @@ package owlhelper;
 
 import org.semanticweb.owlapi.model.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class OwlHelper {
   public static void addClassAssertionAxiom(OWLOntology ontology, OWLNamedIndividual individual, String className, PrefixManager prefixManager) {
     OWLOntologyManager manager = ontology.getOWLOntologyManager();
@@ -21,6 +24,10 @@ public class OwlHelper {
   
   public static OWLNamedIndividual getNamedIndividual(OWLOntology ontology, String individualName, PrefixManager prefixManager) {
     OWLDataFactory dataFactory = ontology.getOWLOntologyManager().getOWLDataFactory();
-    return dataFactory.getOWLNamedIndividual(individualName, prefixManager);
+    try {
+      return dataFactory.getOWLNamedIndividual(String.valueOf(IRI.create(URLEncoder.encode(individualName, "UTF-8"))), prefixManager);
+    } catch (UnsupportedEncodingException e) {
+      throw new RuntimeException("Error creating individual for " + individualName, e);
+    }
   }
 }
