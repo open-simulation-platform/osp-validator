@@ -2,7 +2,7 @@
   "name": "KnuckleBoomCrane",
   "plugs": [
     {
-      "type": "flow",
+      "type": "linear_velocity",
       "name": "fpeed",
       "variables": [
         "p_Crane.f[1]",
@@ -12,7 +12,7 @@
       "unit": "F"
     },
     {
-      "type": "abstract",
+      "type": "generic",
       "name": "Act_Limits",
       "variables": [
         "Act_Limits[1]",
@@ -24,7 +24,7 @@
   ],
   "sockets": [
     {
-      "type": "effort",
+      "type": "force",
       "name": "forceIn",
       "variables": [
         "p_Crane.e[1]",

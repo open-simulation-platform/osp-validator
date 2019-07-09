@@ -1,52 +1,49 @@
 {
-    "name": "CraneController",
-    "sockets": [
-        {
-            "type": "flow",
-            "name": "fpeed",
-            "variables": [
-                "p_Crane.f[1]",
-                "p_Crane.f[2]",
-                "p_Crane.f[3]"
-            ],
-            "unit": "F"
-        },
-        {
-            "type": "abstract",
-            "name": "Act_Limits",
-            "variables": [
-                "Act_Limits[1]",
-                "Act_Limits[2]",
-                "Act_Limits[3]"
-            ],
-            "unit": "NA"
-        }
-    ],
-    "plugs": [
-        {
-            "type": "effort",
-            "name": "forceOut",
-            "variables": [
-                "p_Crane.e[1]",
-                "p_Crane.e[2]",
-                "p_Crane.e[3]"
-            ],
-            "unit": "E"
-        }
-    ],
-    "bonds": [
-        {
-            "name": "jim",
-            "type": "mechanical",
-            "sockets": [
-                "fpeed"
-            ],
-            "plugs": [
-                "forceOut"
-            ]
-        }
-    ]
-}
-
-
+  "name": "CraneController",
+  "plugs": [
+    {
+      "type": "force",
+      "name": "forceOut",
+      "variables": [
+        "p_Crane.e[1]",
+        "p_Crane.e[2]",
+        "p_Crane.e[3]"
+      ],
+      "unit": "E"
+    }
+  ],
+  "sockets": [
+    {
+      "type": "linear_velocity",
+      "name": "fpeed",
+      "variables": [
+        "p_Crane.f[1]",
+        "p_Crane.f[2]",
+        "p_Crane.f[3]"
+      ],
+      "unit": "F"
+    },
+    {
+      "type": "generic",
+      "name": "Act_Limits",
+      "variables": [
+        "Act_Limits[1]",
+        "Act_Limits[2]",
+        "Act_Limits[3]"
+      ],
+      "unit": "NA"
+    }
+  ],
+  "bonds": [
+    {
+      "name": "jim",
+      "type": "mechanical",
+      "sockets": [
+        "fpeed"
+      ],
+      "plugs": [
+        "forceOut"
+      ]
+    }
+  ]
 }
