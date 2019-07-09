@@ -10,13 +10,13 @@ import java.nio.file.Files;
 
 public class OntologyDataModelGenerator {
   
-  private static final File templateFile = new File("./src/main/java/ontologydatamodelgenerator/Template");
+  private static final File templateFile = new File("./src/main/java/com/opensimulationplatform/ontologydatamodelgenerator/Template");
   
   public static void main(String[] args) throws Exception {
     File ontologyFile = new File("./src/main/resources/osp.owl");
     
     String[] split = ontologyFile.getName().split("\\.");
-    String pkg = split[split.length - 2] + "ontologydatamodel";
+    String pkg = "com.opensimulationplatform." + split[split.length - 2] + "ontologydatamodel";
     
     OntologyContent content = OntologyParser.parse(ontologyFile);
     
