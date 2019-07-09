@@ -1,6 +1,7 @@
 package datamodel;
 
-import jsonmodel.parsing.ConfigurationJsonFileParser;
+import com.opensimulationplatform.datamodel.*;
+import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
 import org.junit.Test;
 
 import java.io.File;

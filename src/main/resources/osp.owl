@@ -163,10 +163,18 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable -->
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable">
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
         <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
     
 
 
@@ -384,10 +392,30 @@
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector">
         <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/connector"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:31:44Z</terms:date>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
     
 
 
@@ -876,6 +904,27 @@
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-08T13:52:52Z</terms:date>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/current"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
@@ -914,27 +963,6 @@
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
     </owl:Axiom>
     
 
@@ -1408,9 +1436,29 @@
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector">
         <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/connector"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-05T11:32:10Z</terms:date>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNG GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
     
 
 
@@ -1513,6 +1561,13 @@
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
@@ -1561,13 +1616,6 @@
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
@@ -1650,6 +1698,13 @@
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
@@ -1691,13 +1746,6 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
     
 
 
@@ -1714,6 +1762,13 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
@@ -1767,13 +1822,6 @@
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
     </owl:Axiom>
     
 
