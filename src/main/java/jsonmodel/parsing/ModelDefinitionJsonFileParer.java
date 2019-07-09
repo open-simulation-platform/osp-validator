@@ -17,9 +17,12 @@ public class ModelDefinitionJsonFileParer {
   
   public static JsonModelDefinition parse(File file) {
     try {
-      LOG.debug("Parsing " + file.getAbsolutePath());
+      LOG.debug("Parsing " + file.getAbsolutePath() + "...");
       ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-      return objectMapper.readValue(Files.readAllBytes(Paths.get(file.getAbsolutePath())), JsonModelDefinition.class);
+      JsonModelDefinition jsonModelDefinition = objectMapper.readValue(Files.readAllBytes(Paths.get(file.getAbsolutePath())), JsonModelDefinition.class);
+      LOG.debug("done!");
+      
+      return jsonModelDefinition;
     } catch (Exception e) {
       String msg = "Error during parsing of " + file.getAbsolutePath();
       LOG.error(msg);

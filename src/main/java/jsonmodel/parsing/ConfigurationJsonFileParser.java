@@ -17,9 +17,12 @@ public class ConfigurationJsonFileParser {
   
   public static JsonConfiguration parse(File file) {
     try {
-      LOG.debug("Parsing " + file.getAbsolutePath());
+      LOG.debug("Parsing " + file.getAbsolutePath() + "...");
       ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-      return objectMapper.readValue(Files.readAllBytes(Paths.get(file.getAbsolutePath())), JsonConfiguration.class);
+      JsonConfiguration jsonConfiguration = objectMapper.readValue(Files.readAllBytes(Paths.get(file.getAbsolutePath())), JsonConfiguration.class);
+      LOG.debug("done!");
+      
+      return jsonConfiguration;
     } catch (Exception e) {
       String msg = "Error during parsing of " + file.getAbsolutePath();
       LOG.error(msg);
