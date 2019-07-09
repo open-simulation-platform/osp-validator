@@ -35,7 +35,6 @@ public class CommandLineRunner {
     
     try {
       cmd = parser.parse(options, args);
-      
     } catch (Exception e) {
       LOG.error("Error parsing input arguments", e);
       formatter.printHelp("msmi-validator", options);
@@ -54,34 +53,37 @@ public class CommandLineRunner {
       System.exit(ExitCodes.INVALID_INPUT);
     }
     
-    
     OWLOntology ontology = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     if (ontology == null) {
+      LOG.info("exiting with exit code: " + ExitCodes.INVALID_CONFIGURATION);
       System.exit(ExitCodes.INVALID_CONFIGURATION);
     }
     
-    if (cmd.hasOption("save")) {
-      File configOwlFile = new File(cmd.getOptionValue("save"));
-      if (!configOwlFile.exists()) {
-        LOG.debug("Specified save directory: " + configOwlFile.getAbsolutePath() + " does not exist. Creating directory...");
-        if (!configOwlFile.mkdirs()) {
-          LOG.error("Error creating save directory: " + configOwlFile.getAbsolutePath());
+    String saveOption = cmd.getOptionValue("save");
+    
+    if (saveOption != null) {
+      File saveDirectory = new File(saveOption);
+      if (!saveDirectory.exists()) {
+        LOG.debug("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
+        if (!saveDirectory.mkdirs()) {
+          LOG.error("Error creating save directory: " + saveDirectory.getAbsolutePath());
           System.exit(ExitCodes.FILE_SYSTEM);
         } else {
-          LOG.debug("Save directory: " + configOwlFile.getAbsolutePath() + " created successfully");
-          LOG.info("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
-          try {
-            ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
-          } catch (OWLOntologyStorageException e) {
-            String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
-            LOG.error(message, e);
-            System.exit(ExitCodes.FILE_SYSTEM);
-          }
+          LOG.debug("Save directory: " + saveDirectory.getAbsolutePath() + " created successfully");
         }
+      }
+      File configOwlFile = new File(saveDirectory, "configuration.owl");
+      LOG.info("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
+      try {
+        ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
+      } catch (OWLOntologyStorageException e) {
+        String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
+        LOG.error(message, e);
+        System.exit(ExitCodes.FILE_SYSTEM);
       }
     }
     
-    LOG.info("exiting!");
+    LOG.info("exiting with exit code: " + ExitCodes.SUCCESS);
     System.exit(ExitCodes.SUCCESS);
   }
   
