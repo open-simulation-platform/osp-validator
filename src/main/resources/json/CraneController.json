@@ -9,7 +9,17 @@
         "p_Crane.e[2]",
         "p_Crane.e[3]"
       ],
-      "unit": "E"
+      "unit": "N"
+    },
+    {
+      "type": "position",
+      "name": "positionOut",
+      "variables": [
+        "p_Crane.p[1]",
+        "p_Crane.p[2]",
+        "p_Crane.p[3]"
+      ],
+      "unit": "m"
     }
   ],
   "sockets": [
@@ -42,7 +52,8 @@
         "fpeed"
       ],
       "plugs": [
-        "forceOut"
+        "forceOut",
+        "positionOut"
       ]
     }
   ]

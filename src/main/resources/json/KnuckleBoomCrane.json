@@ -32,17 +32,28 @@
         "p_Crane.e[3]"
       ],
       "unit": "E"
+    },
+    {
+      "type": "position",
+      "name": "positionIn",
+      "variables": [
+        "p_Crane.p[1]",
+        "p_Crane.p[2]",
+        "p_Crane.p[3]"
+      ],
+      "unit": "m"
     }
   ],
   "bonds": [
     {
       "name": "james",
       "type": "mechanical",
+      "sockets": [
+        "forceIn",
+        "positionIn"
+      ],
       "plugs": [
         "fpeed"
-      ],
-      "sockets": [
-        "forceIn"
       ]
     }
   ]
