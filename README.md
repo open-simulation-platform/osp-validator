@@ -1,7 +1,7 @@
 # msmi-validator
 Ontology-based systems structure validator
 
-# clone -> build -> run
+## clone -> build -> run
 ```
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
