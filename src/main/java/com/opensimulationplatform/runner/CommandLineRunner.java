@@ -1,6 +1,8 @@
 package com.opensimulationplatform.runner;
 
 import com.opensimulationplatform.msmivalidator.MsmiValidator;
+import com.opensimulationplatform.terminator.ExitCode;
+import com.opensimulationplatform.terminator.Terminator;
 import org.apache.commons.cli.*;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -38,25 +40,25 @@ public class CommandLineRunner {
     } catch (Exception e) {
       LOG.error("Error parsing input arguments", e);
       formatter.printHelp("msmi-validator", options);
-      System.exit(ExitCodes.INVALID_INPUT);
+      Terminator.exit(ExitCodes.INVALID_INPUT);
     }
     
     File ospOwlFile = new File(cmd.getOptionValue("osp-ontology"));
     if (!ospOwlFile.exists()) {
       LOG.error("Input file " + ospOwlFile.getAbsolutePath() + " does not exist!");
-      System.exit(ExitCodes.INVALID_INPUT);
+      Terminator.exit(ExitCodes.INVALID_INPUT);
     }
     
     File cseConfigFile = new File(cmd.getOptionValue("cse-config"));
     if (!cseConfigFile.exists()) {
       LOG.error("Input file " + cseConfigFile.getAbsolutePath() + " does not exist!");
-      System.exit(ExitCodes.INVALID_INPUT);
+      Terminator.exit(ExitCodes.INVALID_INPUT);
     }
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     if (!result.isSuccess()) {
-      LOG.info("exiting with exit code: " + ExitCodes.INVALID_CONFIGURATION);
-      System.exit(ExitCodes.INVALID_CONFIGURATION);
+      LOG.error("Validation failed!");
+      Terminator.exit(ExitCodes.INVALID_CONFIGURATION);
     }
     
     String saveOption = cmd.getOptionValue("save");
@@ -67,7 +69,7 @@ public class CommandLineRunner {
         LOG.debug("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
         if (!saveDirectory.mkdirs()) {
           LOG.error("Error creating save directory: " + saveDirectory.getAbsolutePath());
-          System.exit(ExitCodes.FILE_SYSTEM);
+          Terminator.exit(ExitCodes.FILE_SYSTEM);
         } else {
           LOG.debug("Save directory: " + saveDirectory.getAbsolutePath() + " created successfully");
         }
@@ -77,21 +79,21 @@ public class CommandLineRunner {
       try {
         OWLOntology ontology = result.getOntology();
         ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
+        LOG.info("done!");
       } catch (OWLOntologyStorageException e) {
         String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
         LOG.error(message, e);
-        System.exit(ExitCodes.FILE_SYSTEM);
+        Terminator.exit(ExitCodes.FILE_SYSTEM);
       }
     }
     
-    LOG.info("exiting with exit code: " + ExitCodes.SUCCESS);
-    System.exit(ExitCodes.SUCCESS);
+    Terminator.exit(ExitCodes.SUCCESS);
   }
   
-  private class ExitCodes {
-    static final int SUCCESS = 0;
-    static final int INVALID_CONFIGURATION = 1;
-    static final int INVALID_INPUT = 2;
-    static final int FILE_SYSTEM = 3;
+  private static class ExitCodes {
+    static final ExitCode SUCCESS = new ExitCode(0,"SUCCESS");
+    static final ExitCode INVALID_CONFIGURATION = new ExitCode(1,"INVALID_CONFIGURATION");
+    static final ExitCode INVALID_INPUT = new ExitCode(2,"INVALID_INPUT");
+    static final ExitCode FILE_SYSTEM = new ExitCode(3,"FILE_SYSTEM");
   }
 }

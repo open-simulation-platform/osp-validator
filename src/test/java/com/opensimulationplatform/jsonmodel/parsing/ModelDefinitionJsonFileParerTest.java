@@ -4,7 +4,6 @@ import com.opensimulationplatform.jsonmodel.modeldefinition.JsonBond;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonModelDefinition;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonPlug;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonSocket;
-import com.opensimulationplatform.jsonmodel.parsing.ModelDefinitionJsonFileParer;
 import org.junit.Test;
 
 import java.io.File;

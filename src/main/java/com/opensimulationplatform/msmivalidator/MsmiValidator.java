@@ -1,11 +1,10 @@
 package com.opensimulationplatform.msmivalidator;
 
 import com.opensimulationplatform.datamodel.Configuration;
+import com.opensimulationplatform.datamodel.ConfigurationFactory;
 import com.opensimulationplatform.hermitwrapper.HermitReasonerWrapper;
 import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
 import com.opensimulationplatform.owlconverter.ConfigurationConverter;
-import com.opensimulationplatform.datamodel.ConfigurationFactory;
-import com.sun.istack.internal.NotNull;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.slf4j.Logger;
@@ -65,7 +64,6 @@ public class MsmiValidator {
       this.success = success;
     }
     
-    @NotNull
     public OWLOntology getOntology() {
       if (success) {
         return ontology;
@@ -78,7 +76,6 @@ public class MsmiValidator {
       return success;
     }
     
-    @NotNull
     public Set<Set<OWLAxiom>> getExplanation() {
       if (!success) {
         return explanation;
