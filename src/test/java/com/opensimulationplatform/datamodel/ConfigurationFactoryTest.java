@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class ConfigurationFactoryTest {
   @Test
   public void canCreate() {
-    Configuration configuration = ConfigurationFactory.create(ConfigurationJsonFileParser.parse(new File("./src/test/resources/parsing/cse-config.json")));
+    Configuration configuration = ConfigurationFactory.create(ConfigurationJsonFileParser.parse(new File("./src/test/resources/parsing/cse-config-valid.json")));
   
     assertTrue(configuration.getSimulators().containsKey("Simulator_1"));
     assertTrue(configuration.getSimulators().containsKey("Simulator_2"));
