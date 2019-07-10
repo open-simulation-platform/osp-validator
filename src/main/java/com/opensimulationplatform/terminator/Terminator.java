@@ -8,8 +8,8 @@ public class Terminator {
   private static final Logger LOG = LoggerFactory.getLogger(Terminator.class);
   
   public static void exit(ExitCode exitCode) {
-    LOG.info("Exiting...");
-    LOG.info(exitCode.toString());
+    LOG.debug("Exiting...");
+    LOG.debug(exitCode.toString());
     
     System.exit(exitCode.getExitCode());
   }

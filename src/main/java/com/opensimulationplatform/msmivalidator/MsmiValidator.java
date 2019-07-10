@@ -18,10 +18,10 @@ public class MsmiValidator {
   private static final Logger LOG = LoggerFactory.getLogger(MsmiValidator.class);
   
   public static Result validate(File ospOwlFile, File cseConfigFile) {
-    LOG.info("Checking:");
-    LOG.info("  > cse-config: " + cseConfigFile.getAbsolutePath());
-    LOG.info("Against:");
-    LOG.info("  > ontology:   " + ospOwlFile.getAbsolutePath());
+    LOG.debug("Checking:");
+    LOG.debug("  > cse-config: " + cseConfigFile.getAbsolutePath());
+    LOG.debug("Against:");
+    LOG.debug("  > ontology:   " + ospOwlFile.getAbsolutePath());
     
     Configuration config = ConfigurationFactory.create(ConfigurationJsonFileParser.parse(cseConfigFile));
     
@@ -30,8 +30,8 @@ public class MsmiValidator {
     HermitReasonerWrapper reasoner = new HermitReasonerWrapper(configOntology);
     
     if (!reasoner.isConsistent()) {
-      LOG.info("Configuration is inconsistent!");
-      LOG.info("Computing explanations for the inconsistency...");
+      LOG.debug("Configuration is inconsistent!");
+      LOG.debug("Computing explanations for the inconsistency...");
       Set<Set<OWLAxiom>> explanation = reasoner.getExplanation();
       explanation.forEach(axioms -> {
         LOG.error("------------------");
@@ -42,7 +42,7 @@ public class MsmiValidator {
       
       return new Result(explanation, false);
     } else {
-      LOG.info("Configuration is consistent!");
+      LOG.debug("Configuration is consistent!");
       
       return new Result(configOntology, true);
     }

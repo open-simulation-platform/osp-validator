@@ -75,11 +75,11 @@ public class CommandLineRunner {
         }
       }
       File configOwlFile = new File(saveDirectory, "configuration.owl");
-      LOG.info("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
+      LOG.debug("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
       try {
         OWLOntology ontology = result.getOntology();
         ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
-        LOG.info("done!");
+        LOG.debug("done!");
       } catch (OWLOntologyStorageException e) {
         String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
         LOG.error(message, e);
