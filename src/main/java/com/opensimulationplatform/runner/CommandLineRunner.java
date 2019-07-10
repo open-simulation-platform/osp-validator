@@ -53,8 +53,8 @@ public class CommandLineRunner {
       System.exit(ExitCodes.INVALID_INPUT);
     }
     
-    OWLOntology ontology = MsmiValidator.validate(ospOwlFile, cseConfigFile);
-    if (ontology == null) {
+    MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+    if (!result.isSuccess()) {
       LOG.info("exiting with exit code: " + ExitCodes.INVALID_CONFIGURATION);
       System.exit(ExitCodes.INVALID_CONFIGURATION);
     }
@@ -75,6 +75,7 @@ public class CommandLineRunner {
       File configOwlFile = new File(saveDirectory, "configuration.owl");
       LOG.info("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
       try {
+        OWLOntology ontology = result.getOntology();
         ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
       } catch (OWLOntologyStorageException e) {
         String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();

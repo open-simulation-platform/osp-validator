@@ -1,4 +1,4 @@
-package jsonmodel.parsing;
+package com.opensimulationplatform.jsonmodel.parsing;
 
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonBond;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonModelDefinition;
@@ -16,7 +16,7 @@ public class ModelDefinitionJsonFileParerTest {
   
   @Test
   public void canParse() {
-    JsonModelDefinition modelDefinition = ModelDefinitionJsonFileParer.parse(new File("./src/test/resources/model-definition.json"));
+    JsonModelDefinition modelDefinition = ModelDefinitionJsonFileParer.parse(new File("./src/test/resources/parsing/model-definition.json"));
     
     assertEquals("ModelDefinitionName", modelDefinition.getName());
     

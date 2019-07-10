@@ -7,7 +7,7 @@
         {
             "name": "CraneController",
             "source": "../ssp/demo/CraneController.fmu",
-            "modelDefinition": "./src/main/resources/json/CraneController.json",
+            "modelDefinition": "./src/test/resources/validator/CraneController.json",
             "decimationFactor": 2,
             "initialValues": {
                 "x": 1.4,
@@ -17,7 +17,7 @@
         {
             "name": "KnuckleBoomCrane",
             "source": "../ssp/demo/KnuckleBoomCrane.fmu",
-            "modelDefinition": "./src/main/resources/json/KnuckleBoomCrane.json"
+            "modelDefinition": "./src/test/resources/validator/KnuckleBoomCrane.json"
         }
     ],
     "plugSocketConnections": [
