@@ -5,10 +5,19 @@ import com.opensimulationplatform.datamodel.ConfigurationFactory;
 import com.opensimulationplatform.hermitwrapper.HermitReasonerWrapper;
 import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
 import com.opensimulationplatform.owlconverter.ConfigurationConverter;
+import org.coode.owlapi.latex.LatexOWLObjectRenderer;
+import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxInlineAxiomParser;
+import org.semanticweb.owlapi.io.OWLObjectRenderer;
+import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.util.SimpleRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
+import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxRenderer;
+import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
+import uk.ac.manchester.owl.owlapi.tutorialowled2011.Formatter;
 
 import java.io.File;
 import java.util.Set;
@@ -32,11 +41,14 @@ public class MsmiValidator {
     if (!reasoner.isConsistent()) {
       LOG.debug("Configuration is inconsistent!");
       LOG.debug("Computing explanations for the inconsistency...");
+      OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
       Set<Set<OWLAxiom>> explanation = reasoner.getExplanation();
       explanation.forEach(axioms -> {
         LOG.error("------------------");
         LOG.error("Axioms causing the inconsistency: ");
-        axioms.forEach(axiom -> LOG.error(axiom.toString()));
+        axioms.forEach(axiom -> {
+          LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations()));
+        });
         LOG.error("------------------");
       });
       

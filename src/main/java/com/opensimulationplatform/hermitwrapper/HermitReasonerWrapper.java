@@ -38,6 +38,6 @@ public class HermitReasonerWrapper {
     
     HSTExplanationGenerator explainer = new HSTExplanationGenerator(new BlackBoxExplanation(ontology, factory, reasoner));
     
-    return explainer.getExplanations(ontology.getOWLOntologyManager().getOWLDataFactory().getOWLThing());
+    return explainer.getExplanations(ontology.getOWLOntologyManager().getOWLDataFactory().getOWLThing(), 1);
   }
 }

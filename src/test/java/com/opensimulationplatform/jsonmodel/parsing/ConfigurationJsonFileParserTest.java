@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class ConfigurationJsonFileParserTest {
   @Test
   public void canParse() {
-    JsonConfiguration configuration = ConfigurationJsonFileParser.parse(new File("./src/test/resources/parsing/cse-config-valid.json"));
+    JsonConfiguration configuration = ConfigurationJsonFileParser.parse(new File("./src/test/resources/parsing/cse-config.json"));
     
     List<JsonSimulator> simulators = configuration.getSimulators();
     assertEquals(2, simulators.size());
