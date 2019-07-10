@@ -40,22 +40,9 @@ public class MsmiValidator {
     
     if (!reasoner.isConsistent()) {
       LOG.debug("Configuration is inconsistent!");
-      LOG.debug("Computing explanations for the inconsistency...");
-      OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      Set<Set<OWLAxiom>> explanation = reasoner.getExplanation();
-      explanation.forEach(axioms -> {
-        LOG.error("------------------");
-        LOG.error("Axioms causing the inconsistency: ");
-        axioms.forEach(axiom -> {
-          LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations()));
-        });
-        LOG.error("------------------");
-      });
-      
-      return new Result(explanation, false);
+      return new Result(reasoner.getExplanation(), false);
     } else {
       LOG.debug("Configuration is consistent!");
-      
       return new Result(configOntology, true);
     }
   }
