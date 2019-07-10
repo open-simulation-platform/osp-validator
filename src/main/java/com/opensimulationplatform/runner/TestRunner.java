@@ -1,6 +1,8 @@
 package com.opensimulationplatform.runner;
 
 import com.opensimulationplatform.msmivalidator.MsmiValidator;
+import com.opensimulationplatform.terminator.ExitCode;
+import com.opensimulationplatform.terminator.Terminator;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
@@ -14,24 +16,25 @@ public class TestRunner {
   private static final Logger LOG = LoggerFactory.getLogger(TestRunner.class);
   
   public static void main(String[] args) {
-    File ospOwlFile = new File("./src/main/resources/osp.owl");
-    File cseConfigFile = new File("./src/main/resources/json/cse-config.json");
+    File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
+    File cseConfigFile = new File("./src/test/resources/validator/cse-config.json");
     
-    OWLOntology ontology = MsmiValidator.validate(ospOwlFile, cseConfigFile);
-    if (ontology == null) {
-      System.exit(1);
+    MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+    if (!result.isSuccess()) {
+      Terminator.exit(new ExitCode(1, "Validation failed"));
     } else {
       File configOwlFile = new File("./configuration.owl");
-      LOG.info("Storing configuration ontology to: " + configOwlFile.getAbsolutePath());
+      LOG.debug("Storing configuration ontology to: " + configOwlFile.getAbsolutePath());
       try {
+        OWLOntology ontology = result.getOntology();
         ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
+        LOG.debug("done!");
       } catch (OWLOntologyStorageException e) {
         String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
         LOG.error(message, e);
         throw new RuntimeException(e);
       }
-      LOG.info("exiting!");
-      System.exit(0);
+      Terminator.exit(new ExitCode(0, "Great success!"));
     }
   }
 }

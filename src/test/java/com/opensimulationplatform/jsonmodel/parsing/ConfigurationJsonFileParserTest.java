@@ -1,7 +1,6 @@
-package jsonmodel.parsing;
+package com.opensimulationplatform.jsonmodel.parsing;
 
 import com.opensimulationplatform.jsonmodel.configuration.*;
-import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
 import org.junit.Test;
 
 import java.io.File;
@@ -12,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class ConfigurationJsonFileParserTest {
   @Test
   public void canParse() {
-    JsonConfiguration configuration = ConfigurationJsonFileParser.parse(new File("./src/test/resources/cse-config.json"));
+    JsonConfiguration configuration = ConfigurationJsonFileParser.parse(new File("./src/test/resources/parsing/cse-config.json"));
     
     List<JsonSimulator> simulators = configuration.getSimulators();
     assertEquals(2, simulators.size());
@@ -21,7 +20,7 @@ public class ConfigurationJsonFileParserTest {
       assertEquals("Simulator_" + (i + 1), simulator.getName());
   
       String modelDefinition = simulator.getModelDefinition();
-      assertEquals("./src/test/resources/model-definition.json", modelDefinition);
+      assertEquals("./src/test/resources/parsing/model-definition.json", modelDefinition);
   
       String source = simulator.getSource();
       assertEquals("./path/to/simulator.fmu", source);
