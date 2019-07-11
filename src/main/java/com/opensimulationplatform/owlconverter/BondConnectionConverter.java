@@ -1,9 +1,9 @@
 package com.opensimulationplatform.owlconverter;
 
-import com.opensimulationplatform.datamodel.Bond;
-import com.opensimulationplatform.datamodel.BondConnection;
-import com.opensimulationplatform.datamodel.Plug;
-import com.opensimulationplatform.datamodel.Socket;
+import com.opensimulationplatform.datamodel.configuration.BondConnection;
+import com.opensimulationplatform.datamodel.modeldefinition.Bond;
+import com.opensimulationplatform.datamodel.modeldefinition.Plug;
+import com.opensimulationplatform.datamodel.modeldefinition.Socket;
 import com.opensimulationplatform.ospontologydatamodel.OspOntologyClasses;
 import com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties;
 import com.opensimulationplatform.owlhelper.OwlHelper;

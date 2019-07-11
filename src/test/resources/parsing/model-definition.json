@@ -2,7 +2,7 @@
   "name": "ModelDefinitionName",
   "plugs": [
     {
-      "type": "plugType",
+      "type": "plugType_1",
       "name": "plug_1",
       "variables": [
         "p_variable_1",
@@ -12,7 +12,7 @@
       "unit": "unit"
     },
     {
-      "type": "plugType",
+      "type": "plugType_2",
       "name": "plug_2",
       "variables": [
         "p_variable_4",
@@ -22,7 +22,7 @@
       "unit": "unit"
     },
     {
-      "type": "plugType",
+      "type": "plugType_3",
       "name": "plug_3",
       "variables": [
         "p_variable_7",
@@ -32,7 +32,7 @@
       "unit": "unit"
     },
     {
-      "type": "plugType",
+      "type": "plugType_4",
       "name": "plug_4",
       "variables": [
         "p_variable_10",
@@ -42,7 +42,7 @@
       "unit": "unit"
     },
     {
-      "type": "plugType",
+      "type": "plugType_5",
       "name": "plug_5",
       "variables": [
         "p_variable_13",
@@ -54,7 +54,7 @@
   ],
   "sockets": [
     {
-      "type": "socketType",
+      "type": "socketType_1",
       "name": "socket_1",
       "variables": [
         "s_variable_1",
@@ -64,7 +64,7 @@
       "unit": "unit"
     },
     {
-      "type": "socketType",
+      "type": "socketType_2",
       "name": "socket_2",
       "variables": [
         "s_variable_4",
@@ -74,7 +74,7 @@
       "unit": "unit"
     },
     {
-      "type": "socketType",
+      "type": "socketType_3",
       "name": "socket_3",
       "variables": [
         "s_variable_7",
@@ -84,7 +84,7 @@
       "unit": "unit"
     },
     {
-      "type": "socketType",
+      "type": "socketType_4",
       "name": "socket_4",
       "variables": [
         "s_variable_10",
@@ -94,7 +94,7 @@
       "unit": "unit"
     },
     {
-      "type": "socketType",
+      "type": "socketType_5",
       "name": "socket_5",
       "variables": [
         "s_variable_13",

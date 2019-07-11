@@ -1,11 +1,12 @@
 package com.opensimulationplatform.owlconverter;
 
-import com.opensimulationplatform.datamodel.Plug;
-import com.opensimulationplatform.datamodel.PlugSocketConnection;
-import com.opensimulationplatform.datamodel.Socket;
+import com.opensimulationplatform.datamodel.configuration.PlugSocketConnection;
+import com.opensimulationplatform.datamodel.modeldefinition.Plug;
+import com.opensimulationplatform.datamodel.modeldefinition.Socket;
 import com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties;
 import com.opensimulationplatform.owlhelper.OwlHelper;
-import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntology;
 
 public class PlugSocketConnectionConverter {
   public static void convert(PlugSocketConnection connection, OWLOntology ontology) {

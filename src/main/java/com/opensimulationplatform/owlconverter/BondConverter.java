@@ -1,14 +1,17 @@
 package com.opensimulationplatform.owlconverter;
 
-import com.opensimulationplatform.datamodel.Bond;
+import com.opensimulationplatform.datamodel.modeldefinition.Bond;
 import com.opensimulationplatform.ospontologydatamodel.OspOntologyClasses;
 import com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties;
 import com.opensimulationplatform.owlhelper.OwlHelper;
-import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntology;
+
+import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
 
 public class BondConverter {
   public static OWLNamedIndividual convert(Bond bond, OWLOntology ontology) {
-    OWLNamedIndividual bondIndividual = OwlHelper.getNamedIndividual(ontology, bond.getId());
+    OWLNamedIndividual bondIndividual = OwlHelper.getNamedIndividual(ontology, getIndividualName(bond));
     
     OwlHelper.addClassAssertionAxiom(ontology, bondIndividual, OspOntologyClasses.BOND_CONNECTOR);
   

@@ -1,5 +1,6 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
 
+import com.opensimulationplatform.datamodel.modeldefinition.*;
 import com.opensimulationplatform.jsonmodel.configuration.*;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonBond;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonModelDefinition;
@@ -53,10 +54,14 @@ public class ConfigurationFactory {
   private static List<VariableConnection> createVariableConnections(JsonConfiguration jsonConfiguration, Map<String, Simulator> simulators) {
     List<VariableConnection> variableConnections = new ArrayList<>();
     for (JsonVariableConnection jsonVariableConnection : jsonConfiguration.getVariableConnections()) {
-      Simulator sourceSimulator = simulators.get(jsonVariableConnection.getSourceSimulator());
       Variable sourceVariable = new Variable(jsonVariableConnection.getSourceVariable());
-      Simulator targetSimulator = simulators.get(jsonVariableConnection.getTargetSimulator());
+      Simulator sourceSimulator = simulators.get(jsonVariableConnection.getSourceSimulator());
+      sourceSimulator.addVariable(sourceVariable);
+      
       Variable targetVariable = new Variable(jsonVariableConnection.getTargetVariable());
+      Simulator targetSimulator = simulators.get(jsonVariableConnection.getTargetSimulator());
+      targetSimulator.addVariable(targetVariable);
+      
       VariableConnection variableConnection = new VariableConnection(sourceSimulator, sourceVariable, targetSimulator, targetVariable);
       variableConnections.add(variableConnection);
     }

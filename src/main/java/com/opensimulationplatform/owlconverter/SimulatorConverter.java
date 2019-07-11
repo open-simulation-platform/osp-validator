@@ -1,15 +1,18 @@
 package com.opensimulationplatform.owlconverter;
 
+import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
 import com.opensimulationplatform.owlhelper.OwlHelper;
-import com.opensimulationplatform.datamodel.Simulator;
-import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntology;
 
-import static com.opensimulationplatform.ospontologydatamodel.OspOntologyClasses.*;
-import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.*;
+import static com.opensimulationplatform.ospontologydatamodel.OspOntologyClasses.MODEL;
+import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.HAS_BOND_CONNECTOR;
+import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR;
+import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
 
 public class SimulatorConverter {
   public static void convert(Simulator simulator, OWLOntology ontology) {
-    OWLNamedIndividual simulatorIndividual = OwlHelper.getNamedIndividual(ontology, simulator.getId());
+    OWLNamedIndividual simulatorIndividual = OwlHelper.getNamedIndividual(ontology, getIndividualName(simulator));
     
     OwlHelper.addClassAssertionAxiom(ontology, simulatorIndividual, MODEL);
     

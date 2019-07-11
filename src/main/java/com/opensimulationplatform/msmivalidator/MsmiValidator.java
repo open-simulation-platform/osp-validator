@@ -1,23 +1,14 @@
 package com.opensimulationplatform.msmivalidator;
 
-import com.opensimulationplatform.datamodel.Configuration;
-import com.opensimulationplatform.datamodel.ConfigurationFactory;
+import com.opensimulationplatform.datamodel.configuration.Configuration;
+import com.opensimulationplatform.datamodel.configuration.ConfigurationFactory;
 import com.opensimulationplatform.hermitwrapper.HermitReasonerWrapper;
 import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
 import com.opensimulationplatform.owlconverter.ConfigurationConverter;
-import org.coode.owlapi.latex.LatexOWLObjectRenderer;
-import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxInlineAxiomParser;
-import org.semanticweb.owlapi.io.OWLObjectRenderer;
-import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.util.SimpleRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
-import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxRenderer;
-import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
-import uk.ac.manchester.owl.owlapi.tutorialowled2011.Formatter;
 
 import java.io.File;
 import java.util.Set;

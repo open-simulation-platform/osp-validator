@@ -23,7 +23,7 @@ public class ModelDefinitionJsonFileParerTest {
     assertEquals(5, plugs.size());
     for (int i = 0; i < plugs.size(); i++) {
       JsonPlug plug = plugs.get(i);
-      assertEquals("plugType", plug.getType());
+      assertEquals("plugType_" + (i + 1), plug.getType());
       assertEquals("plug_" + (i + 1), plug.getName());
       
       List<String> variables = plug.getVariables();
@@ -38,7 +38,7 @@ public class ModelDefinitionJsonFileParerTest {
     assertEquals(5, sockets.size());
     for (int i = 0; i < sockets.size(); i++) {
       JsonSocket socket = sockets.get(i);
-      assertEquals("socketType", socket.getType());
+      assertEquals("socketType_" + (i + 1), socket.getType());
       assertEquals("socket_" + (i + 1), socket.getName());
       
       List<String> variables = socket.getVariables();
