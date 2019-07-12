@@ -132,7 +132,27 @@ public class PlugTest {
   }
   
   @Test
-  public void onePlugCanBelongToSeveralBonds() {
-    fail();
+  public void onePlugCanAddTwoBonds() {
+    Plug p = new Plug("type", "name");
+    Bond b1 = new Bond("name1");
+    Bond b2 = new Bond("name2");
+    
+    p.addBond(b1);
+    p.addBond(b2);
+    
+    assertTrue(p.getBonds().containsValue(b1));
+    assertTrue(p.getBonds().containsValue(b2));
+  }
+  
+  @Test(expected = Exception.class)
+  public void onePlugCanNotAddTwoBondsWithSameName() {
+    Plug p = new Plug("type", "name");
+    Bond b1 = new Bond("name");
+    Bond b2 = new Bond("name");
+  
+    p.addBond(b1);
+    assertTrue(p.getBonds().containsValue(b1));
+   
+    p.addBond(b2);
   }
 }

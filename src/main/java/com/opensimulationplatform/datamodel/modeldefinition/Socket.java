@@ -3,23 +3,20 @@ package com.opensimulationplatform.datamodel.modeldefinition;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Socket extends Entity {
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
+public class Socket {
   
   private String type;
+  private final String name;
   private Simulator simulator;
-  private Map<String, Bond> bonds = new HashMap<>();
-  private Map<String, Variable> variables;
-  
-  public Socket(String type, String name, Map<String, Variable> variables) {
-    super(name);
-    this.type = type;
-    
-    variables.forEach((s, variable) -> variable.setParent(this));
-    this.variables = variables;
-  }
+  private Bond bond;
+  private Map<String, Variable> variables = new HashMap<>();
   
   public Socket(String type, String name) {
-    this(type, name, new HashMap<>());
+    this.type = type;
+    this.name = name;
   }
   
   public String getType() {
@@ -31,13 +28,15 @@ public class Socket extends Entity {
   }
   
   public void setSimulator(Simulator simulator) {
-    if (simulator != null) {
+    if (nonNull(simulator)) {
       if (tryingToChangeSimulator(simulator)) {
         throw new RuntimeException("Can not change simulator for existing socket");
-      } else if (this.simulator == null) {
+      } else if (isNull(this.simulator)) {
         this.simulator = simulator;
         variables.forEach((variableName, variable) -> variable.setSimulator(simulator));
-        bonds.forEach((bondName, bond) -> bond.setSimulator(simulator));
+        if (nonNull(bond)) {
+          bond.setSimulator(simulator);
+        }
         if (!simulator.getSockets().containsValue(this)) {
           simulator.addSocket(this);
         }
@@ -46,10 +45,10 @@ public class Socket extends Entity {
   }
   
   private boolean tryingToChangeSimulator(Simulator simulator) {
-    return this.simulator != simulator && this.simulator != null;
+    return nonNull(this.simulator) && this.simulator != simulator;
   }
   
-  void addVariable(Variable variable) {
+  public void addVariable(Variable variable) {
     variables.put(variable.getName(), variable);
     variable.setSimulator(simulator);
     if (variable.getSocket() != this) {
@@ -57,19 +56,27 @@ public class Socket extends Entity {
     }
   }
   
+  public void addBond(Bond bond) {
+    if (nonNull(this.bond) && !this.bond.equals(bond)) {
+      throw new RuntimeException("Can not change bond for existing socket");
+    } else {
+      this.bond = bond;
+      bond.setSimulator(simulator);
+      if (!bond.getSockets().contains(this)) {
+        bond.addSocket(this);
+      }
+    }
+  }
+  
   public Simulator getSimulator() {
     return simulator;
   }
   
-  public Map<String, Bond> getBonds() {
-    return bonds;
+  public Bond getBond() {
+    return bond;
   }
   
-  public void addBond(Bond bond) {
-    bonds.put(bond.getName(), bond);
-    bond.setSimulator(simulator);
-    if (!bond.getSockets().contains(this)) {
-      bond.addSocket(this);
-    }
+  public String getName() {
+    return name;
   }
 }

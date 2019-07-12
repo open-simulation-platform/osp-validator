@@ -17,7 +17,7 @@ public class TestRunner {
   
   public static void main(String[] args) {
     File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
-    File cseConfigFile = new File("./src/test/resources/validator/cse-config.json");
+    File cseConfigFile = new File("./src/test/resources/validator/cse-config-valid.json");
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     if (!result.isSuccess()) {

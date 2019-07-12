@@ -3,18 +3,18 @@ package com.opensimulationplatform.datamodel.modeldefinition;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Variable extends Entity {
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
+public class Variable {
   
   private Simulator simulator;
   private Map<String, Plug> plugs = new HashMap<>();
   private Socket socket;
+  private String name;
   
   public Variable(String name) {
-    super(name);
-  }
-  
-  public Simulator getSimulator() {
-    return simulator;
+    this.name = name;
   }
   
   public void setSimulator(Simulator simulator) {
@@ -35,36 +35,46 @@ public class Variable extends Entity {
     }
   }
   
-  private boolean tryingToChangeSimulator(Simulator simulator) {
-    return this.simulator != simulator && this.simulator != null;
-  }
-  
-  void addPlug(Plug plug) {
-    if (socket == null) {
+  public void addPlug(Plug plug) {
+    if (isNull(socket)) {
       this.plugs.put(plug.getName(), plug);
       plug.setSimulator(simulator);
       if (!plug.getVariables().containsValue(this)) {
         plug.addVariable(this);
       }
     } else {
-      throw new RuntimeException("A variable can not be added to both socket and plugs");
+      throw new RuntimeException("A variable can not be added to both sockets and plugs");
     }
   }
   
-  public Map<String, Plug> getPlugs() {
-    return plugs;
-  }
-  
-  void addSocket(Socket socket) {
-    if (plugs.isEmpty()) {
+  public void addSocket(Socket socket) {
+    if (!plugs.isEmpty()) {
+      throw new RuntimeException("A variable can not be added to both sockets and plugs");
+    } else if (nonNull(this.socket) && !this.socket.equals(socket)) {
+      throw new RuntimeException("Can not change socket for existing variable");
+    } else {
       this.socket = socket;
       socket.setSimulator(simulator);
       if (!socket.getVariables().containsValue(this)) {
         socket.addVariable(this);
       }
-    } else {
-      throw new RuntimeException("A variable can not be added to both socket and plugs");
     }
+  }
+  
+  private boolean tryingToChangeSimulator(Simulator simulator) {
+    return nonNull(this.simulator) && this.simulator != simulator;
+  }
+  
+  public String getName() {
+    return name;
+  }
+  
+  public Simulator getSimulator() {
+    return simulator;
+  }
+  
+  public Map<String, Plug> getPlugs() {
+    return plugs;
   }
   
   public Socket getSocket() {

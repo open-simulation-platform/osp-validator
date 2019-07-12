@@ -90,8 +90,8 @@ public class SocketTest {
     Bond b = new Bond("name");
     
     s.addBond(b);
-    
-    assertTrue(s.getBonds().containsValue(b));
+  
+    assertEquals(b, s.getBond());
     assertTrue(b.getSockets().contains(s));
   }
   
@@ -131,8 +131,14 @@ public class SocketTest {
     s.addBond(b);
   }
   
-  @Test
-  public void oneSocketCanNotBelongToSeveralBonds() {
-    fail();
+  @Test(expected = Exception.class)
+  public void oneSocketCanNotAddTwoBonds() {
+    Bond b1 = new Bond("name");
+    Bond b2 = new Bond("name");
+    Socket s = new Socket("type", "name");
+    s.addBond(b1);
+    assertEquals(b1, s.getBond());
+    
+    s.addBond(b2);
   }
 }

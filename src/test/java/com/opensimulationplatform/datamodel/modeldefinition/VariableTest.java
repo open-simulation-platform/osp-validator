@@ -118,7 +118,7 @@ public class VariableTest {
     } catch (Exception e) {
       first = true;
     }
-  
+    
     v = new Variable("name");
     p = new Plug("type", "name");
     s = new Socket("type", "name");
@@ -136,11 +136,11 @@ public class VariableTest {
   }
   
   @Test
-  public void aVariableCanBelongToSeveralPlugs() {
+  public void oneVariableCanAddTwoPlugs() {
     Variable v = new Variable("name");
     Plug p1 = new Plug("type1", "name1");
     Plug p2 = new Plug("type2", "name2");
-  
+    
     v.addPlug(p1);
     v.addPlug(p2);
     
@@ -148,16 +148,15 @@ public class VariableTest {
     assertTrue(v.getPlugs().containsValue(p2));
   }
   
-  @Test
-  public void aVariableCanOnlyBelongToOneSocket() {
+  @Test(expected = Exception.class)
+  public void oneVariableCanNotAddTwoSockets() {
     Variable v = new Variable("name");
     Socket s1 = new Socket("type1", "name1");
     Socket s2 = new Socket("type2", "name2");
-  
+    
     v.addSocket(s1);
     assertEquals(s1, v.getSocket());
-  
+    
     v.addSocket(s2);
-    assertEquals(s2, v.getSocket());
   }
 }

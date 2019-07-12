@@ -3,38 +3,27 @@ package com.opensimulationplatform.datamodel.modeldefinition;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Plug extends Entity {
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
+public class Plug  {
   
   private String type;
+  private final String name;
   private Simulator simulator;
   private Map<String, Bond> bonds = new HashMap<>();
-  private Map<String, Variable> variables;
-  
-  public Plug(String type, String name, Map<String, Variable> variables) {
-    super(name);
-    this.type = type;
-    
-    variables.forEach((s, variable) -> variable.setParent(this));
-    this.variables = variables;
-  }
+  private Map<String, Variable> variables = new HashMap<>();
   
   public Plug(String type, String name) {
-    this(type, name, new HashMap<>());
-  }
-  
-  public String getType() {
-    return type;
-  }
-  
-  public Map<String, Variable> getVariables() {
-    return variables;
+    this.type = type;
+    this.name = name;
   }
   
   public void setSimulator(Simulator simulator) {
-    if (simulator != null) {
+    if (nonNull(simulator)) {
       if (tryingToChangeSimulator(simulator)) {
         throw new RuntimeException("Can not change simulator for existing plug");
-      } else if (this.simulator == null){
+      } else if (isNull(this.simulator)) {
         this.simulator = simulator;
         variables.forEach((variableName, variable) -> variable.setSimulator(simulator));
         bonds.forEach((bondName, bond) -> bond.setSimulator(simulator));
@@ -45,11 +34,7 @@ public class Plug extends Entity {
     }
   }
   
-  private boolean tryingToChangeSimulator(Simulator simulator) {
-    return this.simulator != simulator && this.simulator != null;
-  }
-  
-  void addVariable(Variable variable) {
+  public void addVariable(Variable variable) {
     variables.put(variable.getName(), variable);
     variable.setSimulator(simulator);
     if (!variable.getPlugs().containsValue(this)) {
@@ -57,19 +42,41 @@ public class Plug extends Entity {
     }
   }
   
+  public void addBond(Bond bond) {
+    if (nonNull(bond)) {
+      Bond b = bonds.put(bond.getName(), bond);
+      if (nonNull(b) && b != bond) {
+        throw new RuntimeException("Can not add two bonds with same name");
+      } else {
+        bond.setSimulator(simulator);
+        if (!bond.getPlugs().contains(this)) {
+          bond.addPlug(this);
+        }
+      }
+    }
+  }
+  
+  private boolean tryingToChangeSimulator(Simulator simulator) {
+    return nonNull(this.simulator) && this.simulator != simulator;
+  }
+  
   public Simulator getSimulator() {
     return simulator;
+  }
+  
+  public Map<String, Variable> getVariables() {
+    return variables;
   }
   
   public Map<String, Bond> getBonds() {
     return bonds;
   }
   
-  public void addBond(Bond bond) {
-    bonds.put(bond.getName(), bond);
-    bond.setSimulator(simulator);
-    if (!bond.getPlugs().contains(this)) {
-      bond.addPlug(this);
-    }
+  public String getType() {
+    return type;
+  }
+  
+  public String getName() {
+    return name;
   }
 }

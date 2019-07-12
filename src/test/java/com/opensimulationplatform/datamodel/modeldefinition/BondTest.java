@@ -53,22 +53,35 @@ public class BondTest {
     b.addSocket(s);
     
     assertTrue(b.getSockets().contains(s));
-    assertTrue(s.getBonds().containsValue(b));
+    assertEquals(b, s.getBond());
   }
   
   @Test
-  public void onlyKeepsOneCopyOfPlugAndSocket() {
+  public void addingSamePlugTwiceDoesNothing() {
     Bond b = new Bond("name");
     Plug p = new Plug("type", "name");
-    Socket s = new Socket("type", "name");
     
     b.addPlug(p);
-    b.addPlug(p);
-    b.addSocket(s);
-    b.addSocket(s);
-    
     assertEquals(1, b.getPlugs().size());
+    assertTrue(b.getPlugs().contains(p));
+  
+    b.addPlug(p);
+    assertEquals(1, b.getPlugs().size());
+    assertTrue(b.getPlugs().contains(p));
+  }
+  
+  @Test
+  public void addingSameSocketTwiceDoesNothing() {
+    Bond b = new Bond("name");
+    Socket s = new Socket("type", "name");
+  
+    b.addSocket(s);
     assertEquals(1, b.getSockets().size());
+    assertTrue(b.getSockets().contains(s));
+  
+    b.addSocket(s);
+    assertEquals(1, b.getSockets().size());
+    assertTrue(b.getSockets().contains(s));
   }
   
   @Test
@@ -145,12 +158,23 @@ public class BondTest {
   }
   
   @Test
-  public void twoBondsCanHaveSamePlug() {
-    fail();
+  public void twoBondsCanAddSamePlug() {
+    Bond b1 = new Bond("name1");
+    Bond b2 = new Bond("name2");
+    Plug p = new Plug("type", "name");
+    b1.addPlug(p);
+    b2.addPlug(p);
+    
+    assertTrue(b1.getPlugs().contains(p));
+    assertTrue(b2.getPlugs().contains(p));
   }
   
-  @Test
-  public void twoBondsCanNotHaveSameSocket() {
-    fail();
+  @Test(expected = Exception.class)
+  public void twoBondsCanNotAddSameSocket() {
+    Bond b1 = new Bond("name");
+    Bond b2 = new Bond("name");
+    Socket s = new Socket("type", "name");
+    b1.addSocket(s);
+    b2.addSocket(s);
   }
 }

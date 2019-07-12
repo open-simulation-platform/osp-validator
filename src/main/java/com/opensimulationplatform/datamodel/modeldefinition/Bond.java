@@ -1,47 +1,27 @@
 package com.opensimulationplatform.datamodel.modeldefinition;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
-public class Bond extends Entity {
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
+public class Bond  {
   
   private Simulator simulator;
-  private Set<Plug> plugs;
-  private Set<Socket> sockets;
-  
-  public Bond(String name, List<Plug> plugs, List<Socket> sockets) {
-    super(name);
-    this.plugs = new HashSet<>(plugs);
-    this.sockets = new HashSet<>(sockets);
-  }
+  private List<Plug> plugs = new ArrayList<>();
+  private List<Socket> sockets = new ArrayList<>();
+  private String name;
   
   public Bond(String name) {
-    this(name, new ArrayList<>(), new ArrayList<>());
-  }
-  
-  public List<Plug> getPlugs() {
-    return new ArrayList<>(plugs);
-  }
-  
-  public List<Socket> getSockets() {
-    return new ArrayList<>(sockets);
-  }
-  
-  public void addPlug(Plug plug) {
-    plugs.add(plug);
-    plug.setSimulator(simulator);
-    if (!plug.getBonds().containsValue(this)) {
-      plug.addBond(this);
-    }
+    this.name = name;
   }
   
   public void setSimulator(Simulator simulator) {
-    if (simulator != null) {
+    if (nonNull(simulator)) {
       if (tryingToChangeSimulator(simulator)) {
         throw new RuntimeException("Can not change simulator for existing bond");
-      } else if (this.simulator == null){
+      } else if (isNull(this.simulator)) {
         this.simulator = simulator;
         plugs.forEach(plug -> plug.setSimulator(simulator));
         sockets.forEach(socket -> socket.setSimulator(simulator));
@@ -52,19 +32,43 @@ public class Bond extends Entity {
     }
   }
   
+  public void addPlug(Plug plug) {
+    if (nonNull(plug) && !plugs.contains(plug)) {
+      plugs.add(plug);
+      plug.setSimulator(simulator);
+      if (!plug.getBonds().containsValue(this)) {
+        plug.addBond(this);
+      }
+    }
+  }
+  
+  public void addSocket(Socket socket) {
+    if (nonNull(socket) && !sockets.contains(socket)) {
+      sockets.add(socket);
+      socket.setSimulator(simulator);
+      if (socket.getBond() != this) {
+        socket.addBond(this);
+      }
+    }
+  }
+  
   private boolean tryingToChangeSimulator(Simulator simulator) {
-    return this.simulator != simulator && this.simulator != null;
+    return nonNull(this.simulator) && this.simulator != simulator;
   }
   
   public Simulator getSimulator() {
     return simulator;
   }
   
-  public void addSocket(Socket socket) {
-    sockets.add(socket);
-    socket.setSimulator(simulator);
-    if (!socket.getBonds().containsValue(this)) {
-      socket.addBond(this);
-    }
+  public List<Plug> getPlugs() {
+    return new ArrayList<>(plugs);
+  }
+  
+  public List<Socket> getSockets() {
+    return new ArrayList<>(sockets);
+  }
+  
+  public String getName() {
+    return name;
   }
 }
