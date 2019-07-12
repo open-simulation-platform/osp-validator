@@ -1,4 +1,4 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
 
 import com.opensimulationplatform.datamodel.configuration.*;
 import com.opensimulationplatform.datamodel.modeldefinition.Plug;

@@ -6,9 +6,9 @@ import java.util.Map;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-public class Plug  {
+public class Plug {
   
-  private String type;
+  private final String type;
   private final String name;
   private Simulator simulator;
   private Map<String, Bond> bonds = new HashMap<>();
@@ -35,17 +35,23 @@ public class Plug  {
   }
   
   public void addVariable(Variable variable) {
-    variables.put(variable.getName(), variable);
-    variable.setSimulator(simulator);
-    if (!variable.getPlugs().containsValue(this)) {
-      variable.addPlug(this);
+    if (nonNull(variable)) {
+      Variable old = variables.put(variable.getName(), variable);
+      if (nonNull(old) && old != variable) {
+        throw new RuntimeException("Can not add two variables with same name");
+      } else {
+        variable.setSimulator(simulator);
+        if (!variable.getPlugs().containsValue(this)) {
+          variable.addPlug(this);
+        }
+      }
     }
   }
   
   public void addBond(Bond bond) {
     if (nonNull(bond)) {
-      Bond b = bonds.put(bond.getName(), bond);
-      if (nonNull(b) && b != bond) {
+      Bond old = bonds.put(bond.getName(), bond);
+      if (nonNull(old) && old != bond) {
         throw new RuntimeException("Can not add two bonds with same name");
       } else {
         bond.setSimulator(simulator);
@@ -64,12 +70,12 @@ public class Plug  {
     return simulator;
   }
   
-  public Map<String, Variable> getVariables() {
-    return variables;
-  }
-  
   public Map<String, Bond> getBonds() {
     return bonds;
+  }
+  
+  public Map<String, Variable> getVariables() {
+    return variables;
   }
   
   public String getType() {

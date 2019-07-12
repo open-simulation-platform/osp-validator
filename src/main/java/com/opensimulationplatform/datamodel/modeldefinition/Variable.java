@@ -23,7 +23,7 @@ public class Variable {
         throw new RuntimeException("Can not change simulator for existing bond");
       } else if (this.simulator == null) {
         this.simulator = simulator;
-        if (socket != null) {
+        if (hasSocket()) {
           socket.setSimulator(simulator);
         } else {
           plugs.forEach((plugName, plug) -> plug.setSimulator(simulator));
@@ -61,10 +61,6 @@ public class Variable {
     }
   }
   
-  private boolean tryingToChangeSimulator(Simulator simulator) {
-    return nonNull(this.simulator) && this.simulator != simulator;
-  }
-  
   public String getName() {
     return name;
   }
@@ -79,5 +75,13 @@ public class Variable {
   
   public Socket getSocket() {
     return socket;
+  }
+  
+  private boolean tryingToChangeSimulator(Simulator simulator) {
+    return nonNull(this.simulator) && this.simulator != simulator;
+  }
+  
+  private boolean hasSocket() {
+    return nonNull(socket);
   }
 }

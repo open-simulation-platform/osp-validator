@@ -3,6 +3,7 @@ package com.opensimulationplatform.datamodel.modeldefinition;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toMap;
 
 public class Simulator  {
@@ -22,23 +23,35 @@ public class Simulator  {
   }
   
   public void addVariable(Variable variable) {
-    variables.put(variable.getName(), variable);
-    if (variable.getSimulator() != this) {
-      variable.setSimulator(this);
+    if (nonNull(variable)) {
+      Variable old = variables.put(variable.getName(), variable);
+      if (nonNull(old) && old != variable) {
+        throw new RuntimeException("Can not add two variables with same name");
+      } else if (variable.getSimulator() != this) {
+        variable.setSimulator(this);
+      }
     }
   }
   
   public void addPlug(Plug plug) {
-    plugs.put(plug.getName(), plug);
-    if (plug.getSimulator() != this) {
-      plug.setSimulator(this);
+    if (nonNull(plug)) {
+      Plug old = plugs.put(plug.getName(), plug);
+      if (nonNull(old) && old != plug) {
+        throw new RuntimeException("Can not add two plugs with same name");
+      } else if (plug.getSimulator() != this) {
+        plug.setSimulator(this);
+      }
     }
   }
   
   public void addSocket(Socket socket) {
-    sockets.put(socket.getName(), socket);
-    if (socket.getSimulator() != this) {
-      socket.setSimulator(this);
+    if (nonNull(socket)) {
+      Socket old = sockets.put(socket.getName(), socket);
+      if (nonNull(old) && old != socket) {
+        throw new RuntimeException("Can not add two sockets with same name");
+      } else if (socket.getSimulator() != this) {
+        socket.setSimulator(this);
+      }
     }
   }
   

@@ -155,4 +155,16 @@ public class PlugTest {
    
     p.addBond(b2);
   }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoVariablesWithSameName() {
+    Plug p = new Plug("type", "name");
+    Variable v1 = new Variable("name");
+    Variable v2 = new Variable("name");
+    
+    p.addVariable(v1);
+    assertTrue(p.getVariables().containsValue(v1));
+    
+    p.addVariable(v2);
+  }
 }

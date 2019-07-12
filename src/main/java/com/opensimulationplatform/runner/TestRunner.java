@@ -26,7 +26,7 @@ public class TestRunner {
       File configOwlFile = new File("./configuration.owl");
       LOG.debug("Storing configuration ontology to: " + configOwlFile.getAbsolutePath());
       try {
-        OWLOntology ontology = result.getOntology();
+        OWLOntology ontology = result.getOwlConfiguration().getOntology();
         ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
         LOG.debug("done!");
       } catch (OWLOntologyStorageException e) {

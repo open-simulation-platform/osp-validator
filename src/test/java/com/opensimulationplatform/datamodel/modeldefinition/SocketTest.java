@@ -141,4 +141,16 @@ public class SocketTest {
     
     s.addBond(b2);
   }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoVariablesWithSameName() {
+    Socket s = new Socket("type", "name");
+    Variable v1 = new Variable("name");
+    Variable v2 = new Variable("name");
+    
+    s.addVariable(v1);
+    assertTrue(s.getVariables().containsValue(v1));
+    
+    s.addVariable(v2);
+  }
 }

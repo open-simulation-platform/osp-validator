@@ -56,11 +56,15 @@ public class ConfigurationFactory {
     for (JsonVariableConnection jsonVariableConnection : jsonConfiguration.getVariableConnections()) {
       Variable sourceVariable = new Variable(jsonVariableConnection.getSourceVariable());
       Simulator sourceSimulator = simulators.get(jsonVariableConnection.getSourceSimulator());
-      sourceSimulator.addVariable(sourceVariable);
+      if (!sourceSimulator.getVariables().containsKey(sourceVariable.getName())) {
+        sourceSimulator.addVariable(sourceVariable);
+      }
       
       Variable targetVariable = new Variable(jsonVariableConnection.getTargetVariable());
       Simulator targetSimulator = simulators.get(jsonVariableConnection.getTargetSimulator());
-      targetSimulator.addVariable(targetVariable);
+      if (!targetSimulator.getVariables().containsKey(targetVariable.getName())) {
+        targetSimulator.addVariable(targetVariable);
+      }
       
       VariableConnection variableConnection = new VariableConnection(sourceSimulator, sourceVariable, targetSimulator, targetVariable);
       variableConnections.add(variableConnection);
@@ -98,7 +102,7 @@ public class ConfigurationFactory {
         bondPlugs.add(plug);
       }
       bondPlugs.forEach(b::addPlug);
-  
+      
       List<Socket> bondSockets = new ArrayList<>();
       for (String socketNames : jsonBond.getSockets()) {
         Socket socket = sockets.get(socketNames);

@@ -162,4 +162,40 @@ public class SimulatorTest {
     assertEquals(sim, p.getSimulator());
     assertEquals(sim, b.getSimulator());
   }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoVariablesWithSameName() {
+    Simulator sim = new Simulator("name", "source", "modelDefinition");
+    Variable v1 = new Variable("name");
+    Variable v2 = new Variable("name");
+    
+    sim.addVariable(v1);
+    assertTrue(sim.getVariables().containsValue(v1));
+    
+    sim.addVariable(v2);
+  }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoPlugsWithSameName() {
+    Simulator sim = new Simulator("name", "source", "modelDefinition");
+    Plug p1 = new Plug("type", "name");
+    Plug p2 = new Plug("type", "name");
+    
+    sim.addPlug(p1);
+    assertTrue(sim.getPlugs().containsValue(p1));
+    
+    sim.addPlug(p2);
+  }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoSocketsWithSameName() {
+    Simulator sim = new Simulator("name", "source", "modelDefinition");
+    Socket s1 = new Socket("type", "name");
+    Socket s2 = new Socket("type", "name");
+    
+    sim.addSocket(s1);
+    assertTrue(sim.getSockets().containsValue(s1));
+    
+    sim.addSocket(s2);
+  }
 }

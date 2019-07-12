@@ -8,7 +8,7 @@ import static java.util.Objects.nonNull;
 
 public class Socket {
   
-  private String type;
+  private final String type;
   private final String name;
   private Simulator simulator;
   private Bond bond;
@@ -19,14 +19,6 @@ public class Socket {
     this.name = name;
   }
   
-  public String getType() {
-    return type;
-  }
-  
-  public Map<String, Variable> getVariables() {
-    return variables;
-  }
-  
   public void setSimulator(Simulator simulator) {
     if (nonNull(simulator)) {
       if (tryingToChangeSimulator(simulator)) {
@@ -34,7 +26,7 @@ public class Socket {
       } else if (isNull(this.simulator)) {
         this.simulator = simulator;
         variables.forEach((variableName, variable) -> variable.setSimulator(simulator));
-        if (nonNull(bond)) {
+        if (hasBond()) {
           bond.setSimulator(simulator);
         }
         if (!simulator.getSockets().containsValue(this)) {
@@ -44,20 +36,22 @@ public class Socket {
     }
   }
   
-  private boolean tryingToChangeSimulator(Simulator simulator) {
-    return nonNull(this.simulator) && this.simulator != simulator;
-  }
-  
   public void addVariable(Variable variable) {
-    variables.put(variable.getName(), variable);
-    variable.setSimulator(simulator);
-    if (variable.getSocket() != this) {
-      variable.addSocket(this);
+    if (nonNull(variable)) {
+      Variable old = variables.put(variable.getName(), variable);
+      if (nonNull(old) && old != variable) {
+        throw new RuntimeException("Can not add two variables with same name");
+      } else {
+        variable.setSimulator(simulator);
+        if (variable.getSocket() != this) {
+          variable.addSocket(this);
+        }
+      }
     }
   }
   
   public void addBond(Bond bond) {
-    if (nonNull(this.bond) && !this.bond.equals(bond)) {
+    if (hasBond() && !this.bond.equals(bond)) {
       throw new RuntimeException("Can not change bond for existing socket");
     } else {
       this.bond = bond;
@@ -76,7 +70,23 @@ public class Socket {
     return bond;
   }
   
+  public Map<String, Variable> getVariables() {
+    return variables;
+  }
+  
+  public String getType() {
+    return type;
+  }
+  
   public String getName() {
     return name;
+  }
+  
+  private boolean tryingToChangeSimulator(Simulator simulator) {
+    return nonNull(this.simulator) && this.simulator != simulator;
+  }
+  
+  private boolean hasBond() {
+    return nonNull(this.bond);
   }
 }
