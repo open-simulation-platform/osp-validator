@@ -13,7 +13,7 @@ public class OntologyDataModelGenerator {
   private static final File templateFile = new File("./src/main/java/com/opensimulationplatform/ontologydatamodelgenerator/Template");
   
   public static void main(String[] args) throws Exception {
-    File ontologyFile = new File("./src/main/resources/osp.owl");
+    File ontologyFile = new File("./src/test/resources/validator/osp.owl");
     
     String[] split = ontologyFile.getName().split("\\.");
     String pkg = "com.opensimulationplatform." + split[split.length - 2] + "ontologydatamodel";

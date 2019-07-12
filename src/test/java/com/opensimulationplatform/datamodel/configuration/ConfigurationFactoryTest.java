@@ -1,6 +1,9 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
 
-import com.opensimulationplatform.datamodel.*;
+import com.opensimulationplatform.datamodel.configuration.*;
+import com.opensimulationplatform.datamodel.modeldefinition.Plug;
+import com.opensimulationplatform.datamodel.modeldefinition.Socket;
+import com.opensimulationplatform.datamodel.modeldefinition.Variable;
 import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
 import org.junit.Test;
 

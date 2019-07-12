@@ -1,13 +1,15 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
 
-public class VariableConnection extends Entity {
+import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
+import com.opensimulationplatform.datamodel.modeldefinition.Variable;
+
+public class VariableConnection {
   private Simulator sourceSimulator;
   private Variable sourceVariable;
   private Simulator targetSimulator;
   private Variable targetVariable;
   
   public VariableConnection(Simulator sourceSimulator, Variable sourceVariable, Simulator targetSimulator, Variable targetVariable) {
-    super(sourceVariable.getId() + "__" + targetVariable.getId());
     this.sourceSimulator = sourceSimulator;
     this.sourceVariable = sourceVariable;
     this.targetSimulator = targetSimulator;

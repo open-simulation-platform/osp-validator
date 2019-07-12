@@ -14,6 +14,8 @@ import java.util.Set;
 
 public class HermitReasonerWrapper {
   
+  private static final Logger LOG = LoggerFactory.getLogger(HermitReasonerWrapper.class);
+  
   private final OWLOntology ontology;
   private final OWLReasoner reasoner;
   
@@ -29,15 +31,17 @@ public class HermitReasonerWrapper {
   }
   
   public Set<Set<OWLAxiom>> getExplanation() {
+    LOG.debug("Computing explanations...");
     Reasoner.ReasonerFactory factory = new Reasoner.ReasonerFactory() {
       protected OWLReasoner createHermiTOWLReasoner(Configuration configuration, OWLOntology ontology) {
         configuration.throwInconsistentOntologyException = false;
         return new Reasoner(configuration, ontology);
       }
     };
-    
     HSTExplanationGenerator explainer = new HSTExplanationGenerator(new BlackBoxExplanation(ontology, factory, reasoner));
+    Set<Set<OWLAxiom>> explanations = explainer.getExplanations(ontology.getOWLOntologyManager().getOWLDataFactory().getOWLThing(), 1);
+    LOG.debug("done!");
     
-    return explainer.getExplanations(ontology.getOWLOntologyManager().getOWLDataFactory().getOWLThing());
+    return explanations;
   }
 }

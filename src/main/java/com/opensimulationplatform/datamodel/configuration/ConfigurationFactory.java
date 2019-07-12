@@ -1,5 +1,6 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
 
+import com.opensimulationplatform.datamodel.modeldefinition.*;
 import com.opensimulationplatform.jsonmodel.configuration.*;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonBond;
 import com.opensimulationplatform.jsonmodel.modeldefinition.JsonModelDefinition;
@@ -20,7 +21,7 @@ public class ConfigurationFactory {
     List<VariableConnection> variableConnections = createVariableConnections(jsonConfiguration, simulators);
     List<PlugSocketConnection> plugSocketConnections = createPlugSocketConnections(jsonConfiguration, simulators);
     List<BondConnection> bondConnections = createBondConnections(jsonConfiguration, simulators);
-  
+    
     return new Configuration(simulators, bondConnections, plugSocketConnections, variableConnections);
   }
   
@@ -53,10 +54,18 @@ public class ConfigurationFactory {
   private static List<VariableConnection> createVariableConnections(JsonConfiguration jsonConfiguration, Map<String, Simulator> simulators) {
     List<VariableConnection> variableConnections = new ArrayList<>();
     for (JsonVariableConnection jsonVariableConnection : jsonConfiguration.getVariableConnections()) {
-      Simulator sourceSimulator = simulators.get(jsonVariableConnection.getSourceSimulator());
       Variable sourceVariable = new Variable(jsonVariableConnection.getSourceVariable());
-      Simulator targetSimulator = simulators.get(jsonVariableConnection.getTargetSimulator());
+      Simulator sourceSimulator = simulators.get(jsonVariableConnection.getSourceSimulator());
+      if (!sourceSimulator.getVariables().containsKey(sourceVariable.getName())) {
+        sourceSimulator.addVariable(sourceVariable);
+      }
+      
       Variable targetVariable = new Variable(jsonVariableConnection.getTargetVariable());
+      Simulator targetSimulator = simulators.get(jsonVariableConnection.getTargetSimulator());
+      if (!targetSimulator.getVariables().containsKey(targetVariable.getName())) {
+        targetSimulator.addVariable(targetVariable);
+      }
+      
       VariableConnection variableConnection = new VariableConnection(sourceSimulator, sourceVariable, targetSimulator, targetVariable);
       variableConnections.add(variableConnection);
     }
@@ -69,44 +78,51 @@ public class ConfigurationFactory {
       JsonModelDefinition jsonModelDefinition = ModelDefinitionJsonFileParer.parse(new File(jsonSimulator.getModelDefinition()));
       Map<String, Plug> plugs = createPlugs(jsonModelDefinition);
       Map<String, Socket> sockets = createSockets(jsonModelDefinition);
-      Map<String, Bond> bonds = createBonds(jsonModelDefinition, plugs, sockets);
-      Simulator s = new Simulator(jsonSimulator.getName(), jsonSimulator.getSource(), jsonSimulator.getModelDefinition(), bonds, plugs, sockets);
+      List<Bond> bonds = createBonds(jsonModelDefinition, plugs, sockets);
+      
+      Simulator s = new Simulator(jsonSimulator.getName(), jsonSimulator.getSource(), jsonSimulator.getModelDefinition());
+      
+      plugs.forEach((name, plug) -> s.addPlug(plug));
+      sockets.forEach((name, socket) -> s.addSocket(socket));
+      bonds.forEach(s::addBond);
+      
       simulators.put(s.getName(), s);
     }
     return simulators;
   }
   
-  private static Map<String, Bond> createBonds(JsonModelDefinition jsonModelDefinition, Map<String, Plug> plugs, Map<String, Socket> sockets) {
-    Map<String, Bond> bonds = new HashMap<>();
+  private static List<Bond> createBonds(JsonModelDefinition jsonModelDefinition, Map<String, Plug> plugs, Map<String, Socket> sockets) {
+    List<Bond> bonds = new ArrayList<>();
     for (JsonBond jsonBond : jsonModelDefinition.getBonds()) {
+      Bond b = new Bond(jsonBond.getName());
+      
       List<Plug> bondPlugs = new ArrayList<>();
       for (String plugNames : jsonBond.getPlugs()) {
         Plug plug = plugs.get(plugNames);
         bondPlugs.add(plug);
       }
+      bondPlugs.forEach(b::addPlug);
       
       List<Socket> bondSockets = new ArrayList<>();
       for (String socketNames : jsonBond.getSockets()) {
         Socket socket = sockets.get(socketNames);
         bondSockets.add(socket);
       }
+      bondSockets.forEach(b::addSocket);
       
-      Bond b = new Bond(jsonBond.getName(), bondPlugs, bondSockets);
-      bonds.put(b.getName(), b);
+      bonds.add(b);
     }
+    
     return bonds;
   }
   
   private static Map<String, Socket> createSockets(JsonModelDefinition jsonModelDefinition) {
     Map<String, Socket> sockets = new HashMap<>();
     for (JsonSocket jsonSocket : jsonModelDefinition.getSockets()) {
-      Map<String, Variable> variables = new HashMap<>();
-      for (String variableName : jsonSocket.getVariables()) {
-        Variable v = new Variable(variableName);
-        variables.put(v.getName(), v);
-      }
-      Socket p = new Socket(jsonSocket.getType(), jsonSocket.getName(), variables);
-      sockets.put(p.getName(), p);
+      Socket s = new Socket(jsonSocket.getType(), jsonSocket.getName());
+      List<Variable> variables = createVariables(jsonSocket.getVariables());
+      variables.forEach(s::addVariable);
+      sockets.put(s.getName(), s);
     }
     return sockets;
   }
@@ -114,14 +130,20 @@ public class ConfigurationFactory {
   private static Map<String, Plug> createPlugs(JsonModelDefinition jsonModelDefinition) {
     Map<String, Plug> plugs = new HashMap<>();
     for (JsonPlug jsonPlug : jsonModelDefinition.getPlugs()) {
-      Map<String, Variable> variables = new HashMap<>();
-      for (String variableName : jsonPlug.getVariables()) {
-        Variable v = new Variable(variableName);
-        variables.put(v.getName(), v);
-      }
-      Plug p = new Plug(jsonPlug.getType(), jsonPlug.getName(), variables);
+      Plug p = new Plug(jsonPlug.getType(), jsonPlug.getName());
+      List<Variable> variables = createVariables(jsonPlug.getVariables());
+      variables.forEach(p::addVariable);
       plugs.put(p.getName(), p);
     }
     return plugs;
+  }
+  
+  private static List<Variable> createVariables(List<String> variableList) {
+    List<Variable> variables = new ArrayList<>();
+    for (String variableName : variableList) {
+      Variable v = new Variable(variableName);
+      variables.add(v);
+    }
+    return variables;
   }
 }

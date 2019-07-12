@@ -6,13 +6,17 @@ import com.opensimulationplatform.terminator.Terminator;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
+import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
 import java.io.File;
+import java.util.Set;
 
 public class CommandLineRunner {
   
@@ -31,7 +35,17 @@ public class CommandLineRunner {
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     if (!result.isSuccess()) {
-      LOG.error("Validation failed!");
+      LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
+      
+      Set<Set<OWLAxiom>> explanation = result.getExplanation();
+      OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
+      explanation.forEach(axioms -> {
+        LOG.error("------------------");
+        LOG.error("Axioms causing the inconsistency: ");
+        axioms.forEach(axiom -> LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations())));
+        LOG.error("------------------");
+      });
+      
       Terminator.exit(ExitCodes.INVALID_CONFIGURATION);
     }
     
@@ -68,7 +82,7 @@ public class CommandLineRunner {
     File configOwlFile = new File(saveDirectory, "configuration.owl");
     LOG.debug("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
     try {
-      OWLOntology ontology = result.getOntology();
+      OWLOntology ontology = result.getOwlConfiguration().getOntology();
       ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
       LOG.debug("done!");
     } catch (OWLOntologyStorageException e) {

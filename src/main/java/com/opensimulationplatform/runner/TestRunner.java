@@ -17,7 +17,7 @@ public class TestRunner {
   
   public static void main(String[] args) {
     File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
-    File cseConfigFile = new File("./src/test/resources/validator/cse-config.json");
+    File cseConfigFile = new File("./src/test/resources/validator/cse-config-valid.json");
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     if (!result.isSuccess()) {
@@ -26,7 +26,7 @@ public class TestRunner {
       File configOwlFile = new File("./configuration.owl");
       LOG.debug("Storing configuration ontology to: " + configOwlFile.getAbsolutePath());
       try {
-        OWLOntology ontology = result.getOntology();
+        OWLOntology ontology = result.getOwlConfiguration().getOntology();
         ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
         LOG.debug("done!");
       } catch (OWLOntologyStorageException e) {

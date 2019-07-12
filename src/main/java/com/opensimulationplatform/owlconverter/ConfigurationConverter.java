@@ -1,6 +1,7 @@
 package com.opensimulationplatform.owlconverter;
 
-import com.opensimulationplatform.datamodel.Configuration;
+import com.opensimulationplatform.datamodel.configuration.Configuration;
+import com.opensimulationplatform.owlmodel.OwlConfiguration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -9,25 +10,29 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import java.io.File;
 
 public class ConfigurationConverter {
-  public static OWLOntology convert(Configuration configuration, File ospOwlFile) {
+  public static OwlConfiguration convert(Configuration configuration, File ospOwlFile) {
     try {
+      OwlConfiguration owlConfiguration = new OwlConfiguration();
+      
       OWLOntology ospOntology = OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(ospOwlFile);
       OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
       OWLOntology configurationOntology = manager.createOntology(ospOntology.getAxioms(), ospOntology.getOntologyID().getOntologyIRI());
-  
+      owlConfiguration.setOntology(configurationOntology);
+      
       configuration.getSimulators().forEach((simulatorName, simulator) -> {
-        SimulatorConverter.convert(simulator, configurationOntology);
+        SimulatorConverter.convert(simulator, owlConfiguration);
       });
   
       configuration.getPlugSocketConnections().forEach(connection -> {
-        PlugSocketConnectionConverter.convert(connection, configurationOntology);
+        PlugSocketConnectionConverter.convert(connection, owlConfiguration);
       });
   
       configuration.getBondConnections().forEach(connection -> {
-        BondConnectionConverter.convert(connection, configurationOntology);
+        BondConnectionConverter.convert(connection, owlConfiguration);
       });
-      
-      return configurationOntology;
+  
+      owlConfiguration.setConfiguration(configuration);
+      return owlConfiguration;
     } catch (OWLOntologyCreationException e) {
       throw new RuntimeException("Error loading the osp ontology from: " + ospOwlFile.getAbsolutePath(), e);
     }

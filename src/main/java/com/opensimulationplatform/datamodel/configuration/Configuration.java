@@ -1,4 +1,6 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
+
+import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
 
 import java.util.List;
 import java.util.Map;

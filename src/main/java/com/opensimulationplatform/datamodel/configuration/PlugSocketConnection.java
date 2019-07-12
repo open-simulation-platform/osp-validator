@@ -1,13 +1,16 @@
-package com.opensimulationplatform.datamodel;
+package com.opensimulationplatform.datamodel.configuration;
 
-public class PlugSocketConnection extends Entity {
+import com.opensimulationplatform.datamodel.modeldefinition.Plug;
+import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
+import com.opensimulationplatform.datamodel.modeldefinition.Socket;
+
+public class PlugSocketConnection {
   private Simulator sourceSimulator;
   private Plug plug;
   private Simulator targetSimulator;
   private Socket socket;
   
   public PlugSocketConnection(Simulator sourceSimulator, Plug plug, Simulator targetSimulator, Socket socket) {
-    super(plug.getId() + "__" + socket.getId());
     this.sourceSimulator = sourceSimulator;
     this.plug = plug;
     this.targetSimulator = targetSimulator;

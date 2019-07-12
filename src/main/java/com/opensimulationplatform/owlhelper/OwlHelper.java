@@ -43,7 +43,7 @@ public class OwlHelper {
     OWLObjectProperty objectProperty = dataFactory.getOWLObjectProperty(propertyName, prefixManager);
     OWLObjectPropertyAssertionAxiom axiom = dataFactory.getOWLObjectPropertyAssertionAxiom(objectProperty, subject, object);
     manager.addAxiom(ontology, axiom);
-  
+    
     LOG.debug("done!");
   }
   
@@ -64,5 +64,9 @@ public class OwlHelper {
       LOG.error(message);
       throw new RuntimeException(message, e);
     }
+  }
+  
+  public static boolean isClass(OWLOntology ontology, OWLNamedIndividual owlNamedIndividual, String className) {
+    return owlNamedIndividual.getTypes(ontology).stream().anyMatch(owlClassExpression -> owlClassExpression.asOWLClass().getIRI().getFragment().equalsIgnoreCase(className));
   }
 }
