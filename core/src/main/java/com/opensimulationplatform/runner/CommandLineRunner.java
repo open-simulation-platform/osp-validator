@@ -1,11 +1,10 @@
 package com.opensimulationplatform.runner;
 
+import com.opensimulationplatform.loghelper.LogHelper;
 import com.opensimulationplatform.msmivalidator.MsmiValidator;
 import com.opensimulationplatform.terminator.ExitCode;
 import com.opensimulationplatform.terminator.Terminator;
 import org.apache.commons.cli.*;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.core.config.Configurator;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -23,7 +22,9 @@ class CommandLineRunner {
   private static final Logger LOG = LoggerFactory.getLogger(CommandLineRunner.class);
   
   public static void main(String[] args) {
-    setLogLevel();
+    if(!LogHelper.setLogLevel()){
+      Terminator.exit(ExitCodes.INVALID_LOG_LEVEL);
+    }
     
     CommandLine cmd = parseCommandLineOptions(args);
     
@@ -124,41 +125,6 @@ class CommandLineRunner {
     input.setRequired(false);
     options.addOption(input);
     return options;
-  }
-  
-  private static void setLogLevel() {
-    String property = System.getProperty("msmi.validator.log.level");
-    if (property != null) {
-      switch (property) {
-        case "debug":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.DEBUG);
-          break;
-        case "trace":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.TRACE);
-          break;
-        case "error":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.ERROR);
-          break;
-        case "fatal":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.FATAL);
-          break;
-        case "all":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
-          break;
-        case "info":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.INFO);
-          break;
-        case "warn":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.WARN);
-          break;
-        case "off":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.OFF);
-          break;
-        default:
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
-          Terminator.exit(ExitCodes.INVALID_LOG_LEVEL);
-      }
-    }
   }
   
   static class ExitCodes {
