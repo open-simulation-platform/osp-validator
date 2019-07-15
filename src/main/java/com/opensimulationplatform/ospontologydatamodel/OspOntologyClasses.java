@@ -4,6 +4,7 @@ public class OspOntologyClasses {
 
   public static final String MECHANICAL_BOND = "mechanical_bond";
   public static final String TORQUE = "torque";
+  public static final String TYPE = "type";
   public static final String BOND_CONNECTOR = "bond_connector";
   public static final String CURRENT = "current";
   public static final String LINEAR_VELOCITY = "linear_velocity";
@@ -20,6 +21,8 @@ public class OspOntologyClasses {
   public static final String VOLTAGE = "voltage";
   public static final String ELECTRO_MAGNETIC_BOND = "electro_magnetic_bond";
   public static final String UNIT = "unit";
+  public static final String COMPONENT = "component";
+  public static final String SYSTEM = "system";
   public static final String CONNECTOR = "connector";
   public static final String ANGULAR_MECHANICAL_BOND = "angular_mechanical_bond";
   public static final String VARIABLE = "variable";
