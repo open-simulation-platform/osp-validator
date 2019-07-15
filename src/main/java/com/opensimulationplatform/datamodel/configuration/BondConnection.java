@@ -4,10 +4,10 @@ import com.opensimulationplatform.datamodel.modeldefinition.Bond;
 import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
 
 public class BondConnection {
-  private Simulator simulatorA;
-  private Bond bondA;
-  private Simulator simulatorB;
-  private Bond bondB;
+  private final Simulator simulatorA;
+  private final Bond bondA;
+  private final Simulator simulatorB;
+  private final Bond bondB;
   
   public BondConnection(Simulator simulatorA, Bond bondA, Simulator simulatorB, Bond bondB) {
     this.simulatorA = simulatorA;

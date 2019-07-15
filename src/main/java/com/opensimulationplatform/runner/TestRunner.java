@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
-public class TestRunner {
+class TestRunner {
   
   private static final Logger LOG = LoggerFactory.getLogger(TestRunner.class);
   

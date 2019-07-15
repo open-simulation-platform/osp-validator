@@ -9,7 +9,7 @@ import com.opensimulationplatform.owlmodel.OwlConfiguration;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 
-public class PlugSocketConnectionConverter {
+class PlugSocketConnectionConverter {
   public static void convert(PlugSocketConnection connection, OwlConfiguration owlConfiguration) {
     convert(connection.getPlug(), connection.getSocket(), owlConfiguration);
   }

@@ -3,11 +3,11 @@ package com.opensimulationplatform.datamodel.configuration;
 import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
 import com.opensimulationplatform.datamodel.modeldefinition.Variable;
 
-public class VariableConnection {
-  private Simulator sourceSimulator;
-  private Variable sourceVariable;
-  private Simulator targetSimulator;
-  private Variable targetVariable;
+class VariableConnection {
+  private final Simulator sourceSimulator;
+  private final Variable sourceVariable;
+  private final Simulator targetSimulator;
+  private final Variable targetVariable;
   
   public VariableConnection(Simulator sourceSimulator, Variable sourceVariable, Simulator targetSimulator, Variable targetVariable) {
     this.sourceSimulator = sourceSimulator;

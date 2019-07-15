@@ -10,18 +10,16 @@ import com.opensimulationplatform.owlhelper.OwlHelper;
 import com.opensimulationplatform.owlmodel.OwlConfiguration;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class BondConnectionConverter {
+class BondConnectionConverter {
   
   public static void convert(BondConnection connection, OwlConfiguration owlConfiguration) {
     convert(connection.getBondA(), connection.getBondB(), owlConfiguration);
   }
   
-  public static void convert(Bond bondA, Bond bondB, OwlConfiguration owlConfiguration) {
+  private static void convert(Bond bondA, Bond bondB, OwlConfiguration owlConfiguration) {
     OWLOntology ontology = owlConfiguration.getOntology();
   
     OWLNamedIndividual bondAIndividual = BondConverter.convert(bondA, owlConfiguration);

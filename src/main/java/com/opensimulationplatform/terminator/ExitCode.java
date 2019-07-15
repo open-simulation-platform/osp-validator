@@ -1,8 +1,8 @@
 package com.opensimulationplatform.terminator;
 
 public class ExitCode {
-  private int exitCode;
-  private String description;
+  private final int exitCode;
+  private final String description;
   
   public ExitCode(int exitCode, String description) {
     this.exitCode = exitCode;

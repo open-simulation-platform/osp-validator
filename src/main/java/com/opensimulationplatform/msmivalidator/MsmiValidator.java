@@ -41,9 +41,9 @@ public class MsmiValidator {
   
   public static class Result {
     
-    private OwlConfiguration owlConfiguration;
-    private Set<Set<OWLAxiom>> explanation;
-    private boolean success;
+    private final OwlConfiguration owlConfiguration;
+    private final Set<Set<OWLAxiom>> explanation;
+    private final boolean success;
   
     private Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanation, boolean success) {
       this.owlConfiguration = owlConfiguration;

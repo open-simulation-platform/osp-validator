@@ -10,7 +10,7 @@ import static com.opensimulationplatform.ospontologydatamodel.OspOntologyClasses
 import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.HAS_VARIABLE;
 import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
 
-public class SocketConverter {
+class SocketConverter {
   public static OWLNamedIndividual convert(Socket socket, OwlConfiguration owlConfiguration) {
     OWLOntology ontology = owlConfiguration.getOntology();
   

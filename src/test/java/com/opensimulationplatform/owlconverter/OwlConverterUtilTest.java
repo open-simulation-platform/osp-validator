@@ -4,7 +4,6 @@ import com.opensimulationplatform.datamodel.modeldefinition.*;
 import org.junit.Test;
 
 import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
-import static java.util.Collections.*;
 import static org.junit.Assert.assertEquals;
 
 public class OwlConverterUtilTest {
