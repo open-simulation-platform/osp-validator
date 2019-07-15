@@ -11,8 +11,8 @@ public class Plug {
   private final String type;
   private final String name;
   private Simulator simulator;
-  private Map<String, Bond> bonds = new HashMap<>();
-  private Map<String, Variable> variables = new HashMap<>();
+  private final Map<String, Bond> bonds = new HashMap<>();
+  private final Map<String, Variable> variables = new HashMap<>();
   
   public Plug(String type, String name) {
     this.type = type;

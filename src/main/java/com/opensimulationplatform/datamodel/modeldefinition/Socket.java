@@ -12,7 +12,7 @@ public class Socket {
   private final String name;
   private Simulator simulator;
   private Bond bond;
-  private Map<String, Variable> variables = new HashMap<>();
+  private final Map<String, Variable> variables = new HashMap<>();
   
   public Socket(String type, String name) {
     this.type = type;

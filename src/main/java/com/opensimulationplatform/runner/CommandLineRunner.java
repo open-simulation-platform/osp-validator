@@ -18,7 +18,7 @@ import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLOb
 import java.io.File;
 import java.util.Set;
 
-public class CommandLineRunner {
+class CommandLineRunner {
   
   private static final Logger LOG = LoggerFactory.getLogger(CommandLineRunner.class);
   

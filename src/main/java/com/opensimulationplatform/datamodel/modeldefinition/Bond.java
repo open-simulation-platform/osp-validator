@@ -1,7 +1,7 @@
 package com.opensimulationplatform.datamodel.modeldefinition;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -9,9 +9,9 @@ import static java.util.Objects.nonNull;
 public class Bond  {
   
   private Simulator simulator;
-  private List<Plug> plugs = new ArrayList<>();
-  private List<Socket> sockets = new ArrayList<>();
-  private String name;
+  private final List<Plug> plugs = new ArrayList<>();
+  private final List<Socket> sockets = new ArrayList<>();
+  private final String name;
   
   public Bond(String name) {
     this.name = name;

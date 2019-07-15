@@ -11,11 +11,11 @@ import java.util.Map;
 public class OwlConfiguration {
   private OWLOntology ontology;
   private Configuration configuration;
-  private Map<OWLNamedIndividual, Simulator> simulators = new HashMap<>();
-  private Map<OWLNamedIndividual, Bond> bonds = new HashMap<>();
-  private Map<OWLNamedIndividual, Plug> plugs = new HashMap<>();
-  private Map<OWLNamedIndividual, Socket> sockets = new HashMap<>();
-  private Map<OWLNamedIndividual, Variable> variables = new HashMap<>();
+  private final Map<OWLNamedIndividual, Simulator> simulators = new HashMap<>();
+  private final Map<OWLNamedIndividual, Bond> bonds = new HashMap<>();
+  private final Map<OWLNamedIndividual, Plug> plugs = new HashMap<>();
+  private final Map<OWLNamedIndividual, Socket> sockets = new HashMap<>();
+  private final Map<OWLNamedIndividual, Variable> variables = new HashMap<>();
   
   public OWLOntology getOntology() {
     return ontology;

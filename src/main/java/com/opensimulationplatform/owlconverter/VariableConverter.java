@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 
 import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
 
-public class VariableConverter {
+class VariableConverter {
   public static OWLNamedIndividual convert(Variable variable, OwlConfiguration owlConfiguration) {
     OWLOntology ontology = owlConfiguration.getOntology();
     

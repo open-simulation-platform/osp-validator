@@ -2,7 +2,7 @@ package com.opensimulationplatform.owlconverter;
 
 import com.opensimulationplatform.datamodel.modeldefinition.*;
 
-public class OwlConverterUtil {
+class OwlConverterUtil {
   public static String getIndividualName(Bond bond) {
     return "simulator_" + bond.getSimulator().getName() + "_bond_" + bond.getName();
   }

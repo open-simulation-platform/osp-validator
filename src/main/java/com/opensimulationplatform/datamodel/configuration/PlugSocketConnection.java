@@ -5,10 +5,10 @@ import com.opensimulationplatform.datamodel.modeldefinition.Simulator;
 import com.opensimulationplatform.datamodel.modeldefinition.Socket;
 
 public class PlugSocketConnection {
-  private Simulator sourceSimulator;
-  private Plug plug;
-  private Simulator targetSimulator;
-  private Socket socket;
+  private final Simulator sourceSimulator;
+  private final Plug plug;
+  private final Simulator targetSimulator;
+  private final Socket socket;
   
   public PlugSocketConnection(Simulator sourceSimulator, Plug plug, Simulator targetSimulator, Socket socket) {
     this.sourceSimulator = sourceSimulator;

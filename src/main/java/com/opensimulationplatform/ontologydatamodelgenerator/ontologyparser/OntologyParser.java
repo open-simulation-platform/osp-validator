@@ -16,7 +16,7 @@ public class OntologyParser {
     try {
       ontology = manager.loadOntologyFromOntologyDocument(ontologyFile);
     } catch (OWLOntologyCreationException e) {
-      throw new RuntimeException("Unable to load ontolog from: " + ontologyFile.getAbsolutePath(), e);
+      throw new RuntimeException("Unable to load ontology from: " + ontologyFile.getAbsolutePath(), e);
     }
     
     return new OntologyContent(ontology);

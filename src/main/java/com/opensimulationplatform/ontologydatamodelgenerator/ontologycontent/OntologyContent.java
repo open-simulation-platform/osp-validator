@@ -1,20 +1,20 @@
 package com.opensimulationplatform.ontologydatamodelgenerator.ontologycontent;
 
+import com.opensimulationplatform.ontologydatamodelgenerator.ontologyparser.ClassParser;
 import com.opensimulationplatform.ontologydatamodelgenerator.ontologyparser.DataPropertiesParser;
 import com.opensimulationplatform.ontologydatamodelgenerator.ontologyparser.IndividualsParser;
-import com.opensimulationplatform.ontologydatamodelgenerator.ontologyparser.ClassParser;
 import com.opensimulationplatform.ontologydatamodelgenerator.ontologyparser.ObjectPropertiesParser;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.Map;
 
 public class OntologyContent {
-  private OWLOntology ontology;
-  private IRI iri;
-  private Map<String, OWLClass> classes;
-  private Map<String, OWLObjectProperty> objectProperties;
-  private Map<String, OWLDataProperty> dataProperties;
-  private Map<String, OWLIndividual> individuals;
+  private final OWLOntology ontology;
+  private final IRI iri;
+  private final Map<String, OWLClass> classes;
+  private final Map<String, OWLObjectProperty> objectProperties;
+  private final Map<String, OWLDataProperty> dataProperties;
+  private final Map<String, OWLIndividual> individuals;
   
   public OntologyContent(OWLOntology ontology) {
     this.iri = ontology.getOntologyID().getOntologyIRI();

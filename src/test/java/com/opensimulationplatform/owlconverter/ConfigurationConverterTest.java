@@ -9,9 +9,8 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class ConfigurationConverterTest {
   @Test

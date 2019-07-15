@@ -9,9 +9,9 @@ import static java.util.Objects.nonNull;
 public class Variable {
   
   private Simulator simulator;
-  private Map<String, Plug> plugs = new HashMap<>();
+  private final Map<String, Plug> plugs = new HashMap<>();
   private Socket socket;
-  private String name;
+  private final String name;
   
   public Variable(String name) {
     this.name = name;

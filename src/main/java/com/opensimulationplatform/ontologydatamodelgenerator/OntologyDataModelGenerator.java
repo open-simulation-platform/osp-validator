@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class OntologyDataModelGenerator {
+class OntologyDataModelGenerator {
   
   private static final File templateFile = new File("./src/main/java/com/opensimulationplatform/ontologydatamodelgenerator/Template");
   
@@ -45,8 +45,8 @@ public class OntologyDataModelGenerator {
     return objectProperties.toString();
   }
   
-  private static StringBuilder addField(StringBuilder objectProperties, String name) {
-    return objectProperties.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n  ");
+  private static void addField(StringBuilder objectProperties, String name) {
+    objectProperties.append("public static final String ").append(name.toUpperCase()).append(" = ").append("\"").append(name.toLowerCase()).append("\"").append(";\n  ");
   }
   
   private static String getContentForDataPropertiesDataModel(OntologyContent content) {
@@ -68,10 +68,13 @@ public class OntologyDataModelGenerator {
     String dataModelClassContent = templateContent.replace("$FIELDS$", fields).replace("$CLASS_NAME$", classFileName).replace("$PACKAGE$", pkg);
     File destination = new File("./src/main/java/" + pkg.replace(".", "/") + "/");
     File dataModelClassFile = new File(destination, classFileName + ".java");
-    dataModelClassFile.getParentFile().mkdirs();
-    FileWriter writer = new FileWriter(dataModelClassFile);
-    writer.write(dataModelClassContent);
-    writer.flush();
-    writer.close();
+    if (!dataModelClassFile.getParentFile().mkdirs()) {
+      throw new RuntimeException("Unable to create directory: " + destination.getAbsolutePath());
+    } else {
+      FileWriter writer = new FileWriter(dataModelClassFile);
+      writer.write(dataModelClassContent);
+      writer.flush();
+      writer.close();
+    }
   }
 }

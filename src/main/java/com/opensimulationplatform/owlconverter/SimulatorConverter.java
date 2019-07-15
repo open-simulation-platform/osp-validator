@@ -11,7 +11,7 @@ import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectP
 import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.MODEL_HAS_TYPED_SIGNAL_CONNECTOR;
 import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
 
-public class SimulatorConverter {
+class SimulatorConverter {
   public static void convert(Simulator simulator, OwlConfiguration owlConfiguration) {
     OWLOntology ontology = owlConfiguration.getOntology();
     

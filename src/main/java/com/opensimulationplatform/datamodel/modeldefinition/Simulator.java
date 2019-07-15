@@ -4,17 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
-import static java.util.stream.Collectors.toMap;
 
 public class Simulator  {
   
   private final String name;
-  private String source;
-  private String modelDefinition;
-  private Map<String, Variable> variables = new HashMap<>();
-  private Map<String, Bond> bonds = new HashMap<>();
-  private Map<String, Plug> plugs = new HashMap<>();
-  private Map<String, Socket> sockets = new HashMap<>();
+  private final String source;
+  private final String modelDefinition;
+  private final Map<String, Variable> variables = new HashMap<>();
+  private final Map<String, Bond> bonds = new HashMap<>();
+  private final Map<String, Plug> plugs = new HashMap<>();
+  private final Map<String, Socket> sockets = new HashMap<>();
   
   public Simulator(String name, String source, String modelDefinition) {
     this.name = name;

@@ -17,7 +17,7 @@ public class CommandLineRunnerTest {
   public final ExpectedSystemExit exit = ExpectedSystemExit.none();
   
   @Rule
-  public TemporaryFolder tempFolder = new TemporaryFolder();
+  public final TemporaryFolder tempFolder = new TemporaryFolder();
   
   @Test
   public void canCheckInvalidConfiguration() {
