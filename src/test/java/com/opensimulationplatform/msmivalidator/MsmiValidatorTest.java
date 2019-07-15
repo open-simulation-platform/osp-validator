@@ -15,8 +15,11 @@ public class MsmiValidatorTest {
   }
   
   @Test
-  public void invalidConfigurationIsProperlyValidated() {
+  public void invalidConfigurationsAreProperlyValidated() {
     MsmiValidator.Result result = MsmiValidator.validate(new File("./src/test/resources/validator/osp.owl"), new File("./src/test/resources/validator/cse-config-invalid.json"));
+    assertFalse(result.isSuccess());
+    
+    result = MsmiValidator.validate(new File("./src/test/resources/validator/osp.owl"), new File("./src/test/resources/validator/cse-config-invalid-B.json"));
     assertFalse(result.isSuccess());
   }
 }

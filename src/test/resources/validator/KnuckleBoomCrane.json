@@ -3,21 +3,21 @@
   "plugs": [
     {
       "type": "linear_velocity",
-      "name": "fpeed",
+      "name": "velocityOut",
       "variables": [
-        "p_Crane.f[1]",
-        "p_Crane.f[2]",
-        "p_Crane.f[3]"
+        "v[1]",
+        "v[2]",
+        "v[3]"
       ],
-      "unit": "F"
+      "unit": "m/s"
     },
     {
       "type": "generic",
-      "name": "Act_Limits",
+      "name": "limits",
       "variables": [
-        "Act_Limits[1]",
-        "Act_Limits[2]",
-        "Act_Limits[3]"
+        "limits[1]",
+        "limits[2]",
+        "limits[3]"
       ],
       "unit": "NA"
     }
@@ -27,33 +27,33 @@
       "type": "force",
       "name": "forceIn",
       "variables": [
-        "p_Crane.e[1]",
-        "p_Crane.e[2]",
-        "p_Crane.e[3]"
+        "f[1]",
+        "f[2]",
+        "f[3]"
       ],
-      "unit": "E"
+      "unit": "N"
     },
     {
       "type": "position",
       "name": "positionIn",
       "variables": [
-        "p_Crane.p[1]",
-        "p_Crane.p[2]",
-        "p_Crane.p[3]"
+        "p[1]",
+        "p[2]",
+        "p[3]"
       ],
       "unit": "m"
     }
   ],
   "bonds": [
     {
-      "name": "james",
+      "name": "forceVelocity",
       "type": "mechanical",
       "sockets": [
         "forceIn",
         "positionIn"
       ],
       "plugs": [
-        "fpeed"
+        "velocityOut"
       ]
     }
   ]

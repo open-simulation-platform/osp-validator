@@ -25,7 +25,7 @@ class TestRunner {
     Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
     
     File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
-    File cseConfigFile = new File("./src/test/resources/validator/cse-config-invalid.json");
+    File cseConfigFile = new File("./src/test/resources/validator/cse-config-invalid-B.json");
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     File configOwlFile = new File("./configuration.owl");

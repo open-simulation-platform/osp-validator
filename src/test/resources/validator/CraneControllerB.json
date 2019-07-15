@@ -2,8 +2,8 @@
   "name": "CraneController",
   "plugs": [
     {
-      "type": "force",
-      "name": "forceOut",
+      "type": "torque",
+      "name": "torqueOut",
       "variables": [
         "f[1]",
         "f[2]",
@@ -24,7 +24,7 @@
   ],
   "sockets": [
     {
-      "type": "linear_velocity",
+      "type": "rotational_velocity",
       "name": "velocityIn",
       "variables": [
         "v[1]",
@@ -46,13 +46,13 @@
   ],
   "bonds": [
     {
-      "name": "forceVelocity",
+      "name": "torqueVelocity",
       "type": "mechanical",
       "sockets": [
         "velocityIn"
       ],
       "plugs": [
-        "forceOut",
+        "torqueOut",
         "positionOut"
       ]
     }

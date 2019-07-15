@@ -7,7 +7,7 @@
         {
             "name": "CraneController",
             "source": "../ssp/demo/CraneController.fmu",
-            "modelDefinition": "./src/test/resources/validator/CraneController.json",
+            "modelDefinition": "./src/test/resources/validator/CraneControllerB.json",
             "decimationFactor": 2,
             "initialValues": {
                 "x": 1.4,
@@ -31,7 +31,7 @@
     "bondConnections": [
         {
             "simulatorA": "CraneController",
-            "bondA": "forceVelocity",
+            "bondA": "torqueVelocity",
             "simulatorB": "KnuckleBoomCrane",
             "bondB": "forceVelocity"
         }

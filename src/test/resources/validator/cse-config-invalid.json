@@ -23,73 +23,73 @@
     "plugSocketConnections": [
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "plug": "Act_Limits",
+            "plug": "limits",
             "targetSimulator": "CraneController",
-            "socket": "fpeed"
+            "socket": "velocityIn"
         }
     ],
     "bondConnections": [
         {
             "simulatorA": "CraneController",
-            "bondA": "jim",
+            "bondA": "forceVelocity",
             "simulatorB": "KnuckleBoomCrane",
-            "bondB": "james"
+            "bondB": "forceVelocity"
         }
     ],
     "variableConnections": [
         {
             "sourceSimulator": "CraneController",
-            "sourceVariable": "p_Crane.e[1]",
+            "sourceVariable": "e[1]",
             "targetSimulator": "KnuckleBoomCrane",
-            "targetVariable": "p_Crane.e[1]"
+            "targetVariable": "e[1]"
         },
         {
             "sourceSimulator": "CraneController",
-            "sourceVariable": "p_Crane.e[2]",
+            "sourceVariable": "e[2]",
             "targetSimulator": "KnuckleBoomCrane",
-            "targetVariable": "p_Crane.e[2]"
+            "targetVariable": "e[2]"
         },
         {
             "sourceSimulator": "CraneController",
-            "sourceVariable": "p_Crane.e[3]",
+            "sourceVariable": "e[3]",
             "targetSimulator": "KnuckleBoomCrane",
-            "targetVariable": "p_Crane.e[3]"
+            "targetVariable": "e[3]"
         },
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "sourceVariable": "p_Crane.f[1]",
+            "sourceVariable": "f[1]",
             "targetSimulator": "CraneController",
-            "targetVariable": "p_Crane.f[1]"
+            "targetVariable": "f[1]"
         },
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "sourceVariable": "p_Crane.f[2]",
+            "sourceVariable": "f[2]",
             "targetSimulator": "CraneController",
-            "targetVariable": "p_Crane.f[2]"
+            "targetVariable": "f[2]"
         },
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "sourceVariable": "p_Crane.f[3]",
+            "sourceVariable": "f[3]",
             "targetSimulator": "CraneController",
-            "targetVariable": "p_Crane.f[3]"
+            "targetVariable": "f[3]"
         },
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "sourceVariable": "Act_Limits[1]",
+            "sourceVariable": "limits[1]",
             "targetSimulator": "CraneController",
-            "targetVariable": "Act_Limits[1]"
+            "targetVariable": "limits[1]"
         },
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "sourceVariable": "Act_Limits[2]",
+            "sourceVariable": "limits[2]",
             "targetSimulator": "CraneController",
-            "targetVariable": "Act_Limits[2]"
+            "targetVariable": "limits[2]"
         },
         {
             "sourceSimulator": "KnuckleBoomCrane",
-            "sourceVariable": "Act_Limits[3]",
+            "sourceVariable": "limits[3]",
             "targetSimulator": "CraneController",
-            "targetVariable": "Act_Limits[3]"
+            "targetVariable": "limits[3]"
         }
     ]
 }
