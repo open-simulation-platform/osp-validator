@@ -6,7 +6,7 @@ Ontology-based systems structure validator
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd msmi-validator/core
+$ cd core
 $ java -jar ./target/msmi-validator-core-<version>-jar-with-dependencies.jar --osp-ontology ./src/test/resources/validator/osp.owl --cse-config ./src/test/resources/validator/cse-config-valid.json
 ```
 
@@ -15,7 +15,7 @@ $ java -jar ./target/msmi-validator-core-<version>-jar-with-dependencies.jar --o
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd msmi-validator/core
+$ cd core
 $ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-core-<version>-jar-with-dependencies.jar --osp-ontology ./src/test/resources/validator/osp.owl --cse-config ./src/test/resources/validator/cse-config-valid.json -s ./
 ```
 
@@ -27,7 +27,7 @@ Ontology-based systems structure validator
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd msmi-validator/http
+$ cd http
 $ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
 - go to localhost:<your-favourite-port>/validate?configuration=/full/path/to/<msmi-validator>/http/src/test/resources/validator/cse-config-valid.json$ontology=/full/path/to/<msmi-validator>/http/src/test/resources/validator/osp.owl
