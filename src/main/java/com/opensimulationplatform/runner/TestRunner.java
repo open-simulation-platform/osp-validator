@@ -5,13 +5,17 @@ import com.opensimulationplatform.terminator.ExitCode;
 import com.opensimulationplatform.terminator.Terminator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
+import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
 import java.io.File;
+import java.util.Set;
 
 class TestRunner {
   
@@ -19,9 +23,9 @@ class TestRunner {
   
   public static void main(String[] args) {
     Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
-  
+    
     File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
-    File cseConfigFile = new File("./src/test/resources/validator/cse-config-valid.json");
+    File cseConfigFile = new File("./src/test/resources/validator/cse-config-invalid.json");
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     File configOwlFile = new File("./configuration.owl");
@@ -35,10 +39,19 @@ class TestRunner {
       LOG.error(message, e);
       throw new RuntimeException(e);
     }
-  
+    
     if (result.isSuccess()) {
       Terminator.exit(new ExitCode(0, "Great success!"));
     } else {
+      Set<Set<OWLAxiom>> explanation = result.getExplanation();
+      LOG.error("Computing explanations for the inconsistency...");
+      OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
+      explanation.forEach(axioms -> {
+        LOG.error("------------------");
+        LOG.error("Axioms causing the inconsistency: ");
+        axioms.forEach(axiom -> LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations())));
+        LOG.error("------------------");
+      });
       Terminator.exit(new ExitCode(1, "Validation failed!"));
     }
   }
