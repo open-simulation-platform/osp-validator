@@ -1,4 +1,4 @@
-package com.opensimulationplatform.runner;
+package com.opensimulationplatform.cli;
 
 import com.opensimulationplatform.loghelper.LogHelper;
 import com.opensimulationplatform.msmivalidator.MsmiValidator;
@@ -17,9 +17,9 @@ import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLOb
 import java.io.File;
 import java.util.Set;
 
-class CommandLineRunner {
+class CommandLineInterface {
   
-  private static final Logger LOG = LoggerFactory.getLogger(CommandLineRunner.class);
+  private static final Logger LOG = LoggerFactory.getLogger(CommandLineInterface.class);
   
   public static void main(String[] args) {
     if(!LogHelper.setLogLevel()){

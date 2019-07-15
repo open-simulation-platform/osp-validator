@@ -1,4 +1,4 @@
-package com.opensimulationplatform.runner;
+package com.opensimulationplatform.testrunner;
 
 import com.opensimulationplatform.msmivalidator.MsmiValidator;
 import com.opensimulationplatform.terminator.ExitCode;
