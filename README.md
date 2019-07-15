@@ -30,5 +30,5 @@ $ mvn clean package
 $ cd http
 $ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
-- go to localhost:<your-favourite-port>/validate?configuration=/full/path/to/<msmi-validator>/http/src/test/resources/validator/cse-config-valid.json$ontology=/full/path/to/<msmi-validator>/http/src/test/resources/validator/osp.owl
+- go to localhost:<your-favourite-port>/validate?configuration=/full/path/to/<msmi-validator>/http/src/test/resources/validator/cse-config-valid.json&ontology=/full/path/to/<msmi-validator>/http/src/test/resources/validator/osp.owl
 ```
