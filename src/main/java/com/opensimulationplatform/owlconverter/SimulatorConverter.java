@@ -7,8 +7,8 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 import static com.opensimulationplatform.ospontologydatamodel.OspOntologyClasses.MODEL;
-import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.HAS_BOND_CONNECTOR;
-import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR;
+import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.MODEL_HAS_TYPED_BOND_CONNECTOR;
+import static com.opensimulationplatform.ospontologydatamodel.OspOntologyObjectProperties.MODEL_HAS_TYPED_SIGNAL_CONNECTOR;
 import static com.opensimulationplatform.owlconverter.OwlConverterUtil.getIndividualName;
 
 public class SimulatorConverter {
@@ -21,17 +21,17 @@ public class SimulatorConverter {
     
     simulator.getPlugs().forEach((plugName, plug) -> {
       OWLNamedIndividual plugIndividual = PlugConverter.convert(plug, owlConfiguration);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, HAS_SIGNAL_CONNECTOR, plugIndividual);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, MODEL_HAS_TYPED_SIGNAL_CONNECTOR, plugIndividual);
     });
     
     simulator.getSockets().forEach((socketName, socket) -> {
       OWLNamedIndividual socketIndividual = SocketConverter.convert(socket, owlConfiguration);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, HAS_SIGNAL_CONNECTOR, socketIndividual);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, MODEL_HAS_TYPED_SIGNAL_CONNECTOR, socketIndividual);
     });
     
     simulator.getBonds().forEach((bondName, bond) -> {
       OWLNamedIndividual bondIndividual = BondConverter.convert(bond, owlConfiguration);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, HAS_BOND_CONNECTOR, bondIndividual);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, simulatorIndividual, MODEL_HAS_TYPED_BOND_CONNECTOR, bondIndividual);
     });
   }
 }

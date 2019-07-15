@@ -20,12 +20,12 @@ public class BondConverter {
   
     bond.getPlugs().forEach(plug -> {
       OWLNamedIndividual plugIndividual = PlugConverter.convert(plug, owlConfiguration);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR, plugIndividual);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, OspOntologyObjectProperties.BOND_HAS_TYPED_SIGNAL_CONNECTOR, plugIndividual);
     });
   
     bond.getSockets().forEach(socket -> {
       OWLNamedIndividual socketIndividual = SocketConverter.convert(socket, owlConfiguration);
-      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR, socketIndividual);
+      OwlHelper.addObjectPropertyAssertionAxiom(ontology, bondIndividual, OspOntologyObjectProperties.BOND_HAS_TYPED_SIGNAL_CONNECTOR, socketIndividual);
     });
   
     return bondIndividual;

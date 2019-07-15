@@ -47,11 +47,13 @@
     
 
 
-    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_connector -->
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector -->
 
-    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_connector">
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_type"/>
+    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector">
+        <rdfs:subPropertyOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_connector"/>
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:ObjectProperty>
@@ -61,6 +63,7 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_connector_mate -->
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_bond_connector_mate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
         <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
@@ -96,10 +99,21 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_component -->
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_component">
-        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/component"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/component"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_connector -->
+
+    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_connector">
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/component"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/connector"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
     </owl:ObjectProperty>
     
 
@@ -116,30 +130,10 @@
     
 
 
-    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal -->
-
-    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal">
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector -->
-
-    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector">
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
-        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector_mate -->
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector_mate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
         <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
@@ -163,17 +157,85 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable -->
 
     <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable">
-        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
+                    <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_signal_connector"/>
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
+        </owl:propertyChainAxiom>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+        <owl:annotatedTarget>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
+                    <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:annotatedTarget>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_signal_connector"/>
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/has_variable"/>
+        </owl:annotatedTarget>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_bond_connector -->
+
+    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_bond_connector">
+        <rdfs:subPropertyOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_connector"/>
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_connector"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_type"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_signal_connector -->
+
+    <owl:ObjectProperty rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_signal_connector">
+        <rdfs:subPropertyOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_connector"/>
+        <rdfs:domain rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/connector"/>
+        <rdfs:range rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_bond_connector"/>
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
+        </owl:propertyChainAxiom>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_signal_connector"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model_has_typed_bond_connector"/>
+            <rdf:Description rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
+        </owl:annotatedTarget>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
     </owl:Axiom>
     
 
@@ -233,7 +295,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -244,7 +306,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -259,7 +321,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -270,7 +332,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -309,7 +371,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -320,7 +382,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -335,7 +397,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -346,7 +408,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -394,7 +456,7 @@
         <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/connector"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
             </owl:Restriction>
@@ -408,7 +470,7 @@
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_connector"/>
             </owl:Restriction>
@@ -483,6 +545,7 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/bond_type -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_type">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/type"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
@@ -521,9 +584,20 @@
     
 
 
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/component -->
+
+    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/component">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/system"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
+    </owl:Class>
+    
+
+
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/connector -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/connector">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/component"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/model"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
         <owl:disjointWith rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
@@ -649,7 +723,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -660,7 +734,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -675,7 +749,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -686,7 +760,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -725,7 +799,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -736,7 +810,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -751,7 +825,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -762,7 +836,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -823,32 +897,6 @@
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/current"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector_mate"/>
-                <owl:allValuesFrom rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
@@ -883,6 +931,32 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/current"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector_mate"/>
+                <owl:allValuesFrom rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
+    </owl:Axiom>
     
 
 
@@ -903,34 +977,6 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-08T13:52:52Z</terms:date>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/current"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
@@ -964,6 +1010,34 @@
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</rdfs:comment>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/current"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
     
 
 
@@ -979,7 +1053,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -990,7 +1064,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1001,7 +1075,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1016,7 +1090,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1027,7 +1101,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1038,7 +1112,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1077,7 +1151,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1088,7 +1162,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1099,7 +1173,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1114,7 +1188,7 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1125,7 +1199,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1136,7 +1210,7 @@
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/has_signal_connector"/>
+                                        <owl:onProperty rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/bond_has_typed_signal_connector"/>
                                         <owl:someValuesFrom>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1241,6 +1315,7 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/model -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/model">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/component"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
         <owl:disjointWith rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
@@ -1327,6 +1402,20 @@
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type"/>
@@ -1372,20 +1461,6 @@
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/position"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</rdfs:comment>
     </owl:Axiom>
     
 
@@ -1465,6 +1540,7 @@
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/signal_type">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/type"/>
         <owl:disjointWith rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/variable"/>
         <owl:disjointWith rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/unit"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
@@ -1545,6 +1621,15 @@
     
 
 
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/system -->
+
+    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/system">
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
+    </owl:Class>
+    
+
+
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/torque -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/torque">
@@ -1560,6 +1645,13 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
@@ -1614,19 +1706,22 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</rdfs:comment>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/torque"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
+    
+
+
+    <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/type -->
+
+    <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/type">
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-12T09:00:36Z</terms:date>
+    </owl:Class>
     
 
 
     <!-- http://www.dnvgl.com/irm/semantics/osp/rdl/variable -->
 
     <owl:Class rdf:about="http://www.dnvgl.com/irm/semantics/osp/rdl/variable">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/system"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/has_unit"/>
@@ -1698,6 +1793,13 @@
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
         <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
@@ -1739,13 +1841,6 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/velocity"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
     
 
 
@@ -1762,6 +1857,13 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
+        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
+        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/generic"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
@@ -1816,19 +1918,13 @@
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/force"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
-        <owl:annotatedTarget rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/voltage"/>
-        <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
-        <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-07-09T07:44:02Z</terms:date>
-    </owl:Axiom>
     
 
 
     <!-- http://www.ontology-of-units-of-measure.org/resource/om-2/unit -->
 
     <owl:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/unit">
+        <rdfs:subClassOf rdf:resource="http://www.dnvgl.com/irm/semantics/osp/rdl/type"/>
         <terms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dirk Walther, DNV GL</terms:creator>
         <terms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-06-13T08:09:00Z</terms:date>
     </owl:Class>

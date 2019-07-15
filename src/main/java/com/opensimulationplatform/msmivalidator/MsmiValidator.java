@@ -31,7 +31,7 @@ public class MsmiValidator {
     HermitReasonerWrapper reasoner = new HermitReasonerWrapper(owlConfig.getOntology());
     
     if (!reasoner.isConsistent()) {
-      LOG.debug("Configuration is inconsistent!");
+      LOG.error("Configuration is inconsistent!");
       return new Result(owlConfig, reasoner.getExplanation());
     } else {
       LOG.debug("Configuration is consistent!");
