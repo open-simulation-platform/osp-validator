@@ -1,8 +1,13 @@
 package com.opensimulationplatform.datamodel.modeldefinition;
 
+import com.opensimulationplatform.msmivalidator.model.modeldefinition.Bond;
+import com.opensimulationplatform.msmivalidator.model.modeldefinition.Plug;
+import com.opensimulationplatform.msmivalidator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.msmivalidator.model.modeldefinition.Socket;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BondTest {
   @Test

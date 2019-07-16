@@ -1,9 +1,10 @@
 package com.opensimulationplatform.jsonmodel.parsing;
 
-import com.opensimulationplatform.jsonmodel.modeldefinition.JsonBond;
-import com.opensimulationplatform.jsonmodel.modeldefinition.JsonModelDefinition;
-import com.opensimulationplatform.jsonmodel.modeldefinition.JsonPlug;
-import com.opensimulationplatform.jsonmodel.modeldefinition.JsonSocket;
+import com.opensimulationplatform.json.model.modeldefinition.JsonBond;
+import com.opensimulationplatform.json.model.modeldefinition.JsonModelDefinition;
+import com.opensimulationplatform.json.model.modeldefinition.JsonPlug;
+import com.opensimulationplatform.json.model.modeldefinition.JsonSocket;
+import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParer;
 import org.junit.Test;
 
 import java.io.File;
