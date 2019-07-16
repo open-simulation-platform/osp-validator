@@ -32,7 +32,7 @@ public class MsmiValidator {
     
     if (!reasoner.isConsistent()) {
       LOG.error("Configuration is inconsistent!");
-      return new Result(owlConfig, reasoner.getExplanation());
+      return new Result(owlConfig, reasoner.getExplanations());
     } else {
       LOG.debug("Configuration is consistent!");
       return new Result(owlConfig);
