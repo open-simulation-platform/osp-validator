@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +37,7 @@ public class ValidationServlet extends HttpServlet {
   }
   
   @Override
-  protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws IOException {
     File ontology = new File(getURI(httpRequest.getParameter("ontology")));
     File configuration = new File(getURI(httpRequest.getParameter("configuration")));
   
