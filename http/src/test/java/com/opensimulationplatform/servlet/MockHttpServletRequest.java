@@ -223,7 +223,13 @@ class MockHttpServletRequest implements HttpServletRequest {
   
   @Override
   public String getParameter(String s) {
-    return null;
+    if (s.equalsIgnoreCase("ontology")) {
+      return ontology;
+    } else if (s.equalsIgnoreCase("configuration")) {
+      return configuration;
+    } else {
+      return null;
+    }
   }
   
   @Override
