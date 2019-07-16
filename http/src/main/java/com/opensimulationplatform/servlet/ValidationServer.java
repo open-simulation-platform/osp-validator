@@ -7,11 +7,11 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ValidatorServer {
+public class ValidationServer {
   
-  private static final Logger LOG = LoggerFactory.getLogger(ValidatorServer.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ValidationServer.class);
   
-  private ValidatorServer(int port) throws Exception {
+  private ValidationServer(int port) throws Exception {
     Server server = new Server(port);
     ServletContextHandler handler = new ServletContextHandler(server, "/");
     handler.addServlet(ValidationServlet.class, "/validate");
@@ -25,7 +25,7 @@ public class ValidatorServer {
     LogHelper.setLogLevel();
     CommandLine cmd = parseCommandLineOptions(args);
     String port = cmd.getOptionValue("port");
-    new ValidatorServer(Integer.parseInt(port));
+    new ValidationServer(Integer.parseInt(port));
   }
   
   private static CommandLine parseCommandLineOptions(String[] args) {

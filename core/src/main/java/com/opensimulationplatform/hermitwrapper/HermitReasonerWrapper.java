@@ -30,7 +30,7 @@ public class HermitReasonerWrapper {
     return reasoner.isConsistent();
   }
   
-  public Set<Set<OWLAxiom>> getExplanation() {
+  public Set<Set<OWLAxiom>> getExplanations() {
     LOG.debug("Computing explanations...");
     Reasoner.ReasonerFactory factory = new Reasoner.ReasonerFactory() {
       protected OWLReasoner createHermiTOWLReasoner(Configuration configuration, OWLOntology ontology) {
@@ -38,6 +38,7 @@ public class HermitReasonerWrapper {
         return new Reasoner(configuration, ontology);
       }
     };
+    
     HSTExplanationGenerator explainer = new HSTExplanationGenerator(new BlackBoxExplanation(ontology, factory, reasoner));
     Set<Set<OWLAxiom>> explanations = explainer.getExplanations(ontology.getOWLOntologyManager().getOWLDataFactory().getOWLThing(), 1);
     LOG.debug("done!");

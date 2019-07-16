@@ -32,7 +32,7 @@ public class MsmiValidator {
     
     if (!reasoner.isConsistent()) {
       LOG.error("Configuration is inconsistent!");
-      return new Result(owlConfig, reasoner.getExplanation());
+      return new Result(owlConfig, reasoner.getExplanations());
     } else {
       LOG.debug("Configuration is consistent!");
       return new Result(owlConfig);
@@ -42,12 +42,12 @@ public class MsmiValidator {
   public static class Result {
     
     private final OwlConfiguration owlConfiguration;
-    private final Set<Set<OWLAxiom>> explanation;
+    private final Set<Set<OWLAxiom>> explanations;
     private final boolean success;
   
-    private Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanation, boolean success) {
+    private Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanations, boolean success) {
       this.owlConfiguration = owlConfiguration;
-      this.explanation = explanation;
+      this.explanations = explanations;
       this.success = success;
     }
     
@@ -55,8 +55,8 @@ public class MsmiValidator {
       this(owlConfiguration, new HashSet<>(new HashSet<>()), true);
     }
     
-    Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanation) {
-      this(owlConfiguration, explanation, false);
+    Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanations) {
+      this(owlConfiguration, explanations, false);
     }
     
     public OwlConfiguration getOwlConfiguration() {
@@ -67,8 +67,8 @@ public class MsmiValidator {
       return success;
     }
     
-    public Set<Set<OWLAxiom>> getExplanation() {
-      return explanation;
+    public Set<Set<OWLAxiom>> getExplanations() {
+      return explanations;
     }
   }
 }

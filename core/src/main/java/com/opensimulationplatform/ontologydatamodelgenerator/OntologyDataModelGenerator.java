@@ -68,7 +68,7 @@ class OntologyDataModelGenerator {
     String dataModelClassContent = templateContent.replace("$FIELDS$", fields).replace("$CLASS_NAME$", classFileName).replace("$PACKAGE$", pkg);
     File destination = new File("./src/main/java/" + pkg.replace(".", "/") + "/");
     File dataModelClassFile = new File(destination, classFileName + ".java");
-    if (!dataModelClassFile.getParentFile().mkdirs()) {
+    if (!dataModelClassFile.getParentFile().exists() && !dataModelClassFile.getParentFile().mkdirs()) {
       throw new RuntimeException("Unable to create directory: " + destination.getAbsolutePath());
     } else {
       FileWriter writer = new FileWriter(dataModelClassFile);

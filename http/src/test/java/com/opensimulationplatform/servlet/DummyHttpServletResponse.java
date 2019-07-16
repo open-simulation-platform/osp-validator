@@ -3,7 +3,9 @@ package com.opensimulationplatform.servlet;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Collection;
 import java.util.Locale;
 
@@ -136,7 +138,6 @@ class DummyHttpServletResponse implements HttpServletResponse {
     return new PrintWriter(new Writer() {
       @Override
       public void write(char[] cbuf, int off, int len) throws IOException {
-        response = String.valueOf(cbuf).trim();
       }
       
       @Override
@@ -146,7 +147,12 @@ class DummyHttpServletResponse implements HttpServletResponse {
       @Override
       public void close() throws IOException {
       }
-    });
+    }) {
+      @Override
+      public void println(String s) {
+        response = s;
+      }
+    };
   }
   
   @Override
