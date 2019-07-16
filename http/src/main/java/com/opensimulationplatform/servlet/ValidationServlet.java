@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-@WebServlet(urlPatterns = "/validate")
 public class ValidationServlet extends HttpServlet {
   
   @Override
