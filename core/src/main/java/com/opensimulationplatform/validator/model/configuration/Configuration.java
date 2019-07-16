@@ -1,6 +1,6 @@
-package com.opensimulationplatform.msmivalidator.model.configuration;
+package com.opensimulationplatform.validator.model.configuration;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
 
 import java.util.List;
 import java.util.Map;

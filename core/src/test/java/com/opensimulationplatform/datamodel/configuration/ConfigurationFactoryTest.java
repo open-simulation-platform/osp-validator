@@ -1,10 +1,10 @@
 package com.opensimulationplatform.datamodel.configuration;
 
 import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
-import com.opensimulationplatform.msmivalidator.model.configuration.*;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Plug;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Socket;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Variable;
+import com.opensimulationplatform.validator.model.configuration.*;
+import com.opensimulationplatform.validator.model.modeldefinition.Plug;
+import com.opensimulationplatform.validator.model.modeldefinition.Socket;
+import com.opensimulationplatform.validator.model.modeldefinition.Variable;
 import org.junit.Test;
 
 import java.io.File;

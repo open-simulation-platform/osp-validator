@@ -1,6 +1,6 @@
 package com.opensimulationplatform.owl.converter;
 
-import com.opensimulationplatform.msmivalidator.model.configuration.Configuration;
+import com.opensimulationplatform.validator.model.configuration.Configuration;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;

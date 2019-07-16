@@ -1,4 +1,4 @@
-package com.opensimulationplatform.hermitwrapper;
+package com.opensimulationplatform.owl.util.hermitwrapper;
 
 import com.clarkparsia.owlapi.explanation.BlackBoxExplanation;
 import com.clarkparsia.owlapi.explanation.HSTExplanationGenerator;

@@ -1,6 +1,6 @@
 package com.opensimulationplatform.datamodel.modeldefinition;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.*;
+import com.opensimulationplatform.validator.model.modeldefinition.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,7 +1,7 @@
 package com.opensimulationplatform.servlet;
 
 import com.google.gson.GsonBuilder;
-import com.opensimulationplatform.msmivalidator.MsmiValidator;
+import com.opensimulationplatform.validator.MsmiValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;

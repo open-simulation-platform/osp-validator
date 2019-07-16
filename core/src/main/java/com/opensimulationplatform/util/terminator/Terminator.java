@@ -1,4 +1,4 @@
-package com.opensimulationplatform.terminator;
+package com.opensimulationplatform.util.terminator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

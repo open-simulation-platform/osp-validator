@@ -1,5 +1,6 @@
 package com.opensimulationplatform.msmivalidator;
 
+import com.opensimulationplatform.validator.MsmiValidator;
 import org.junit.Test;
 
 import java.io.File;

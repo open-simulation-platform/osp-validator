@@ -1,6 +1,6 @@
 package com.opensimulationplatform.owlconverter;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.*;
+import com.opensimulationplatform.validator.model.modeldefinition.*;
 import org.junit.Test;
 
 import static com.opensimulationplatform.owl.converter.NameConverter.getIndividualName;

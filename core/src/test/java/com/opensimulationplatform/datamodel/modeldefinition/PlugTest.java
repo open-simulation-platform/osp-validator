@@ -1,9 +1,9 @@
 package com.opensimulationplatform.datamodel.modeldefinition;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Bond;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Plug;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Simulator;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Variable;
+import com.opensimulationplatform.validator.model.modeldefinition.Bond;
+import com.opensimulationplatform.validator.model.modeldefinition.Plug;
+import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.validator.model.modeldefinition.Variable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

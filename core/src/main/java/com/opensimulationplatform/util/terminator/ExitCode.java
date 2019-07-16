@@ -1,4 +1,4 @@
-package com.opensimulationplatform.terminator;
+package com.opensimulationplatform.util.terminator;
 
 public class ExitCode {
   private final int exitCode;

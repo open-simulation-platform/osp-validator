@@ -1,6 +1,6 @@
 package com.opensimulationplatform.owl.converter;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Variable;
+import com.opensimulationplatform.validator.model.modeldefinition.Variable;
 import com.opensimulationplatform.osp.model.OspOntologyClasses;
 import com.opensimulationplatform.owl.helper.OwlHelper;
 import com.opensimulationplatform.owl.model.OwlConfiguration;

@@ -1,9 +1,9 @@
 package com.opensimulationplatform.owl.converter;
 
-import com.opensimulationplatform.msmivalidator.model.configuration.BondConnection;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Bond;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Plug;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Socket;
+import com.opensimulationplatform.validator.model.configuration.BondConnection;
+import com.opensimulationplatform.validator.model.modeldefinition.Bond;
+import com.opensimulationplatform.validator.model.modeldefinition.Plug;
+import com.opensimulationplatform.validator.model.modeldefinition.Socket;
 import com.opensimulationplatform.osp.model.OspOntologyClasses;
 import com.opensimulationplatform.osp.model.OspOntologyObjectProperties;
 import com.opensimulationplatform.owl.helper.OwlHelper;
