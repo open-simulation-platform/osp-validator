@@ -8,16 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,22 +76,28 @@ public class ValidationServlet extends HttpServlet {
       String[] keyValue = queryString.split("=");
       String key = keyValue[0];
       String value = keyValue[1];
-      try {
-        LOG.debug("Attempting to parse query: " + key + " with value: " + value + " as a URI...");
-        queries.put(key, new URL(value).toURI());
-        LOG.debug("done!");
-      } catch (Exception e) {
-        LOG.debug("Query: " + key + " is not on proper URI format. Attempting conversion...");
-        try {
-          queries.put(key, new File(value).toURI());
-          LOG.debug("done!");
-        } catch (Exception ex) {
-          String message = "Error parsing query: " + key + " with value: " + value;
-          LOG.error(message, e);
-          throw new RuntimeException(message, e);
-        }
-      }
+      queries.put(key, getURI(value));
     }
     return queries;
+  }
+  
+  private URI getURI(String value) {
+    try {
+      LOG.debug("Attempting to parse: '" + value + "' as a URI...");
+      URI uri = new URL(value).toURI();
+      LOG.debug("done!");
+      return uri;
+    } catch (Exception e) {
+      LOG.debug("'" + value + "' is not on proper URI format. Attempting conversion...");
+      try {
+        URI uri = new File(value).toURI();
+        LOG.debug("done!");
+        return uri;
+      } catch (Exception ex) {
+        String message = "Error parsing: '" + value + "' as a URI";
+        LOG.error(message, e);
+        throw new RuntimeException(message, e);
+      }
+    }
   }
 }
