@@ -1,6 +1,6 @@
 package com.opensimulationplatform.owl.converter;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Socket;
+import com.opensimulationplatform.validator.model.modeldefinition.Socket;
 import com.opensimulationplatform.owl.helper.OwlHelper;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;

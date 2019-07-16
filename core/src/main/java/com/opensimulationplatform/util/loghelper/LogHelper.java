@@ -1,4 +1,4 @@
-package com.opensimulationplatform.loghelper;
+package com.opensimulationplatform.util.loghelper;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;

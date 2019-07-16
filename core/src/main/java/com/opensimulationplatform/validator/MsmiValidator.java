@@ -1,9 +1,9 @@
-package com.opensimulationplatform.msmivalidator;
+package com.opensimulationplatform.validator;
 
-import com.opensimulationplatform.hermitwrapper.HermitReasonerWrapper;
+import com.opensimulationplatform.owl.util.hermitwrapper.HermitReasonerWrapper;
 import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
-import com.opensimulationplatform.msmivalidator.model.configuration.Configuration;
-import com.opensimulationplatform.msmivalidator.model.configuration.ConfigurationFactory;
+import com.opensimulationplatform.validator.model.configuration.Configuration;
+import com.opensimulationplatform.validator.model.configuration.ConfigurationFactory;
 import com.opensimulationplatform.owl.converter.ConfigurationConverter;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
 import org.semanticweb.owlapi.model.OWLAxiom;

@@ -1,6 +1,6 @@
 package com.opensimulationplatform.servlet;
 
-import com.opensimulationplatform.loghelper.LogHelper;
+import com.opensimulationplatform.util.loghelper.LogHelper;
 import org.apache.commons.cli.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;

@@ -1,4 +1,4 @@
-package com.opensimulationplatform.msmivalidator.model.configuration;
+package com.opensimulationplatform.validator.model.configuration;
 
 import com.opensimulationplatform.json.model.configuration.*;
 import com.opensimulationplatform.json.model.modeldefinition.JsonBond;
@@ -6,7 +6,7 @@ import com.opensimulationplatform.json.model.modeldefinition.JsonModelDefinition
 import com.opensimulationplatform.json.model.modeldefinition.JsonPlug;
 import com.opensimulationplatform.json.model.modeldefinition.JsonSocket;
 import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParer;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.*;
+import com.opensimulationplatform.validator.model.modeldefinition.*;
 
 import java.io.File;
 import java.util.ArrayList;

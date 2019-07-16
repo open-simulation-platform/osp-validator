@@ -1,9 +1,9 @@
 package com.opensimulationplatform.cli;
 
-import com.opensimulationplatform.loghelper.LogHelper;
-import com.opensimulationplatform.msmivalidator.MsmiValidator;
-import com.opensimulationplatform.terminator.ExitCode;
-import com.opensimulationplatform.terminator.Terminator;
+import com.opensimulationplatform.util.loghelper.LogHelper;
+import com.opensimulationplatform.validator.MsmiValidator;
+import com.opensimulationplatform.util.terminator.ExitCode;
+import com.opensimulationplatform.util.terminator.Terminator;
 import org.apache.commons.cli.*;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;

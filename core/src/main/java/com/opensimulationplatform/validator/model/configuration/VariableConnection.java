@@ -1,7 +1,7 @@
-package com.opensimulationplatform.msmivalidator.model.configuration;
+package com.opensimulationplatform.validator.model.configuration;
 
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Simulator;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Variable;
+import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.validator.model.modeldefinition.Variable;
 
 public class VariableConnection {
   private final Simulator sourceSimulator;

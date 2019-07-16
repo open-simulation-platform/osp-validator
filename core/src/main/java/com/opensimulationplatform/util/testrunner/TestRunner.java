@@ -1,8 +1,8 @@
-package com.opensimulationplatform.testrunner;
+package com.opensimulationplatform.util.testrunner;
 
-import com.opensimulationplatform.msmivalidator.MsmiValidator;
-import com.opensimulationplatform.terminator.ExitCode;
-import com.opensimulationplatform.terminator.Terminator;
+import com.opensimulationplatform.validator.MsmiValidator;
+import com.opensimulationplatform.util.terminator.ExitCode;
+import com.opensimulationplatform.util.terminator.Terminator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;

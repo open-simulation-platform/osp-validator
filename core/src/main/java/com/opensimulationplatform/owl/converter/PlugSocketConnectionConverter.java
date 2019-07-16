@@ -1,8 +1,8 @@
 package com.opensimulationplatform.owl.converter;
 
-import com.opensimulationplatform.msmivalidator.model.configuration.PlugSocketConnection;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Plug;
-import com.opensimulationplatform.msmivalidator.model.modeldefinition.Socket;
+import com.opensimulationplatform.validator.model.configuration.PlugSocketConnection;
+import com.opensimulationplatform.validator.model.modeldefinition.Plug;
+import com.opensimulationplatform.validator.model.modeldefinition.Socket;
 import com.opensimulationplatform.osp.model.OspOntologyObjectProperties;
 import com.opensimulationplatform.owl.helper.OwlHelper;
 import com.opensimulationplatform.owl.model.OwlConfiguration;

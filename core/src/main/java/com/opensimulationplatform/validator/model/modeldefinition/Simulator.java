@@ -1,4 +1,4 @@
-package com.opensimulationplatform.msmivalidator.model.modeldefinition;
+package com.opensimulationplatform.validator.model.modeldefinition;
 
 import java.util.HashMap;
 import java.util.Map;
