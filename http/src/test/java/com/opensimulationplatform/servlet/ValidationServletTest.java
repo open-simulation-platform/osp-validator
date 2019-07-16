@@ -18,7 +18,7 @@ public class ValidationServletTest {
   private final String ontologyPath = "../core/src/test/resources/validator/osp.owl";
   
   @Test
-  public void canCallGetWithQueriesOnUrlFormat() throws IOException {
+  public void canCallDoGetWithQueriesOnUrlFormat() throws IOException {
     String configuration = new File(validConfigurationPath).toURI().toURL().toString();
     String ontology = new File(ontologyPath).toURI().toURL().toString();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontology);
@@ -34,7 +34,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallGetWithQueriesOnNonUrlFormat() throws IOException {
+  public void canCallDoGetWithQueriesOnNonUrlFormat() throws IOException {
     HttpServletRequest request = new MockHttpServletRequest(validConfigurationPath, ontologyPath);
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     ValidationServlet validationServlet = new ValidationServlet();
@@ -43,7 +43,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallGetOnValidConfiguration() throws IOException {
+  public void canCallDoGetOnValidConfiguration() throws IOException {
     HttpServletRequest request = new MockHttpServletRequest(validConfigurationPath, ontologyPath);
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     ValidationServlet validationServlet = new ValidationServlet();
@@ -57,7 +57,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallGetOnInvalidConfiguration() throws IOException {
+  public void canCallDoGetOnInvalidConfiguration() throws IOException {
     ValidationServlet validationServlet = new ValidationServlet();
     String configuration = "../core/src/test/resources/validator/cse-config-invalid.json";
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath);
@@ -72,4 +72,33 @@ public class ValidationServletTest {
     assertEquals("generic DisjointWith velocity", response.getExplanations().get(0));
   }
   
+  @Test
+  public void canCallDoPostOnValidConfiguration() throws Exception {
+    HttpServletRequest request = new MockHttpServletRequest(validConfigurationPath, ontologyPath);
+    MockHttpServletResponse httpResponse = new MockHttpServletResponse();
+    ValidationServlet validationServlet = new ValidationServlet();
+    
+    validationServlet.doPost(request, httpResponse);
+    
+    Gson gson = new GsonBuilder().create();
+    ValidationServletResponse response = gson.fromJson(httpResponse.response, ValidationServletResponse.class);
+    assertEquals("true", response.getValid());
+    assertTrue(response.getExplanations().isEmpty());
+  }
+  
+  @Test
+  public void canCallDoPostOnInvalidConfiguration() throws Exception {
+    ValidationServlet validationServlet = new ValidationServlet();
+    String configuration = "../core/src/test/resources/validator/cse-config-invalid.json";
+    HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath);
+    MockHttpServletResponse httpResponse = new MockHttpServletResponse();
+    
+    validationServlet.doPost(request, httpResponse);
+    
+    Gson gson = new GsonBuilder().create();
+    ValidationServletResponse response = gson.fromJson(httpResponse.response, ValidationServletResponse.class);
+    assertEquals("false", response.getValid());
+    assertFalse(response.getExplanations().isEmpty());
+    assertEquals("generic DisjointWith velocity", response.getExplanations().get(0));
+  }
 }

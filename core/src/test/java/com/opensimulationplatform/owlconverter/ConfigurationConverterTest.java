@@ -1,10 +1,10 @@
 package com.opensimulationplatform.owlconverter;
 
 import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
-import com.opensimulationplatform.validator.model.configuration.Configuration;
-import com.opensimulationplatform.validator.model.configuration.ConfigurationFactory;
 import com.opensimulationplatform.owl.converter.ConfigurationConverter;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
+import com.opensimulationplatform.validator.model.configuration.Configuration;
+import com.opensimulationplatform.validator.model.configuration.ConfigurationFactory;
 import com.opensimulationplatform.validator.model.modeldefinition.*;
 import org.junit.Test;
 

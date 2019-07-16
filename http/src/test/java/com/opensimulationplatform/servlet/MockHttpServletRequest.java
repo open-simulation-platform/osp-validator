@@ -3,10 +3,8 @@ package com.opensimulationplatform.servlet;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -225,7 +223,13 @@ class MockHttpServletRequest implements HttpServletRequest {
   
   @Override
   public String getParameter(String s) {
-    return null;
+    if (s.equalsIgnoreCase("ontology")) {
+      return ontology;
+    } else if (s.equalsIgnoreCase("configuration")) {
+      return configuration;
+    } else {
+      return null;
+    }
   }
   
   @Override

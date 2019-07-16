@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,10 +34,20 @@ public class ValidationServlet extends HttpServlet {
     
     MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
     
-    createResponse(httpResponse, result);
+    createHttpResponse(httpResponse, result);
   }
   
-  private void createResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) throws IOException {
+  @Override
+  protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException, IOException {
+    File ontology = new File(getURI(httpRequest.getParameter("ontology")));
+    File configuration = new File(getURI(httpRequest.getParameter("configuration")));
+  
+    MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
+  
+    createHttpResponse(httpResponse, result);
+  }
+  
+  private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) throws IOException {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
     httpResponse.setStatus(HttpStatus.OK_200);
@@ -79,22 +87,28 @@ public class ValidationServlet extends HttpServlet {
       String[] keyValue = queryString.split("=");
       String key = keyValue[0];
       String value = keyValue[1];
-      try {
-        LOG.debug("Attempting to parse query: " + key + " with value: " + value + " as a URI...");
-        queries.put(key, new URL(value).toURI());
-        LOG.debug("done!");
-      } catch (Exception e) {
-        LOG.debug("Query: " + key + " is not on proper URI format. Attempting conversion...");
-        try {
-          queries.put(key, new File(value).toURI());
-          LOG.debug("done!");
-        } catch (Exception ex) {
-          String message = "Error parsing query: " + key + " with value: " + value;
-          LOG.error(message, e);
-          throw new RuntimeException(message, e);
-        }
-      }
+      queries.put(key, getURI(value));
     }
     return queries;
+  }
+  
+  private URI getURI(String value) {
+    try {
+      LOG.debug("Attempting to parse: '" + value + "' as a URI...");
+      URI uri = new URL(value).toURI();
+      LOG.debug("done!");
+      return uri;
+    } catch (Exception e) {
+      LOG.debug("'" + value + "' is not on proper URI format. Attempting conversion...");
+      try {
+        URI uri = new File(value).toURI();
+        LOG.debug("done!");
+        return uri;
+      } catch (Exception ex) {
+        String message = "Error parsing: '" + value + "' as a URI";
+        LOG.error(message, e);
+        throw new RuntimeException(message, e);
+      }
+    }
   }
 }
