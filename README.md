@@ -1,13 +1,14 @@
-# msmi-validator-core
-Ontology-based systems structure validator
+# msmi-validator-cli
+
+Command line interface for msmi-validator
 
 ## clone -> build -> run
 ```
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd core
-$ java -jar ./target/msmi-validator-core-<version>-jar-with-dependencies.jar --osp-ontology ./src/test/resources/validator/osp.owl --cse-config ./src/test/resources/validator/cse-config-valid.json
+$ cd cli
+$ java -jar ./target/msmi-validator-cli-0.4.0-SNAPSHOT-jar-with-dependencies.jar --osp-ontology ../core/src/test/resources/validator/osp.owl --cse-config ../core/src/test/resources/validator/cse-config-valid.json
 ```
 
 ## clone -> build -> run (with debug output) -> generate configuration.owl
@@ -15,12 +16,13 @@ $ java -jar ./target/msmi-validator-core-<version>-jar-with-dependencies.jar --o
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd core
-$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-core-<version>-jar-with-dependencies.jar --osp-ontology ./src/test/resources/validator/osp.owl --cse-config ./src/test/resources/validator/cse-config-valid.json -s ./
+$ cd cli
+$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-cli-0.4.0-SNAPSHOT-jar-with-dependencies.jar --osp-ontology ../core/src/test/resources/validator/osp.owl --cse-config ../core/src/test/resources/validator/cse-config-valid.json -s ./
 ```
 
 # msmi-validator-http
-Ontology-based systems structure validator
+
+HTTP servlet interface for msmi-validator
 
 ## clone -> build -> run
 ```
@@ -30,5 +32,5 @@ $ mvn clean package
 $ cd http
 $ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
-- go to localhost:<your-favourite-port>/validate?configuration=/full/path/to/<msmi-validator>/http/src/test/resources/validator/cse-config-valid.json&ontology=/full/path/to/<msmi-validator>/http/src/test/resources/validator/osp.owl
+- go to localhost:<your-favourite-port>/validate?configuration=../core/src/test/resources/validator/cse-config-valid.json&ontology=../core/src/test/resources/validator/osp.owl
 ```
