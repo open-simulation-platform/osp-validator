@@ -25,7 +25,7 @@ class TestRunner {
     Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
     
     File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
-    File cseConfigFile = new File("./src/test/resources/validator/cse-config-invalid-B.json");
+    File cseConfigFile = new File("./src/test/resources/validator/cse-config-valid.json");
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     File configOwlFile = new File("./configuration.owl");
@@ -43,7 +43,7 @@ class TestRunner {
     if (result.isSuccess()) {
       Terminator.exit(new ExitCode(0, "Great success!"));
     } else {
-      Set<Set<OWLAxiom>> explanation = result.getExplanation();
+      Set<Set<OWLAxiom>> explanation = result.getExplanations();
       LOG.error("Computing explanations for the inconsistency...");
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
       explanation.forEach(axioms -> {

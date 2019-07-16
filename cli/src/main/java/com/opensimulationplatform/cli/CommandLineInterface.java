@@ -38,7 +38,7 @@ class CommandLineInterface {
     if (!result.isSuccess()) {
       LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
       
-      Set<Set<OWLAxiom>> explanation = result.getExplanation();
+      Set<Set<OWLAxiom>> explanation = result.getExplanations();
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
       explanation.forEach(axioms -> {
         LOG.error("------------------");
