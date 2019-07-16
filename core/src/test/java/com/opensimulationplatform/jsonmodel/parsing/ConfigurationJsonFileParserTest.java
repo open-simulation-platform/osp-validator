@@ -1,6 +1,7 @@
 package com.opensimulationplatform.jsonmodel.parsing;
 
-import com.opensimulationplatform.jsonmodel.configuration.*;
+import com.opensimulationplatform.json.model.configuration.*;
+import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
 import org.junit.Test;
 
 import java.io.File;

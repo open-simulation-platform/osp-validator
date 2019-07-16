@@ -4,7 +4,6 @@ import com.google.gson.GsonBuilder;
 import com.opensimulationplatform.msmivalidator.MsmiValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
-import org.semanticweb.owlapi.model.OWLAxiom;
 import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ValidationServlet extends HttpServlet {
   

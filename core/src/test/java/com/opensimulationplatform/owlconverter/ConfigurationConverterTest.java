@@ -1,10 +1,11 @@
 package com.opensimulationplatform.owlconverter;
 
-import com.opensimulationplatform.datamodel.configuration.Configuration;
-import com.opensimulationplatform.datamodel.configuration.ConfigurationFactory;
-import com.opensimulationplatform.datamodel.modeldefinition.*;
-import com.opensimulationplatform.jsonmodel.parsing.ConfigurationJsonFileParser;
-import com.opensimulationplatform.owlmodel.OwlConfiguration;
+import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
+import com.opensimulationplatform.msmivalidator.model.configuration.Configuration;
+import com.opensimulationplatform.msmivalidator.model.configuration.ConfigurationFactory;
+import com.opensimulationplatform.msmivalidator.model.modeldefinition.*;
+import com.opensimulationplatform.owl.converter.ConfigurationConverter;
+import com.opensimulationplatform.owl.model.OwlConfiguration;
 import org.junit.Test;
 
 import java.io.File;

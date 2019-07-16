@@ -2,7 +2,6 @@ package com.opensimulationplatform.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import jdk.internal.util.xml.impl.ReaderUTF8;
 import org.junit.Test;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +17,8 @@ public class ValidationServletTest {
   public void canCallGetOnValidConfiguration() throws IOException {
     File configuration = new File("../core/src/test/resources/validator/cse-config-valid.json");
     File ontology = new File("../core/src/test/resources/validator/osp.owl");
-    HttpServletRequest request = new DummyHttpServletRequest(configuration, ontology);
-    DummyHttpServletResponse httpResponse = new DummyHttpServletResponse();
+    HttpServletRequest request = new MockHttpServletRequest(configuration, ontology);
+    MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     ValidationServlet validationServlet = new ValidationServlet();
   
     validationServlet.doGet(request, httpResponse);
@@ -35,8 +34,8 @@ public class ValidationServletTest {
     ValidationServlet validationServlet = new ValidationServlet();
     File configuration = new File("../core/src/test/resources/validator/cse-config-invalid.json");
     File ontology = new File("../core/src/test/resources/validator/osp.owl");
-    HttpServletRequest request = new DummyHttpServletRequest(configuration, ontology);
-    DummyHttpServletResponse httpResponse = new DummyHttpServletResponse();
+    HttpServletRequest request = new MockHttpServletRequest(configuration, ontology);
+    MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     
     validationServlet.doGet(request, httpResponse);
   
