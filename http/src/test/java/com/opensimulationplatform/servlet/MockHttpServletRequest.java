@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -13,10 +14,10 @@ import java.util.Locale;
 import java.util.Map;
 
 class MockHttpServletRequest implements HttpServletRequest {
-  private File configuration;
-  private File ontology;
+  private String configuration;
+  private String ontology;
   
-  MockHttpServletRequest(File configuration, File ontology) {
+  MockHttpServletRequest(String configuration, String ontology) {
     this.configuration = configuration;
     this.ontology = ontology;
   }
@@ -78,7 +79,7 @@ class MockHttpServletRequest implements HttpServletRequest {
   
   @Override
   public String getQueryString() {
-    return "configuration=" + configuration.getAbsolutePath() + "&ontology=" + ontology.getAbsolutePath();
+    return "configuration=" + configuration + "&ontology=" + ontology;
   }
   
   @Override
