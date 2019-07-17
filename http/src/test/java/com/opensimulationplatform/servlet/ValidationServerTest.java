@@ -34,7 +34,6 @@ public class ValidationServerTest {
   public void tearDown() throws Exception {
     validationServer.stop();
     assertFalse(validationServer.isRunning());
-    
   }
   
   @Test
