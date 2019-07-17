@@ -78,8 +78,7 @@ public class ValidationServlet extends HttpServlet {
       writer.println(response);
       writer.flush();
     } catch (Exception e) {
-      String message = "Error writing http response";
-      LOG.error(message, e);
+      LOG.error("Error writing http response", e);
     }
   }
   
