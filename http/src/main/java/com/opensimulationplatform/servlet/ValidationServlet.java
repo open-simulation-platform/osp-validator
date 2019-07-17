@@ -23,64 +23,79 @@ import java.util.List;
 import java.util.Map;
 
 public class ValidationServlet extends HttpServlet {
-  
+
   private static final Logger LOG = LoggerFactory.getLogger(ValidationServlet.class);
-  
+
   @Override
   protected void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws IOException {
-    Map<String, URI> queries = getQueries(httpRequest);
-    File ontology = new File(queries.get("ontology"));
-    File configuration = new File(queries.get("configuration"));
-    
-    MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
-    
-    createHttpResponse(httpResponse, result);
+    try {
+      Map<String, URI> queries = getQueries(httpRequest);
+      File ontology = new File(queries.get("ontology"));
+      File configuration = new File(queries.get("configuration"));
+
+      MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
+
+      createHttpResponse(httpResponse, result, null);
+    } catch (Exception e) {
+      LOG.error("Failure during doGet", e);
+      createHttpResponse(httpResponse, null, e);
+    }
   }
-  
+
+
   @Override
   protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException, IOException {
-    File ontology = new File(getURI(httpRequest.getParameter("ontology")));
-    File configuration = new File(getURI(httpRequest.getParameter("configuration")));
-  
-    MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
-  
-    createHttpResponse(httpResponse, result);
+    try {
+      File ontology = new File(getURI(httpRequest.getParameter("ontology")));
+      File configuration = new File(getURI(httpRequest.getParameter("configuration")));
+
+      MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
+
+      createHttpResponse(httpResponse, result, null);
+    } catch (Exception e) {
+      LOG.error("Failure during doPost", e);
+      createHttpResponse(httpResponse, null, e);
+    }
   }
-  
-  private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) throws IOException {
+
+  private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result, Exception e) throws IOException {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
-    httpResponse.setStatus(HttpStatus.OK_200);
     httpResponse.addHeader("Access-Control-Allow-Origin", "*");
+
     PrintWriter writer = httpResponse.getWriter();
-    
-    ValidationServletResponse servletResponse = createServletResponse(result);
-    writer.println(new GsonBuilder().create().toJson(servletResponse));
-    
+    if (e != null) {
+      httpResponse.setStatus(HttpStatus.BAD_REQUEST_400);
+      writer.println(new GsonBuilder().create().toJson(e.getMessage()));
+    } else {
+      httpResponse.setStatus(HttpStatus.OK_200);
+      ValidationServletResponse servletResponse = createServletResponse(result);
+      writer.println(new GsonBuilder().create().toJson(servletResponse));
+    }
     writer.flush();
     writer.close();
   }
-  
+
   private ValidationServletResponse createServletResponse(MsmiValidator.Result result) {
     ValidationServletResponse response = new ValidationServletResponse();
-    
+
     if (result.isSuccess()) {
       response.setValid("true");
     } else {
       response.setValid("false");
-      
+
       List<String> explanations = new ArrayList<>();
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
       result.getExplanations().forEach(axioms -> {
         axioms.forEach(axiom -> explanations.add(renderer.render(axiom.getAxiomWithoutAnnotations())));
       });
-      
+
       response.setExplanations(explanations);
     }
-    
+
     return response;
   }
-  
+
   private Map<String, URI> getQueries(HttpServletRequest request) {
     Map<String, URI> queries = new HashMap<>();
     for (String queryString : request.getQueryString().split("&")) {
@@ -91,7 +106,7 @@ public class ValidationServlet extends HttpServlet {
     }
     return queries;
   }
-  
+
   private URI getURI(String value) {
     try {
       LOG.debug("Attempting to parse: '" + value + "' as a URI...");

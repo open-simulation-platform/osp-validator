@@ -2,8 +2,11 @@ package com.opensimulationplatform.servlet;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.servlet.MultipartConfigElement;
 
 public class ValidationServer {
   
@@ -18,11 +21,16 @@ public class ValidationServer {
   }
   
   void start() throws Exception {
+
+    ServletHolder holder = new ServletHolder(new ValidationServlet());
+    holder.getRegistration().setMultipartConfig(new MultipartConfigElement("data/tmp"));
+
     ServletContextHandler handler = new ServletContextHandler(server, "/");
-    handler.addServlet(ValidationServlet.class, "/validate");
+    handler.addServlet(holder, "/validate");
     
     LOG.info("Starting msmi-validator-http server on port: " + port);
-    LOG.info("Run validation checks using: http://<ip-address>:" + port + "/validate?configuration=/path/to/cse-config.json&ontology=/path/to/osp.owl");
+    LOG.info("Run validation checks using HTTP GET: http://localhost:" + port + "/validate?configuration=/path/to/cse-config.json&ontology=/path/to/osp.owl");
+    LOG.info("Run validation checks using HTTP POST: http://localhost:" + port + "/validate with \"configuration\" and \"ontology\" as form params");
     server.start();
   }
   
