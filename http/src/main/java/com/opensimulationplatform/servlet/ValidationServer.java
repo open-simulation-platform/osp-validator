@@ -21,10 +21,8 @@ public class ValidationServer {
   }
   
   void start() throws Exception {
-
     ServletHolder holder = new ServletHolder(new ValidationServlet());
     holder.getRegistration().setMultipartConfig(new MultipartConfigElement("data/tmp"));
-
     ServletContextHandler handler = new ServletContextHandler(server, "/");
     handler.addServlet(holder, "/validate");
     
