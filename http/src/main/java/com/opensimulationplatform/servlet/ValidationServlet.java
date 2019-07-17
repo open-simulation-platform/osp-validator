@@ -1,5 +1,6 @@
 package com.opensimulationplatform.servlet;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opensimulationplatform.validator.MsmiValidator;
 import org.eclipse.jetty.http.HttpStatus;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URL;
@@ -24,43 +24,66 @@ import java.util.Map;
 public class ValidationServlet extends HttpServlet {
   
   private static final Logger LOG = LoggerFactory.getLogger(ValidationServlet.class);
+  private final Gson gson = new GsonBuilder().create();
   
   @Override
-  protected void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws IOException {
-    Map<String, URI> queries = getQueries(httpRequest);
-    File ontology = new File(queries.get("ontology"));
-    File configuration = new File(queries.get("configuration"));
-    
-    MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
-    
-    createHttpResponse(httpResponse, result);
+  protected void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+    try {
+      Map<String, URI> queries = getQueries(httpRequest);
+      File ontology = new File(queries.get("ontology"));
+      File configuration = new File(queries.get("configuration"));
+      
+      MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
+      
+      createHttpResponse(httpResponse, result);
+    } catch (Exception e) {
+      String message = "Error during doGet";
+      LOG.error(message, e);
+      writeResponse(httpResponse, gson.toJson(e.getMessage()));
+    }
   }
   
   @Override
-  protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws IOException {
-    File ontology = new File(getURI(httpRequest.getParameter("ontology")));
-    File configuration = new File(getURI(httpRequest.getParameter("configuration")));
-  
-    MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
-  
-    createHttpResponse(httpResponse, result);
+  protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+    try {
+      File ontology = new File(getURI(httpRequest.getParameter("ontology")));
+      File configuration = new File(getURI(httpRequest.getParameter("configuration")));
+      
+      MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
+      
+      createHttpResponse(httpResponse, result);
+    } catch (Exception e) {
+      String message = "Error during doPost";
+      LOG.error(message, e);
+      writeResponse(httpResponse, gson.toJson(e.getMessage()));
+    }
   }
   
-  private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) throws IOException {
+  private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
-    httpResponse.setStatus(HttpStatus.OK_200);
     httpResponse.addHeader("Access-Control-Allow-Origin", "*");
-    PrintWriter writer = httpResponse.getWriter();
     
-    ValidationServletResponse servletResponse = createServletResponse(result);
-    writer.println(new GsonBuilder().create().toJson(servletResponse));
+    if (result.isSuccess()) {
+      httpResponse.setStatus(HttpStatus.OK_200);
+    } else {
+      httpResponse.setStatus(HttpStatus.BAD_REQUEST_400);
+    }
     
-    writer.flush();
-    writer.close();
+    writeResponse(httpResponse, gson.toJson(getServletResponse(result)));
   }
   
-  private ValidationServletResponse createServletResponse(MsmiValidator.Result result) {
+  private void writeResponse(HttpServletResponse httpResponse, String response) {
+    try (PrintWriter writer = httpResponse.getWriter()) {
+      writer.println(response);
+      writer.flush();
+    } catch (Exception e) {
+      String message = "Error writing http response";
+      LOG.error(message, e);
+    }
+  }
+  
+  private ValidationServletResponse getServletResponse(MsmiValidator.Result result) {
     ValidationServletResponse response = new ValidationServletResponse();
     
     if (result.isSuccess()) {
