@@ -29,7 +29,8 @@ public class ValidationServer {
     handler.addServlet(holder, "/validate");
     
     LOG.info("Starting msmi-validator-http server on port: " + port);
-    LOG.info("Run validation checks using: http://<ip-address>:" + port + "/validate?configuration=/path/to/cse-config.json&ontology=/path/to/osp.owl");
+    LOG.info("Run validation checks using HTTP GET: http://localhost:" + port + "/validate?configuration=/path/to/cse-config.json&ontology=/path/to/osp.owl");
+    LOG.info("Run validation checks using HTTP POST: http://localhost:" + port + "/validate with \"configuration\" and \"ontology\" as form params");
     server.start();
   }
   
