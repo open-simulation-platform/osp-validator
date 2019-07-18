@@ -1,56 +1,43 @@
 package com.opensimulationplatform.servlet;
 
-import com.opensimulationplatform.util.loghelper.LogHelper;
-import org.apache.commons.cli.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.servlet.MultipartConfigElement;
 
 public class ValidationServer {
   
   private static final Logger LOG = LoggerFactory.getLogger(ValidationServer.class);
   
-  private ValidationServer(int port) throws Exception {
-    Server server = new Server(port);
+  private final Server server;
+  private final int port;
+  
+  ValidationServer(int port) {
+    this.port = port;
+    server = new Server(port);
+  }
+  
+  void start() throws Exception {
+    ServletHolder holder = new ServletHolder(new ValidationServlet());
+    holder.getRegistration().setMultipartConfig(new MultipartConfigElement("data/tmp"));
     ServletContextHandler handler = new ServletContextHandler(server, "/");
-    handler.addServlet(ValidationServlet.class, "/validate");
+    handler.addServlet(holder, "/validate");
     
     LOG.info("Starting msmi-validator-http server on port: " + port);
-    LOG.info("Run validation checks using: http://<ip-address>:" + port + "/validate?configuration=/path/to/cse-config.json&ontology=/path/to/osp.owl");
+    LOG.info("Run validation checks using HTTP GET: http://localhost:" + port + "/validate?configuration=/path/to/cse-config.json&ontology=/path/to/osp.owl");
+    LOG.info("Run validation checks using HTTP POST: http://localhost:" + port + "/validate with \"configuration\" and \"ontology\" as form params");
     server.start();
   }
   
-  public static void main(String[] args) throws Exception {
-    LogHelper.setLogLevel();
-    CommandLine cmd = parseCommandLineOptions(args);
-    String port = cmd.getOptionValue("port");
-    new ValidationServer(Integer.parseInt(port));
+  void stop() throws Exception {
+    LOG.info("Stopping msmi-validator-http server on port: " + port);
+    server.stop();
   }
   
-  private static CommandLine parseCommandLineOptions(String[] args) {
-    Options options = addOptions();
-    
-    CommandLineParser parser = new DefaultParser();
-    HelpFormatter formatter = new HelpFormatter();
-    CommandLine cmd = null;
-    try {
-      cmd = parser.parse(options, args);
-    } catch (Exception e) {
-      LOG.error("Error parsing input arguments", e);
-      formatter.printHelp("msmi-validator-http", options);
-    }
-    
-    return cmd;
-  }
-  
-  private static Options addOptions() {
-    Options options = new Options();
-    
-    Option input = new Option("p", "port", true, "Port the server will bind to");
-    input.setRequired(true);
-    options.addOption(input);
-    
-    return options;
+  boolean isRunning() {
+    return server.isRunning();
   }
 }

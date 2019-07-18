@@ -3,7 +3,6 @@ package com.opensimulationplatform.servlet;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
@@ -13,10 +12,10 @@ import java.util.Locale;
 import java.util.Map;
 
 class MockHttpServletRequest implements HttpServletRequest {
-  private File configuration;
-  private File ontology;
+  private String configuration;
+  private String ontology;
   
-  MockHttpServletRequest(File configuration, File ontology) {
+  MockHttpServletRequest(String configuration, String ontology) {
     this.configuration = configuration;
     this.ontology = ontology;
   }
@@ -78,7 +77,7 @@ class MockHttpServletRequest implements HttpServletRequest {
   
   @Override
   public String getQueryString() {
-    return "configuration=" + configuration.getAbsolutePath() + "&ontology=" + ontology.getAbsolutePath();
+    return "configuration=" + configuration + "&ontology=" + ontology;
   }
   
   @Override
@@ -224,7 +223,13 @@ class MockHttpServletRequest implements HttpServletRequest {
   
   @Override
   public String getParameter(String s) {
-    return null;
+    if (s.equalsIgnoreCase("ontology")) {
+      return ontology;
+    } else if (s.equalsIgnoreCase("configuration")) {
+      return configuration;
+    } else {
+      return null;
+    }
   }
   
   @Override

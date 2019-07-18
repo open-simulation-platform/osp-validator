@@ -4,6 +4,7 @@ import com.opensimulationplatform.validator.ExplanationInterpreter;
 import com.opensimulationplatform.validator.MsmiValidator;
 import com.opensimulationplatform.util.terminator.ExitCode;
 import com.opensimulationplatform.util.terminator.Terminator;
+import com.opensimulationplatform.validator.MsmiValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
