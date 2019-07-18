@@ -5,14 +5,10 @@ import com.clarkparsia.owlapi.explanation.HSTExplanationGenerator;
 import org.semanticweb.HermiT.Configuration;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.model.*;
-import org.semanticweb.owlapi.reasoner.Node;
-import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class HermitReasonerWrapper {
@@ -32,22 +28,19 @@ public class HermitReasonerWrapper {
   public boolean isConsistent() {
     return reasoner.isConsistent();
   }
-
-  public Set<OWLNamedIndividual> getInstances(final OWLClassExpression classExpression)
-  {
+  
+  public Set<OWLNamedIndividual> getInstances(OWLClassExpression classExpression) {
     return reasoner.getInstances(classExpression, true).getFlattened();
   }
-
-  public Set<OWLNamedIndividual> getObjectPropertyValues(final OWLNamedIndividual ind, final OWLObjectPropertyExpression pe)
-  {
-    return reasoner.getObjectPropertyValues(ind, pe).getFlattened();
+  
+  public Set<OWLNamedIndividual> getObjectPropertyValues(OWLNamedIndividual individual, OWLObjectPropertyExpression objectProperty) {
+    return reasoner.getObjectPropertyValues(individual, objectProperty).getFlattened();
   }
-
-  public Set<OWLClass> getDisjointClasses(final OWLClassExpression classExpression)
-  {
+  
+  public Set<OWLClass> getDisjointClasses(OWLClassExpression classExpression) {
     return reasoner.getDisjointClasses(classExpression).getFlattened();
   }
-
+  
   public Set<Set<OWLAxiom>> getExplanations() {
     LOG.debug("Computing explanations...");
     Reasoner.ReasonerFactory factory = new Reasoner.ReasonerFactory() {

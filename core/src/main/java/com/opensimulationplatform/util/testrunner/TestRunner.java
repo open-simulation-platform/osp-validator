@@ -20,10 +20,10 @@ class TestRunner {
   private static final Logger LOG = LoggerFactory.getLogger(TestRunner.class);
   
   public static void main(String[] args) {
-    Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
+    Configurator.setLevel(System.getProperty("log4j.logger"), Level.DEBUG);
     
     File ospOwlFile = new File("../core/src/test/resources/validator/osp.owl");
-    File cseConfigFile = new File("../core/src/test/resources/validator/cse-config-invalid.json");
+    File cseConfigFile = new File("../core/src/test/resources/validator/cse-config-invalid-B.json");
 
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
     File configOwlFile = new File("./configuration.owl");
@@ -41,10 +41,10 @@ class TestRunner {
     if (result.isSuccess()) {
       Terminator.exit(new ExitCode(0, "Great success!"));
     } else {
-      Set<Set<OWLAxiom>> explanation = result.getExplanations();
+      Set<Set<OWLAxiom>> explanations = result.getExplanations();
       LOG.error("Computing explanations for the inconsistency...");
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      explanation.forEach(axioms -> {
+      explanations.forEach(axioms -> {
         LOG.error("------------------");
         LOG.error("Axioms causing the inconsistency: ");
         axioms.forEach(axiom -> LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations())));
