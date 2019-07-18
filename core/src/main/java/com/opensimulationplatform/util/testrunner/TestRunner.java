@@ -1,9 +1,8 @@
 package com.opensimulationplatform.util.testrunner;
 
-import com.opensimulationplatform.validator.ExplanationInterpreter;
-import com.opensimulationplatform.validator.MsmiValidator;
 import com.opensimulationplatform.util.terminator.ExitCode;
 import com.opensimulationplatform.util.terminator.Terminator;
+import com.opensimulationplatform.validator.ExplanationInterpreter;
 import com.opensimulationplatform.validator.MsmiValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
@@ -54,7 +53,7 @@ class TestRunner {
         try {
           ExplanationInterpreter.interpret(result, axioms);
         } catch (OWLOntologyCreationException e) {
-          String message = "Error explaning the inconsistency";
+          String message = "Error explaining the inconsistency";
           LOG.error(message, e);
           throw new RuntimeException(e);
         }
