@@ -17,7 +17,7 @@ public class ConfigurationConverterTest {
   @Test
   public void canConvert() {
     Configuration config = ConfigurationFactory.create(ConfigurationJsonFileParser.parse(new File("./src/test/resources/validator/cse-config-valid.json")));
-    OwlConfiguration owlConfiguration = ConfigurationConverter.convert(config, new File("./src/test/resources/validator/osp.owl"));
+    OwlConfiguration owlConfiguration = ConfigurationConverter.convert(config, new File("./src/main/resources/osp.owl"));
     
     owlConfiguration.getSimulators().forEach((individual, simulator) -> {
       Map<String, Simulator> simulators = config.getSimulators();

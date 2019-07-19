@@ -18,7 +18,7 @@ public class ValidationServerTest {
   
   private final String validConfiguration = "../core/src/test/resources/validator/cse-config-valid.json";
   private final String invalidConfiguration = "../core/src/test/resources/validator/cse-config-invalid.json";
-  private final String ontology = "../core/src/test/resources/validator/osp.owl";
+  private final String ontology = "../core/src/main/resources/osp.owl";
   private final int port = 8001;
   private final Gson gson = new GsonBuilder().create();
   private ValidationServer validationServer;
