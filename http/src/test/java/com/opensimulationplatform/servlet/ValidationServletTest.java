@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class ValidationServletTest {
   
   private final String validConfigurationPath = "../core/src/test/resources/validator/cse-config-valid.json";
-  private final String ontologyPath = "../core/src/test/resources/validator/osp.owl";
+  private final String ontologyPath = "../core/src/main/resources/osp.owl";
   
   @Test
   public void canCallDoGetWithQueriesOnUrlFormat() throws IOException {

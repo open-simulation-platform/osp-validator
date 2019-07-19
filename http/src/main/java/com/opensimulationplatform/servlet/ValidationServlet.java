@@ -17,9 +17,9 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static java.util.Objects.nonNull;
 
 public class ValidationServlet extends HttpServlet {
   
@@ -29,13 +29,7 @@ public class ValidationServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
     try {
-      Map<String, URI> queries = getQueries(httpRequest);
-      File ontology = new File(queries.get("ontology"));
-      File configuration = new File(queries.get("configuration"));
-      
-      MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
-      
-      createHttpResponse(httpResponse, result);
+      handleRequest(httpRequest, httpResponse);
     } catch (Exception e) {
       String message = "Error during doGet";
       LOG.error(message, e);
@@ -46,17 +40,33 @@ public class ValidationServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
     try {
-      File ontology = new File(getURI(httpRequest.getParameter("ontology")));
-      File configuration = new File(getURI(httpRequest.getParameter("configuration")));
-      
-      MsmiValidator.Result result = MsmiValidator.validate(ontology, configuration);
-      
-      createHttpResponse(httpResponse, result);
+      handleRequest(httpRequest, httpResponse);
     } catch (Exception e) {
       String message = "Error during doPost";
       LOG.error(message, e);
       writeResponse(httpResponse, gson.toJson(e.getMessage()));
     }
+  }
+  
+  private void handleRequest(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+    String requiredConfiguration = httpRequest.getParameter("configuration");
+    String optionalOntology = httpRequest.getParameter("ontology");
+    
+    MsmiValidator.Result result = validate(requiredConfiguration, optionalOntology);
+    
+    createHttpResponse(httpResponse, result);
+  }
+  
+  private MsmiValidator.Result validate(String requiredConfiguration, String optionalOntology) {
+    File configuration = new File(getURI(requiredConfiguration));
+    MsmiValidator.Result result;
+    if (nonNull(optionalOntology)) {
+      File ontology = new File(getURI(optionalOntology));
+      result = MsmiValidator.validate(ontology, configuration);
+    } else {
+      result = MsmiValidator.validate(configuration);
+    }
+    return result;
   }
   
   private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) {
@@ -92,25 +102,12 @@ public class ValidationServlet extends HttpServlet {
       
       List<String> explanations = new ArrayList<>();
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      result.getExplanations().forEach(axioms -> {
-        axioms.forEach(axiom -> explanations.add(renderer.render(axiom.getAxiomWithoutAnnotations())));
-      });
+      result.getExplanations().forEach(axioms -> axioms.forEach(axiom -> explanations.add(renderer.render(axiom.getAxiomWithoutAnnotations()))));
       
       response.setExplanations(explanations);
     }
     
     return response;
-  }
-  
-  private Map<String, URI> getQueries(HttpServletRequest request) {
-    Map<String, URI> queries = new HashMap<>();
-    for (String queryString : request.getQueryString().split("&")) {
-      String[] keyValue = queryString.split("=");
-      String key = keyValue[0];
-      String value = keyValue[1];
-      queries.put(key, getURI(value));
-    }
-    return queries;
   }
   
   private URI getURI(String value) {

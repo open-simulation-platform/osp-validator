@@ -22,32 +22,32 @@ public class CommandLineInterfaceTest {
   @Test
   public void canCheckInvalidConfiguration() {
     exit.expectSystemExitWithStatus(INVALID_CONFIGURATION.getExitCode());
-    CommandLineInterface.main(new String[]{"--osp-ontology", "../core/src/test/resources/validator/osp.owl", "--cse-config", "../core/src/test/resources/validator/cse-config-invalid.json"});
+    CommandLineInterface.main(new String[]{"--ontology", "../core/src/main/resources/osp.owl", "--config", "../core/src/test/resources/validator/cse-config-invalid.json"});
   }
   
   @Test
   public void canCheckValidConfiguration() {
     exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
-    CommandLineInterface.main(new String[]{"--osp-ontology", "../core/src/test/resources/validator/osp.owl", "--cse-config", "../core/src/test/resources/validator/cse-config-valid.json"});
+    CommandLineInterface.main(new String[]{"--ontology", "../core/src/main/resources/osp.owl", "--config", "../core/src/test/resources/validator/cse-config-valid.json"});
   }
   
   @Test
   public void exitIfConfigFileDoesNotExist() {
     exit.expectSystemExitWithStatus(INVALID_INPUT.getExitCode());
-    CommandLineInterface.main(new String[]{"--osp-ontology", "../core/src/test/resources/validator/osp.owl", "--cse-config", "./i-do-not-exist.json"});
+    CommandLineInterface.main(new String[]{"--ontology", "../core/src/main/resources/osp.owl", "--config", "./i-do-not-exist.json"});
   }
   
   @Test
   public void exitIfOspOwlFileDoesNotExist() {
     exit.expectSystemExitWithStatus(INVALID_INPUT.getExitCode());
-    CommandLineInterface.main(new String[]{"--osp-ontology", "./i-do-not-exist.owl", "--cse-config", "../core/src/test/resources/validator/cse-config-valid.json"});
+    CommandLineInterface.main(new String[]{"--ontology", "./i-do-not-exist.owl", "--config", "../core/src/test/resources/validator/cse-config-valid.json"});
   }
   
   @Test
   public void exitIfInvalidLogLevelIsSet() {
     System.setProperty("msmi.validator.log.level", "invalid-level");
     exit.expectSystemExitWithStatus(INVALID_LOG_LEVEL.getExitCode());
-    CommandLineInterface.main(new String[]{"--osp-ontology", "../core/src/test/resources/validator/osp.owl", "--cse-config", "../core/src/test/resources/validator/cse-config-valid.json"});
+    CommandLineInterface.main(new String[]{"--ontology", "../core/src/main/resources/osp.owl", "--config", "../core/src/test/resources/validator/cse-config-valid.json"});
   }
   
   @Test
@@ -55,6 +55,18 @@ public class CommandLineInterfaceTest {
     File saveDir = tempFolder.newFolder();
     exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
     exit.checkAssertionAfterwards(() -> assertTrue(new File(saveDir, "configuration.owl").exists()));
-    CommandLineInterface.main(new String[]{"--osp-ontology", "../core/src/test/resources/validator/osp.owl", "--cse-config", "../core/src/test/resources/validator/cse-config-valid.json", "--save", saveDir.getAbsolutePath()});
+    CommandLineInterface.main(new String[]{"--ontology", "../core/src/main/resources/osp.owl", "--config", "../core/src/test/resources/validator/cse-config-valid.json", "--save", saveDir.getAbsolutePath()});
+  }
+  
+  @Test
+  public void canValidateWithDefaultOwlFile() {
+    exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
+    CommandLineInterface.main(new String[]{"--config", "../core/src/test/resources/validator/cse-config-valid.json"});
+  }
+  
+  @Test
+  public void canValidateWithSpecifiedOwlFile() {
+    exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
+    CommandLineInterface.main(new String[]{"--ontology", "../core/src/main/resources/osp.owl", "--config", "../core/src/test/resources/validator/cse-config-valid.json"});
   }
 }

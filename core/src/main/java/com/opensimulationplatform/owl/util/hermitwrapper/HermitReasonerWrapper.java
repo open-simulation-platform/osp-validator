@@ -4,8 +4,7 @@ import com.clarkparsia.owlapi.explanation.BlackBoxExplanation;
 import com.clarkparsia.owlapi.explanation.HSTExplanationGenerator;
 import org.semanticweb.HermiT.Configuration;
 import org.semanticweb.HermiT.Reasoner;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +27,18 @@ public class HermitReasonerWrapper {
   
   public boolean isConsistent() {
     return reasoner.isConsistent();
+  }
+  
+  public Set<OWLNamedIndividual> getInstances(OWLClassExpression classExpression) {
+    return reasoner.getInstances(classExpression, true).getFlattened();
+  }
+  
+  public Set<OWLNamedIndividual> getObjectPropertyValues(OWLNamedIndividual individual, OWLObjectPropertyExpression objectProperty) {
+    return reasoner.getObjectPropertyValues(individual, objectProperty).getFlattened();
+  }
+  
+  public Set<OWLClass> getDisjointClasses(OWLClassExpression classExpression) {
+    return reasoner.getDisjointClasses(classExpression).getFlattened();
   }
   
   public Set<Set<OWLAxiom>> getExplanations() {

@@ -18,7 +18,7 @@ public class ValidationServerTest {
   
   private final String validConfiguration = "../core/src/test/resources/validator/cse-config-valid.json";
   private final String invalidConfiguration = "../core/src/test/resources/validator/cse-config-invalid.json";
-  private final String ontology = "../core/src/test/resources/validator/osp.owl";
+  private final String ontology = "../core/src/main/resources/osp.owl";
   private final int port = 8001;
   private final Gson gson = new GsonBuilder().create();
   private ValidationServer validationServer;
@@ -104,5 +104,38 @@ public class ValidationServerTest {
     assertEquals("false", response.getValid());
     assertFalse(response.getExplanations().isEmpty());
     assertEquals("generic DisjointWith velocity", response.getExplanations().get(0));
+  }
+  
+  @Test
+  public void canHandleMultiPartPostRequestWithDefaultOntology() throws Exception {
+    HttpClient client = new HttpClient();
+    client.start();
+  
+    MultiPartContentProvider multiPart = new MultiPartContentProvider();
+    multiPart.addFieldPart("configuration", new StringContentProvider(validConfiguration), null);
+    multiPart.close();
+  
+    Request request = client.POST("http://localhost:" + port + "/validate");
+    ContentResponse httpResponse = request.content(multiPart).send();
+    ValidationServletResponse response = gson.fromJson(httpResponse.getContentAsString(), ValidationServletResponse.class);
+  
+    assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
+    assertEquals("application/json", httpResponse.getMediaType());
+    assertEquals("true", response.getValid());
+    assertTrue(response.getExplanations().isEmpty());
+  }
+  
+  @Test
+  public void canHandleGetRequestWithDefaultOntology() throws Exception {
+    HttpClient client = new HttpClient();
+    client.start();
+  
+    ContentResponse httpResponse = client.GET("http://localhost:" + port + "/validate?configuration=" + validConfiguration);
+    ValidationServletResponse response = gson.fromJson(httpResponse.getContentAsString(), ValidationServletResponse.class);
+  
+    assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
+    assertEquals("application/json", httpResponse.getMediaType());
+    assertEquals("true", response.getValid());
+    assertTrue(response.getExplanations().isEmpty());
   }
 }

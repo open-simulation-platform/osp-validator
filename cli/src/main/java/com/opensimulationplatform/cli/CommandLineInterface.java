@@ -17,26 +17,29 @@ import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLOb
 import java.io.File;
 import java.util.Set;
 
+import static java.util.Objects.nonNull;
+
 class CommandLineInterface {
   
   private static final Logger LOG = LoggerFactory.getLogger(CommandLineInterface.class);
   
   public static void main(String[] args) {
-    if(!LogHelper.setLogLevel()){
+    if (!LogHelper.setLogLevel()) {
       Terminator.exit(ExitCodes.INVALID_LOG_LEVEL);
     }
     
     CommandLine cmd = parseCommandLineOptions(args);
-    
-    File ospOwlFile = new File(cmd.getOptionValue("osp-ontology"));
-    File cseConfigFile = new File(cmd.getOptionValue("cse-config"));
-    String saveOption = cmd.getOptionValue("save");
-    
-    validateInput(ospOwlFile, cseConfigFile);
-    
-    MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+    File cseConfigFile = getRequiredConfigurationFile(cmd);
+    File ospOwlFile = getOptionalOntologyFile(cmd);
+  
+    MsmiValidator.Result result = validate(cseConfigFile, ospOwlFile);
+  
     if (!result.isSuccess()) {
-      LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
+      if (nonNull(ospOwlFile)) {
+        LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
+      } else{
+        LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on default ontology failed!");
+      }
       
       Set<Set<OWLAxiom>> explanation = result.getExplanations();
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
@@ -50,42 +53,65 @@ class CommandLineInterface {
       Terminator.exit(ExitCodes.INVALID_CONFIGURATION);
     }
     
-    if (saveOption != null) {
-      saveConfigOwlFile(result, saveOption);
+    String saveOption = cmd.getOptionValue("save");
+    if (nonNull(saveOption)) {
+      saveConfigOwlFile(result, new File(saveOption));
     }
     
     Terminator.exit(ExitCodes.SUCCESS);
   }
   
-  private static void validateInput(File ospOwlFile, File cseConfigFile) {
-    if (!ospOwlFile.exists()) {
-      LOG.error("Input file " + ospOwlFile.getAbsolutePath() + " does not exist!");
-      Terminator.exit(ExitCodes.INVALID_INPUT);
+  private static MsmiValidator.Result validate(File cseConfigFile, File ospOwlFile) {
+    MsmiValidator.Result result;
+    if (nonNull(ospOwlFile)) {
+      result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+    } else{
+      result = MsmiValidator.validate(cseConfigFile);
     }
-    
-    if (!cseConfigFile.exists()) {
-      LOG.error("Input file " + cseConfigFile.getAbsolutePath() + " does not exist!");
-      Terminator.exit(ExitCodes.INVALID_INPUT);
+    return result;
+  }
+  
+  private static File getOptionalOntologyFile(CommandLine cmd) {
+    String ontologyValue = cmd.getOptionValue("ontology");
+    if (nonNull(ontologyValue)) {
+      File file = new File(ontologyValue);
+      LOG.trace("Using input defined ontology from: " + file.getAbsolutePath());
+      if (!file.exists()) {
+        LOG.error("Input file " + file.getAbsolutePath() + " does not exist!");
+        Terminator.exit(ExitCodes.INVALID_INPUT);
+      }
+      return file;
+    } else {
+      LOG.trace("Ontology input not specified, using default");
+      return null;
     }
   }
   
-  private static void saveConfigOwlFile(MsmiValidator.Result result, String saveOption) {
-    File saveDirectory = new File(saveOption);
+  private static File getRequiredConfigurationFile(CommandLine cmd) {
+    File file = new File(cmd.getOptionValue("config"));
+    if (!file.exists()) {
+      LOG.error("Input file " + file.getAbsolutePath() + " does not exist!");
+      Terminator.exit(ExitCodes.INVALID_INPUT);
+    }
+    return file;
+  }
+  
+  private static void saveConfigOwlFile(MsmiValidator.Result result, File saveDirectory) {
     if (!saveDirectory.exists()) {
-      LOG.debug("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
+      LOG.trace("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
       if (!saveDirectory.mkdirs()) {
         LOG.error("Error creating save directory: " + saveDirectory.getAbsolutePath());
         Terminator.exit(ExitCodes.FILE_SYSTEM);
       } else {
-        LOG.debug("Save directory: " + saveDirectory.getAbsolutePath() + " created successfully");
+        LOG.trace("Save directory: " + saveDirectory.getAbsolutePath() + " created successfully");
       }
     }
     File configOwlFile = new File(saveDirectory, "configuration.owl");
-    LOG.debug("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
+    LOG.trace("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
     try {
       OWLOntology ontology = result.getOwlConfiguration().getOntology();
       ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
-      LOG.debug("done!");
+      LOG.trace("done!");
     } catch (OWLOntologyStorageException e) {
       String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
       LOG.error(message, e);
@@ -113,17 +139,19 @@ class CommandLineInterface {
   private static Options addOptions() {
     Options options = new Options();
     
-    Option input = new Option("i1", "osp-ontology", true, "Path to osp.owl file");
+    Option input = new Option("c", "config", true, "Path to cse-config.json file");
+    
     input.setRequired(true);
     options.addOption(input);
     
-    input = new Option("i2", "cse-config", true, "Path to cse-config.json file");
-    input.setRequired(true);
+    input = new Option("o", "ontology", true, "Path to osp.owl file. Default is to use osp.owl inside .jar file");
+    input.setRequired(false);
     options.addOption(input);
     
     input = new Option("s", "save", true, "Path to directory where configuration.owl should be saved. If not specified, configuration ontology will not be saved to file");
     input.setRequired(false);
     options.addOption(input);
+    
     return options;
   }
   

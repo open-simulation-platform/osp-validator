@@ -4,6 +4,7 @@ import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser
 import com.opensimulationplatform.owl.converter.ConfigurationConverter;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
 import com.opensimulationplatform.owl.util.hermitwrapper.HermitReasonerWrapper;
+import com.opensimulationplatform.util.resource.ResourceUtil;
 import com.opensimulationplatform.validator.model.configuration.Configuration;
 import com.opensimulationplatform.validator.model.configuration.ConfigurationFactory;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -37,6 +38,11 @@ public class MsmiValidator {
       LOG.debug("Configuration is consistent!");
       return new Result(owlConfig);
     }
+  }
+  
+  public static Result validate(File cseConfigFile) {
+    File ospOwlFile = ResourceUtil.writeResourceToTempFile("osp.owl");
+    return validate(ospOwlFile, cseConfigFile);
   }
   
   public static class Result {

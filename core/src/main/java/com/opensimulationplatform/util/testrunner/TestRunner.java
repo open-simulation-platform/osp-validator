@@ -2,14 +2,12 @@ package com.opensimulationplatform.util.testrunner;
 
 import com.opensimulationplatform.util.terminator.ExitCode;
 import com.opensimulationplatform.util.terminator.Terminator;
+import com.opensimulationplatform.owl.util.explanationinterpreter.ExplanationInterpreter;
 import com.opensimulationplatform.validator.MsmiValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
@@ -22,9 +20,9 @@ class TestRunner {
   private static final Logger LOG = LoggerFactory.getLogger(TestRunner.class);
   
   public static void main(String[] args) {
-    Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
+    Configurator.setLevel(System.getProperty("log4j.logger"), Level.DEBUG);
     
-    File ospOwlFile = new File("./src/test/resources/validator/osp.owl");
+    File ospOwlFile = new File("./src/main/resources/osp.owl");
     File cseConfigFile = new File("./src/test/resources/validator/cse-config-valid.json");
     
     MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
@@ -43,13 +41,22 @@ class TestRunner {
     if (result.isSuccess()) {
       Terminator.exit(new ExitCode(0, "Great success!"));
     } else {
-      Set<Set<OWLAxiom>> explanation = result.getExplanations();
+      Set<Set<OWLAxiom>> explanations = result.getExplanations();
       LOG.error("Computing explanations for the inconsistency...");
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      explanation.forEach(axioms -> {
+      explanations.forEach(axioms -> {
         LOG.error("------------------");
         LOG.error("Axioms causing the inconsistency: ");
         axioms.forEach(axiom -> LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations())));
+        LOG.error("------------------");
+        LOG.error("Explanation: ");
+        try {
+          ExplanationInterpreter.interpret(result, axioms);
+        } catch (OWLOntologyCreationException e) {
+          String message = "Error explaining the inconsistency";
+          LOG.error(message, e);
+          throw new RuntimeException(e);
+        }
         LOG.error("------------------");
       });
       Terminator.exit(new ExitCode(1, "Validation failed!"));

@@ -14,7 +14,7 @@ class Generator {
   private static final String destinationPackage = "com.opensimulationplatform.osp.model";
   
   public static void main(String[] args) throws Exception {
-    File ontologyFile = new File("./src/test/resources/validator/osp.owl");
+    File ontologyFile = new File("./src/main/resources/osp.owl");
     
     OntologyContent content = OntologyParser.parse(ontologyFile);
   
