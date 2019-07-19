@@ -102,9 +102,7 @@ public class ValidationServlet extends HttpServlet {
       
       List<String> explanations = new ArrayList<>();
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      result.getExplanations().forEach(axioms -> {
-        axioms.forEach(axiom -> explanations.add(renderer.render(axiom.getAxiomWithoutAnnotations())));
-      });
+      result.getExplanations().forEach(axioms -> axioms.forEach(axiom -> explanations.add(renderer.render(axiom.getAxiomWithoutAnnotations()))));
       
       response.setExplanations(explanations);
     }
