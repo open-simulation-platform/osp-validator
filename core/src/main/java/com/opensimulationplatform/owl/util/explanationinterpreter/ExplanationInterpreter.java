@@ -18,7 +18,7 @@ public class ExplanationInterpreter {
   private static final Logger LOG = LoggerFactory.getLogger(ExplanationInterpreter.class);
   
   
-  private static void check_for_and_explain_issue_type_1(OWLOntology configuration, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
+  private static void checkForAndExplainIssueType1(OWLOntology configuration, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
     OWLObjectMaxCardinality maxOnePlugMateCardinality = OwlHelper.getObjectMaxCardinality(configuration, 1, HAS_PLUG_MATE, PLUG);
     OWLClass socketClass = OwlHelper.getClass(configuration, SOCKET);
     OWLAxiom testAxiom = OwlHelper.getSubClassOfAxiom(configuration, socketClass, maxOnePlugMateCardinality);
@@ -43,7 +43,7 @@ public class ExplanationInterpreter {
     }
   }
   
-  private static void check_for_and_explain_issue_type_2(OWLOntology configuration, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
+  private static void checkForAndExplainIssueType2(OWLOntology configuration, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
     List<OWLAxiom> testAxioms = new ArrayList<>();
     List<String> signalTypes = getSignalTypes();
     signalTypes.forEach(signalType -> testAxioms.add(getSignalConnectionRestrictionAxiom(configuration, signalType)));
@@ -111,7 +111,7 @@ public class ExplanationInterpreter {
   
   public static void interpret(MsmiValidator.Result result, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
     OWLOntology ontology = result.getOwlConfiguration().getOntology();
-    check_for_and_explain_issue_type_1(ontology, explanations);
-    check_for_and_explain_issue_type_2(ontology, explanations);
+    checkForAndExplainIssueType1(ontology, explanations);
+    checkForAndExplainIssueType2(ontology, explanations);
   }
 }
