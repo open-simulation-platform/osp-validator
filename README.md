@@ -19,7 +19,7 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd cli
-$ java -jar ./target/msmi-validator-cli-0.4.0-SNAPSHOT-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json
+$ java -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json
 ```
 
 ## clone -> build -> run (with debug output) -> generate configuration.owl
@@ -28,7 +28,7 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd cli
-$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-cli-0.4.0-SNAPSHOT-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json -s ./
+$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json -s ./
 ```
 
 # msmi-validator-http

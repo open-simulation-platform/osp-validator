@@ -50,7 +50,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.opensimulationplatform.servlet.ValidationServer</mainClass>
+              <mainClass>com.opensimulationplatform.servlet.ValidationServerMain</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
