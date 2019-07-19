@@ -105,4 +105,37 @@ public class ValidationServerTest {
     assertFalse(response.getExplanations().isEmpty());
     assertEquals("generic DisjointWith velocity", response.getExplanations().get(0));
   }
+  
+  @Test
+  public void canHandleMultiPartPostRequestWithDefaultOntology() throws Exception {
+    HttpClient client = new HttpClient();
+    client.start();
+  
+    MultiPartContentProvider multiPart = new MultiPartContentProvider();
+    multiPart.addFieldPart("configuration", new StringContentProvider(validConfiguration), null);
+    multiPart.close();
+  
+    Request request = client.POST("http://localhost:" + port + "/validate");
+    ContentResponse httpResponse = request.content(multiPart).send();
+    ValidationServletResponse response = gson.fromJson(httpResponse.getContentAsString(), ValidationServletResponse.class);
+  
+    assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
+    assertEquals("application/json", httpResponse.getMediaType());
+    assertEquals("true", response.getValid());
+    assertTrue(response.getExplanations().isEmpty());
+  }
+  
+  @Test
+  public void canHandleGetRequestWithDefaultOntology() throws Exception {
+    HttpClient client = new HttpClient();
+    client.start();
+  
+    ContentResponse httpResponse = client.GET("http://localhost:" + port + "/validate?configuration=" + validConfiguration);
+    ValidationServletResponse response = gson.fromJson(httpResponse.getContentAsString(), ValidationServletResponse.class);
+  
+    assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
+    assertEquals("application/json", httpResponse.getMediaType());
+    assertEquals("true", response.getValid());
+    assertTrue(response.getExplanations().isEmpty());
+  }
 }

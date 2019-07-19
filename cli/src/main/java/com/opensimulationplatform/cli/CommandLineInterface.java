@@ -29,13 +29,17 @@ class CommandLineInterface {
     }
     
     CommandLine cmd = parseCommandLineOptions(args);
-    
-    File cseConfigFile = getConfigurationFile(cmd);
-    File ospOwlFile = getOntologyFile(cmd);
-    
-    MsmiValidator.Result result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+    File cseConfigFile = getRequiredConfigurationFile(cmd);
+    File ospOwlFile = getOptionalOntologyFile(cmd);
+  
+    MsmiValidator.Result result = validate(cseConfigFile, ospOwlFile);
+  
     if (!result.isSuccess()) {
-      LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
+      if (nonNull(ospOwlFile)) {
+        LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
+      } else{
+        LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on default ontology failed!");
+      }
       
       Set<Set<OWLAxiom>> explanation = result.getExplanations();
       OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
@@ -57,7 +61,17 @@ class CommandLineInterface {
     Terminator.exit(ExitCodes.SUCCESS);
   }
   
-  private static File getOntologyFile(CommandLine cmd) {
+  private static MsmiValidator.Result validate(File cseConfigFile, File ospOwlFile) {
+    MsmiValidator.Result result;
+    if (nonNull(ospOwlFile)) {
+      result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+    } else{
+      result = MsmiValidator.validate(cseConfigFile);
+    }
+    return result;
+  }
+  
+  private static File getOptionalOntologyFile(CommandLine cmd) {
     String ontologyValue = cmd.getOptionValue("ontology");
     if (nonNull(ontologyValue)) {
       File file = new File(ontologyValue);
@@ -68,12 +82,12 @@ class CommandLineInterface {
       }
       return file;
     } else {
-      LOG.trace("Ontology input not specified, using default inside .jar");
-      return ResourceUtil.writeResourceToTempFile("osp.owl");
+      LOG.trace("Ontology input not specified, using default");
+      return null;
     }
   }
   
-  private static File getConfigurationFile(CommandLine cmd) {
+  private static File getRequiredConfigurationFile(CommandLine cmd) {
     File file = new File(cmd.getOptionValue("config"));
     if (!file.exists()) {
       LOG.error("Input file " + file.getAbsolutePath() + " does not exist!");

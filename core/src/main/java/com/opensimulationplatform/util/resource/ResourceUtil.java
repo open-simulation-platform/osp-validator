@@ -1,4 +1,4 @@
-package com.opensimulationplatform.cli;
+package com.opensimulationplatform.util.resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -23,4 +23,10 @@ public class MsmiValidatorTest {
     result = MsmiValidator.validate(new File("./src/main/resources/osp.owl"), new File("./src/test/resources/validator/cse-config-invalid-B.json"));
     assertFalse(result.isSuccess());
   }
+  
+  @Test
+  public void canUsedDefaultOwlFile() {
+    MsmiValidator.Result result = MsmiValidator.validate(new File("./src/test/resources/validator/cse-config-valid.json"));
+    assertTrue(result.isSuccess());
+  }
 }
