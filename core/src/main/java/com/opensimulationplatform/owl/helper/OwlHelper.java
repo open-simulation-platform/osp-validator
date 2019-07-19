@@ -27,7 +27,7 @@ public class OwlHelper {
   }
   
   public static void addObjectPropertyAssertionAxiom(OWLOntology ontology, OWLNamedIndividual subject, String propertyName, OWLNamedIndividual object) {
-    LOG.trace("Adding class assertion axiom... ");
+    LOG.trace("Adding object property assertion axiom... ");
     LOG.trace("Ontology:  " + ontology.getOntologyID().getOntologyIRI().toString());
     LOG.trace("Subject:   " + subject.toStringID());
     LOG.trace("Predicate: " + propertyName);
@@ -71,7 +71,7 @@ public class OwlHelper {
   }
   
   public static OWLClass getClass(OWLOntology ontology, String className) {
-    LOG.trace("Getting object property... ");
+    LOG.trace("Getting class... ");
     LOG.trace("Ontology:   " + ontology.getOntologyID().getOntologyIRI().toString());
     LOG.trace("Class: " + className);
     
