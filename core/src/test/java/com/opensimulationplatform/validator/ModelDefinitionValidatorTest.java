@@ -1,7 +1,14 @@
 package com.opensimulationplatform.validator;
 
+import org.junit.Test;
+
+import java.io.File;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class ModelDefinitionValidatorTest {
-/*  @Test
+  @Test
   public void validConfigurationIsProperlyValidated() {
     ModelDefinitionValidator.Result result = ModelDefinitionValidator.validate(new File("./src/main/resources/osp.owl"), new File("./src/test/resources/validator/model-definition-valid.json"));
     assertTrue(result.isSuccess());
@@ -17,5 +24,5 @@ public class ModelDefinitionValidatorTest {
   public void canUseDefaultOwlFile() {
     ModelDefinitionValidator.Result result = ModelDefinitionValidator.validate(new File("./src/test/resources/validator/model-definition-valid.json"));
     assertTrue(result.isSuccess());
-  }*/
+  }
 }
