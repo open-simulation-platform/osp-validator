@@ -4,7 +4,7 @@ import com.opensimulationplatform.json.model.modeldefinition.JsonBond;
 import com.opensimulationplatform.json.model.modeldefinition.JsonModelDefinition;
 import com.opensimulationplatform.json.model.modeldefinition.JsonPlug;
 import com.opensimulationplatform.json.model.modeldefinition.JsonSocket;
-import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParer;
+import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParser;
 import org.junit.Test;
 
 import java.io.File;
@@ -12,11 +12,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ModelDefinitionJsonFileParerTest {
+public class ModelDefinitionJsonFileParserTest {
   
   @Test
   public void canParse() {
-    JsonModelDefinition modelDefinition = ModelDefinitionJsonFileParer.parse(new File("./src/test/resources/parsing/model-definition.json"));
+    JsonModelDefinition modelDefinition = ModelDefinitionJsonFileParser.parse(new File("./src/test/resources/parsing/model-definition.json"));
     
     assertEquals("ModelDefinitionName", modelDefinition.getName());
     

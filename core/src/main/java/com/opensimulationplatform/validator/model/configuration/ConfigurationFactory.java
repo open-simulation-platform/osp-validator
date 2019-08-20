@@ -5,7 +5,7 @@ import com.opensimulationplatform.json.model.modeldefinition.JsonBond;
 import com.opensimulationplatform.json.model.modeldefinition.JsonModelDefinition;
 import com.opensimulationplatform.json.model.modeldefinition.JsonPlug;
 import com.opensimulationplatform.json.model.modeldefinition.JsonSocket;
-import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParer;
+import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParser;
 import com.opensimulationplatform.validator.model.modeldefinition.*;
 
 import java.io.File;
@@ -75,7 +75,7 @@ public class ConfigurationFactory {
   private static Map<String, Simulator> createSimulators(JsonConfiguration jsonConfiguration) {
     Map<String, Simulator> simulators = new HashMap<>();
     for (JsonSimulator jsonSimulator : jsonConfiguration.getSimulators()) {
-      JsonModelDefinition jsonModelDefinition = ModelDefinitionJsonFileParer.parse(new File(jsonSimulator.getModelDefinition()));
+      JsonModelDefinition jsonModelDefinition = ModelDefinitionJsonFileParser.parse(new File(jsonSimulator.getModelDefinition()));
       Map<String, Plug> plugs = createPlugs(jsonModelDefinition);
       Map<String, Socket> sockets = createSockets(jsonModelDefinition);
       List<Bond> bonds = createBonds(jsonModelDefinition, plugs, sockets);

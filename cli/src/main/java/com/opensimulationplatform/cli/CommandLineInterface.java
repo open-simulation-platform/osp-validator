@@ -3,7 +3,7 @@ package com.opensimulationplatform.cli;
 import com.opensimulationplatform.util.loghelper.LogHelper;
 import com.opensimulationplatform.util.terminator.ExitCode;
 import com.opensimulationplatform.util.terminator.Terminator;
-import com.opensimulationplatform.validator.MsmiValidator;
+import com.opensimulationplatform.validator.ConfigurationValidator;
 import org.apache.commons.cli.*;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;
@@ -32,7 +32,7 @@ class CommandLineInterface {
     File cseConfigFile = getRequiredConfigurationFile(cmd);
     File ospOwlFile = getOptionalOntologyFile(cmd);
   
-    MsmiValidator.Result result = validate(cseConfigFile, ospOwlFile);
+    ConfigurationValidator.Result result = validate(cseConfigFile, ospOwlFile);
   
     if (!result.isSuccess()) {
       if (nonNull(ospOwlFile)) {
@@ -61,12 +61,12 @@ class CommandLineInterface {
     Terminator.exit(ExitCodes.SUCCESS);
   }
   
-  private static MsmiValidator.Result validate(File cseConfigFile, File ospOwlFile) {
-    MsmiValidator.Result result;
+  private static ConfigurationValidator.Result validate(File cseConfigFile, File ospOwlFile) {
+    ConfigurationValidator.Result result;
     if (nonNull(ospOwlFile)) {
-      result = MsmiValidator.validate(ospOwlFile, cseConfigFile);
+      result = ConfigurationValidator.validate(ospOwlFile, cseConfigFile);
     } else{
-      result = MsmiValidator.validate(cseConfigFile);
+      result = ConfigurationValidator.validate(cseConfigFile);
     }
     return result;
   }
@@ -96,7 +96,7 @@ class CommandLineInterface {
     return file;
   }
   
-  private static void saveConfigOwlFile(MsmiValidator.Result result, File saveDirectory) {
+  private static void saveConfigOwlFile(ConfigurationValidator.Result result, File saveDirectory) {
     if (!saveDirectory.exists()) {
       LOG.trace("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
       if (!saveDirectory.mkdirs()) {

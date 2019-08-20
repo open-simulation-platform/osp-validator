@@ -1,7 +1,6 @@
-package com.opensimulationplatform.datamodel.configuration;
+package com.opensimulationplatform.validator.model.configuration;
 
 import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
-import com.opensimulationplatform.validator.model.configuration.*;
 import com.opensimulationplatform.validator.model.modeldefinition.Plug;
 import com.opensimulationplatform.validator.model.modeldefinition.Socket;
 import com.opensimulationplatform.validator.model.modeldefinition.Variable;

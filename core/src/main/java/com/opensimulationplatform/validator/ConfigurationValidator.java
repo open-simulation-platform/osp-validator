@@ -15,9 +15,9 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MsmiValidator {
+public class ConfigurationValidator {
   
-  private static final Logger LOG = LoggerFactory.getLogger(MsmiValidator.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ConfigurationValidator.class);
   
   public static Result validate(File ospOwlFile, File cseConfigFile) {
     LOG.debug("Checking:");

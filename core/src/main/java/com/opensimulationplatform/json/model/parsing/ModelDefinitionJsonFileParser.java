@@ -11,9 +11,9 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class ModelDefinitionJsonFileParer {
+public class ModelDefinitionJsonFileParser {
   
-  private final static Logger LOG = LoggerFactory.getLogger(ModelDefinitionJsonFileParer.class);
+  private final static Logger LOG = LoggerFactory.getLogger(ModelDefinitionJsonFileParser.class);
   
   public static JsonModelDefinition parse(File file) {
     try {

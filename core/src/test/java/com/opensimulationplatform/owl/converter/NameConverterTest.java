@@ -1,4 +1,4 @@
-package com.opensimulationplatform.owlconverter;
+package com.opensimulationplatform.owl.converter;
 
 import com.opensimulationplatform.validator.model.modeldefinition.*;
 import org.junit.Test;

@@ -2,7 +2,7 @@ package com.opensimulationplatform.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opensimulationplatform.validator.MsmiValidator;
+import com.opensimulationplatform.validator.ConfigurationValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.slf4j.Logger;
@@ -52,24 +52,24 @@ public class ValidationServlet extends HttpServlet {
     String requiredConfiguration = httpRequest.getParameter("configuration");
     String optionalOntology = httpRequest.getParameter("ontology");
     
-    MsmiValidator.Result result = validate(requiredConfiguration, optionalOntology);
+    ConfigurationValidator.Result result = validate(requiredConfiguration, optionalOntology);
     
     createHttpResponse(httpResponse, result);
   }
   
-  private MsmiValidator.Result validate(String requiredConfiguration, String optionalOntology) {
+  private ConfigurationValidator.Result validate(String requiredConfiguration, String optionalOntology) {
     File configuration = new File(getURI(requiredConfiguration));
-    MsmiValidator.Result result;
+    ConfigurationValidator.Result result;
     if (nonNull(optionalOntology)) {
       File ontology = new File(getURI(optionalOntology));
-      result = MsmiValidator.validate(ontology, configuration);
+      result = ConfigurationValidator.validate(ontology, configuration);
     } else {
-      result = MsmiValidator.validate(configuration);
+      result = ConfigurationValidator.validate(configuration);
     }
     return result;
   }
   
-  private void createHttpResponse(HttpServletResponse httpResponse, MsmiValidator.Result result) {
+  private void createHttpResponse(HttpServletResponse httpResponse, ConfigurationValidator.Result result) {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
     httpResponse.addHeader("Access-Control-Allow-Origin", "*");
@@ -92,7 +92,7 @@ public class ValidationServlet extends HttpServlet {
     }
   }
   
-  private ValidationServletResponse getServletResponse(MsmiValidator.Result result) {
+  private ValidationServletResponse getServletResponse(ConfigurationValidator.Result result) {
     ValidationServletResponse response = new ValidationServletResponse();
     
     if (result.isSuccess()) {
