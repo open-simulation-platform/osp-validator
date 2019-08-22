@@ -1,9 +1,9 @@
-package com.opensimulationplatform.validator.model.modeldefinition;
+package com.opensimulationplatform.validator.model.ospmodeldescription;
 
 import com.opensimulationplatform.json.model.configuration.JsonConfiguration;
 import com.opensimulationplatform.json.model.configuration.JsonSimulator;
-import com.opensimulationplatform.json.model.modeldefinition.JsonModelDefinition;
-import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParser;
+import com.opensimulationplatform.json.model.modeldefinition.JsonOspModelDescription;
+import com.opensimulationplatform.json.model.parsing.OspModelDescriptionJsonFileParser;
 
 import java.io.File;
 import java.util.HashMap;
@@ -14,10 +14,10 @@ public class SimulatorFactory {
   public static Map<String, Simulator> create(JsonConfiguration jsonConfiguration) {
     Map<String, Simulator> simulators = new HashMap<>();
     for (JsonSimulator jsonSimulator : jsonConfiguration.getSimulators()) {
-      JsonModelDefinition jsonModelDefinition = ModelDefinitionJsonFileParser.parse(new File(jsonSimulator.getModelDefinition()));
-      Map<String, Plug> plugs = ModelDefinitionFactory.createPlugs(jsonModelDefinition);
-      Map<String, Socket> sockets = ModelDefinitionFactory.createSockets(jsonModelDefinition);
-      List<Bond> bonds = ModelDefinitionFactory.createBonds(jsonModelDefinition, plugs, sockets);
+      JsonOspModelDescription jsonOspModelDescription = OspModelDescriptionJsonFileParser.parse(new File(jsonSimulator.getModelDefinition()));
+      Map<String, Plug> plugs = OspModelDescriptionFactory.createPlugs(jsonOspModelDescription);
+      Map<String, Socket> sockets = OspModelDescriptionFactory.createSockets(jsonOspModelDescription);
+      List<Bond> bonds = OspModelDescriptionFactory.createBonds(jsonOspModelDescription, plugs, sockets);
       
       Simulator s = new Simulator(jsonSimulator.getName(), jsonSimulator.getSource(), jsonSimulator.getModelDefinition());
       

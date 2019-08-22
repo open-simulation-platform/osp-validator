@@ -1,8 +1,8 @@
-package com.opensimulationplatform.validator.model.modeldefinition;
+package com.opensimulationplatform.validator.model.ospmodeldescription;
 
 import java.util.List;
 
-public class ModelDefinition {
+public class OspModelDescription {
   private String name;
   private List<Plug> plugs;
   private List<Socket> sockets;

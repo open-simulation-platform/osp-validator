@@ -1,7 +1,7 @@
 package com.opensimulationplatform.validator.model.configuration;
 
-import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
-import com.opensimulationplatform.validator.model.modeldefinition.Variable;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Simulator;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Variable;
 
 public class VariableConnection {
   private final Simulator sourceSimulator;

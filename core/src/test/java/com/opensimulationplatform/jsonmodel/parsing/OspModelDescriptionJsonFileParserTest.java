@@ -1,10 +1,10 @@
 package com.opensimulationplatform.jsonmodel.parsing;
 
 import com.opensimulationplatform.json.model.modeldefinition.JsonBond;
-import com.opensimulationplatform.json.model.modeldefinition.JsonModelDefinition;
+import com.opensimulationplatform.json.model.modeldefinition.JsonOspModelDescription;
 import com.opensimulationplatform.json.model.modeldefinition.JsonPlug;
 import com.opensimulationplatform.json.model.modeldefinition.JsonSocket;
-import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParser;
+import com.opensimulationplatform.json.model.parsing.OspModelDescriptionJsonFileParser;
 import org.junit.Test;
 
 import java.io.File;
@@ -12,11 +12,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ModelDefinitionJsonFileParserTest {
+public class OspModelDescriptionJsonFileParserTest {
   
   @Test
   public void canParse() {
-    JsonModelDefinition modelDefinition = ModelDefinitionJsonFileParser.parse(new File("./src/test/resources/parsing/model-definition.json"));
+    JsonOspModelDescription modelDefinition = OspModelDescriptionJsonFileParser.parse(new File("./src/test/resources/parsing/model-definition.json"));
     
     assertEquals("ModelDefinitionName", modelDefinition.getName());
     

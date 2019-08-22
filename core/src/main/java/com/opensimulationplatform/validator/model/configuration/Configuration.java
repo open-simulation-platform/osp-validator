@@ -1,6 +1,6 @@
 package com.opensimulationplatform.validator.model.configuration;
 
-import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Simulator;
 
 import java.util.List;
 import java.util.Map;

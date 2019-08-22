@@ -4,7 +4,7 @@ import com.opensimulationplatform.json.model.configuration.JsonBondConnection;
 import com.opensimulationplatform.json.model.configuration.JsonConfiguration;
 import com.opensimulationplatform.json.model.configuration.JsonPlugSocketConnection;
 import com.opensimulationplatform.json.model.configuration.JsonVariableConnection;
-import com.opensimulationplatform.validator.model.modeldefinition.*;
+import com.opensimulationplatform.validator.model.ospmodeldescription.*;
 
 import java.util.ArrayList;
 import java.util.List;

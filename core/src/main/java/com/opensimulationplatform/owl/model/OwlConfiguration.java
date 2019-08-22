@@ -1,7 +1,7 @@
 package com.opensimulationplatform.owl.model;
 
 import com.opensimulationplatform.validator.model.configuration.Configuration;
-import com.opensimulationplatform.validator.model.modeldefinition.*;
+import com.opensimulationplatform.validator.model.ospmodeldescription.*;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 

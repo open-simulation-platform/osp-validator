@@ -1,6 +1,6 @@
 package com.opensimulationplatform.owl.converter;
 
-import com.opensimulationplatform.validator.model.modeldefinition.*;
+import com.opensimulationplatform.validator.model.ospmodeldescription.*;
 
 public class NameConverter {
   public static String getIndividualName(Bond bond) {

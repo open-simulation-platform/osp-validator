@@ -1,7 +1,7 @@
 package com.opensimulationplatform.validator.model.configuration;
 
-import com.opensimulationplatform.validator.model.modeldefinition.Bond;
-import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Bond;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Simulator;
 
 public class BondConnection {
   private final Simulator simulatorA;

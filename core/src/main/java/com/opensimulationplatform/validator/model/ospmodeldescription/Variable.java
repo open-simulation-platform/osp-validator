@@ -1,4 +1,4 @@
-package com.opensimulationplatform.validator.model.modeldefinition;
+package com.opensimulationplatform.validator.model.ospmodeldescription;
 
 import java.util.HashMap;
 import java.util.Map;

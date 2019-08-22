@@ -1,5 +1,9 @@
 package com.opensimulationplatform.validator.model.modeldefinition;
 
+import com.opensimulationplatform.validator.model.ospmodeldescription.Plug;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Simulator;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Socket;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Variable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

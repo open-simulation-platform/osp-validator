@@ -1,9 +1,9 @@
 package com.opensimulationplatform.validator.model.configuration;
 
 import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser;
-import com.opensimulationplatform.validator.model.modeldefinition.Plug;
-import com.opensimulationplatform.validator.model.modeldefinition.Socket;
-import com.opensimulationplatform.validator.model.modeldefinition.Variable;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Plug;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Socket;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Variable;
 import org.junit.Test;
 
 import java.io.File;

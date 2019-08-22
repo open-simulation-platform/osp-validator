@@ -1,6 +1,7 @@
 package com.opensimulationplatform.validator.model.modeldefinition;
 
-import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParser;
+import com.opensimulationplatform.json.model.parsing.OspModelDescriptionJsonFileParser;
+import com.opensimulationplatform.validator.model.ospmodeldescription.*;
 import org.junit.Test;
 
 import java.io.File;
@@ -10,14 +11,14 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ModelDefinitionFactoryTest {
+public class OspModelDescriptionFactoryTest {
   @Test
   public void canCreate() {
-    ModelDefinition modelDefinition = ModelDefinitionFactory.create(ModelDefinitionJsonFileParser.parse(new File("./src/test/resources/parsing/model-definition.json")));
+    OspModelDescription ospModelDescription = OspModelDescriptionFactory.create(OspModelDescriptionJsonFileParser.parse(new File("./src/test/resources/parsing/model-definition.json")));
     
-    assertEquals("ModelDefinitionName", modelDefinition.getName());
+    assertEquals("ModelDefinitionName", ospModelDescription.getName());
     
-    List<Plug> plugs = modelDefinition.getPlugs();
+    List<Plug> plugs = ospModelDescription.getPlugs();
     assertEquals(5, plugs.size());
     for (int i = 0; i < plugs.size(); i++) {
       Plug plug = plugs.get(i);
@@ -31,7 +32,7 @@ public class ModelDefinitionFactoryTest {
       }
     }
     
-    List<Socket> sockets = modelDefinition.getSockets();
+    List<Socket> sockets = ospModelDescription.getSockets();
     assertEquals(5, sockets.size());
     for (int i = 0; i < sockets.size(); i++) {
       Socket socket = sockets.get(i);
@@ -45,7 +46,7 @@ public class ModelDefinitionFactoryTest {
       }
     }
     
-    List<Bond> bonds = modelDefinition.getBonds();
+    List<Bond> bonds = ospModelDescription.getBonds();
     assertEquals(2, bonds.size());
     for (int i = 0; i < bonds.size(); i++) {
       Bond bond = bonds.get(i);

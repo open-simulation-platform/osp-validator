@@ -2,7 +2,7 @@ package com.opensimulationplatform.json.model.modeldefinition;
 
 import java.util.List;
 
-public class JsonModelDefinition {
+public class JsonOspModelDescription {
   private String name;
   private List<JsonBond> bonds;
   private List<JsonPlug> plugs;

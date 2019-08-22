@@ -2,7 +2,7 @@ package com.opensimulationplatform.owl.converter;
 
 import com.opensimulationplatform.owl.helper.OwlHelper;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
-import com.opensimulationplatform.validator.model.modeldefinition.Simulator;
+import com.opensimulationplatform.validator.model.ospmodeldescription.Simulator;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 
