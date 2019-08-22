@@ -1,12 +1,13 @@
 package com.opensimulationplatform.validator.model.ospmodeldescription;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OspModelDescription {
   private String name;
-  private List<Plug> plugs;
-  private List<Socket> sockets;
-  private List<Bond> bonds;
+  private List<Plug> plugs = new ArrayList<>();
+  private List<Socket> sockets = new ArrayList<>();
+  private List<Bond> bonds = new ArrayList<>();
   
   public String getName() {
     return name;
