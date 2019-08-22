@@ -1,7 +1,7 @@
 package com.opensimulationplatform.validator;
 
 import com.opensimulationplatform.json.model.parsing.ModelDefinitionJsonFileParser;
-import com.opensimulationplatform.util.resource.ResourceUtil;
+import com.opensimulationplatform.util.resource.Resources;
 import com.opensimulationplatform.validator.model.modeldefinition.ModelDefinition;
 import com.opensimulationplatform.validator.model.modeldefinition.ModelDefinitionFactory;
 import org.slf4j.Logger;
@@ -15,11 +15,12 @@ public class ModelDefinitionValidator {
   
   public static ModelDefinitionValidator.Result validate(File ospOwlFile, File modelDefinitionFile) {
     ModelDefinition modelDefinition = ModelDefinitionFactory.create(ModelDefinitionJsonFileParser.parse(modelDefinitionFile));
+    
     return new Result();
   }
   
   public static Result validate(File modelDefinitionFile) {
-    File ospOwlFile = ResourceUtil.writeResourceToTempFile("osp.owl");
+    File ospOwlFile = Resources.OSP_OWL.toFile();
     return validate(ospOwlFile, modelDefinitionFile);
   }
   

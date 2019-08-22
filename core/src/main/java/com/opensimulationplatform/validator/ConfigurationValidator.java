@@ -4,7 +4,7 @@ import com.opensimulationplatform.json.model.parsing.ConfigurationJsonFileParser
 import com.opensimulationplatform.owl.converter.ConfigurationConverter;
 import com.opensimulationplatform.owl.model.OwlConfiguration;
 import com.opensimulationplatform.owl.util.hermitwrapper.HermitReasonerWrapper;
-import com.opensimulationplatform.util.resource.ResourceUtil;
+import com.opensimulationplatform.util.resource.Resources;
 import com.opensimulationplatform.validator.model.configuration.Configuration;
 import com.opensimulationplatform.validator.model.configuration.ConfigurationFactory;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -41,7 +41,7 @@ public class ConfigurationValidator {
   }
   
   public static Result validate(File cseConfigFile) {
-    File ospOwlFile = ResourceUtil.writeResourceToTempFile("osp.owl");
+    File ospOwlFile = Resources.OSP_OWL.toFile();
     return validate(ospOwlFile, cseConfigFile);
   }
   
@@ -50,7 +50,7 @@ public class ConfigurationValidator {
     private final OwlConfiguration owlConfiguration;
     private final Set<Set<OWLAxiom>> explanations;
     private final boolean success;
-  
+    
     private Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanations, boolean success) {
       this.owlConfiguration = owlConfiguration;
       this.explanations = explanations;
