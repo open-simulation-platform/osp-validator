@@ -4,6 +4,7 @@ import com.opensimulationplatform.json.model.modeldefinition.JsonBond;
 import com.opensimulationplatform.json.model.modeldefinition.JsonOspModelDescription;
 import com.opensimulationplatform.json.model.modeldefinition.JsonPlug;
 import com.opensimulationplatform.json.model.modeldefinition.JsonSocket;
+import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -11,6 +12,12 @@ import java.util.List;
 import java.util.Map;
 
 public class OspModelDescriptionFactory {
+  public static OspModelDescription create(JsonOspModelDescription jsonOspModelDescription, FmiModelDescription fmiModelDescription) {
+    OspModelDescription ospModelDescription = create(jsonOspModelDescription);
+    ospModelDescription.setFmiModelDescription(fmiModelDescription);
+    return ospModelDescription;
+  }
+  
   public static OspModelDescription create(JsonOspModelDescription jsonOspModelDescription) {
     OspModelDescription ospModelDescription = new OspModelDescription();
     

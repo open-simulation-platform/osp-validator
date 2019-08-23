@@ -10,7 +10,6 @@ public class Terminator {
   public static void exit(ExitCode exitCode) {
     LOG.debug("Exiting...");
     LOG.debug(exitCode.toString());
-    
     System.exit(exitCode.getExitCode());
   }
 }

@@ -6,8 +6,6 @@ import com.opensimulationplatform.util.resource.Resources;
 import com.opensimulationplatform.validator.model.ospmodeldescription.*;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,6 @@ import static java.util.Objects.nonNull;
 
 
 public class OspModelDescriptionValidator {
-  private static final Logger LOG = LoggerFactory.getLogger(OspModelDescriptionValidator.class);
   private static final List<Function<OspModelDescription, Boolean>> validations = new ArrayList<>();
   private static final OntologyContent ontologyContent;
   
@@ -53,7 +50,6 @@ public class OspModelDescriptionValidator {
     } else {
       return true;
     }
-  
   }
   
   private static boolean allVariablesInAllPlugsExistInFmiModelDescription(OspModelDescription modelDescription) {

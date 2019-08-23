@@ -54,4 +54,8 @@ public class OspModelDescription {
   public FmiModelDescription getFmiModelDescription() {
     return fmiModelDescription;
   }
+  
+  void setFmiModelDescription(FmiModelDescription fmiModelDescription) {
+    this.fmiModelDescription = fmiModelDescription;
+  }
 }

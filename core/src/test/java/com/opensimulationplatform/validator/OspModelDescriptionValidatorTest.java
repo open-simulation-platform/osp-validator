@@ -1,10 +1,9 @@
 package com.opensimulationplatform.validator;
 
+import com.opensimulationplatform.TestSetup;
 import com.opensimulationplatform.osp.model.OspOntologyClasses;
 import com.opensimulationplatform.validator.model.ospmodeldescription.*;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
-import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
-import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,24 +14,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class OspModelDescriptionValidatorTest {
-/*  @Test
-  public void validConfigurationIsProperlyValidated() {
-    ModelDefinitionValidator.Result result = ModelDefinitionValidator.validate(new File("./src/main/resources/osp.owl"), new File("./src/test/resources/validator/model-definition-valid.json"));
-    assertTrue(result.isSuccess());
-  }
-  
-  @Test
-  public void invalidConfigurationsAreProperlyValidated() {
-    ModelDefinitionValidator.Result result = ModelDefinitionValidator.validate(new File("./src/main/resources/osp.owl"), new File("./src/test/resources/validator/model-definition-invalid.json"));
-    assertFalse(result.isSuccess());
-  }
-  
-  @Test
-  public void canUseDefaultOwlFile() {
-    ModelDefinitionValidator.Result result = ModelDefinitionValidator.validate(new File("./src/test/resources/validator/model-definition-valid.json"));
-    assertTrue(result.isSuccess());
-  }*/
-  
   @Test
   public void emptyModelDescriptionIsValid() {
     OspModelDescription modelDescription = new OspModelDescription();
@@ -179,7 +160,7 @@ public class OspModelDescriptionValidatorTest {
   
   @Test
   public void allVariablesInPlugExistInFmiModelDescriptionIsValid() {
-    FmiModelDescription fmiModelDescription = getFmiModelDescription();
+    FmiModelDescription fmiModelDescription = TestSetup.getFmiModelDescription();
     OspModelDescription ospModelDescription = new OspModelDescription(fmiModelDescription);
     Plug p = new Plug(OspOntologyClasses.FORCE, "p1");
     p.addVariable(new Variable("r1"));
@@ -193,7 +174,7 @@ public class OspModelDescriptionValidatorTest {
   
   @Test
   public void allVariablesInPlugDoesNotExistInFmiModelDescriptionIsInvalid() {
-    FmiModelDescription fmiModelDescription = getFmiModelDescription();
+    FmiModelDescription fmiModelDescription = TestSetup.getFmiModelDescription();
     OspModelDescription ospModelDescription = new OspModelDescription(fmiModelDescription);
     Plug p = new Plug(OspOntologyClasses.FORCE, "p1");
     p.addVariable(new Variable("r1"));
@@ -207,7 +188,7 @@ public class OspModelDescriptionValidatorTest {
   
   @Test
   public void allVariablesInSocketExistInFmiModelDescriptionIsValid() {
-    FmiModelDescription fmiModelDescription = getFmiModelDescription();
+    FmiModelDescription fmiModelDescription = TestSetup.getFmiModelDescription();
     OspModelDescription ospModelDescription = new OspModelDescription(fmiModelDescription);
     Socket s = new Socket(OspOntologyClasses.FORCE, "s1");
     s.addVariable(new Variable("r1"));
@@ -221,7 +202,7 @@ public class OspModelDescriptionValidatorTest {
   
   @Test
   public void allVariablesInSocketDoesNotExistInFmiModelDescriptionIsInvalid() {
-    FmiModelDescription fmiModelDescription = getFmiModelDescription();
+    FmiModelDescription fmiModelDescription = TestSetup.getFmiModelDescription();
     OspModelDescription ospModelDescription = new OspModelDescription(fmiModelDescription);
     Socket s = new Socket(OspOntologyClasses.FORCE, "s1");
     s.addVariable(new Variable("r1"));
@@ -233,52 +214,4 @@ public class OspModelDescriptionValidatorTest {
     assertFalse(result.isSuccess());
   }
   
-  @NotNull
-  private FmiModelDescription getFmiModelDescription() {
-    FmiModelDescription fmiModelDescription = new FmiModelDescription();
-    FmiModelDescription.ModelVariables mv = new FmiModelDescription.ModelVariables();
-    
-    FmiScalarVariable v = new FmiScalarVariable();
-    v.setReal(new FmiScalarVariable.Real());
-    v.setName("r1");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setReal(new FmiScalarVariable.Real());
-    v.setName("r2");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setString(new FmiScalarVariable.String());
-    v.setName("s1");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setString(new FmiScalarVariable.String());
-    v.setName("s2");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setInteger(new FmiScalarVariable.Integer());
-    v.setName("i1");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setInteger(new FmiScalarVariable.Integer());
-    v.setName("i2");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setBoolean(new FmiScalarVariable.Boolean());
-    v.setName("b1");
-    mv.getScalarVariable().add(v);
-    
-    v = new FmiScalarVariable();
-    v.setBoolean(new FmiScalarVariable.Boolean());
-    v.setName("b2");
-    mv.getScalarVariable().add(v);
-    
-    fmiModelDescription.setModelVariables(mv);
-    return fmiModelDescription;
-  }
 }
