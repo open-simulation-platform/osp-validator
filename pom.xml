@@ -13,6 +13,7 @@
     <module>cse-config</module>
     <module>cse-config-cli</module>
     <module>cse-config-http</module>
+    <module>osp-model-description</module>
   </modules>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>

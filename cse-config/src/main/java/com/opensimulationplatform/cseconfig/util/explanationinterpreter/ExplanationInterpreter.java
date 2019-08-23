@@ -1,10 +1,10 @@
 package com.opensimulationplatform.cseconfig.util.explanationinterpreter;
 
-import com.opensimulationplatform.core.osp.model.OspOntologyClasses;
-import com.opensimulationplatform.core.osp.model.OspOntologyObjectProperties;
+import com.opensimulationplatform.core.ontology.model.OntologyClasses;
+import com.opensimulationplatform.core.ontology.model.OntologyObjectProperties;
 import com.opensimulationplatform.core.owl.helper.OwlHelper;
 import com.opensimulationplatform.core.owl.util.hermitwrapper.HermitReasonerWrapper;
-import com.opensimulationplatform.cseconfig.validator.CseConfigurationValidator;
+import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
 import org.semanticweb.owlapi.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +16,8 @@ public class ExplanationInterpreter {
   private static final Logger LOG = LoggerFactory.getLogger(ExplanationInterpreter.class);
   
   private static void checkForAndExplainIssueType1(OWLOntology configuration, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
-    OWLObjectMaxCardinality maxOnePlugMateCardinality = OwlHelper.getObjectMaxCardinality(configuration, 1, OspOntologyObjectProperties.HAS_PLUG_MATE, OspOntologyClasses.PLUG);
-    OWLClass socketClass = OwlHelper.getClass(configuration, OspOntologyClasses.SOCKET);
+    OWLObjectMaxCardinality maxOnePlugMateCardinality = OwlHelper.getObjectMaxCardinality(configuration, 1, OntologyObjectProperties.HAS_PLUG_MATE, OntologyClasses.PLUG);
+    OWLClass socketClass = OwlHelper.getClass(configuration, OntologyClasses.SOCKET);
     OWLAxiom testAxiom = OwlHelper.getSubClassOfAxiom(configuration, socketClass, maxOnePlugMateCardinality);
     
     OWLOntology justification = configuration.getOWLOntologyManager().createOntology(getAxiomsWithoutAnnotations(explanations));
@@ -29,7 +29,7 @@ public class ExplanationInterpreter {
       HermitReasonerWrapper reasoner = new HermitReasonerWrapper(justification);
       if (reasoner.isConsistent()) {
         Set<OWLNamedIndividual> socketIndividuals = reasoner.getInstances(socketClass);
-        OWLObjectProperty hasPlugMate = OwlHelper.getObjectProperty(configuration, OspOntologyObjectProperties.HAS_PLUG_MATE);
+        OWLObjectProperty hasPlugMate = OwlHelper.getObjectProperty(configuration, OntologyObjectProperties.HAS_PLUG_MATE);
         socketIndividuals.forEach(socket -> {
           LOG.error(socket + " is a socket");
           reasoner.getObjectPropertyValues(socket, hasPlugMate).forEach(plug -> LOG.error(" has plug mate " + plug));
@@ -55,7 +55,7 @@ public class ExplanationInterpreter {
       
       HermitReasonerWrapper reasoner = new HermitReasonerWrapper(justification);
       if (reasoner.isConsistent()) {
-        OWLObjectProperty hasSignalConnectorMate = OwlHelper.getObjectProperty(configuration, OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR_MATE);
+        OWLObjectProperty hasSignalConnectorMate = OwlHelper.getObjectProperty(configuration, OntologyObjectProperties.HAS_SIGNAL_CONNECTOR_MATE);
         OWLClass signalClass = new ArrayList<>(testAxiom.getClassesInSignature()).get(0);
         Set<OWLNamedIndividual> signalIndividuals = reasoner.getInstances(signalClass);
         
@@ -87,26 +87,26 @@ public class ExplanationInterpreter {
   }
   
   private static OWLAxiom getSignalConnectionRestrictionAxiom(OWLOntology configuration, String signalType) {
-    OWLObjectAllValuesFrom objectAllValuesFrom = OwlHelper.geObjectAllValuesFrom(configuration, signalType, OspOntologyObjectProperties.HAS_SIGNAL_CONNECTOR_MATE);
+    OWLObjectAllValuesFrom objectAllValuesFrom = OwlHelper.geObjectAllValuesFrom(configuration, signalType, OntologyObjectProperties.HAS_SIGNAL_CONNECTOR_MATE);
     OWLClass signalClass = OwlHelper.getClass(configuration, signalType);
     return OwlHelper.getSubClassOfAxiom(configuration, signalClass, objectAllValuesFrom);
   }
   
   private static List<String> getSignalTypes() {
     List<String> signalTypes = new ArrayList<>();
-    signalTypes.add(OspOntologyClasses.CURRENT);
-    signalTypes.add(OspOntologyClasses.FORCE);
-    signalTypes.add(OspOntologyClasses.GENERIC);
-    signalTypes.add(OspOntologyClasses.POSITION);
-    signalTypes.add(OspOntologyClasses.TORQUE);
-    signalTypes.add(OspOntologyClasses.LINEAR_VELOCITY);
-    signalTypes.add(OspOntologyClasses.ROTATIONAL_VELOCITY);
-    signalTypes.add(OspOntologyClasses.VOLTAGE);
+    signalTypes.add(OntologyClasses.CURRENT);
+    signalTypes.add(OntologyClasses.FORCE);
+    signalTypes.add(OntologyClasses.GENERIC);
+    signalTypes.add(OntologyClasses.POSITION);
+    signalTypes.add(OntologyClasses.TORQUE);
+    signalTypes.add(OntologyClasses.LINEAR_VELOCITY);
+    signalTypes.add(OntologyClasses.ROTATIONAL_VELOCITY);
+    signalTypes.add(OntologyClasses.VOLTAGE);
     
     return signalTypes;
   }
   
-  public static void interpret(CseConfigurationValidator.Result result, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
+  public static void interpret(JsonCseConfigurationValidator.Result result, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
     OWLOntology ontology = result.getOwlConfiguration().getOntology();
     checkForAndExplainIssueType1(ontology, explanations);
     checkForAndExplainIssueType2(ontology, explanations);

@@ -2,7 +2,7 @@ package com.opensimulationplatform.http;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opensimulationplatform.cseconfig.validator.CseConfigurationValidator;
+import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.slf4j.Logger;
@@ -52,24 +52,24 @@ public class ValidationServlet extends HttpServlet {
     String requiredConfiguration = httpRequest.getParameter("configuration");
     String optionalOntology = httpRequest.getParameter("ontology");
     
-    CseConfigurationValidator.Result result = validate(requiredConfiguration, optionalOntology);
+    JsonCseConfigurationValidator.Result result = validate(requiredConfiguration, optionalOntology);
     
     createHttpResponse(httpResponse, result);
   }
   
-  private CseConfigurationValidator.Result validate(String requiredConfiguration, String optionalOntology) {
+  private JsonCseConfigurationValidator.Result validate(String requiredConfiguration, String optionalOntology) {
     File configuration = new File(getURI(requiredConfiguration));
-    CseConfigurationValidator.Result result;
+    JsonCseConfigurationValidator.Result result;
     if (nonNull(optionalOntology)) {
       File ontology = new File(getURI(optionalOntology));
-      result = CseConfigurationValidator.validate(ontology, configuration);
+      result = JsonCseConfigurationValidator.validate(ontology, configuration);
     } else {
-      result = CseConfigurationValidator.validate(configuration);
+      result = JsonCseConfigurationValidator.validate(configuration);
     }
     return result;
   }
   
-  private void createHttpResponse(HttpServletResponse httpResponse, CseConfigurationValidator.Result result) {
+  private void createHttpResponse(HttpServletResponse httpResponse, JsonCseConfigurationValidator.Result result) {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
     httpResponse.addHeader("Access-Control-Allow-Origin", "*");
@@ -92,7 +92,7 @@ public class ValidationServlet extends HttpServlet {
     }
   }
   
-  private ValidationServletResponse getServletResponse(CseConfigurationValidator.Result result) {
+  private ValidationServletResponse getServletResponse(JsonCseConfigurationValidator.Result result) {
     ValidationServletResponse response = new ValidationServletResponse();
     
     if (result.isSuccess()) {

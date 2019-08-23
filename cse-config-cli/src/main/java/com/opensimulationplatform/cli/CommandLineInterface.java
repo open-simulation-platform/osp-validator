@@ -3,7 +3,7 @@ package com.opensimulationplatform.cli;
 import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import com.opensimulationplatform.core.util.terminator.ExitCode;
 import com.opensimulationplatform.core.util.terminator.Terminator;
-import com.opensimulationplatform.cseconfig.validator.CseConfigurationValidator;
+import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
 import org.apache.commons.cli.*;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;
@@ -32,7 +32,7 @@ class CommandLineInterface {
     File cseConfigFile = getRequiredConfigurationFile(cmd);
     File ospOwlFile = getOptionalOntologyFile(cmd);
     
-    CseConfigurationValidator.Result result = validate(cseConfigFile, ospOwlFile);
+    JsonCseConfigurationValidator.Result result = validate(cseConfigFile, ospOwlFile);
     
     if (!result.isSuccess()) {
       if (nonNull(ospOwlFile)) {
@@ -61,12 +61,12 @@ class CommandLineInterface {
     Terminator.exit(ExitCodes.SUCCESS);
   }
   
-  private static CseConfigurationValidator.Result validate(File cseConfigFile, File ospOwlFile) {
-    CseConfigurationValidator.Result result;
+  private static JsonCseConfigurationValidator.Result validate(File cseConfigFile, File ospOwlFile) {
+    JsonCseConfigurationValidator.Result result;
     if (nonNull(ospOwlFile)) {
-      result = CseConfigurationValidator.validate(ospOwlFile, cseConfigFile);
+      result = JsonCseConfigurationValidator.validate(ospOwlFile, cseConfigFile);
     } else {
-      result = CseConfigurationValidator.validate(cseConfigFile);
+      result = JsonCseConfigurationValidator.validate(cseConfigFile);
     }
     return result;
   }
@@ -96,7 +96,7 @@ class CommandLineInterface {
     return file;
   }
   
-  private static void saveConfigOwlFile(CseConfigurationValidator.Result result, File saveDirectory) {
+  private static void saveConfigOwlFile(JsonCseConfigurationValidator.Result result, File saveDirectory) {
     if (!saveDirectory.exists()) {
       LOG.trace("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
       if (!saveDirectory.mkdirs()) {

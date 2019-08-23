@@ -3,7 +3,7 @@ package com.opensimulationplatform.core.validator;
 import com.opensimulationplatform.core.owl.util.ontologycontent.OntologyContent;
 import com.opensimulationplatform.core.owl.util.ontologyparser.OntologyParser;
 import com.opensimulationplatform.core.util.resource.Resources;
-import com.opensimulationplatform.core.validator.model.ospmodeldescription.*;
+import com.opensimulationplatform.core.validator.model.modeldescription.*;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
 
@@ -40,8 +40,8 @@ public class OspModelDescriptionValidator {
     if (nonNull(fmiModelDescription)) {
       FmiModelDescription.ModelVariables modelVariables = fmiModelDescription.getModelVariables();
       List<FmiScalarVariable> fmiScalarVariables = modelVariables.getScalarVariable();
-      return modelDescription.getSockets().stream().allMatch(socket -> {
-        Stream<Variable> variables = socket.getVariables().values().stream();
+      return modelDescription.getOspSockets().stream().allMatch(socket -> {
+        Stream<OspVariable> variables = socket.getVariables().values().stream();
         return variables.allMatch(variable -> {
           Stream<FmiScalarVariable> fmiVariables = fmiScalarVariables.stream();
           return fmiVariables.anyMatch(fmiVariable -> fmiVariable.getName().equals(variable.getName()));
@@ -57,8 +57,8 @@ public class OspModelDescriptionValidator {
     if (nonNull(fmiModelDescription)) {
       FmiModelDescription.ModelVariables modelVariables = fmiModelDescription.getModelVariables();
       List<FmiScalarVariable> fmiScalarVariables = modelVariables.getScalarVariable();
-      return modelDescription.getPlugs().stream().allMatch(plug -> {
-        Stream<Variable> variables = plug.getVariables().values().stream();
+      return modelDescription.getOspPlugs().stream().allMatch(plug -> {
+        Stream<OspVariable> variables = plug.getVariables().values().stream();
         return variables.allMatch(variable -> {
           Stream<FmiScalarVariable> fmiVariables = fmiScalarVariables.stream();
           return fmiVariables.anyMatch(fmiVariable -> fmiVariable.getName().equals(variable.getName()));
@@ -70,10 +70,10 @@ public class OspModelDescriptionValidator {
   }
   
   private static boolean allBondsHaveUniqueNames(OspModelDescription modelDescription) {
-    List<Bond> bonds = modelDescription.getBonds();
-    for (int i = 0; i < bonds.size(); i++) {
-      for (int j = i + 1; j < bonds.size(); j++) {
-        if (bonds.get(i).getName().equals(bonds.get(j).getName())) {
+    List<OspBond> ospBonds = modelDescription.getOspBonds();
+    for (int i = 0; i < ospBonds.size(); i++) {
+      for (int j = i + 1; j < ospBonds.size(); j++) {
+        if (ospBonds.get(i).getName().equals(ospBonds.get(j).getName())) {
           return false;
         }
       }
@@ -82,10 +82,10 @@ public class OspModelDescriptionValidator {
   }
   
   private static boolean allPlugsHaveUniqueNames(OspModelDescription modelDescription) {
-    List<Plug> plugs = modelDescription.getPlugs();
-    for (int i = 0; i < plugs.size(); i++) {
-      for (int j = i + 1; j < plugs.size(); j++) {
-        if (plugs.get(i).getName().equals(plugs.get(j).getName())) {
+    List<OspPlug> ospPlugs = modelDescription.getOspPlugs();
+    for (int i = 0; i < ospPlugs.size(); i++) {
+      for (int j = i + 1; j < ospPlugs.size(); j++) {
+        if (ospPlugs.get(i).getName().equals(ospPlugs.get(j).getName())) {
           return false;
         }
       }
@@ -94,10 +94,10 @@ public class OspModelDescriptionValidator {
   }
   
   private static boolean allSocketsHaveUniqueNames(OspModelDescription modelDescription) {
-    List<Socket> sockets = modelDescription.getSockets();
-    for (int i = 0; i < sockets.size(); i++) {
-      for (int j = i + 1; j < sockets.size(); j++) {
-        if (sockets.get(i).getName().equals(sockets.get(j).getName())) {
+    List<OspSocket> ospSockets = modelDescription.getOspSockets();
+    for (int i = 0; i < ospSockets.size(); i++) {
+      for (int j = i + 1; j < ospSockets.size(); j++) {
+        if (ospSockets.get(i).getName().equals(ospSockets.get(j).getName())) {
           return false;
         }
       }
@@ -106,31 +106,31 @@ public class OspModelDescriptionValidator {
   }
   
   private static boolean allPlugsAndSocketsInBondsAreDefinedInOspModelDescription(OspModelDescription modelDescription) {
-    return modelDescription.getBonds().stream().allMatch(bond -> allPlugsDefined(bond, modelDescription) && allSocketsDefined(bond, modelDescription));
+    return modelDescription.getOspBonds().stream().allMatch(bond -> allPlugsDefined(bond, modelDescription) && allSocketsDefined(bond, modelDescription));
   }
   
-  private static boolean allPlugsDefined(Bond bond, OspModelDescription modelDescription) {
-    return bond.getPlugs().stream().allMatch(plug -> plugIsDefinedInModelDescription(modelDescription, plug));
+  private static boolean allPlugsDefined(OspBond ospBond, OspModelDescription modelDescription) {
+    return ospBond.getOspPlugs().stream().allMatch(plug -> plugIsDefinedInModelDescription(modelDescription, plug));
   }
   
-  private static boolean allSocketsDefined(Bond bond, OspModelDescription modelDescription) {
-    return bond.getSockets().stream().allMatch(socket -> socketIsDefinedInModelDescription(modelDescription, socket));
+  private static boolean allSocketsDefined(OspBond ospBond, OspModelDescription modelDescription) {
+    return ospBond.getOspSockets().stream().allMatch(socket -> socketIsDefinedInModelDescription(modelDescription, socket));
   }
   
-  private static boolean plugIsDefinedInModelDescription(OspModelDescription modelDescription, Plug plug) {
-    return modelDescription.getPlugs().stream().anyMatch(p -> p.getName().equals(plug.getName()));
+  private static boolean plugIsDefinedInModelDescription(OspModelDescription modelDescription, OspPlug ospPlug) {
+    return modelDescription.getOspPlugs().stream().anyMatch(p -> p.getName().equals(ospPlug.getName()));
   }
   
-  private static boolean socketIsDefinedInModelDescription(OspModelDescription modelDescription, Socket socket) {
-    return modelDescription.getSockets().stream().anyMatch(p -> p.getName().equals(socket.getName()));
+  private static boolean socketIsDefinedInModelDescription(OspModelDescription modelDescription, OspSocket ospSocket) {
+    return modelDescription.getOspSockets().stream().anyMatch(p -> p.getName().equals(ospSocket.getName()));
   }
   
   private static boolean allPlugTypesAreContainedInOntology(OspModelDescription ospModelDescription) {
-    return ospModelDescription.getPlugs().stream().allMatch(plug -> ontologyContent.getClasses().containsKey(plug.getType()));
+    return ospModelDescription.getOspPlugs().stream().allMatch(plug -> ontologyContent.getClasses().containsKey(plug.getType()));
   }
   
   private static boolean allSocketTypesAreContainedInOntology(OspModelDescription ospModelDescription) {
-    return ospModelDescription.getSockets().stream().allMatch(socket -> ontologyContent.getClasses().containsKey(socket.getType()));
+    return ospModelDescription.getOspSockets().stream().allMatch(socket -> ontologyContent.getClasses().containsKey(socket.getType()));
   }
   
   public static class Result {
