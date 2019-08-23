@@ -3,16 +3,19 @@ package com.opensimulationplatform.validator;
 import com.opensimulationplatform.owl.util.ontologycontent.OntologyContent;
 import com.opensimulationplatform.owl.util.ontologyparser.OntologyParser;
 import com.opensimulationplatform.util.resource.Resources;
-import com.opensimulationplatform.validator.model.ospmodeldescription.Bond;
-import com.opensimulationplatform.validator.model.ospmodeldescription.OspModelDescription;
-import com.opensimulationplatform.validator.model.ospmodeldescription.Plug;
-import com.opensimulationplatform.validator.model.ospmodeldescription.Socket;
+import com.opensimulationplatform.validator.model.ospmodeldescription.*;
+import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
+import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
+
+import static java.util.Objects.nonNull;
+
 
 public class OspModelDescriptionValidator {
   private static final Logger LOG = LoggerFactory.getLogger(OspModelDescriptionValidator.class);
@@ -27,10 +30,47 @@ public class OspModelDescriptionValidator {
     validations.add(OspModelDescriptionValidator::allPlugsHaveUniqueNames);
     validations.add(OspModelDescriptionValidator::allSocketsHaveUniqueNames);
     validations.add(OspModelDescriptionValidator::allBondsHaveUniqueNames);
+    validations.add(OspModelDescriptionValidator::allVariablesInAllPlugsExistInFmiModelDescription);
+    validations.add(OspModelDescriptionValidator::allVariablesInAllSocketsExistInFmiModelDescription);
   }
   
   public static Result validate(OspModelDescription modelDescription) {
     return new Result(validations.stream().allMatch(validation -> validation.apply(modelDescription)));
+  }
+  
+  private static boolean allVariablesInAllSocketsExistInFmiModelDescription(OspModelDescription modelDescription) {
+    FmiModelDescription fmiModelDescription = modelDescription.getFmiModelDescription();
+    if (nonNull(fmiModelDescription)) {
+      FmiModelDescription.ModelVariables modelVariables = fmiModelDescription.getModelVariables();
+      List<FmiScalarVariable> fmiScalarVariables = modelVariables.getScalarVariable();
+      return modelDescription.getSockets().stream().allMatch(socket -> {
+        Stream<Variable> variables = socket.getVariables().values().stream();
+        return variables.allMatch(variable -> {
+          Stream<FmiScalarVariable> fmiVariables = fmiScalarVariables.stream();
+          return fmiVariables.anyMatch(fmiVariable -> fmiVariable.getName().equals(variable.getName()));
+        });
+      });
+    } else {
+      return true;
+    }
+  
+  }
+  
+  private static boolean allVariablesInAllPlugsExistInFmiModelDescription(OspModelDescription modelDescription) {
+    FmiModelDescription fmiModelDescription = modelDescription.getFmiModelDescription();
+    if (nonNull(fmiModelDescription)) {
+      FmiModelDescription.ModelVariables modelVariables = fmiModelDescription.getModelVariables();
+      List<FmiScalarVariable> fmiScalarVariables = modelVariables.getScalarVariable();
+      return modelDescription.getPlugs().stream().allMatch(plug -> {
+        Stream<Variable> variables = plug.getVariables().values().stream();
+        return variables.allMatch(variable -> {
+          Stream<FmiScalarVariable> fmiVariables = fmiScalarVariables.stream();
+          return fmiVariables.anyMatch(fmiVariable -> fmiVariable.getName().equals(variable.getName()));
+        });
+      });
+    } else {
+      return true;
+    }
   }
   
   private static boolean allBondsHaveUniqueNames(OspModelDescription modelDescription) {

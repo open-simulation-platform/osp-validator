@@ -1,5 +1,7 @@
 package com.opensimulationplatform.validator.model.ospmodeldescription;
 
+import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,14 @@ public class OspModelDescription {
   private List<Plug> plugs = new ArrayList<>();
   private List<Socket> sockets = new ArrayList<>();
   private List<Bond> bonds = new ArrayList<>();
+  private FmiModelDescription fmiModelDescription;
+  
+  public OspModelDescription(FmiModelDescription fmiModelDescription) {
+    this.fmiModelDescription = fmiModelDescription;
+  }
+  
+  public OspModelDescription() {
+  }
   
   public String getName() {
     return name;
@@ -39,5 +49,9 @@ public class OspModelDescription {
   
   public void setBonds(List<Bond> bonds) {
     this.bonds = bonds;
+  }
+  
+  public FmiModelDescription getFmiModelDescription() {
+    return fmiModelDescription;
   }
 }
