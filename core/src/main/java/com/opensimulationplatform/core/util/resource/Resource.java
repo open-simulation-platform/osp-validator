@@ -14,7 +14,7 @@ public class Resource {
   private final String name;
   private final URL url;
   
-  Resource(String name) {
+  public Resource(String name) {
     this.name = name;
     this.url = getUrl(name);
   }

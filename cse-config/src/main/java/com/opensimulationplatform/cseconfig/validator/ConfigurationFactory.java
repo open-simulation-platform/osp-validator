@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ConfigurationFactory {
+class ConfigurationFactory {
   
-  public static Configuration create(JsonCseConfiguration jsonCseConfiguration) {
+  static Configuration create(JsonCseConfiguration jsonCseConfiguration) {
     Map<String, Simulator> simulators = SimulatorFactory.create(jsonCseConfiguration);
     List<VariableConnection> variableConnections = createVariableConnections(jsonCseConfiguration, simulators);
     List<PlugSocketConnection> plugSocketConnections = createPlugSocketConnections(jsonCseConfiguration, simulators);

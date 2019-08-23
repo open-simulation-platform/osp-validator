@@ -1,8 +1,8 @@
 package com.opensimulationplatform.cseconfig.jsonmodel;
 
+import com.opensimulationplatform.cseconfig.TestResources;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class ConfigurationJsonFileParserTest {
   @Test
   public void canParse() {
-    JsonCseConfiguration configuration = CseConfigurationJsonFileParser.parse(new File("./src/test/resources/parsing/cse-config.json"));
+    JsonCseConfiguration configuration = CseConfigurationJsonFileParser.parse(TestResources.CSE_CONFIG_JSON.toFile());
     
     List<JsonSimulator> simulators = configuration.getSimulators();
     assertEquals(2, simulators.size());
