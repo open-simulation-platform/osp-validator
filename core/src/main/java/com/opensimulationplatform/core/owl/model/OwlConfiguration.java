@@ -1,7 +1,11 @@
 package com.opensimulationplatform.core.owl.model;
 
-import com.opensimulationplatform.core.validator.model.configuration.OspConfiguration;
-import com.opensimulationplatform.core.validator.model.modeldescription.*;
+import com.opensimulationplatform.core.model.configuration.OspConfiguration;
+import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.modeldescription.OspBond;
+import com.opensimulationplatform.core.model.modeldescription.OspPlug;
+import com.opensimulationplatform.core.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.modeldescription.OspVariable;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 

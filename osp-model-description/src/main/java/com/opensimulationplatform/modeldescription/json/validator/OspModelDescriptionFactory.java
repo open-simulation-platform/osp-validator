@@ -1,9 +1,9 @@
 package com.opensimulationplatform.modeldescription.json.validator;
 
-import com.opensimulationplatform.core.validator.model.modeldescription.OspBond;
-import com.opensimulationplatform.core.validator.model.modeldescription.OspModelDescription;
-import com.opensimulationplatform.core.validator.model.modeldescription.OspPlug;
-import com.opensimulationplatform.core.validator.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.modeldescription.OspBond;
+import com.opensimulationplatform.core.model.modeldescription.OspModelDescription;
+import com.opensimulationplatform.core.model.modeldescription.OspPlug;
+import com.opensimulationplatform.core.model.modeldescription.OspSocket;
 import com.opensimulationplatform.modeldescription.json.model.JsonOspBond;
 import com.opensimulationplatform.modeldescription.json.model.JsonOspModelDescription;
 import com.opensimulationplatform.modeldescription.json.model.JsonOspPlug;

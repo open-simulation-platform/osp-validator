@@ -1,6 +1,6 @@
 package com.opensimulationplatform.modeldescription.json.validator;
 
-import com.opensimulationplatform.core.validator.model.modeldescription.*;
+import com.opensimulationplatform.core.model.modeldescription.*;
 import com.opensimulationplatform.modeldescription.json.TestSetup;
 import com.opensimulationplatform.modeldescription.json.model.JsonOspModelDescription;
 import com.opensimulationplatform.modeldescription.json.parser.JsonOspModelDescriptionParser;

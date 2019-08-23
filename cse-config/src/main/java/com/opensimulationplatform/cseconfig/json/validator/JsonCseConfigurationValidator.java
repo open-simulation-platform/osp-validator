@@ -1,10 +1,10 @@
 package com.opensimulationplatform.cseconfig.json.validator;
 
+import com.opensimulationplatform.core.model.configuration.OspConfiguration;
 import com.opensimulationplatform.core.owl.converter.OwlConfigurationConverter;
 import com.opensimulationplatform.core.owl.model.OwlConfiguration;
 import com.opensimulationplatform.core.owl.util.hermitwrapper.HermitReasonerWrapper;
 import com.opensimulationplatform.core.util.resource.Resources;
-import com.opensimulationplatform.core.validator.model.configuration.OspConfiguration;
 import com.opensimulationplatform.cseconfig.json.model.JsonCseConfiguration;
 import com.opensimulationplatform.cseconfig.json.parser.JsonCseConfigurationParser;
 import org.semanticweb.owlapi.model.OWLAxiom;

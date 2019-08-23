@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.json.validator;
 
-import com.opensimulationplatform.core.validator.model.modeldescription.OspBond;
-import com.opensimulationplatform.core.validator.model.modeldescription.OspPlug;
-import com.opensimulationplatform.core.validator.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.modeldescription.OspBond;
+import com.opensimulationplatform.core.model.modeldescription.OspPlug;
+import com.opensimulationplatform.core.model.modeldescription.OspSocket;
 import com.opensimulationplatform.modeldescription.json.model.JsonOspBond;
 
 import java.util.ArrayList;

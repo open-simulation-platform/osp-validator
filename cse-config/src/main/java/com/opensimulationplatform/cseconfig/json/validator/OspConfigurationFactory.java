@@ -1,10 +1,10 @@
 package com.opensimulationplatform.cseconfig.json.validator;
 
-import com.opensimulationplatform.core.validator.model.configuration.OspBondConnection;
-import com.opensimulationplatform.core.validator.model.configuration.OspConfiguration;
-import com.opensimulationplatform.core.validator.model.configuration.OspPlugSocketConnection;
-import com.opensimulationplatform.core.validator.model.configuration.OspVariableConnection;
-import com.opensimulationplatform.core.validator.model.modeldescription.*;
+import com.opensimulationplatform.core.model.configuration.*;
+import com.opensimulationplatform.core.model.modeldescription.OspBond;
+import com.opensimulationplatform.core.model.modeldescription.OspPlug;
+import com.opensimulationplatform.core.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.modeldescription.OspVariable;
 import com.opensimulationplatform.cseconfig.json.model.JsonCseBondConnection;
 import com.opensimulationplatform.cseconfig.json.model.JsonCseConfiguration;
 import com.opensimulationplatform.cseconfig.json.model.JsonCsePlugSocketConnection;

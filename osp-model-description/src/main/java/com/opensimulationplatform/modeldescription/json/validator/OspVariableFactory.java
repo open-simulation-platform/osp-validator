@@ -1,6 +1,6 @@
 package com.opensimulationplatform.modeldescription.json.validator;
 
-import com.opensimulationplatform.core.validator.model.modeldescription.OspVariable;
+import com.opensimulationplatform.core.model.modeldescription.OspVariable;
 
 import java.util.ArrayList;
 import java.util.List;

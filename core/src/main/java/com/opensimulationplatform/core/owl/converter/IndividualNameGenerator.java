@@ -1,6 +1,10 @@
 package com.opensimulationplatform.core.owl.converter;
 
-import com.opensimulationplatform.core.validator.model.modeldescription.*;
+import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.modeldescription.OspBond;
+import com.opensimulationplatform.core.model.modeldescription.OspPlug;
+import com.opensimulationplatform.core.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.modeldescription.OspVariable;
 
 public class IndividualNameGenerator {
   public static String getIndividualName(OspBond ospBond) {

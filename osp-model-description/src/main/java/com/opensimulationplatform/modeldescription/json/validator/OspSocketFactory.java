@@ -1,7 +1,7 @@
 package com.opensimulationplatform.modeldescription.json.validator;
 
-import com.opensimulationplatform.core.validator.model.modeldescription.OspSocket;
-import com.opensimulationplatform.core.validator.model.modeldescription.OspVariable;
+import com.opensimulationplatform.core.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.modeldescription.OspVariable;
 import com.opensimulationplatform.modeldescription.json.model.JsonOspSocket;
 
 import java.util.List;

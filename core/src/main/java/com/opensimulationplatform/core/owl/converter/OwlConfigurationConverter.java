@@ -1,7 +1,7 @@
 package com.opensimulationplatform.core.owl.converter;
 
+import com.opensimulationplatform.core.model.configuration.OspConfiguration;
 import com.opensimulationplatform.core.owl.model.OwlConfiguration;
-import com.opensimulationplatform.core.validator.model.configuration.OspConfiguration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
