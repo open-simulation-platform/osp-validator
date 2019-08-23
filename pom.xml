@@ -10,8 +10,9 @@
   <version>0.4.0-SNAPSHOT</version>
   <modules>
     <module>core</module>
-    <module>http</module>
-    <module>cli</module>
+    <module>cse-config</module>
+    <module>cse-config-cli</module>
+    <module>cse-config-http</module>
   </modules>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
