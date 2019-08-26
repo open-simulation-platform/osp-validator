@@ -1,8 +1,7 @@
-package com.opensimulationplatform.cseconfig.validator;
+package com.opensimulationplatform.cseconfig.json.validator;
 
 import com.opensimulationplatform.core.util.resource.Resources;
 import com.opensimulationplatform.cseconfig.TestResources;
-import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
