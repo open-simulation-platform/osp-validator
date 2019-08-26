@@ -12,7 +12,7 @@ public class ValidationServerMain {
   private static final Logger LOG = LoggerFactory.getLogger(ValidationServerMain.class);
   
   public static void main(String[] args) throws Exception {
-    LogHelper.setLogLevel();
+    LogHelper.setLogLevelFromOspSystemProperty();
     CommandLine cmd = parseCommandLineOptions(args);
     int port = getPort(cmd);
     new ValidationServer(port).start();

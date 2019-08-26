@@ -12,13 +12,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.net.URI;
+
 import static org.junit.Assert.*;
 
 public class ValidationServerTest {
   
-  private final String validConfiguration = "../core/src/test/resources/validator/cse-config-valid.json";
-  private final String invalidConfiguration = "../core/src/test/resources/validator/cse-config-invalid.json";
-  private final String ontology = "../core/src/main/resources/osp.owl";
+  private final URI validConfiguration = TestResources.CSE_CONFIG_VALID_JSON.toFile().toURI();
+  private final URI invalidConfiguration = TestResources.CSE_CONFIG_INVALID_JSON.toFile().toURI();
+  private final URI ontology = TestResources.OSP_OWL.toFile().toURI();
   private final int port = 8001;
   private final Gson gson = new GsonBuilder().create();
   private ValidationServer validationServer;
@@ -71,8 +73,8 @@ public class ValidationServerTest {
     client.start();
   
     MultiPartContentProvider multiPart = new MultiPartContentProvider();
-    multiPart.addFieldPart("configuration", new StringContentProvider(validConfiguration), null);
-    multiPart.addFieldPart("ontology", new StringContentProvider(ontology), null);
+    multiPart.addFieldPart("configuration", new StringContentProvider(validConfiguration.toString()), null);
+    multiPart.addFieldPart("ontology", new StringContentProvider(ontology.toString()), null);
     multiPart.close();
   
     Request request = client.POST("http://localhost:" + port + "/validate");
@@ -91,8 +93,8 @@ public class ValidationServerTest {
     client.start();
     
     MultiPartContentProvider multiPart = new MultiPartContentProvider();
-    multiPart.addFieldPart("configuration", new StringContentProvider(invalidConfiguration), null);
-    multiPart.addFieldPart("ontology", new StringContentProvider(ontology), null);
+    multiPart.addFieldPart("configuration", new StringContentProvider(invalidConfiguration.toString()), null);
+    multiPart.addFieldPart("ontology", new StringContentProvider(ontology.toString()), null);
     multiPart.close();
     
     Request request = client.POST("http://localhost:" + port + "/validate");
@@ -112,7 +114,7 @@ public class ValidationServerTest {
     client.start();
   
     MultiPartContentProvider multiPart = new MultiPartContentProvider();
-    multiPart.addFieldPart("configuration", new StringContentProvider(validConfiguration), null);
+    multiPart.addFieldPart("configuration", new StringContentProvider(validConfiguration.toString()), null);
     multiPart.close();
   
     Request request = client.POST("http://localhost:" + port + "/validate");

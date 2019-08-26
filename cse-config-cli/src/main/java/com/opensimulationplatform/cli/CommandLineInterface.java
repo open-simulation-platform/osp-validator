@@ -24,7 +24,7 @@ class CommandLineInterface {
   private static final Logger LOG = LoggerFactory.getLogger(CommandLineInterface.class);
   
   public static void main(String[] args) {
-    if (!LogHelper.setLogLevel()) {
+    if (!LogHelper.setLogLevelFromOspSystemProperty()) {
       Terminator.exit(ExitCodes.INVALID_LOG_LEVEL);
     }
     

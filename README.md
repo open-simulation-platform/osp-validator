@@ -28,7 +28,7 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd cli
-$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json -s ./
+$ java -Dosp.validator.log.level=debug -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json -s ./
 ```
 
 # msmi-validator-http
@@ -41,7 +41,7 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd http
-$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
+$ java -Dosp.validator.log.level=debug -jar ./target/msmi-validator-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
 - go to localhost:<your-favourite-port>/validate?configuration=../core/src/test/resources/validator/cse-config-valid.json&ontology=../core/src/main/resources/osp.owl
 ```

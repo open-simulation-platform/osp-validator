@@ -4,40 +4,43 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 
 public class LogHelper {
-  
-  public static boolean setLogLevel() {
-    String property = System.getProperty("msmi.validator.log.level");
+  public static boolean setLogLevelFromOspSystemProperty() {
+    String property = System.getProperty("osp.validator.log.level");
     if (property != null) {
       switch (property) {
         case "debug":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.DEBUG);
+          setLogLevel(Level.DEBUG);
           break;
         case "trace":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.TRACE);
+          setLogLevel(Level.TRACE);
           break;
         case "error":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.ERROR);
+          setLogLevel(Level.ERROR);
           break;
         case "fatal":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.FATAL);
+          setLogLevel(Level.FATAL);
           break;
         case "all":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
+          setLogLevel(Level.ALL);
           break;
         case "info":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.INFO);
+          setLogLevel(Level.INFO);
           break;
         case "warn":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.WARN);
+          setLogLevel(Level.WARN);
           break;
         case "off":
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.OFF);
+          setLogLevel(Level.OFF);
           break;
         default:
-          Configurator.setLevel(System.getProperty("log4j.logger"), Level.ALL);
+          setLogLevel(Level.ALL);
           return false;
       }
     }
     return true;
+  }
+  
+  private static void setLogLevel(Level level) {
+    Configurator.setLevel(System.getProperty("log4j.logger"), level);
   }
 }
