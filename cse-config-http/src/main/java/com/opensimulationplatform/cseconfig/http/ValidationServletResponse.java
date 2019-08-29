@@ -1,4 +1,4 @@
-package com.opensimulationplatform.http;
+package com.opensimulationplatform.cseconfig.http;
 
 import java.util.Collections;
 import java.util.List;

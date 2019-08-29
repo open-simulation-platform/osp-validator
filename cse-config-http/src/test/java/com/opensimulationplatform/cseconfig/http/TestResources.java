@@ -1,4 +1,4 @@
-package com.opensimulationplatform.cli;
+package com.opensimulationplatform.cseconfig.http;
 
 import com.opensimulationplatform.core.util.resource.Resource;
 

@@ -1,4 +1,4 @@
-package com.opensimulationplatform.cli;
+package com.opensimulationplatform.cseconfig.cli;
 
 import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import com.opensimulationplatform.core.util.terminator.ExitCode;

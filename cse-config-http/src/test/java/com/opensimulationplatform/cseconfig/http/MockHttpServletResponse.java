@@ -1,4 +1,4 @@
-package com.opensimulationplatform.http;
+package com.opensimulationplatform.cseconfig.http;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;

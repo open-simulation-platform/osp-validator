@@ -1,4 +1,4 @@
-package com.opensimulationplatform.http;
+package com.opensimulationplatform.cseconfig.http;
 
 import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import org.apache.commons.cli.*;

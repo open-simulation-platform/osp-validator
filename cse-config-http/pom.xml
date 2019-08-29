@@ -17,7 +17,7 @@
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
       <artifactId>cse-config</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
@@ -50,7 +50,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.opensimulationplatform.http.ValidationServerMain</mainClass>
+              <mainClass>com.opensimulationplatform.cseconfig.http.ValidationServerMain</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>

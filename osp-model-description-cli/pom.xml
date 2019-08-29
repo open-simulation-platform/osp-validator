@@ -9,13 +9,18 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   
-  <artifactId>osp-model-description</artifactId>
-  
+  <artifactId>osp-model-description-cli</artifactId>
+
   <dependencies>
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
-      <artifactId>core</artifactId>
+      <artifactId>osp-model-description</artifactId>
       <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.beust</groupId>
+      <artifactId>jcommander</artifactId>
+      <version>1.72</version>
     </dependency>
   </dependencies>
 </project>

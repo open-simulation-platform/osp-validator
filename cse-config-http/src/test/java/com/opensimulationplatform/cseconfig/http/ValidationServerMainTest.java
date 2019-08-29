@@ -1,4 +1,4 @@
-package com.opensimulationplatform.http;
+package com.opensimulationplatform.cseconfig.http;
 
 import org.junit.Test;
 

@@ -2,10 +2,8 @@ package com.opensimulationplatform.modeldescription.json;
 
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
-import org.jetbrains.annotations.NotNull;
 
 public class TestSetup {
-  @NotNull
   public static FmiModelDescription getFmiModelDescription() {
     FmiModelDescription fmiModelDescription = new FmiModelDescription();
     FmiModelDescription.ModelVariables mv = new FmiModelDescription.ModelVariables();

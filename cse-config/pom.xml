@@ -17,12 +17,12 @@
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
       <artifactId>core</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
     </dependency>
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
       <artifactId>osp-model-description</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
     </dependency>
   </dependencies>
 </project>

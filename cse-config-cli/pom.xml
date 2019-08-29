@@ -15,7 +15,7 @@
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
       <artifactId>cse-config</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
     </dependency>
     <dependency>
       <groupId>commons-cli</groupId>

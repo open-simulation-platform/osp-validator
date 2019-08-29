@@ -1,4 +1,4 @@
-package com.opensimulationplatform.cli;
+package com.opensimulationplatform.cseconfig.cli;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.junit.rules.TemporaryFolder;
 import java.io.File;
 import java.io.IOException;
 
-import static com.opensimulationplatform.cli.CommandLineInterface.ExitCodes.*;
+import static com.opensimulationplatform.cseconfig.cli.CommandLineInterface.ExitCodes.*;
 import static org.junit.Assert.assertTrue;
 
 public class CommandLineInterfaceTest {
