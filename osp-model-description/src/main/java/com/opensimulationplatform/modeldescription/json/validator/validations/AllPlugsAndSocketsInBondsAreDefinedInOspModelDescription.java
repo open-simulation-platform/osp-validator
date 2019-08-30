@@ -5,11 +5,17 @@ import com.opensimulationplatform.core.model.modeldescription.OspModelDescriptio
 import com.opensimulationplatform.core.model.modeldescription.OspPlug;
 import com.opensimulationplatform.core.model.modeldescription.OspSocket;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AllPlugsAndSocketsInBondsAreDefinedInOspModelDescription implements Validation {
+  private List<String> messages;
+  
   @Override
   public Result validate(OspModelDescription ospModelDescription) {
+    messages = new ArrayList<>();
     boolean valid = ospModelDescription.getOspBonds().stream().allMatch(bond -> allPlugsDefined(bond, ospModelDescription) && allSocketsDefined(bond, ospModelDescription));
-    return new Result(valid);
+    return new Result(valid, messages);
   }
   
   @Override
@@ -18,11 +24,25 @@ public class AllPlugsAndSocketsInBondsAreDefinedInOspModelDescription implements
   }
   
   private boolean allPlugsDefined(OspBond ospBond, OspModelDescription modelDescription) {
-    return ospBond.getOspPlugs().stream().allMatch(plug -> plugIsDefinedInModelDescription(modelDescription, plug));
+    return ospBond.getOspPlugs().stream().allMatch(plug -> {
+      if (plugIsDefinedInModelDescription(modelDescription, plug)) {
+        return true;
+      } else {
+        messages.add("Plug " + plug.getName() + " referenced in bond " + ospBond.getName() + " is not defined in the osp model description");
+        return false;
+      }
+    });
   }
   
   private boolean allSocketsDefined(OspBond ospBond, OspModelDescription modelDescription) {
-    return ospBond.getOspSockets().stream().allMatch(socket -> socketIsDefinedInModelDescription(modelDescription, socket));
+    return ospBond.getOspSockets().stream().allMatch(socket -> {
+      if (socketIsDefinedInModelDescription(modelDescription, socket)) {
+        return true;
+      } else {
+        messages.add("Socket " + socket.getName() + " referenced in bond " + ospBond.getName() + " is not defined in the osp model description");
+        return false;
+      }
+    });
   }
   
   private boolean plugIsDefinedInModelDescription(OspModelDescription modelDescription, OspPlug ospPlug) {

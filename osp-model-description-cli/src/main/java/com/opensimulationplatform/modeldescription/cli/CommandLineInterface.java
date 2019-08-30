@@ -11,6 +11,8 @@ import com.opensimulationplatform.modeldescription.json.validator.OspModelDescri
 import com.opensimulationplatform.modeldescription.json.validator.OspModelDescriptionValidator;
 import no.ntnu.ihb.fmi4j.modeldescription.ModelDescriptionParser;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -18,19 +20,24 @@ import java.io.File;
 import java.io.StringReader;
 
 public class CommandLineInterface {
+  private static final Logger LOG = LoggerFactory.getLogger(CommandLineInterface.class);
   
   public static void main(String[] args) throws JAXBException {
     setLogLevel();
     Arguments arguments = getArguments(args);
     OspModelDescription ospModelDescription = getOspModelDescription(arguments);
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(ospModelDescription);
-    evaluateResult(result);
+    evaluateResult(result, arguments);
   }
   
-  private static void evaluateResult(OspModelDescriptionValidator.Result result) {
+  private static void evaluateResult(OspModelDescriptionValidator.Result result, Arguments arguments) {
     if (result.isValid()) {
       Terminator.exit(ExitCodes.SUCCESS);
     } else {
+      LOG.error("OSP model description file " + arguments.getOspModelDescription().getAbsolutePath() + " is not valid");
+      LOG.error("#--- Messages ---#");
+      result.getMessages().forEach(LOG::error);
+      LOG.error("#----------------#");
       Terminator.exit(ExitCodes.INVALID_CONFIGURATION);
     }
   }
