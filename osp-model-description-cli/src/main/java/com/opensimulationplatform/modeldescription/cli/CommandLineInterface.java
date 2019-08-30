@@ -28,7 +28,7 @@ public class CommandLineInterface {
   }
   
   private static void evaluateResult(OspModelDescriptionValidator.Result result) {
-    if (result.isSuccess()) {
+    if (result.isValid()) {
       Terminator.exit(ExitCodes.SUCCESS);
     } else {
       Terminator.exit(ExitCodes.INVALID_CONFIGURATION);

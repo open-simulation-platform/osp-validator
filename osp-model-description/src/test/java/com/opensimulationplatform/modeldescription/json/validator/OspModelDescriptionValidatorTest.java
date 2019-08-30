@@ -19,7 +19,7 @@ public class OspModelDescriptionValidatorTest {
     OspModelDescription modelDescription = new OspModelDescription();
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(result.isValid());
   }
   
   @Test
@@ -29,7 +29,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(String.valueOf(result.getMessages()), result.isValid());
   }
   
   @Test
@@ -39,7 +39,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -49,7 +49,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(result.isValid());
   }
   
   @Test
@@ -59,7 +59,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -75,7 +75,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(result.isValid());
   }
   
   @Test
@@ -92,7 +92,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -108,7 +108,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(result.isValid());
   }
   
   @Test
@@ -125,7 +125,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -135,7 +135,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -145,7 +145,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -155,7 +155,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(modelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -169,7 +169,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(ospModelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(result.isValid());
   }
   
   @Test
@@ -183,7 +183,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(ospModelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
   @Test
@@ -197,7 +197,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(ospModelDescription);
     
-    assertTrue(result.isSuccess());
+    assertTrue(result.isValid());
   }
   
   @Test
@@ -211,7 +211,7 @@ public class OspModelDescriptionValidatorTest {
     
     OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(ospModelDescription);
     
-    assertFalse(result.isSuccess());
+    assertFalse(result.isValid());
   }
   
 }
