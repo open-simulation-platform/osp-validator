@@ -28,7 +28,7 @@ public class AllPlugsAndSocketsInBondsAreDefinedInOspModelDescription implements
       if (plugIsDefinedInModelDescription(modelDescription, plug)) {
         return true;
       } else {
-        messages.add("Plug " + plug.getName() + " referenced in bond " + ospBond.getName() + " is not defined in the osp model description");
+        messages.add("Plug '" + plug.getName() + "' referenced in bond '" + ospBond.getName() + "' is not defined in the osp model description");
         return false;
       }
     });
@@ -39,7 +39,7 @@ public class AllPlugsAndSocketsInBondsAreDefinedInOspModelDescription implements
       if (socketIsDefinedInModelDescription(modelDescription, socket)) {
         return true;
       } else {
-        messages.add("Socket " + socket.getName() + " referenced in bond " + ospBond.getName() + " is not defined in the osp model description");
+        messages.add("Socket '" + socket.getName() + "' referenced in bond '" + ospBond.getName() + "' is not defined in the osp model description");
         return false;
       }
     });

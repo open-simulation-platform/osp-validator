@@ -17,7 +17,7 @@ public class AllPlugTypesDefinedInOntology implements Validation {
       if (ontologyContent.getClasses().containsKey(plug.getType())) {
         return true;
       } else {
-        messages.add("Plug " + plug.getName() + " of type " + plug.getType() + " does not exist in the ontology");
+        messages.add("Plug '" + plug.getName() + "' of type '" + plug.getType() + "' does not exist in the ontology");
         return false;
       }
     });

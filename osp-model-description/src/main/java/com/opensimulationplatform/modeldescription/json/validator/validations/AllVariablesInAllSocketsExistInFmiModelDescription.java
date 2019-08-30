@@ -25,7 +25,7 @@ public class AllVariablesInAllSocketsExistInFmiModelDescription implements Valid
           Stream<FmiScalarVariable> fmiVariables = fmiScalarVariables.stream();
           boolean anyMatch = fmiVariables.anyMatch(fmiVariable -> fmiVariable.getName().equals(variable.getName()));
           if (!anyMatch) {
-            messages.add("Variable: " + socket.getName() + "." + variable.getName() + " does NOT exists in fmiModelDescription: " + fmiModelDescription.getModelName());
+            messages.add("Variable '" + variable.getName() + "' in socket '" + socket.getName() + "' does not exists in fmiModelDescription '" + fmiModelDescription.getModelName() + "'");
           }
           return anyMatch;
         });

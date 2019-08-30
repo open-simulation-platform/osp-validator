@@ -17,7 +17,7 @@ public class AllSocketTypesDefinedInOntology implements Validation {
       if (ontologyContent.getClasses().containsKey(socket.getType())) {
         return true;
       } else {
-        messages.add("Socket " + socket.getName() + " of type " + socket.getType() + " does not exist in the ontology");
+        messages.add("Socket '" + socket.getName() + "' of type '" + socket.getType() + "' does not exist in the ontology");
         return false;
       }
     });
