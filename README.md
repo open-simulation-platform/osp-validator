@@ -56,5 +56,5 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd osp-model-description-cli
-$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/cse-config-valid.json -fmu 
+$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/cse-config-valid.json -fmu ./src/test/resources/CraneController.fmu 
 ```
