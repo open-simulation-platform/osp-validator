@@ -1,0 +1,60 @@
+{
+  "name": "CraneController",
+  "plugs": [
+    {
+      "type": "force",
+      "name": "forceOut",
+      "variables": [
+        "f[1]",
+        "f[2]",
+        "f[3]"
+      ],
+      "unit": "N"
+    },
+    {
+      "type": "position",
+      "name": "positionOut",
+      "variables": [
+        "p[1]",
+        "p[2]",
+        "p[3]"
+      ],
+      "unit": "m"
+    }
+  ],
+  "sockets": [
+    {
+      "type": "linear_velocity",
+      "name": "velocityIn",
+      "variables": [
+        "v[1]",
+        "v[2]",
+        "v[3]"
+      ],
+      "unit": "m/s"
+    },
+    {
+      "type": "generic",
+      "name": "limits",
+      "variables": [
+        "limits[1]",
+        "limits[2]",
+        "limits[3]"
+      ],
+      "unit": "NA"
+    }
+  ],
+  "bonds": [
+    {
+      "name": "forceVelocity",
+      "type": "mechanical",
+      "sockets": [
+        "velocityIn"
+      ],
+      "plugs": [
+        "forceOut",
+        "positionOut"
+      ]
+    }
+  ]
+}

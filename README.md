@@ -9,17 +9,17 @@ java: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u2
 \
 maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
 
-# msmi-validator-cli
+# cse-config-cli
 
-Command line interface for msmi-validator
+Command line interface for cse configuration files
 
 ## clone -> build -> run
 ```
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd cli
-$ java -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json
+$ cd cse-config-cli
+$ java -jar ./target/cse-config-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/cse-config-valid.json
 ```
 
 ## clone -> build -> run (with debug output) -> generate configuration.owl
@@ -27,21 +27,34 @@ $ java -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --on
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd cli
-$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-cli-<version>-jar-with-dependencies.jar --ontology ../core/src/main/resources/osp.owl --config ../core/src/test/resources/validator/cse-config-valid.json -s ./
+$ cd cse-config-cli
+$ java -Dosp.validator.log.level=debug -jar ./target/cse-config-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/cse-config-valid.json -s ./
 ```
 
-# msmi-validator-http
+# cse-config-http
 
-HTTP servlet interface for msmi-validator
+HTTP servlet interface for cse configuration validator
 
 ## clone -> build -> run
 ```
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd http
-$ java -Dmsmi.validator.log.level=debug -jar ./target/msmi-validator-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
+$ cd cse-config-http
+$ java -Dosp.validator.log.level=debug -jar ./target/cse-config-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
-- go to localhost:<your-favourite-port>/validate?configuration=../core/src/test/resources/validator/cse-config-valid.json&ontology=../core/src/main/resources/osp.owl
+- go to localhost:<your-favourite-port>/validate?configuration=./src/test/resources/validator/cse-config-valid.json
+```
+
+# osp-model-description-cli
+
+Command line interface for osp model description files
+
+## clone -> build -> run
+```
+$ git clone https://github.com/open-simulation-platform/msmi-validator.git
+$ cd msmi-validator
+$ mvn clean package
+$ cd osp-model-description-cli
+$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/cse-config-valid.json -fmu 
 ```
