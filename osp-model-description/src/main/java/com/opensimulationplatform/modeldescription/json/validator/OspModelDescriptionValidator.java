@@ -23,19 +23,16 @@ public class OspModelDescriptionValidator {
   
   public static Result validate(OspModelDescription modelDescription) {
     List<String> messages = new ArrayList<>();
-    boolean allMatch = validations.stream().allMatch(validation -> {
+    boolean isValid = true;
+    for (Validation validation : validations) {
       Validation.Result validationResult = validation.validate(modelDescription);
-      addValidationMessages(messages, validation, validationResult);
-      return validationResult.isValid();
-    });
-    return new Result(allMatch, messages);
-  }
-  
-  private static void addValidationMessages(List<String> messages, Validation validation, Validation.Result validationResult) {
-    if (!validationResult.isValid()) {
-      messages.add("Validation " + validation.getName() + " failed!");
+      if (!validationResult.isValid()) {
+        messages.add("Validation '" + validation.getName() + "' failed!");
+        isValid = false;
+      }
+      messages.addAll(validationResult.getMessages());
     }
-    messages.addAll(validationResult.getMessages());
+    return new Result(isValid, messages);
   }
   
   public static class Result {

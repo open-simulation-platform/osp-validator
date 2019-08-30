@@ -17,7 +17,7 @@ public class AllBondsHaveUniqueNames implements Validation {
         String nameA = ospBonds.get(i).getName();
         String nameB = ospBonds.get(j).getName();
         if (nameA.equals(nameB)) {
-          messages.add("Bond " + nameA + " does not have a unique name");
+          messages.add("Bond '" + nameA + "' does not have a unique name");
           isValid = false;
         }
       }

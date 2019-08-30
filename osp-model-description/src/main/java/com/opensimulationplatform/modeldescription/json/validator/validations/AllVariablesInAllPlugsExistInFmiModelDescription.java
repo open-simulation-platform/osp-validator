@@ -25,7 +25,7 @@ public class AllVariablesInAllPlugsExistInFmiModelDescription implements Validat
           Stream<FmiScalarVariable> fmiVariables = fmiScalarVariables.stream();
           boolean anyMatch = fmiVariables.anyMatch(fmiVariable -> fmiVariable.getName().equals(variable.getName()));
           if (!anyMatch) {
-            messages.add("Variable: " + plug.getName() + "." + variable.getName() + " does NOT exists in fmiModelDescription: " + fmiModelDescription.getModelName());
+            messages.add("Variable '" + variable.getName() + "' in plug '" + plug.getName() + "' does not exists in fmiModelDescription '" + fmiModelDescription.getModelName() + "'");
           }
           return anyMatch;
         });

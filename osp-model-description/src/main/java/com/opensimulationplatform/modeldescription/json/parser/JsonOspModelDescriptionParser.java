@@ -17,14 +17,14 @@ public class JsonOspModelDescriptionParser {
   
   public static JsonOspModelDescription parse(File file) {
     try {
-      LOG.debug("Parsing " + file.getAbsolutePath() + "...");
+      LOG.debug("Parsing '" + file.getAbsolutePath() + "'...");
       ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
       JsonOspModelDescription jsonOspModelDescription = objectMapper.readValue(Files.readAllBytes(Paths.get(file.getAbsolutePath())), JsonOspModelDescription.class);
       LOG.debug("done!");
       
       return jsonOspModelDescription;
     } catch (Exception e) {
-      String msg = "Error during parsing of " + file.getAbsolutePath();
+      String msg = "Error during parsing of '" + file.getAbsolutePath() + "'";
       LOG.error(msg);
       throw new RuntimeException(msg, e);
     }

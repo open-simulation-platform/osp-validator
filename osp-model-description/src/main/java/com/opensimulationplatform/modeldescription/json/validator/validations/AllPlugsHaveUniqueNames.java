@@ -17,7 +17,7 @@ public class AllPlugsHaveUniqueNames implements Validation {
         String nameA = ospPlugs.get(i).getName();
         String nameB = ospPlugs.get(j).getName();
         if (nameA.equals(nameB)) {
-          messages.add("Plug " + nameA + " does not have a unique name");
+          messages.add("Plug '" + nameA + "' does not have a unique name");
           isValid = false;
         }
       }

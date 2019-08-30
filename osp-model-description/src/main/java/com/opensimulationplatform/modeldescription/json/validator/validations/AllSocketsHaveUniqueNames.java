@@ -17,7 +17,7 @@ public class AllSocketsHaveUniqueNames implements Validation {
         String nameA = ospSockets.get(i).getName();
         String nameB = ospSockets.get(j).getName();
         if (nameA.equals(nameB)) {
-          messages.add("Socket " + nameA + " does not have a unique name");
+          messages.add("Socket '" + nameA + "' does not have a unique name");
           isValid = false;
         }
       }
