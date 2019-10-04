@@ -1,0 +1,52 @@
+{
+  "startTime": 0.0,
+  "baseStepSize": 1e-4,
+  "algorithm": "fixedStepMaster",
+  "description": "This is a simulation setup",
+  "simulators": [
+    {
+      "name": "Simulator_1",
+      "source": "./path/to/simulator.fmu",
+      "modelDefinition": "./src/test/resources/parsing/OspModelDescription.json",
+      "decimationFactor": 2,
+      "initialValues": {
+        "x": 1.4,
+        "y": 42
+      }
+    },
+    {
+      "name": "Simulator_2",
+      "source": "./path/to/simulator.fmu",
+      "modelDefinition": "./src/test/resources/parsing/OspModelDescription.json",
+      "decimationFactor": 3,
+      "initialValues": {
+        "x": 3.14,
+        "y": 7.21
+      }
+    }
+  ],
+  "variableConnections": [
+    {
+      "sourceSimulator": "Simulator_1",
+      "sourceVariable": "o_variable_1",
+      "targetSimulator": "Simulator_2",
+      "targetVariable": "i_variable_1"
+    }
+  ],
+  "plugSocketConnections": [
+    {
+      "sourceSimulator": "Simulator_1",
+      "plug": "plug_5",
+      "targetSimulator": "Simulator_2",
+      "socket": "socket_5"
+    }
+  ],
+  "bondConnections": [
+    {
+      "simulatorA": "Simulator_1",
+      "bondA": "bond_1",
+      "simulatorB": "Simulator_2",
+      "bondB": "bond_2"
+    }
+  ]
+}

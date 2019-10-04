@@ -1,8 +1,8 @@
 package com.opensimulationplatform.core.owl.converter;
 
-import com.opensimulationplatform.core.model.configuration.OspPlugSocketConnection;
 import com.opensimulationplatform.core.model.modeldescription.OspPlug;
 import com.opensimulationplatform.core.model.modeldescription.OspSocket;
+import com.opensimulationplatform.core.model.systemstructure.OspPlugSocketConnection;
 import com.opensimulationplatform.core.ontology.model.OntologyObjectProperties;
 import com.opensimulationplatform.core.owl.helper.OwlHelper;
 import com.opensimulationplatform.core.owl.model.OwlConfiguration;

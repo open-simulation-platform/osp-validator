@@ -2,7 +2,8 @@ package com.opensimulationplatform.cseconfig.http;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
+import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
+import com.opensimulationplatform.cseconfig.json.validator.JsonValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.slf4j.Logger;
@@ -51,25 +52,25 @@ public class ValidationServlet extends HttpServlet {
   private void handleRequest(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
     String requiredConfiguration = httpRequest.getParameter("configuration");
     String optionalOntology = httpRequest.getParameter("ontology");
-    
-    JsonCseConfigurationValidator.Result result = validate(requiredConfiguration, optionalOntology);
+  
+    SystemStructureValidator.Result result = validate(requiredConfiguration, optionalOntology);
     
     createHttpResponse(httpResponse, result);
   }
   
-  private JsonCseConfigurationValidator.Result validate(String requiredConfiguration, String optionalOntology) {
+  private SystemStructureValidator.Result validate(String requiredConfiguration, String optionalOntology) {
     File configuration = new File(getURI(requiredConfiguration));
-    JsonCseConfigurationValidator.Result result;
+    SystemStructureValidator.Result result;
     if (nonNull(optionalOntology)) {
       File ontology = new File(getURI(optionalOntology));
-      result = JsonCseConfigurationValidator.validate(ontology, configuration);
+      result = JsonValidator.validate(configuration, ontology);
     } else {
-      result = JsonCseConfigurationValidator.validate(configuration);
+      result = JsonValidator.validate(configuration);
     }
     return result;
   }
   
-  private void createHttpResponse(HttpServletResponse httpResponse, JsonCseConfigurationValidator.Result result) {
+  private void createHttpResponse(HttpServletResponse httpResponse, SystemStructureValidator.Result result) {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
     httpResponse.addHeader("Access-Control-Allow-Origin", "*");
@@ -92,7 +93,7 @@ public class ValidationServlet extends HttpServlet {
     }
   }
   
-  private ValidationServletResponse getServletResponse(JsonCseConfigurationValidator.Result result) {
+  private ValidationServletResponse getServletResponse(SystemStructureValidator.Result result) {
     ValidationServletResponse response = new ValidationServletResponse();
     
     if (result.isSuccess()) {

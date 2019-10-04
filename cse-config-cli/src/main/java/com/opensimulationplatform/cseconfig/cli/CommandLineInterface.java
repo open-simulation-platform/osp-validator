@@ -3,7 +3,9 @@ package com.opensimulationplatform.cseconfig.cli;
 import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import com.opensimulationplatform.core.util.terminator.ExitCode;
 import com.opensimulationplatform.core.util.terminator.Terminator;
-import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
+import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
+import com.opensimulationplatform.cseconfig.json.validator.JsonValidator;
+import com.opensimulationplatform.cseconfig.xml.validator.XmlValidator;
 import org.apache.commons.cli.*;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.IRI;
@@ -29,16 +31,16 @@ class CommandLineInterface {
     }
     
     CommandLine cmd = parseCommandLineOptions(args);
-    File cseConfigFile = getRequiredConfigurationFile(cmd);
+    File ospSystemStructureFile = getRequiredConfigurationFile(cmd);
     File ospOwlFile = getOptionalOntologyFile(cmd);
-    
-    JsonCseConfigurationValidator.Result result = validate(cseConfigFile, ospOwlFile);
-    
+  
+    SystemStructureValidator.Result result = validate(ospSystemStructureFile, ospOwlFile);
+  
     if (!result.isSuccess()) {
       if (nonNull(ospOwlFile)) {
-        LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
+        LOG.error("Validation of: " + ospSystemStructureFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
       } else {
-        LOG.error("Validation of: " + cseConfigFile.getAbsolutePath() + " based on default ontology failed!");
+        LOG.error("Validation of: " + ospSystemStructureFile.getAbsolutePath() + " based on default ontology failed!");
       }
       
       Set<Set<OWLAxiom>> explanation = result.getExplanations();
@@ -61,14 +63,24 @@ class CommandLineInterface {
     Terminator.exit(ExitCodes.SUCCESS);
   }
   
-  private static JsonCseConfigurationValidator.Result validate(File cseConfigFile, File ospOwlFile) {
-    JsonCseConfigurationValidator.Result result;
-    if (nonNull(ospOwlFile)) {
-      result = JsonCseConfigurationValidator.validate(ospOwlFile, cseConfigFile);
+  private static SystemStructureValidator.Result validate(File ospSystemStructureFile, File ospOwlFile) {
+    if (ospSystemStructureFile.getAbsolutePath().endsWith(".json")) {
+      if (nonNull(ospOwlFile)) {
+        return JsonValidator.validate(ospSystemStructureFile, ospOwlFile);
+      } else {
+        return JsonValidator.validate(ospSystemStructureFile);
+      }
+    } else if (ospSystemStructureFile.getAbsolutePath().endsWith(".xml")) {
+      if (nonNull(ospOwlFile)) {
+        return XmlValidator.validate(ospSystemStructureFile, ospOwlFile);
+      } else {
+        return XmlValidator.validate(ospSystemStructureFile);
+      }
     } else {
-      result = JsonCseConfigurationValidator.validate(cseConfigFile);
+      LOG.error("Can only validate json or xml system structure files");
+      Terminator.exit(ExitCodes.INVALID_INPUT);
+      throw new RuntimeException("This should never happen");
     }
-    return result;
   }
   
   private static File getOptionalOntologyFile(CommandLine cmd) {
@@ -89,14 +101,25 @@ class CommandLineInterface {
   
   private static File getRequiredConfigurationFile(CommandLine cmd) {
     File file = new File(cmd.getOptionValue("config"));
+    
     if (!file.exists()) {
       LOG.error("Input file " + file.getAbsolutePath() + " does not exist!");
       Terminator.exit(ExitCodes.INVALID_INPUT);
     }
+    
+    if (!supportedFileType(file)) {
+      LOG.error("Input file format not supported!");
+      Terminator.exit(ExitCodes.INVALID_INPUT);
+    }
+    
     return file;
   }
   
-  private static void saveConfigOwlFile(JsonCseConfigurationValidator.Result result, File saveDirectory) {
+  private static boolean supportedFileType(File file) {
+    return file.getAbsolutePath().endsWith(".json") || file.getAbsolutePath().endsWith(".xml");
+  }
+  
+  private static void saveConfigOwlFile(SystemStructureValidator.Result result, File saveDirectory) {
     if (!saveDirectory.exists()) {
       LOG.trace("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
       if (!saveDirectory.mkdirs()) {

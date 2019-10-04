@@ -1,6 +1,6 @@
 package com.opensimulationplatform.core.model.modeldescription;
 
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +17,7 @@ public class OspVariableTest {
   @Test
   public void canSetSimulator() {
     OspVariable v = new OspVariable("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     
     v.setOspSimulator(sim);
     
@@ -28,8 +28,8 @@ public class OspVariableTest {
   @Test(expected = RuntimeException.class)
   public void canNotChangeSimulator() {
     OspVariable v = new OspVariable("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
-    OspSimulator simNew = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
+    OspSimulator simNew = new OspSimulator("name", "source");
     
     v.setOspSimulator(sim);
     
@@ -62,7 +62,7 @@ public class OspVariableTest {
   public void addingPlugAddsSimulatorToVariable() {
     OspVariable v = new OspVariable("name");
     OspPlug p = new OspPlug("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     p.setOspSimulator(sim);
     
     v.addPlug(p);
@@ -74,7 +74,7 @@ public class OspVariableTest {
   public void addingSocketAddsSimulatorToVariable() {
     OspVariable v = new OspVariable("name");
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     s.setOspSimulator(sim);
     
     v.addSocket(s);
@@ -85,9 +85,9 @@ public class OspVariableTest {
   @Test(expected = Exception.class)
   public void canNotAddVariableToPlugWithDifferentSimulator() {
     OspVariable v = new OspVariable("name");
-    OspSimulator sim1 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim1 = new OspSimulator("name", "source");
     v.setOspSimulator(sim1);
-    OspSimulator sim2 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim2 = new OspSimulator("name", "source");
     OspPlug p = new OspPlug("type", "name");
     p.setOspSimulator(sim2);
     
@@ -97,9 +97,9 @@ public class OspVariableTest {
   @Test(expected = Exception.class)
   public void canNotAddVariableToSocketWithDifferentSimulator() {
     OspVariable v = new OspVariable("name");
-    OspSimulator sim1 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim1 = new OspSimulator("name", "source");
     v.setOspSimulator(sim1);
-    OspSimulator sim2 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim2 = new OspSimulator("name", "source");
     OspSocket s = new OspSocket("type", "name");
     s.setOspSimulator(sim2);
     

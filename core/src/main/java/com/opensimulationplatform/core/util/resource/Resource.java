@@ -36,7 +36,9 @@ public class Resource {
     try (InputStream is = url.openStream();
          BufferedInputStream bis = new BufferedInputStream(is)) {
       LOG.trace("Creating temporary file to hold the resource: " + name + "...");
-      File file = File.createTempFile("msmi-validator", ".tmp");
+      String[] parts = name.split("\\.");
+      String extension = parts[parts.length - 1];
+      File file = File.createTempFile("msmi-validator", "." + extension);
       file.deleteOnExit();
       LOG.trace("Created: " + file.getAbsolutePath());
       

@@ -1,6 +1,6 @@
 package com.opensimulationplatform.core.model.modeldescription;
 
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +18,7 @@ public class OspSocketTest {
   @Test
   public void canSetSimulator() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
   
     s.setOspSimulator(sim);
     
@@ -29,8 +29,8 @@ public class OspSocketTest {
   @Test(expected = Exception.class)
   public void canNotChangeSimulator() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
-    OspSimulator simNew = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
+    OspSimulator simNew = new OspSimulator("name", "source");
     
     s.setOspSimulator(sim);
     
@@ -40,7 +40,7 @@ public class OspSocketTest {
   @Test
   public void canAddVariable() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     s.setOspSimulator(sim);
     OspVariable v = new OspVariable("name");
     
@@ -53,7 +53,7 @@ public class OspSocketTest {
   @Test
   public void addingVariableAddsSimulatorToVariable() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     s.setOspSimulator(sim);
     OspVariable v = new OspVariable("name");
     
@@ -66,7 +66,7 @@ public class OspSocketTest {
   public void addingVariableAddsSimulatorToSocket() {
     OspSocket s = new OspSocket("type", "name");
     OspVariable v = new OspVariable("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     v.setOspSimulator(sim);
     
     s.addVariable(v);
@@ -77,10 +77,10 @@ public class OspSocketTest {
   @Test(expected = Exception.class)
   public void canNotAddVariableWithDifferentSimulator() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim1 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim1 = new OspSimulator("name", "source");
     s.setOspSimulator(sim1);
     OspVariable v = new OspVariable("name");
-    OspSimulator sim2 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim2 = new OspSimulator("name", "source");
     v.setOspSimulator(sim2);
   
     s.addVariable(v);
@@ -101,7 +101,7 @@ public class OspSocketTest {
   public void addingBondAddsSimulatorToSocket() {
     OspSocket s = new OspSocket("type", "name");
     OspBond b = new OspBond("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     b.setOspSimulator(sim);
     
     s.addBond(b);
@@ -113,7 +113,7 @@ public class OspSocketTest {
   public void addingBondAddsSimulatorToBond() {
     OspSocket s = new OspSocket("type", "name");
     OspBond b = new OspBond("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     s.setOspSimulator(sim);
     
     s.addBond(b);
@@ -124,10 +124,10 @@ public class OspSocketTest {
   @Test(expected = Exception.class)
   public void canNotAddBondWithDifferentSimulator() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim1 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim1 = new OspSimulator("name", "source");
     s.setOspSimulator(sim1);
     OspBond b = new OspBond("name");
-    OspSimulator sim2 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim2 = new OspSimulator("name", "source");
     b.setOspSimulator(sim2);
     
     s.addBond(b);

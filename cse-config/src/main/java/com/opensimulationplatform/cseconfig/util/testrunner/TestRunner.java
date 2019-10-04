@@ -2,7 +2,8 @@ package com.opensimulationplatform.cseconfig.util.testrunner;
 
 import com.opensimulationplatform.core.util.terminator.ExitCode;
 import com.opensimulationplatform.core.util.terminator.Terminator;
-import com.opensimulationplatform.cseconfig.json.validator.JsonCseConfigurationValidator;
+import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
+import com.opensimulationplatform.cseconfig.json.validator.JsonValidator;
 import com.opensimulationplatform.cseconfig.util.explanationinterpreter.ExplanationInterpreter;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
@@ -24,8 +25,8 @@ class TestRunner {
     
     File ospOwlFile = new File("./src/main/resources/osp.owl");
     File cseConfigFile = new File("./src/test/resources/validator/cse-config-valid.json");
-    
-    JsonCseConfigurationValidator.Result result = JsonCseConfigurationValidator.validate(ospOwlFile, cseConfigFile);
+  
+    SystemStructureValidator.Result result = JsonValidator.validate(ospOwlFile, cseConfigFile);
     File configOwlFile = new File("./configuration.owl");
     LOG.debug("Storing configuration ontology to: " + configOwlFile.getAbsolutePath());
     try {

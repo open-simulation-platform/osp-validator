@@ -1,11 +1,11 @@
 package com.opensimulationplatform.core.owl.model;
 
-import com.opensimulationplatform.core.model.configuration.OspConfiguration;
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
 import com.opensimulationplatform.core.model.modeldescription.OspBond;
 import com.opensimulationplatform.core.model.modeldescription.OspPlug;
 import com.opensimulationplatform.core.model.modeldescription.OspSocket;
 import com.opensimulationplatform.core.model.modeldescription.OspVariable;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
+import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class OwlConfiguration {
   private OWLOntology ontology;
-  private OspConfiguration ospConfiguration;
+  private SystemStructure systemStructure;
   private final Map<OWLNamedIndividual, OspSimulator> simulators = new HashMap<>();
   private final Map<OWLNamedIndividual, OspBond> bonds = new HashMap<>();
   private final Map<OWLNamedIndividual, OspPlug> plugs = new HashMap<>();
@@ -25,16 +25,16 @@ public class OwlConfiguration {
     return ontology;
   }
   
-  public OspConfiguration getOspConfiguration() {
-    return ospConfiguration;
+  public SystemStructure getSystemStructure() {
+    return systemStructure;
   }
   
   public void setOntology(OWLOntology ontology) {
     this.ontology = ontology;
   }
   
-  public void setOspConfiguration(OspConfiguration ospConfiguration) {
-    this.ospConfiguration = ospConfiguration;
+  public void setSystemStructure(SystemStructure systemStructure) {
+    this.systemStructure = systemStructure;
   }
   
   public Map<OWLNamedIndividual, OspSimulator> getSimulators() {
