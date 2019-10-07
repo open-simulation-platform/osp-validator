@@ -9,17 +9,17 @@ java: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u2
 \
 maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
 
-# cse-config-cli
+# osp-system-structure-cli
 
-Command line interface for cse configuration files
+Command line interface for osp system structure files
 
 ## clone -> build -> run
 ```
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd cse-config-cli
-$ java -jar ./target/cse-config-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/cse-config-valid.json
+$ cd osp-system-structure-cli
+$ java -jar ./target/osp-system-structure-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/osp-system-structure-valid.json
 ```
 
 ## clone -> build -> run (with debug output) -> generate configuration.owl
@@ -27,23 +27,23 @@ $ java -jar ./target/cse-config-cli-<version>-jar-with-dependencies.jar --config
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd cse-config-cli
-$ java -Dosp.validator.log.level=debug -jar ./target/cse-config-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/cse-config-valid.json -s ./
+$ cd osp-system-structure-cli
+$ java -Dosp.validator.log.level=debug -jar ./target/osp-system-structure-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/osp-system-structure-valid.json -s ./
 ```
 
-# cse-config-http
+# osp-system-structure-http
 
-HTTP servlet interface for cse configuration validator
+HTTP servlet interface for osp system structure validator
 
 ## clone -> build -> run
 ```
 $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
-$ cd cse-config-http
-$ java -Dosp.validator.log.level=debug -jar ./target/cse-config-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
+$ cd osp-system-structure-http
+$ java -Dosp.validator.log.level=debug -jar ./target/osp-system-structure-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
-- go to localhost:<your-favourite-port>/validate?configuration=./src/test/resources/validator/cse-config-valid.json
+- go to localhost:<your-favourite-port>/validate?configuration=./src/test/resources/validator/osp-system-structure-valid.json
 ```
 
 # osp-model-description-cli
@@ -56,5 +56,5 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd osp-model-description-cli
-$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/cse-config-valid.json -fmu ./src/test/resources/CraneController.fmu 
+$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/osp-system-structure-valid.json -fmu ./src/test/resources/CraneController.fmu 
 ```
