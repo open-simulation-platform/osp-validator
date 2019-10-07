@@ -11,17 +11,6 @@ public class SystemStructure {
   private List<OspPlugSocketConnection> ospPlugSocketConnections = new ArrayList<>();
   private List<OspVariableConnection> ospVariableConnections = new ArrayList<>();
   
-  public SystemStructure(Map<String, OspSimulator> simulators, List<OspBondConnection> ospBondConnections, List<OspPlugSocketConnection> ospPlugSocketConnections, List<OspVariableConnection> ospVariableConnections) {
-    this.simulators = simulators;
-    this.ospBondConnections = ospBondConnections;
-    this.ospPlugSocketConnections = ospPlugSocketConnections;
-    this.ospVariableConnections = ospVariableConnections;
-  }
-  
-  public SystemStructure() {
-  
-  }
-  
   public Map<String, OspSimulator> getSimulators() {
     return simulators;
   }
