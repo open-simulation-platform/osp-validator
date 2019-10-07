@@ -7,22 +7,22 @@ import com.opensimulationplatform.core.model.systemstructure.OspBondConnection;
 import com.opensimulationplatform.core.ontology.model.OntologyClasses;
 import com.opensimulationplatform.core.ontology.model.OntologyObjectProperties;
 import com.opensimulationplatform.core.owl.helper.OwlHelper;
-import com.opensimulationplatform.core.owl.model.OwlConfiguration;
+import com.opensimulationplatform.core.owl.model.OwlSystemStructure;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 import java.util.List;
 
-class OwlBondConnectionConverter {
-  public static void convert(OspBondConnection connection, OwlConfiguration owlConfiguration) {
-    convert(connection.getOspBondA(), connection.getOspBondB(), owlConfiguration);
+class BondConnectionConverter {
+  public static void convert(OspBondConnection connection, OwlSystemStructure owlSystemStructure) {
+    convert(connection.getOspBondA(), connection.getOspBondB(), owlSystemStructure);
   }
   
-  private static void convert(OspBond ospBondA, OspBond ospBondB, OwlConfiguration owlConfiguration) {
-    OWLOntology ontology = owlConfiguration.getOntology();
+  private static void convert(OspBond ospBondA, OspBond ospBondB, OwlSystemStructure owlSystemStructure) {
+    OWLOntology ontology = owlSystemStructure.getOntology();
   
-    OWLNamedIndividual bondAIndividual = OwlBondConverter.convert(ospBondA, owlConfiguration);
-    OWLNamedIndividual bondBIndividual = OwlBondConverter.convert(ospBondB, owlConfiguration);
+    OWLNamedIndividual bondAIndividual = BondConverter.convert(ospBondA, owlSystemStructure);
+    OWLNamedIndividual bondBIndividual = BondConverter.convert(ospBondB, owlSystemStructure);
     
     OwlHelper.addClassAssertionAxiom(ontology, bondAIndividual, OntologyClasses.BOND_CONNECTOR_A);
     OwlHelper.addClassAssertionAxiom(ontology, bondBIndividual, OntologyClasses.BOND_CONNECTOR_B);
@@ -33,13 +33,13 @@ class OwlBondConnectionConverter {
     List<OspPlug> aOspPlugs = ospBondA.getOspPlugs();
     List<OspSocket> bOspSockets = ospBondB.getOspSockets();
     for (int i = 0; i < aOspPlugs.size(); i++) {
-      OwlPlugSocketConnectionConverter.convert(aOspPlugs.get(i), bOspSockets.get(i), owlConfiguration);
+      PlugSocketConnectionConverter.convert(aOspPlugs.get(i), bOspSockets.get(i), owlSystemStructure);
     }
     
     List<OspSocket> aOspSockets = ospBondA.getOspSockets();
     List<OspPlug> bOspPlugs = ospBondB.getOspPlugs();
     for (int i = 0; i < aOspSockets.size(); i++) {
-      OwlPlugSocketConnectionConverter.convert(bOspPlugs.get(i), aOspSockets.get(i), owlConfiguration);
+      PlugSocketConnectionConverter.convert(bOspPlugs.get(i), aOspSockets.get(i), owlSystemStructure);
     }
   }
 }

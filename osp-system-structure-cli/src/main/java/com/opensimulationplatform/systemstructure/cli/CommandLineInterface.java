@@ -119,7 +119,7 @@ class CommandLineInterface {
     File configOwlFile = new File(saveDirectory, "configuration.owl");
     LOG.trace("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
     try {
-      OWLOntology ontology = result.getOwlConfiguration().getOntology();
+      OWLOntology ontology = result.getOwlSystemStructure().getOntology();
       ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
       LOG.trace("done!");
     } catch (OWLOntologyStorageException e) {

@@ -1,8 +1,8 @@
 package com.opensimulationplatform.core.validator.systemstructure;
 
 import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
-import com.opensimulationplatform.core.owl.converter.OwlConfigurationConverter;
-import com.opensimulationplatform.core.owl.model.OwlConfiguration;
+import com.opensimulationplatform.core.owl.converter.SystemStructureConverter;
+import com.opensimulationplatform.core.owl.model.OwlSystemStructure;
 import com.opensimulationplatform.core.owl.util.hermitwrapper.HermitReasonerWrapper;
 import com.opensimulationplatform.core.util.resource.Resources;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -17,15 +17,15 @@ public class SystemStructureValidator {
   private static final Logger LOG = LoggerFactory.getLogger(SystemStructureValidator.class);
   
   public static Result validate(SystemStructure systemStructure, File ospOwlFile) {
-    OwlConfiguration owlConfiguration = OwlConfigurationConverter.convert(systemStructure, ospOwlFile);
-    HermitReasonerWrapper reasoner = new HermitReasonerWrapper(owlConfiguration.getOntology());
+    OwlSystemStructure owlSystemStructure = SystemStructureConverter.convert(systemStructure, ospOwlFile);
+    HermitReasonerWrapper reasoner = new HermitReasonerWrapper(owlSystemStructure.getOntology());
     
     if (!reasoner.isConsistent()) {
       LOG.error("Configuration is inconsistent!");
-      return new Result(owlConfiguration, reasoner.getExplanations());
+      return new Result(owlSystemStructure, reasoner.getExplanations());
     } else {
       LOG.debug("Configuration is consistent!");
-      return new Result(owlConfiguration);
+      return new Result(owlSystemStructure);
     }
   }
   
@@ -34,26 +34,26 @@ public class SystemStructureValidator {
   }
   
   public static class Result {
-    private final OwlConfiguration owlConfiguration;
+    private final OwlSystemStructure owlSystemStructure;
     private final Set<Set<OWLAxiom>> explanations;
     private final boolean success;
     
-    private Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanations, boolean success) {
-      this.owlConfiguration = owlConfiguration;
+    private Result(OwlSystemStructure owlSystemStructure, Set<Set<OWLAxiom>> explanations, boolean success) {
+      this.owlSystemStructure = owlSystemStructure;
       this.explanations = explanations;
       this.success = success;
     }
     
-    Result(OwlConfiguration owlConfiguration) {
-      this(owlConfiguration, new HashSet<>(new HashSet<>()), true);
+    Result(OwlSystemStructure owlSystemStructure) {
+      this(owlSystemStructure, new HashSet<>(new HashSet<>()), true);
     }
     
-    Result(OwlConfiguration owlConfiguration, Set<Set<OWLAxiom>> explanations) {
-      this(owlConfiguration, explanations, false);
+    Result(OwlSystemStructure owlSystemStructure, Set<Set<OWLAxiom>> explanations) {
+      this(owlSystemStructure, explanations, false);
     }
     
-    public OwlConfiguration getOwlConfiguration() {
-      return owlConfiguration;
+    public OwlSystemStructure getOwlSystemStructure() {
+      return owlSystemStructure;
     }
     
     public boolean isSuccess() {
