@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 
 import static junit.framework.TestCase.assertFalse;
@@ -19,7 +18,7 @@ public class ValidationServletTest {
   private final URI ontologyPath = TestResources.OSP_OWL.toFile().toURI();
   
   @Test
-  public void canCallDoGetWithQueriesOnUrlFormat() throws IOException {
+  public void canCallDoGetWithQueriesOnUrlFormat() throws Exception {
     String configuration = new File(validConfigurationPath).toURI().toURL().toString();
     String ontology = new File(ontologyPath).toURI().toURL().toString();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontology);
@@ -35,7 +34,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallDoGetWithQueriesOnNonUrlFormat() throws IOException {
+  public void canCallDoGetWithQueriesOnNonUrlFormat() {
     HttpServletRequest request = new MockHttpServletRequest(validConfigurationPath.toString(), ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     ValidationServlet validationServlet = new ValidationServlet();
@@ -44,7 +43,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallDoGetOnValidConfiguration() throws IOException {
+  public void canCallDoGetOnValidConfiguration() {
     HttpServletRequest request = new MockHttpServletRequest(validConfigurationPath.toString(), ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     ValidationServlet validationServlet = new ValidationServlet();
@@ -58,7 +57,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallDoGetOnInvalidConfiguration() throws IOException {
+  public void canCallDoGetOnInvalidConfiguration() {
     ValidationServlet validationServlet = new ValidationServlet();
     String configuration = TestResources.CSE_CONFIG_INVALID_JSON.toFile().getAbsolutePath();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath.toString());
@@ -74,7 +73,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallDoPostOnValidConfiguration() throws Exception {
+  public void canCallDoPostOnValidConfiguration() {
     HttpServletRequest request = new MockHttpServletRequest(validConfigurationPath.toString(), ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     ValidationServlet validationServlet = new ValidationServlet();
@@ -88,7 +87,7 @@ public class ValidationServletTest {
   }
   
   @Test
-  public void canCallDoPostOnInvalidConfiguration() throws Exception {
+  public void canCallDoPostOnInvalidConfiguration() {
     ValidationServlet validationServlet = new ValidationServlet();
     String configuration = TestResources.CSE_CONFIG_INVALID_JSON.toFile().getAbsolutePath();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath.toString());
