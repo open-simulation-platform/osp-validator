@@ -12,7 +12,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OwlConfiguration {
+public class OwlSystemStructure {
   private OWLOntology ontology;
   private SystemStructure systemStructure;
   private final Map<OWLNamedIndividual, OspSimulator> simulators = new HashMap<>();

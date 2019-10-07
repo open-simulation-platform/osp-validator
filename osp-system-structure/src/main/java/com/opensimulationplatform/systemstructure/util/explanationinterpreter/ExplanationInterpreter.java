@@ -107,7 +107,7 @@ public class ExplanationInterpreter {
   }
   
   public static void interpret(SystemStructureValidator.Result result, Set<OWLAxiom> explanations) throws OWLOntologyCreationException {
-    OWLOntology ontology = result.getOwlConfiguration().getOntology();
+    OWLOntology ontology = result.getOwlSystemStructure().getOntology();
     checkForAndExplainIssueType1(ontology, explanations);
     checkForAndExplainIssueType2(ontology, explanations);
   }
