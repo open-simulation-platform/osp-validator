@@ -10,9 +10,9 @@
   <version>0.4.0-SNAPSHOT</version>
   <modules>
     <module>core</module>
-    <module>cse-config</module>
-    <module>cse-config-cli</module>
-    <module>cse-config-http</module>
+    <module>osp-system-structure</module>
+    <module>osp-system-structure-cli</module>
+    <module>osp-system-structure-http</module>
     <module>osp-model-description</module>
     <module>osp-model-description-cli</module>
   </modules>

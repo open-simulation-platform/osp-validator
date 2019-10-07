@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   
-  <artifactId>cse-config</artifactId>
+  <artifactId>osp-system-structure</artifactId>
   
   <packaging>jar</packaging>
   
