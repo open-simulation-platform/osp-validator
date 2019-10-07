@@ -19,7 +19,7 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd osp-system-structure-cli
-$ java -jar ./target/osp-system-structure-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/osp-system-structure-valid.json
+$ java -jar ./target/osp-system-structure-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/xml/OspSystemStructure-valid.xml
 ```
 
 ## clone -> build -> run (with debug output) -> generate configuration.owl
@@ -28,7 +28,7 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd osp-system-structure-cli
-$ java -Dosp.validator.log.level=debug -jar ./target/osp-system-structure-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/osp-system-structure-valid.json -s ./
+$ java -Dosp.validator.log.level=debug -jar ./target/osp-system-structure-cli-<version>-jar-with-dependencies.jar --config ./src/test/resources/validator/xml/OspSystemStructure-valid.xml -s ./
 ```
 
 # osp-system-structure-http
@@ -43,7 +43,7 @@ $ mvn clean package
 $ cd osp-system-structure-http
 $ java -Dosp.validator.log.level=debug -jar ./target/osp-system-structure-http-<version>-jar-with-dependencies.jar --port <your-favourite-port>
 - open web browser
-- go to localhost:<your-favourite-port>/validate?configuration=./src/test/resources/validator/osp-system-structure-valid.json
+- go to localhost:<your-favourite-port>/validate?configuration=./src/test/resources/validator/xml/OspSystemStructure-valid.xml
 ```
 
 # osp-model-description-cli
@@ -56,5 +56,5 @@ $ git clone https://github.com/open-simulation-platform/msmi-validator.git
 $ cd msmi-validator
 $ mvn clean package
 $ cd osp-model-description-cli
-$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/osp-system-structure-valid.json -fmu ./src/test/resources/CraneController.fmu 
+$ java -jar ./target/osp-model-description-cli-<version>-jar-with-dependencies.jar -osp-model-description ./src/test/resources/validator/xml/OspSystemStructure-valid.xml -fmu ./src/test/resources/CraneController.fmu 
 ```
