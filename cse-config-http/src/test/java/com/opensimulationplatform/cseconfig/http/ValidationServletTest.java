@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ValidationServletTest {
   
-  private final URI validConfigurationPath = TestResources.CSE_CONFIG_VALID_JSON.toFile().toURI();
+  private final URI validConfigurationPath = TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile().toURI();
   private final URI ontologyPath = TestResources.OSP_OWL.toFile().toURI();
   
   @Test
@@ -59,7 +59,7 @@ public class ValidationServletTest {
   @Test
   public void canCallDoGetOnInvalidConfiguration() {
     ValidationServlet validationServlet = new ValidationServlet();
-    String configuration = TestResources.CSE_CONFIG_INVALID_JSON.toFile().getAbsolutePath();
+    String configuration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().getAbsolutePath();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     
@@ -89,7 +89,7 @@ public class ValidationServletTest {
   @Test
   public void canCallDoPostOnInvalidConfiguration() {
     ValidationServlet validationServlet = new ValidationServlet();
-    String configuration = TestResources.CSE_CONFIG_INVALID_JSON.toFile().getAbsolutePath();
+    String configuration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().getAbsolutePath();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     

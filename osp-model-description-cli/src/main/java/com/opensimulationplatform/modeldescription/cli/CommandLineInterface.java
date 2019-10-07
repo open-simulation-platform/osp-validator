@@ -5,7 +5,6 @@ import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import com.opensimulationplatform.core.util.terminator.Terminator;
 import com.opensimulationplatform.core.validator.modeldescription.ModelDescriptionValidator;
 import com.opensimulationplatform.modeldescription.cli.jcommander.Arguments;
-import com.opensimulationplatform.modeldescription.json.validator.JsonValidator;
 import com.opensimulationplatform.modeldescription.xml.validator.XmlValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,22 +29,10 @@ public class CommandLineInterface {
   }
   
   private static ModelDescriptionValidator.Result validate(File ospModelDescriptionFile, File fmu, File ospOwlFile) {
-    if (ospModelDescriptionFile.getAbsolutePath().endsWith(".json")) {
-      if (isNull(ospOwlFile)) {
-        return JsonValidator.validate(ospModelDescriptionFile, fmu);
-      } else {
-        return JsonValidator.validate(ospModelDescriptionFile, fmu, ospOwlFile);
-      }
-    } else if (ospModelDescriptionFile.getAbsolutePath().endsWith(".xml")) {
-      if (isNull(ospOwlFile)) {
-        return XmlValidator.validate(ospModelDescriptionFile, fmu);
-      } else {
-        return XmlValidator.validate(ospModelDescriptionFile, fmu, ospOwlFile);
-      }
+    if (isNull(ospOwlFile)) {
+      return XmlValidator.validate(ospModelDescriptionFile, fmu);
     } else {
-      LOG.error("Can only validate json or xml system structure files");
-      Terminator.exit(ExitCodes.INVALID_INPUT);
-      throw new RuntimeException("This should never happen");
+      return XmlValidator.validate(ospModelDescriptionFile, fmu, ospOwlFile);
     }
   }
   

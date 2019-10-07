@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 
 public class ValidationServerTest {
   
-  private final URI validConfiguration = TestResources.CSE_CONFIG_VALID_JSON.toFile().toURI();
-  private final URI invalidConfiguration = TestResources.CSE_CONFIG_INVALID_JSON.toFile().toURI();
+  private final URI validConfiguration = TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile().toURI();
+  private final URI invalidConfiguration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().toURI();
   private final URI ontology = TestResources.OSP_OWL.toFile().toURI();
   private final int port = 8001;
   private final Gson gson = new GsonBuilder().create();

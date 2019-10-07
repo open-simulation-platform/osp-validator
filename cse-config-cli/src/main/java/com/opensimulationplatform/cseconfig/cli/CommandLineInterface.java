@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import com.opensimulationplatform.core.util.terminator.ExitCode;
 import com.opensimulationplatform.core.util.terminator.Terminator;
 import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
-import com.opensimulationplatform.cseconfig.json.validator.JsonValidator;
 import com.opensimulationplatform.cseconfig.xml.validator.XmlValidator;
 import org.apache.commons.cli.*;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
@@ -64,22 +63,10 @@ class CommandLineInterface {
   }
   
   private static SystemStructureValidator.Result validate(File ospSystemStructureFile, File ospOwlFile) {
-    if (ospSystemStructureFile.getAbsolutePath().endsWith(".json")) {
-      if (nonNull(ospOwlFile)) {
-        return JsonValidator.validate(ospSystemStructureFile, ospOwlFile);
-      } else {
-        return JsonValidator.validate(ospSystemStructureFile);
-      }
-    } else if (ospSystemStructureFile.getAbsolutePath().endsWith(".xml")) {
-      if (nonNull(ospOwlFile)) {
-        return XmlValidator.validate(ospSystemStructureFile, ospOwlFile);
-      } else {
-        return XmlValidator.validate(ospSystemStructureFile);
-      }
+    if (nonNull(ospOwlFile)) {
+      return XmlValidator.validate(ospSystemStructureFile, ospOwlFile);
     } else {
-      LOG.error("Can only validate json or xml system structure files");
-      Terminator.exit(ExitCodes.INVALID_INPUT);
-      throw new RuntimeException("This should never happen");
+      return XmlValidator.validate(ospSystemStructureFile);
     }
   }
   

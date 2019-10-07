@@ -20,8 +20,8 @@ public class CommandLineInterfaceTest {
   public final TemporaryFolder tempFolder = new TemporaryFolder();
   
   private final String ontology = TestResources.OSP_OWL.toFile().getAbsolutePath();
-  private final String invalidConfig = TestResources.CSE_CONFIG_INVALID_JSON.toFile().getAbsolutePath();
-  private final String validConfig = TestResources.CSE_CONFIG_VALID_JSON.toFile().getAbsolutePath();
+  private final String invalidConfig = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().getAbsolutePath();
+  private final String validConfig = TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile().getAbsolutePath();
   
   @Test
   public void canCheckInvalidConfiguration() {

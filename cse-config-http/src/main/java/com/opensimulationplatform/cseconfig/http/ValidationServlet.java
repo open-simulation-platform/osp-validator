@@ -3,7 +3,7 @@ package com.opensimulationplatform.cseconfig.http;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
-import com.opensimulationplatform.cseconfig.json.validator.JsonValidator;
+import com.opensimulationplatform.cseconfig.xml.validator.XmlValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.slf4j.Logger;
@@ -63,9 +63,9 @@ public class ValidationServlet extends HttpServlet {
     SystemStructureValidator.Result result;
     if (nonNull(optionalOntology)) {
       File ontology = new File(getURI(optionalOntology));
-      result = JsonValidator.validate(configuration, ontology);
+      result = XmlValidator.validate(configuration, ontology);
     } else {
-      result = JsonValidator.validate(configuration);
+      result = XmlValidator.validate(configuration);
     }
     return result;
   }
