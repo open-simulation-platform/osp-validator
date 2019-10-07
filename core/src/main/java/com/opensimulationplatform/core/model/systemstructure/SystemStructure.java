@@ -1,18 +1,17 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 public class SystemStructure {
-  private Map<String, OspSimulator> simulators = new HashMap<>();
+  private List<OspSimulator> ospSimulators = new ArrayList<>();
   private List<OspBondConnection> ospBondConnections = new ArrayList<>();
   private List<OspPlugSocketConnection> ospPlugSocketConnections = new ArrayList<>();
   private List<OspVariableConnection> ospVariableConnections = new ArrayList<>();
   
-  public Map<String, OspSimulator> getSimulators() {
-    return simulators;
+  public List<OspSimulator> getOspSimulators() {
+    return ospSimulators;
   }
   
   public List<OspBondConnection> getOspBondConnections() {
@@ -28,7 +27,7 @@ public class SystemStructure {
   }
   
   public void addSimulator(OspSimulator ospSimulator) {
-    simulators.put(ospSimulator.getName(), ospSimulator);
+    ospSimulators.add(ospSimulator);
   }
   
   public void addVariableConnection(OspVariableConnection ospVariableConnection) {
@@ -41,5 +40,10 @@ public class SystemStructure {
   
   public void addBondConnection(OspBondConnection ospBondConnection) {
     ospBondConnections.add(ospBondConnection);
+  }
+  
+  public OspSimulator getSimulatorByName(String simulatorName) {
+    Optional<OspSimulator> ospSimulator = ospSimulators.stream().filter(s -> s.getName().equals(simulatorName)).findFirst();
+    return ospSimulator.orElse(null);
   }
 }

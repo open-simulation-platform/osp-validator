@@ -19,7 +19,7 @@ public class OwlConfigurationConverter {
       OWLOntology configurationOntology = manager.createOntology(ospOntology.getAxioms(), ospOntology.getOntologyID().getOntologyIRI());
       owlConfiguration.setOntology(configurationOntology);
       
-      systemStructure.getSimulators().forEach((simulatorName, simulator) -> OwlSimulatorConverter.convert(simulator, owlConfiguration));
+      systemStructure.getOspSimulators().forEach(simulator -> OwlSimulatorConverter.convert(simulator, owlConfiguration));
   
       systemStructure.getOspPlugSocketConnections().forEach(connection -> OwlPlugSocketConnectionConverter.convert(connection, owlConfiguration));
   

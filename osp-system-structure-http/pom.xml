@@ -50,7 +50,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.opensimulationplatform.cseconfig.http.ValidationServerMain</mainClass>
+              <mainClass>com.opensimulationplatform.systemstructure.http.ValidationServerMain</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
