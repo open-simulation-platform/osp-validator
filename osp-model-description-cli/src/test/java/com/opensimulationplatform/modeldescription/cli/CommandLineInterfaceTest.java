@@ -20,44 +20,44 @@ public class CommandLineInterfaceTest {
   private final String validModelDescription = TestResources.CRANE_CONTROLLER_VALID.toFile().getAbsolutePath();
   
   @Test
-  public void canCheckInvalidModelDescription() throws Exception {
+  public void canCheckInvalidModelDescription() {
     exit.expectSystemExitWithStatus(INVALID_CONFIGURATION.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-ontology", ontology, "-osp-model-description", invalidModelDescription, "-fmu", fmu});
   }
   
   @Test
-  public void canCheckValidModelDescription() throws Exception {
+  public void canCheckValidModelDescription() {
     exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-ontology", ontology, "-osp-model-description", validModelDescription, "-fmu", fmu});
   }
   
   @Test
-  public void exitIfModelDescriptionFileDoesNotExist() throws Exception {
+  public void exitIfModelDescriptionFileDoesNotExist() {
     exit.expectSystemExitWithStatus(INVALID_INPUT.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-ontology", ontology, "-osp-model-description", "./i-do-not-exist.json", "-fmu", fmu});
   }
   
   @Test
-  public void exitIfOspOwlFileDoesNotExist() throws Exception {
+  public void exitIfOspOwlFileDoesNotExist() {
     exit.expectSystemExitWithStatus(INVALID_INPUT.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-ontology", "./i-do-not-exist.owl", "-osp-model-description", validModelDescription, "-fmu", fmu});
   }
   
   @Test
-  public void exitIfInvalidLogLevelIsSet() throws Exception {
+  public void exitIfInvalidLogLevelIsSet() {
     System.setProperty("osp.validator.log.level", "invalid-level");
     exit.expectSystemExitWithStatus(INVALID_LOG_LEVEL.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-ontology", ontology, "-osp-model-description", validModelDescription, "-fmu", fmu});
   }
   
   @Test
-  public void canValidateWithDefaultOwlFile() throws Exception {
+  public void canValidateWithDefaultOwlFile() {
     exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-model-description", validModelDescription, "-fmu", fmu});
   }
   
   @Test
-  public void canValidateWithSpecifiedOwlFile() throws Exception {
+  public void canValidateWithSpecifiedOwlFile() {
     exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
     CommandLineInterface.main(new String[]{"-osp-ontology", ontology, "-osp-model-description", validModelDescription, "-fmu", fmu});
   }

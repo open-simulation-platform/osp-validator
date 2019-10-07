@@ -1,10 +1,10 @@
 package com.opensimulationplatform.core.owl.converter;
 
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
 import com.opensimulationplatform.core.model.modeldescription.OspBond;
 import com.opensimulationplatform.core.model.modeldescription.OspPlug;
 import com.opensimulationplatform.core.model.modeldescription.OspSocket;
 import com.opensimulationplatform.core.model.modeldescription.OspVariable;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
 import org.junit.Test;
 
 import static com.opensimulationplatform.core.owl.converter.IndividualNameGenerator.getIndividualName;
@@ -14,7 +14,7 @@ public class IndividualNameGeneratorTest {
   @Test
   public void canCreateIndividualNameForVariableI() {
     OspVariable v = new OspVariable("variableName");
-    OspSimulator sim = new OspSimulator("simulatorName", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("simulatorName", "source");
     sim.addVariable(v);
     
     assertEquals("simulator_simulatorName_variable_variableName", getIndividualName(v));
@@ -23,7 +23,7 @@ public class IndividualNameGeneratorTest {
   @Test
   public void canCreateIndividualNameForSocket() {
     OspSocket s = new OspSocket("socketType", "socketName");
-    OspSimulator sim = new OspSimulator("simulatorName", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("simulatorName", "source");
     sim.addSocket(s);
     
     assertEquals("simulator_simulatorName_socketType_socket_socketName", getIndividualName(s));
@@ -32,7 +32,7 @@ public class IndividualNameGeneratorTest {
   @Test
   public void canCreateIndividualNameForPlug() {
     OspPlug p = new OspPlug("plugType", "plugName");
-    OspSimulator sim = new OspSimulator("simulatorName", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("simulatorName", "source");
     sim.addPlug(p);
     
     assertEquals("simulator_simulatorName_plugType_plug_plugName", getIndividualName(p));
@@ -41,7 +41,7 @@ public class IndividualNameGeneratorTest {
   @Test
   public void canCreateIndividualNameForBond() {
     OspBond b = new OspBond("bondName");
-    OspSimulator sim = new OspSimulator("simulatorName", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("simulatorName", "source");
     sim.addBond(b);
     
     assertEquals("simulator_simulatorName_bond_bondName", getIndividualName(b));
@@ -49,7 +49,7 @@ public class IndividualNameGeneratorTest {
   
   @Test
   public void canCreateIndividualNameForSimulator() {
-    OspSimulator sim = new OspSimulator("simulatorName", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("simulatorName", "source");
     
     assertEquals("simulator_simulatorName", getIndividualName(sim));
   }

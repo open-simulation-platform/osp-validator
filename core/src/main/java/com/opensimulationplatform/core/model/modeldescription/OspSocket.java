@@ -1,6 +1,6 @@
 package com.opensimulationplatform.core.model.modeldescription;
 
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
 
 import java.util.HashMap;
 import java.util.Map;

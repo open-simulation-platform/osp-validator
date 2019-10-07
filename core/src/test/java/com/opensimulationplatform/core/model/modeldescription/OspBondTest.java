@@ -1,6 +1,6 @@
 package com.opensimulationplatform.core.model.modeldescription;
 
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +17,7 @@ public class OspBondTest {
   @Test
   public void canSetSimulator() {
     OspBond b = new OspBond("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     
     b.setOspSimulator(sim);
     
@@ -28,8 +28,8 @@ public class OspBondTest {
   @Test(expected = Exception.class)
   public void canNotChangeSimulator() {
     OspBond b = new OspBond("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
-    OspSimulator simNew = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
+    OspSimulator simNew = new OspSimulator("name", "source");
     
     b.setOspSimulator(sim);
     
@@ -89,7 +89,7 @@ public class OspBondTest {
   @Test
   public void addingPlugAddsSimulatorToPlug() {
     OspBond b = new OspBond("name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     b.setOspSimulator(sim);
     OspPlug p = new OspPlug("type", "name");
   
@@ -101,7 +101,7 @@ public class OspBondTest {
   @Test
   public void addingPlugAddsSimulatorToBond() {
     OspPlug p = new OspPlug("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     p.setOspSimulator(sim);
     OspBond b = new OspBond("name");
     
@@ -113,10 +113,10 @@ public class OspBondTest {
   @Test(expected = Exception.class)
   public void canNotAddPlugWithDifferentSimulator() {
     OspBond b = new OspBond("name");
-    OspSimulator sim1 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim1 = new OspSimulator("name", "source");
     b.setOspSimulator(sim1);
     OspPlug p = new OspPlug("type", "name");
-    OspSimulator sim2 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim2 = new OspSimulator("name", "source");
     p.setOspSimulator(sim2);
   
     b.addPlug(p);
@@ -126,7 +126,7 @@ public class OspBondTest {
   @Test
   public void addingSocketAddsSimulatorToSocket() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     OspBond b = new OspBond("name");
     b.setOspSimulator(sim);
     
@@ -138,7 +138,7 @@ public class OspBondTest {
   @Test
   public void addingSocketAddsSimulatorToBond() {
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim = new OspSimulator("name", "source");
     s.setOspSimulator(sim);
     OspBond b = new OspBond("name");
     
@@ -150,10 +150,10 @@ public class OspBondTest {
   @Test(expected = Exception.class)
   public void canNotAddSocketWithDifferentSimulator() {
     OspBond b = new OspBond("name");
-    OspSimulator sim1 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim1 = new OspSimulator("name", "source");
     b.setOspSimulator(sim1);
     OspSocket s = new OspSocket("type", "name");
-    OspSimulator sim2 = new OspSimulator("name", "source", "modelDefinition");
+    OspSimulator sim2 = new OspSimulator("name", "source");
     s.setOspSimulator(sim2);
     
     b.addSocket(s);
@@ -178,5 +178,23 @@ public class OspBondTest {
     OspSocket s = new OspSocket("type", "name");
     b1.addSocket(s);
     b2.addSocket(s);
+  }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoPlugsWithSameName() {
+    OspPlug p1 = new OspPlug("type", "name");
+    OspPlug p2 = new OspPlug("type", "name");
+    OspBond b = new OspBond("name");
+    b.addPlug(p1);
+    b.addPlug(p2);
+  }
+  
+  @Test(expected = Exception.class)
+  public void canNotAddTwoSocketsWithSameName() {
+    OspSocket p1 = new OspSocket("type", "name");
+    OspSocket p2 = new OspSocket("type", "name");
+    OspBond b = new OspBond("name");
+    b.addSocket(p1);
+    b.addSocket(p2);
   }
 }

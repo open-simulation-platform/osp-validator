@@ -1,36 +1,42 @@
 package com.opensimulationplatform.modeldescription.cli;
 
 import com.beust.jcommander.JCommander;
-import com.opensimulationplatform.core.model.modeldescription.OspModelDescription;
 import com.opensimulationplatform.core.util.loghelper.LogHelper;
 import com.opensimulationplatform.core.util.terminator.Terminator;
+import com.opensimulationplatform.core.validator.modeldescription.ModelDescriptionValidator;
 import com.opensimulationplatform.modeldescription.cli.jcommander.Arguments;
-import com.opensimulationplatform.modeldescription.json.model.JsonOspModelDescription;
-import com.opensimulationplatform.modeldescription.json.parser.JsonOspModelDescriptionParser;
-import com.opensimulationplatform.modeldescription.json.validator.OspModelDescriptionFactory;
-import com.opensimulationplatform.modeldescription.json.validator.OspModelDescriptionValidator;
-import no.ntnu.ihb.fmi4j.modeldescription.ModelDescriptionParser;
-import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
+import com.opensimulationplatform.modeldescription.xml.validator.XmlValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import java.io.File;
-import java.io.StringReader;
+
+import static java.util.Objects.isNull;
 
 public class CommandLineInterface {
   private static final Logger LOG = LoggerFactory.getLogger(CommandLineInterface.class);
   
-  public static void main(String[] args) throws JAXBException {
+  public static void main(String[] args) {
     setLogLevel();
     Arguments arguments = getArguments(args);
-    OspModelDescription ospModelDescription = getOspModelDescription(arguments);
-    OspModelDescriptionValidator.Result result = OspModelDescriptionValidator.validate(ospModelDescription);
+    
+    File ospModelDescription = arguments.getOspModelDescription();
+    File fmu = arguments.getFmu();
+    File ospOntology = arguments.getOspOntology();
+    ModelDescriptionValidator.Result result = validate(ospModelDescription, fmu, ospOntology);
+    
     evaluateResult(result, arguments);
   }
   
-  private static void evaluateResult(OspModelDescriptionValidator.Result result, Arguments arguments) {
+  private static ModelDescriptionValidator.Result validate(File ospModelDescriptionFile, File fmu, File ospOwlFile) {
+    if (isNull(ospOwlFile)) {
+      return XmlValidator.validate(ospModelDescriptionFile, fmu);
+    } else {
+      return XmlValidator.validate(ospModelDescriptionFile, fmu, ospOwlFile);
+    }
+  }
+  
+  private static void evaluateResult(ModelDescriptionValidator.Result result, Arguments arguments) {
     if (result.isValid()) {
       Terminator.exit(ExitCodes.SUCCESS);
     } else {
@@ -46,22 +52,6 @@ public class CommandLineInterface {
     if (!LogHelper.setLogLevelFromOspSystemProperty()) {
       Terminator.exit(ExitCodes.INVALID_LOG_LEVEL);
     }
-  }
-  
-  private static OspModelDescription getOspModelDescription(Arguments arguments) throws JAXBException {
-    JsonOspModelDescription jsonOspModelDescription = getJsonOspModelDescription(arguments);
-    FmiModelDescription fmiModelDescription = getFmiModelDescription(arguments.getFmu());
-    return OspModelDescriptionFactory.create(jsonOspModelDescription, fmiModelDescription);
-  }
-  
-  private static JsonOspModelDescription getJsonOspModelDescription(Arguments arguments) {
-    return JsonOspModelDescriptionParser.parse(arguments.getOspModelDescription());
-  }
-  
-  private static FmiModelDescription getFmiModelDescription(File fmu) throws JAXBException {
-    String fmiModelDescriptionXml = ModelDescriptionParser.extractModelDescriptionXml(fmu);
-    JAXBContext jaxbContext = JAXBContext.newInstance(FmiModelDescription.class);
-    return (FmiModelDescription) jaxbContext.createUnmarshaller().unmarshal(new StringReader(fmiModelDescriptionXml));
   }
   
   private static Arguments getArguments(String[] args) {

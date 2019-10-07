@@ -1,6 +1,6 @@
 package com.opensimulationplatform.core.owl.converter;
 
-import com.opensimulationplatform.core.model.configuration.OspSimulator;
+import com.opensimulationplatform.core.model.systemstructure.OspSimulator;
 import com.opensimulationplatform.core.ontology.model.OntologyClasses;
 import com.opensimulationplatform.core.ontology.model.OntologyObjectProperties;
 import com.opensimulationplatform.core.owl.helper.OwlHelper;

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<OspSystemStructure xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
+  <StartTime>0.0</StartTime>
+  <BaseStepSize>1e-4</BaseStepSize>
+  <Algorithm>fixedStep</Algorithm>
+  <Simulators>
+    <Simulator name="Simulator_1" source="./path/to/simulator.fmu" stepSize="1">
+      <InitialValues>
+        <InitialValue variable="x">
+          <Real value="1.4"/>
+        </InitialValue>
+        <InitialValue variable="y">
+          <Real value="42"/>
+        </InitialValue>
+      </InitialValues>
+    </Simulator>
+    <Simulator name="Simulator_2" source="./path/to/simulator.fmu" stepSize="2">
+      <InitialValues>
+        <InitialValue variable="x">
+          <Real value="3.17"/>
+        </InitialValue>
+        <InitialValue variable="y">
+          <Real value="7.21"/>
+        </InitialValue>
+      </InitialValues>
+    </Simulator>
+  </Simulators>
+  <PlugSocketConnections>
+    <PlugSocketConnection>
+      <Source simulator="Simulator_1" endpoint="plug_5"/>
+      <Target simulator="Simulator_2" endpoint="socket_5"/>
+    </PlugSocketConnection>
+  </PlugSocketConnections>
+  <BondConnections>
+    <BondConnection>
+      <Bond simulator="Simulator_1" endpoint="bond_1"/>
+      <Bond simulator="Simulator_2" endpoint="bond_2"/>
+    </BondConnection>
+  </BondConnections>
+  <VariableConnections>
+    <ScalarConnection>
+      <Source simulator="Simulator_1" endpoint="o_variable_1"/>
+      <Target simulator="Simulator_2" endpoint="i_variable_1"/>
+    </ScalarConnection>
+  </VariableConnections>
+</OspSystemStructure>
