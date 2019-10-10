@@ -1,11 +1,8 @@
 package com.opensimulationplatform.systemstructure.http;
 
-import java.util.Collections;
-import java.util.List;
-
 public class ValidationServletResponse {
-  private String valid;
-  private List<String> explanations = Collections.emptyList();
+  private String valid = "";
+  private String message = "";
   
   public String getValid() {
     return valid;
@@ -15,11 +12,11 @@ public class ValidationServletResponse {
     this.valid = valid;
   }
   
-  public List<String> getExplanations() {
-    return explanations;
+  public String getMessage() {
+    return message;
   }
   
-  public void setExplanations(List<String> explanations) {
-    this.explanations = explanations;
+  public void setMessage(String message) {
+    this.message = message;
   }
 }

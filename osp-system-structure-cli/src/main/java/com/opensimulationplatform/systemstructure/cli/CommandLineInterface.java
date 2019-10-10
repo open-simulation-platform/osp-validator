@@ -6,17 +6,10 @@ import com.opensimulationplatform.core.util.terminator.Terminator;
 import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
 import com.opensimulationplatform.systemstructure.xml.validator.XmlValidator;
 import org.apache.commons.cli.*;
-import org.semanticweb.owlapi.io.OWLObjectRenderer;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
 import java.io.File;
-import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
@@ -42,14 +35,9 @@ class CommandLineInterface {
         LOG.error("Validation of: " + ospSystemStructureFile.getAbsolutePath() + " based on default ontology failed!");
       }
       
-      Set<Set<OWLAxiom>> explanation = result.getExplanations();
-      OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      explanation.forEach(axioms -> {
-        LOG.error("------------------");
-        LOG.error("Axioms causing the inconsistency: ");
-        axioms.forEach(axiom -> LOG.error(renderer.render(axiom.getAxiomWithoutAnnotations())));
-        LOG.error("------------------");
-      });
+      LOG.error("--- Message ---");
+      LOG.error(result.getDiagnostics().getMessage());
+      LOG.error("---------------");
       
       Terminator.exit(ExitCodes.INVALID_CONFIGURATION);
     }
@@ -119,10 +107,10 @@ class CommandLineInterface {
     File configOwlFile = new File(saveDirectory, "configuration.owl");
     LOG.trace("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
     try {
-      OWLOntology ontology = result.getOwlSystemStructure().getOntology();
-      ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
-      LOG.trace("done!");
-    } catch (OWLOntologyStorageException e) {
+//      OWLOntology ontology = result.getSystemStructure().getOntology();
+//      ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
+//      LOG.trace("done!");
+    } catch (Exception e) {
       String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
       LOG.error(message, e);
       Terminator.exit(ExitCodes.FILE_SYSTEM);
@@ -155,10 +143,6 @@ class CommandLineInterface {
     options.addOption(input);
     
     input = new Option("o", "ontology", true, "Path to osp.owl file. Default is to use osp.owl inside .jar file");
-    input.setRequired(false);
-    options.addOption(input);
-    
-    input = new Option("s", "save", true, "Path to directory where configuration.owl should be saved. If not specified, configuration ontology will not be saved to file");
     input.setRequired(false);
     options.addOption(input);
     

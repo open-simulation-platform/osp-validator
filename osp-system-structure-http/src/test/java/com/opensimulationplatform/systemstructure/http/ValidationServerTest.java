@@ -49,7 +49,7 @@ public class ValidationServerTest {
     assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
     assertEquals("application/json", httpResponse.getMediaType());
     assertEquals("true", response.getValid());
-    assertTrue(response.getExplanations().isEmpty());
+    assertTrue(response.getMessage().isEmpty());
   }
   
   @Test
@@ -63,8 +63,17 @@ public class ValidationServerTest {
     assertEquals(HttpStatus.BAD_REQUEST_400, httpResponse.getStatus());
     assertEquals("application/json", httpResponse.getMediaType());
     assertEquals("false", response.getValid());
-    assertFalse(response.getExplanations().isEmpty());
-    assertEquals("generic DisjointWith velocity", response.getExplanations().get(0));
+    assertFalse(response.getMessage().isEmpty());
+    assertEquals(
+        "generic DisjointWith velocity\n" +
+        "socket SubClassOf has_plug_mate max 1 plug\n" +
+        "simulator_KnuckleBoomCrane_generic_plug_actuatorLimits Type plug\n" +
+        "simulator_KnuckleBoomCrane_generic_plug_actuatorLimits Type generic\n" +
+        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type plug\n" +
+        "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_velocity_plug_velocity\n" +
+        "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_generic_plug_actuatorLimits\n" +
+        "simulator_CraneController_velocity_socket_velocity Type socket\n" +
+        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type velocity\n", response.getMessage());
   }
   
   @Test
@@ -84,7 +93,7 @@ public class ValidationServerTest {
     assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
     assertEquals("application/json", httpResponse.getMediaType());
     assertEquals("true", response.getValid());
-    assertTrue(response.getExplanations().isEmpty());
+    assertTrue(response.getMessage().isEmpty());
   }
   
   @Test
@@ -104,8 +113,17 @@ public class ValidationServerTest {
     assertEquals(HttpStatus.BAD_REQUEST_400, httpResponse.getStatus());
     assertEquals("application/json", httpResponse.getMediaType());
     assertEquals("false", response.getValid());
-    assertFalse(response.getExplanations().isEmpty());
-    assertEquals("generic DisjointWith velocity", response.getExplanations().get(0));
+    assertFalse(response.getMessage().isEmpty());
+    assertEquals(
+        "generic DisjointWith velocity\n" +
+        "socket SubClassOf has_plug_mate max 1 plug\n" +
+        "simulator_KnuckleBoomCrane_generic_plug_actuatorLimits Type plug\n" +
+        "simulator_KnuckleBoomCrane_generic_plug_actuatorLimits Type generic\n" +
+        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type plug\n" +
+        "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_velocity_plug_velocity\n" +
+        "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_generic_plug_actuatorLimits\n" +
+        "simulator_CraneController_velocity_socket_velocity Type socket\n" +
+        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type velocity\n", response.getMessage());
   }
   
   @Test
@@ -124,7 +142,7 @@ public class ValidationServerTest {
     assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
     assertEquals("application/json", httpResponse.getMediaType());
     assertEquals("true", response.getValid());
-    assertTrue(response.getExplanations().isEmpty());
+    assertTrue(response.getMessage().isEmpty());
   }
   
   @Test
@@ -138,6 +156,6 @@ public class ValidationServerTest {
     assertEquals(HttpStatus.OK_200, httpResponse.getStatus());
     assertEquals("application/json", httpResponse.getMediaType());
     assertEquals("true", response.getValid());
-    assertTrue(response.getExplanations().isEmpty());
+    assertTrue(response.getMessage().isEmpty());
   }
 }

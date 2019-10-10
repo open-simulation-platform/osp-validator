@@ -5,11 +5,7 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import org.junit.rules.TemporaryFolder;
 
-import java.io.File;
-import java.io.IOException;
-
 import static com.opensimulationplatform.systemstructure.cli.CommandLineInterface.ExitCodes.*;
-import static org.junit.Assert.assertTrue;
 
 public class CommandLineInterfaceTest {
   
@@ -52,14 +48,6 @@ public class CommandLineInterfaceTest {
     System.setProperty("osp.validator.log.level", "invalid-level");
     exit.expectSystemExitWithStatus(INVALID_LOG_LEVEL.getExitCode());
     CommandLineInterface.main(new String[]{"--ontology", ontology, "--config", validConfig});
-  }
-  
-  @Test
-  public void canSaveGeneratedOwlFile() throws IOException {
-    File saveDir = tempFolder.newFolder();
-    exit.expectSystemExitWithStatus(SUCCESS.getExitCode());
-    exit.checkAssertionAfterwards(() -> assertTrue(new File(saveDir, "configuration.owl").exists()));
-    CommandLineInterface.main(new String[]{"--ontology", ontology, "--config", validConfig, "--save", saveDir.getAbsolutePath()});
   }
   
   @Test

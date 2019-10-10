@@ -5,10 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
 import com.opensimulationplatform.systemstructure.xml.validator.XmlValidator;
 import org.eclipse.jetty.http.HttpStatus;
-import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +15,6 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.util.Objects.nonNull;
 
@@ -101,11 +97,7 @@ public class ValidationServlet extends HttpServlet {
     } else {
       response.setValid("false");
       
-      List<String> explanations = new ArrayList<>();
-      OWLObjectRenderer renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-      result.getExplanations().forEach(axioms -> axioms.forEach(axiom -> explanations.add(renderer.render(axiom.getAxiomWithoutAnnotations()))));
-      
-      response.setExplanations(explanations);
+      response.setMessage(result.getDiagnostics().getMessage());
     }
     
     return response;

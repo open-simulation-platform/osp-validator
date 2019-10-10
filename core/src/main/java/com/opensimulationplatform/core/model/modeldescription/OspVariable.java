@@ -10,10 +10,10 @@ import static java.util.Objects.nonNull;
 
 public class OspVariable {
   
+  private final String name;
   private OspSimulator ospSimulator;
   private final Map<String, OspPlug> plugs = new HashMap<>();
   private OspSocket ospSocket;
-  private final String name;
   
   public OspVariable(String name) {
     this.name = name;
