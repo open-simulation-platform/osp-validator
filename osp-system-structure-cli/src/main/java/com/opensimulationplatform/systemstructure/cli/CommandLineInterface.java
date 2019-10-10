@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.List;
 
 import static java.util.Objects.nonNull;
 
@@ -36,7 +37,10 @@ class CommandLineInterface {
       }
       
       LOG.error("--- Message ---");
-      String[] lines = result.getDiagnostics().getMessage().split("\n");
+      StringBuilder messageBuilder = new StringBuilder();
+      List<SystemStructureValidator.Diagnostic> diagnostics = result.getDiagnostics();
+      diagnostics.forEach(d -> messageBuilder.append(d.getMessage()).append("\n"));
+      String[] lines = messageBuilder.toString().split("\n");
       for (String line : lines) {
         LOG.error(line);
       }

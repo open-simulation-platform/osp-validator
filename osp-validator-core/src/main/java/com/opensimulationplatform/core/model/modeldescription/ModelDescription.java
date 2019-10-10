@@ -1,12 +1,13 @@
 package com.opensimulationplatform.core.model.modeldescription;
 
+import com.opensimulationplatform.core.model.OspObject;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class ModelDescription {
+public class ModelDescription implements OspObject {
   private String name;
   private Map<String, OspPlug> ospPlugs = new TreeMap<>();
   private Map<String, OspSocket> ospSockets = new TreeMap<>();

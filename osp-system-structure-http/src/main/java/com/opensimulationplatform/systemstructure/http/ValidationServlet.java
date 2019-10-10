@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URL;
+import java.util.List;
 
 import static java.util.Objects.nonNull;
 
@@ -96,11 +97,19 @@ public class ValidationServlet extends HttpServlet {
       response.setValid("true");
     } else {
       response.setValid("false");
-      
-      response.setMessage(result.getDiagnostics().getMessage());
+      response.setMessage(getResponseMessage(result));
     }
     
     return response;
+  }
+  
+  private String getResponseMessage(SystemStructureValidator.Result result) {
+    StringBuilder messageBuilder = new StringBuilder();
+    List<SystemStructureValidator.Diagnostic> diagnostics = result.getDiagnostics();
+    diagnostics.forEach(d -> {
+      messageBuilder.append(d.getMessage()).append("\n");
+    });
+    return messageBuilder.toString().trim();
   }
   
   private URI getURI(String value) {

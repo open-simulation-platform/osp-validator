@@ -1,10 +1,12 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
+import com.opensimulationplatform.core.model.OspObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SystemStructure {
+public class SystemStructure implements OspObject {
   private List<OspSimulator> ospSimulators = new ArrayList<>();
   private List<OspBondConnection> ospBondConnections = new ArrayList<>();
   private List<OspPlugSocketConnection> ospPlugSocketConnections = new ArrayList<>();

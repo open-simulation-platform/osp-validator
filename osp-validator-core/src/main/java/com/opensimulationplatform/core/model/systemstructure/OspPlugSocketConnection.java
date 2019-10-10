@@ -1,9 +1,10 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
+import com.opensimulationplatform.core.model.OspObject;
 import com.opensimulationplatform.core.model.modeldescription.OspPlug;
 import com.opensimulationplatform.core.model.modeldescription.OspSocket;
 
-public class OspPlugSocketConnection {
+public class OspPlugSocketConnection implements OspObject {
   private final OspSimulator sourceOspSimulator;
   private final OspPlug ospPlug;
   private final OspSimulator targetOspSimulator;
