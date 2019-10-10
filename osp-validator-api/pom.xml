@@ -9,12 +9,24 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   
-  <artifactId>osp-model-description</artifactId>
+  <packaging>jar</packaging>
+  
+  <artifactId>osp-validator-api</artifactId>
   
   <dependencies>
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
       <artifactId>osp-validator-core</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.opensimulationplatform</groupId>
+      <artifactId>osp-model-description</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.opensimulationplatform</groupId>
+      <artifactId>osp-system-structure</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
   </dependencies>

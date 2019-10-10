@@ -38,7 +38,7 @@ public class Resource {
       LOG.trace("Creating temporary file to hold the resource: " + name + "...");
       String[] parts = name.split("\\.");
       String extension = parts[parts.length - 1];
-      File file = File.createTempFile("msmi-validator", "." + extension);
+      File file = File.createTempFile("osp-validator", "." + extension);
       file.deleteOnExit();
       LOG.trace("Created: " + file.getAbsolutePath());
       
