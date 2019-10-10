@@ -1,8 +1,9 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
+import com.opensimulationplatform.core.model.OspObject;
 import com.opensimulationplatform.core.model.modeldescription.OspBond;
 
-public class OspBondConnection {
+public class OspBondConnection implements OspObject {
   private final OspSimulator ospSimulatorA;
   private final OspBond ospBondA;
   private final OspSimulator ospSimulatorB;

@@ -1,5 +1,6 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
+import com.opensimulationplatform.core.model.OspObject;
 import com.opensimulationplatform.core.model.modeldescription.OspBond;
 import com.opensimulationplatform.core.model.modeldescription.OspPlug;
 import com.opensimulationplatform.core.model.modeldescription.OspSocket;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 import static java.util.Objects.nonNull;
 
-public class OspSimulator {
+public class OspSimulator implements OspObject {
   private final String name;
   private final String source;
   private final Map<String, OspVariable> variables = new HashMap<>();

@@ -73,7 +73,7 @@ public class ValidationServerTest {
         "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_velocity_plug_velocity\n" +
         "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_generic_plug_actuatorLimits\n" +
         "simulator_CraneController_velocity_socket_velocity Type socket\n" +
-        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type velocity\n", response.getMessage());
+        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type velocity", response.getMessage());
   }
   
   @Test
@@ -123,7 +123,7 @@ public class ValidationServerTest {
         "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_velocity_plug_velocity\n" +
         "simulator_CraneController_velocity_socket_velocity has_plug_mate simulator_KnuckleBoomCrane_generic_plug_actuatorLimits\n" +
         "simulator_CraneController_velocity_socket_velocity Type socket\n" +
-        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type velocity\n", response.getMessage());
+        "simulator_KnuckleBoomCrane_velocity_plug_velocity Type velocity", response.getMessage());
   }
   
   @Test

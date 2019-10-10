@@ -1,8 +1,9 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
+import com.opensimulationplatform.core.model.OspObject;
 import com.opensimulationplatform.core.model.modeldescription.OspVariable;
 
-public class OspVariableConnection {
+public class OspVariableConnection implements OspObject {
   private final OspSimulator sourceOspSimulator;
   private final OspVariable sourceOspVariable;
   private final OspSimulator targetOspSimulator;
