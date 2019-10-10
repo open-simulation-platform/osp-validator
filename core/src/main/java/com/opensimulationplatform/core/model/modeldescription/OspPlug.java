@@ -9,9 +9,8 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public class OspPlug {
-  
-  private final String type;
   private final String name;
+  private final String type;
   private OspSimulator ospSimulator;
   private final Map<String, OspBond> bonds = new HashMap<>();
   private final Map<String, OspVariable> variables = new HashMap<>();

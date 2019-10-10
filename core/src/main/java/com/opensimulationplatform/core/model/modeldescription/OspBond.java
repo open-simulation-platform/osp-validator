@@ -9,11 +9,10 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public class OspBond {
-  
+  private final String name;
   private OspSimulator ospSimulator;
   private final List<OspPlug> ospPlugs = new ArrayList<>();
   private final List<OspSocket> ospSockets = new ArrayList<>();
-  private final String name;
   
   public OspBond(String name) {
     this.name = name;

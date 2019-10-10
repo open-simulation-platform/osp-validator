@@ -9,9 +9,8 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public class OspSocket {
-  
-  private final String type;
   private final String name;
+  private final String type;
   private OspSimulator ospSimulator;
   private OspBond ospBond;
   private final Map<String, OspVariable> variables = new HashMap<>();

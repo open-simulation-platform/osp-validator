@@ -72,7 +72,7 @@ class TestSetup {
     s.addVariable(new OspVariable("variable4"));
     simulatorA.addSocket(s);
   
-    OspBond bondA = new OspBond("bond");
+    OspBond bondA = new OspBond("bondA");
     bondA.addPlug(p);
     bondA.addSocket(s);
     simulatorA.addBond(bondA);
@@ -91,7 +91,7 @@ class TestSetup {
     s.addVariable(new OspVariable("variable4"));
     simulatorB.addSocket(s);
   
-    OspBond bondB = new OspBond("bond");
+    OspBond bondB = new OspBond("bondB");
     bondB.addPlug(p);
     bondB.addSocket(s);
     simulatorB.addBond(bondB);
