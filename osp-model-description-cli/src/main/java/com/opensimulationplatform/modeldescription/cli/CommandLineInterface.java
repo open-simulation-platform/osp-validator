@@ -56,9 +56,13 @@ public class CommandLineInterface {
   
   private static Arguments getArguments(String[] args) {
     Arguments arguments = new Arguments();
+    JCommander jcommander = JCommander.newBuilder().addObject(arguments).build();
+    jcommander.setProgramName("java -jar osp-model-description-cli-<version>-jar-with-dependencies.jar");
     try {
-      JCommander.newBuilder().addObject(arguments).build().parse(args);
+      jcommander.parse(args);
     } catch (Exception e) {
+      LOG.error("Error parsing input arguments");
+      jcommander.usage();
       Terminator.exit(ExitCodes.INVALID_INPUT);
     }
     return arguments;
