@@ -101,8 +101,8 @@ class CommandLineInterface {
     try {
       cmd = parser.parse(options, args);
     } catch (Exception e) {
-      LOG.error("Error parsing input arguments", e);
-      formatter.printHelp("msmi-validator", options);
+      LOG.error("Error parsing input arguments");
+      formatter.printHelp("java -jar osp-system-structure-cli-<version>-jar-with-dependencies.jar", options);
       Terminator.exit(ExitCodes.INVALID_INPUT);
     }
     
