@@ -25,9 +25,9 @@ class CommandLineInterface {
     CommandLine cmd = parseCommandLineOptions(args);
     File ospSystemStructureFile = getRequiredConfigurationFile(cmd);
     File ospOwlFile = getOptionalOntologyFile(cmd);
-  
+    
     SystemStructureValidator.Result result = validate(ospSystemStructureFile, ospOwlFile);
-  
+    
     if (!result.isSuccess()) {
       if (nonNull(ospOwlFile)) {
         LOG.error("Validation of: " + ospSystemStructureFile.getAbsolutePath() + " based on: " + ospOwlFile.getAbsolutePath() + " failed!");
@@ -36,15 +36,13 @@ class CommandLineInterface {
       }
       
       LOG.error("--- Message ---");
-      LOG.error(result.getDiagnostics().getMessage());
+      String[] lines = result.getDiagnostics().getMessage().split("\n");
+      for (String line : lines) {
+        LOG.error(line);
+      }
       LOG.error("---------------");
       
       Terminator.exit(ExitCodes.INVALID_CONFIGURATION);
-    }
-    
-    String saveOption = cmd.getOptionValue("save");
-    if (nonNull(saveOption)) {
-      saveConfigOwlFile(result, new File(saveOption));
     }
     
     Terminator.exit(ExitCodes.SUCCESS);
@@ -92,29 +90,6 @@ class CommandLineInterface {
   
   private static boolean supportedFileType(File file) {
     return file.getAbsolutePath().endsWith(".json") || file.getAbsolutePath().endsWith(".xml");
-  }
-  
-  private static void saveConfigOwlFile(SystemStructureValidator.Result result, File saveDirectory) {
-    if (!saveDirectory.exists()) {
-      LOG.trace("Specified save directory: " + saveDirectory.getAbsolutePath() + " does not exist. Creating directory...");
-      if (!saveDirectory.mkdirs()) {
-        LOG.error("Error creating save directory: " + saveDirectory.getAbsolutePath());
-        Terminator.exit(ExitCodes.FILE_SYSTEM);
-      } else {
-        LOG.trace("Save directory: " + saveDirectory.getAbsolutePath() + " created successfully");
-      }
-    }
-    File configOwlFile = new File(saveDirectory, "configuration.owl");
-    LOG.trace("Saving configuration ontology to: " + configOwlFile.getAbsolutePath());
-    try {
-//      OWLOntology ontology = result.getSystemStructure().getOntology();
-//      ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(configOwlFile));
-//      LOG.trace("done!");
-    } catch (Exception e) {
-      String message = "Error saving configuration ontology to: " + configOwlFile.getAbsolutePath();
-      LOG.error(message, e);
-      Terminator.exit(ExitCodes.FILE_SYSTEM);
-    }
   }
   
   private static CommandLine parseCommandLineOptions(String[] args) {
