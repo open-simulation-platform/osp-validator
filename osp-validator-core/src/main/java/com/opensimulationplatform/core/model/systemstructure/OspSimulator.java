@@ -28,7 +28,7 @@ public class OspSimulator implements OspObject {
     if (nonNull(ospVariable)) {
       OspVariable old = variables.put(ospVariable.getName(), ospVariable);
       if (nonNull(old) && old != ospVariable) {
-        throw new RuntimeException("Can not add two variables with same name");
+        throw new RuntimeException("Error adding variable '" + ospVariable.getName() + "' to simulator '" + name + "': Can not add two variables with same name");
       } else if (ospVariable.getOspSimulator() != this) {
         ospVariable.setOspSimulator(this);
       }
@@ -39,7 +39,7 @@ public class OspSimulator implements OspObject {
     if (nonNull(ospPlug)) {
       OspPlug old = plugs.put(ospPlug.getName(), ospPlug);
       if (nonNull(old) && old != ospPlug) {
-        throw new RuntimeException("Can not add two plugs with same name");
+        throw new RuntimeException("Error adding variable '" + ospPlug.getName() + "' to simulator '" + name + "': Can not add two variables with same name");
       } else if (ospPlug.getOspSimulator() != this) {
         ospPlug.setOspSimulator(this);
       }
@@ -50,7 +50,7 @@ public class OspSimulator implements OspObject {
     if (nonNull(ospSocket)) {
       OspSocket old = sockets.put(ospSocket.getName(), ospSocket);
       if (nonNull(old) && old != ospSocket) {
-        throw new RuntimeException("Can not add two sockets with same name");
+        throw new RuntimeException("Error adding variable '" + ospSocket.getName() + "' to simulator '" + name + "': Can not add two variables with same name");
       } else if (ospSocket.getOspSimulator() != this) {
         ospSocket.setOspSimulator(this);
       }

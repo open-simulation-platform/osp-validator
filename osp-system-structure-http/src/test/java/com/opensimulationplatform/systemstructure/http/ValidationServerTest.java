@@ -2,6 +2,7 @@ package com.opensimulationplatform.systemstructure.http;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.opensimulationplatform.core.util.resource.Resources;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.ContentResponse;
 import org.eclipse.jetty.client.api.Request;
@@ -18,9 +19,9 @@ import static org.junit.Assert.*;
 
 public class ValidationServerTest {
   
-  private final URI validConfiguration = TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile().toURI();
-  private final URI invalidConfiguration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().toURI();
-  private final URI ontology = TestResources.OSP_OWL.toFile().toURI();
+  private final URI validConfiguration = TestResources.SYSTEM_STRUCTURE_VALID_XML.toURI();
+  private final URI invalidConfiguration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toURI();
+  private final URI ontology = Resources.OSP_OWL.toFile().toURI();
   private final int port = 8001;
   private final Gson gson = new GsonBuilder().create();
   private ValidationServer validationServer;

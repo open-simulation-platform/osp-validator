@@ -56,7 +56,7 @@ public class Resource {
     } catch (Exception e) {
       String message = "Error writing resource: " + name + " to temporary file";
       LOG.error(message, e);
-      throw new RuntimeException(e);
+      throw new RuntimeException(message, e);
     }
   }
 }

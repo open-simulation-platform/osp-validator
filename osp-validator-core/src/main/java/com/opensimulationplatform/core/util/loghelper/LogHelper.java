@@ -40,7 +40,7 @@ public class LogHelper {
     return true;
   }
   
-  private static void setLogLevel(Level level) {
+  public static void setLogLevel(Level level) {
     Configurator.setLevel(System.getProperty("log4j.logger"), level);
   }
 }

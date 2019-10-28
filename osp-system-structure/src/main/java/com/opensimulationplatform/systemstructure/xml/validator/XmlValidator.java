@@ -29,21 +29,33 @@ public class XmlValidator {
   
   private static SystemStructure getSystemStructure(File ospSystemStructureFile) {
     OspSystemStructure ospSystemStructure = OspSystemStructureParser.parse(ospSystemStructureFile);
-    HashMap<Simulators.Simulator, ModelDescription> modelDescriptions = getSimulatorModelDescriptionMap(ospSystemStructure);
-  
+    HashMap<Simulators.Simulator, ModelDescription> modelDescriptions = getSimulatorModelDescriptionMap(ospSystemStructure, ospSystemStructureFile);
+    
     return SystemStructureConverter.convert(ospSystemStructure, modelDescriptions);
   }
   
-  private static HashMap<Simulators.Simulator, ModelDescription> getSimulatorModelDescriptionMap(OspSystemStructure ospSystemStructure) {
+  private static HashMap<Simulators.Simulator, ModelDescription> getSimulatorModelDescriptionMap(OspSystemStructure ospSystemStructure, File ospSystemStructureFile) {
     HashMap<Simulators.Simulator, ModelDescription> modelDescriptions = new HashMap<>();
     ospSystemStructure.getSimulators().getSimulator().forEach(s -> {
-      File fmuFile = new File(s.getSource());
-      String fmuName = fmuFile.getName().replace(".fmu", "");
-      File ospModelDescriptionFile = new File(fmuFile.getParent(), fmuName + "_OspModelDescription.xml");
+      File ospModelDescriptionFile = locateOspModelDescriptionFile(ospSystemStructureFile, s);
       OspModelDescription ospModelDescription = OspModelDescriptionParser.parse(ospModelDescriptionFile);
       ModelDescription modelDescription = OspModelDescriptionConverter.convert(ospModelDescription);
       modelDescriptions.put(s, modelDescription);
     });
     return modelDescriptions;
+  }
+  
+  private static File locateOspModelDescriptionFile(File ospSystemStructureFile, Simulators.Simulator simulator) {
+    File fmuFile = new File(simulator.getSource());
+    String fmuName = fmuFile.getName().replace(".fmu", "");
+    if (fmuFile.isAbsolute()) {
+      return getOspModelDescriptionFileRelativeTo(fmuFile, fmuName);
+    } else {
+      return getOspModelDescriptionFileRelativeTo(ospSystemStructureFile, fmuName);
+    }
+  }
+  
+  private static File getOspModelDescriptionFileRelativeTo(File file, String fmuName) {
+    return new File(file.getParent(), fmuName + "_OspModelDescription.xml");
   }
 }

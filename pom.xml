@@ -7,7 +7,7 @@
   <groupId>com.opensimulationplatform</groupId>
   <artifactId>msmi-validator</artifactId>
   <packaging>pom</packaging>
-  <version>0.7.0-SNAPSHOT</version>
+  <version>0.8.0</version>
   <modules>
     <module>osp-validator-core</module>
     <module>osp-system-structure</module>
