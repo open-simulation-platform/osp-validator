@@ -11,10 +11,16 @@ import static org.junit.Assert.assertTrue;
 public class XmlValidatorTest {
   @Test
   public void canValidate() {
-    SystemStructureValidator.Result result = XmlValidator.validate(TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile(), Resources.OSP_OWL.toFile());
+    SystemStructureValidator.Result result = XmlValidator.validate(TestResources.SYSTEM_STRUCTURE_VALID_XML, Resources.OSP_OWL.toFile());
     assertTrue(result.isSuccess());
-  
-    result = XmlValidator.validate(TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile(), Resources.OSP_OWL.toFile());
+    
+    result = XmlValidator.validate(TestResources.SYSTEM_STRUCTURE_INVALID_XML, Resources.OSP_OWL.toFile());
     assertFalse(result.isSuccess());
+  }
+  
+  @Test
+  public void revoltCase() {
+    SystemStructureValidator.Result result = XmlValidator.validate(TestResources.REVOLT_SYSTEM_STRUCTURE_XML);
+    assertTrue(result.isSuccess());
   }
 }

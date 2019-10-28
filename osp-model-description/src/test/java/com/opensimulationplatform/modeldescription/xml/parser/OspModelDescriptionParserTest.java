@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class OspModelDescriptionParserTest {
   @Test
   public void canParse() {
-    OspModelDescription ospModelDescription = OspModelDescriptionParser.parse(TestResources.MODEL_DEFINITION_XML.toFile());
+    OspModelDescription ospModelDescription = OspModelDescriptionParser.parse(TestResources.MODEL_DEFINITION_XML);
   
     List<Plugs.Plug> plugs = ospModelDescription.getPlugs().getPlug();
     assertEquals(3, plugs.size());

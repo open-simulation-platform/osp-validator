@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspSystemStructure xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
+	<StartTime>0.0</StartTime>
+	<BaseStepSize>0.05</BaseStepSize>
+	<Algorithm>fixedStep</Algorithm>
+	<Simulators>
+		<Simulator name="current" source="Current.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="GPS1" source="GPS1.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="GPS2" source="GPS2.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="GPS3" source="GPS3.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="THR1" source="THR1.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="THR2" source="THR2.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="THR3" source="THR3.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="vru" source="VRU1.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="wind" source="Wind.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="Clock" source="Clock.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="HeadingSpeedControllerNoThrustAllo" source="HeadingSpeedControllerNoThrustAllo.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="manualControlWithSteps" source="manualControlWithSteps.fmu" stepSize="0.05">
+		</Simulator>
+		<Simulator name="hull" source="Hull.fmu" stepSize="0.05">
+		</Simulator>
+	</Simulators>
+	<PlugSocketConnections>
+		<PlugSocketConnection>
+			<Source simulator="current" endpoint="current"/>			
+			<Target simulator="THR1" endpoint="Current"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="current" endpoint="current"/>			
+			<Target simulator="THR3" endpoint="Current"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="current" endpoint="current"/>			
+			<Target simulator="THR2" endpoint="Current"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="HeadingSpeedControllerNoThrustAllo" endpoint="control"/>			
+			<Target simulator="THR2" endpoint="Control"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="HeadingSpeedControllerNoThrustAllo" endpoint="control"/>			
+			<Target simulator="THR3" endpoint="Control"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="wind" endpoint="WindDirAndSpeed"/>			
+			<Target simulator="hull" endpoint="WindDirAndSpeed"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="current" endpoint="CurrentDirAndSpeed"/>			
+			<Target simulator="hull" endpoint="CurrentDirAndSpeed"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="current" endpoint="current"/>			
+			<Target simulator="hull" endpoint="current"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Eta"/>			
+			<Target simulator="THR1" endpoint="Eta"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Eta"/>			
+			<Target simulator="THR2" endpoint="Eta"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Eta"/>			
+			<Target simulator="THR3" endpoint="Eta"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Eta"/>			
+			<Target simulator="vru" endpoint="Eta"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="THR1" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="THR2" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="THR3" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="vru" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="GPS1" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="GPS2" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="Nu"/>			
+			<Target simulator="GPS3" endpoint="Nu"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="LatLong"/>			
+			<Target simulator="GPS1" endpoint="LatLong"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="LatLong"/>			
+			<Target simulator="GPS2" endpoint="LatLong"/>			
+		</PlugSocketConnection>
+		<PlugSocketConnection>
+			<Source simulator="hull" endpoint="LatLong"/>			
+			<Target simulator="GPS3" endpoint="LatLong"/>			
+		</PlugSocketConnection>
+	</PlugSocketConnections>
+	<BondConnections>
+	</BondConnections>
+	<VariableConnections>
+		<ScalarConnection>
+			<Source simulator="Clock" endpoint="Clock"/>			
+			<Target simulator="wind" endpoint="Clock"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="Clock" endpoint="Clock"/>			
+			<Target simulator="THR1" endpoint="Clock"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="Clock" endpoint="Clock"/>			
+			<Target simulator="THR2" endpoint="Clock"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="Clock" endpoint="Clock"/>			
+			<Target simulator="THR3" endpoint="Clock"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="manualControlWithSteps" endpoint="speed"/>			
+			<Target simulator="HeadingSpeedControllerNoThrustAllo" endpoint="UDesiredManual"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="manualControlWithSteps" endpoint="heading"/>			
+			<Target simulator="HeadingSpeedControllerNoThrustAllo" endpoint="PsiDesiredManual"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="Clock" endpoint="Clock"/>			
+			<Target simulator="hull" endpoint="Clock"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="hull" endpoint="Draught"/>			
+			<Target simulator="THR1" endpoint="Draught"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="hull" endpoint="Draught"/>			
+			<Target simulator="THR2" endpoint="Draught"/>			
+		</ScalarConnection>
+		<ScalarConnection>
+			<Source simulator="hull" endpoint="Draught"/>			
+			<Target simulator="THR3" endpoint="Draught"/>			
+		</ScalarConnection>
+		<SumConnection>
+			<Sources>
+				<Source simulator="THR1" endpoint="Tau[1]"/>				
+				<Source simulator="THR2" endpoint="Tau[1]"/>				
+				<Source simulator="THR3" endpoint="Tau[1]"/>				
+			</Sources>
+			<Target simulator="hull" endpoint="Thrust[1]"/>			
+		</SumConnection>
+		<SumConnection>
+			<Sources>
+				<Source simulator="THR1" endpoint="Tau[2]"/>				
+				<Source simulator="THR2" endpoint="Tau[2]"/>				
+				<Source simulator="THR3" endpoint="Tau[2]"/>				
+			</Sources>
+			<Target simulator="hull" endpoint="Thrust[2]"/>			
+		</SumConnection>
+		<SumConnection>
+			<Sources>
+				<Source simulator="THR1" endpoint="Tau[3]"/>				
+				<Source simulator="THR2" endpoint="Tau[3]"/>				
+				<Source simulator="THR3" endpoint="Tau[3]"/>				
+			</Sources>
+			<Target simulator="hull" endpoint="Thrust[3]"/>			
+		</SumConnection>
+		<SumConnection>
+			<Sources>
+				<Source simulator="THR1" endpoint="Tau[4]"/>				
+				<Source simulator="THR2" endpoint="Tau[4]"/>				
+				<Source simulator="THR3" endpoint="Tau[4]"/>				
+			</Sources>
+			<Target simulator="hull" endpoint="Thrust[4]"/>			
+		</SumConnection>
+		<SumConnection>
+			<Sources>
+				<Source simulator="THR1" endpoint="Tau[5]"/>				
+				<Source simulator="THR2" endpoint="Tau[5]"/>				
+				<Source simulator="THR3" endpoint="Tau[5]"/>				
+			</Sources>
+			<Target simulator="hull" endpoint="Thrust[5]"/>			
+		</SumConnection>
+		<SumConnection>
+			<Sources>
+				<Source simulator="THR1" endpoint="Tau[6]"/>				
+				<Source simulator="THR2" endpoint="Tau[6]"/>				
+				<Source simulator="THR3" endpoint="Tau[6]"/>				
+			</Sources>
+			<Target simulator="hull" endpoint="Thrust[6]"/>			
+		</SumConnection>
+	</VariableConnections>
+</OspSystemStructure>

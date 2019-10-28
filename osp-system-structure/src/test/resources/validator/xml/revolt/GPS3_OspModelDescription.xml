@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription">
+	<Sockets>
+		<Socket type="generic" name="Nu">
+			<Variables>
+				<Variable name="Nu[1]">
+				</Variable>
+				<Variable name="Nu[2]">
+				</Variable>
+				<Variable name="Nu[3]">
+				</Variable>
+				<Variable name="Nu[4]">
+				</Variable>
+				<Variable name="Nu[5]">
+				</Variable>
+				<Variable name="Nu[6]">
+				</Variable>
+			</Variables>
+		</Socket>
+		<Socket type="generic" name="LatLong">
+			<Variables>
+				<Variable name="LatLongHTrue[1]">
+				</Variable>
+				<Variable name="LatLongHTrue[2]">
+				</Variable>
+				<Variable name="LatLongHTrue[3]">
+				</Variable>
+			</Variables>
+		</Socket>
+	</Sockets>
+	<Plugs>
+	</Plugs>
+	<Bonds>
+	</Bonds>
+</OspModelDescription>

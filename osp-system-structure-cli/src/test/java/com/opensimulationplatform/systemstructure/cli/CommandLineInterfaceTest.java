@@ -1,5 +1,6 @@
 package com.opensimulationplatform.systemstructure.cli;
 
+import com.opensimulationplatform.core.util.resource.Resources;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
@@ -15,9 +16,9 @@ public class CommandLineInterfaceTest {
   @Rule
   public final TemporaryFolder tempFolder = new TemporaryFolder();
   
-  private final String ontology = TestResources.OSP_OWL.toFile().getAbsolutePath();
-  private final String invalidConfig = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().getAbsolutePath();
-  private final String validConfig = TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile().getAbsolutePath();
+  private final String ontology = Resources.OSP_OWL.toFile().getAbsolutePath();
+  private final String invalidConfig = TestResources.SYSTEM_STRUCTURE_INVALID_XML.getAbsolutePath();
+  private final String validConfig = TestResources.SYSTEM_STRUCTURE_VALID_XML.getAbsolutePath();
   
   @Test
   public void canCheckInvalidConfiguration() {

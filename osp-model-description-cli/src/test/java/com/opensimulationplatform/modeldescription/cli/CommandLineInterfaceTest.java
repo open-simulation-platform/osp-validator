@@ -1,5 +1,6 @@
 package com.opensimulationplatform.modeldescription.cli;
 
+import com.opensimulationplatform.core.util.resource.Resources;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
@@ -14,10 +15,10 @@ public class CommandLineInterfaceTest {
   
   @Rule
   public final TemporaryFolder tempFolder = new TemporaryFolder();
-  private final String ontology = TestResources.OSP_OWL.toFile().getAbsolutePath();
-  private final String fmu = TestResources.CRANE_CONTROLLER_FMU.toFile().getAbsolutePath();
-  private final String invalidModelDescription = TestResources.CRANE_CONTROLLER_INVALID.toFile().getAbsolutePath();
-  private final String validModelDescription = TestResources.CRANE_CONTROLLER_VALID.toFile().getAbsolutePath();
+  private final String ontology = Resources.OSP_OWL.toFile().getAbsolutePath();
+  private final String fmu = TestResources.CRANE_CONTROLLER_FMU.getAbsolutePath();
+  private final String invalidModelDescription = TestResources.CRANE_CONTROLLER_INVALID.getAbsolutePath();
+  private final String validModelDescription = TestResources.CRANE_CONTROLLER_VALID.getAbsolutePath();
   
   @Test
   public void canCheckInvalidModelDescription() {

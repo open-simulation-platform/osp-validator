@@ -2,6 +2,7 @@ package com.opensimulationplatform.systemstructure.http;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.opensimulationplatform.core.util.resource.Resources;
 import org.junit.Test;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +15,8 @@ import static org.junit.Assert.assertTrue;
 
 public class ValidationServletTest {
   
-  private final URI validConfigurationPath = TestResources.SYSTEM_STRUCTURE_VALID_XML.toFile().toURI();
-  private final URI ontologyPath = TestResources.OSP_OWL.toFile().toURI();
+  private final URI validConfigurationPath = TestResources.SYSTEM_STRUCTURE_VALID_XML.toURI();
+  private final URI ontologyPath = Resources.OSP_OWL.toFile().toURI();
   
   @Test
   public void canCallDoGetWithQueriesOnUrlFormat() throws Exception {
@@ -59,7 +60,7 @@ public class ValidationServletTest {
   @Test
   public void canCallDoGetOnInvalidConfiguration() {
     ValidationServlet validationServlet = new ValidationServlet();
-    String configuration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().getAbsolutePath();
+    String configuration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.getAbsolutePath();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     
@@ -98,7 +99,7 @@ public class ValidationServletTest {
   @Test
   public void canCallDoPostOnInvalidConfiguration() {
     ValidationServlet validationServlet = new ValidationServlet();
-    String configuration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.toFile().getAbsolutePath();
+    String configuration = TestResources.SYSTEM_STRUCTURE_INVALID_XML.getAbsolutePath();
     HttpServletRequest request = new MockHttpServletRequest(configuration, ontologyPath.toString());
     MockHttpServletResponse httpResponse = new MockHttpServletResponse();
     

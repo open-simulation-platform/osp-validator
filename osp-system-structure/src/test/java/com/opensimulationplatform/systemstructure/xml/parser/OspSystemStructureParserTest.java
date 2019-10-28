@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class OspSystemStructureParserTest {
   @Test
   public void canParse() {
-    OspSystemStructure configuration = OspSystemStructureParser.parse(TestResources.SYSTEM_STRUCTURE_XML.toFile());
+    OspSystemStructure configuration = OspSystemStructureParser.parse(TestResources.SYSTEM_STRUCTURE_XML);
   
     List<Simulators.Simulator> simulators = configuration.getSimulators().getSimulator();
     assertEquals(2, simulators.size());

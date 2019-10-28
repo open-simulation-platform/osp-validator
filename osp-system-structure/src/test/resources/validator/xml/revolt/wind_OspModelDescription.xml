@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription">
+	<Sockets>
+	</Sockets>
+	<Plugs>
+		<Plug type="generic" name="WindDirAndSpeed">
+			<Variables>
+				<Variable name="Angle">
+				</Variable>
+				<Variable name="ActualSpeed">
+				</Variable>
+			</Variables>
+		</Plug>
+	</Plugs>
+	<Bonds>
+	</Bonds>
+</OspModelDescription>

@@ -1,9 +1,8 @@
 package com.opensimulationplatform.systemstructure.http;
 
-import com.opensimulationplatform.core.util.resource.Resource;
+import java.io.File;
 
 class TestResources {
-  static final Resource SYSTEM_STRUCTURE_VALID_XML = new Resource("/validator/xml/OspSystemStructure-valid.xml");
-  static final Resource SYSTEM_STRUCTURE_INVALID_XML = new Resource("/validator/xml/OspSystemStructure-invalid.xml");
-  static final Resource OSP_OWL =  new Resource("/osp.owl");
+  static final File SYSTEM_STRUCTURE_VALID_XML = new File("./src/test/resources/validator/xml/OspSystemStructure-valid.xml");
+  static final File SYSTEM_STRUCTURE_INVALID_XML = new File("./src/test/resources/validator/xml/OspSystemStructure-invalid.xml");
 }
