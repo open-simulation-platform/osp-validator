@@ -2,8 +2,8 @@ package com.opensimulationplatform.systemstructure.http;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
-import com.opensimulationplatform.systemstructure.xml.validator.XmlValidator;
+import com.opensimulationplatform.core.validation.result.Diagnostic;
+import com.opensimulationplatform.core.validation.result.Result;
 import org.eclipse.jetty.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,29 +50,29 @@ public class ValidationServlet extends HttpServlet {
     String requiredConfiguration = httpRequest.getParameter("configuration");
     String optionalOntology = httpRequest.getParameter("ontology");
   
-    SystemStructureValidator.Result result = validate(requiredConfiguration, optionalOntology);
+    Result result = validate(requiredConfiguration, optionalOntology);
     
     createHttpResponse(httpResponse, result);
   }
   
-  private SystemStructureValidator.Result validate(String requiredConfiguration, String optionalOntology) {
+  private Result validate(String requiredConfiguration, String optionalOntology) {
     File configuration = new File(getURI(requiredConfiguration));
-    SystemStructureValidator.Result result;
+    Result result;
     if (nonNull(optionalOntology)) {
       File ontology = new File(getURI(optionalOntology));
-      result = XmlValidator.validate(configuration, ontology);
+      result = XmlValidator.validate(configuration);
     } else {
       result = XmlValidator.validate(configuration);
     }
     return result;
   }
   
-  private void createHttpResponse(HttpServletResponse httpResponse, SystemStructureValidator.Result result) {
+  private void createHttpResponse(HttpServletResponse httpResponse, Result result) {
     httpResponse.setContentType("application/json");
     httpResponse.setCharacterEncoding("UTF-8");
     httpResponse.addHeader("Access-Control-Allow-Origin", "*");
     
-    if (result.isSuccess()) {
+    if (result.isValid()) {
       httpResponse.setStatus(HttpStatus.OK_200);
     } else {
       httpResponse.setStatus(HttpStatus.BAD_REQUEST_400);
@@ -90,10 +90,10 @@ public class ValidationServlet extends HttpServlet {
     }
   }
   
-  private ValidationServletResponse getServletResponse(SystemStructureValidator.Result result) {
+  private ValidationServletResponse getServletResponse(Result result) {
     ValidationServletResponse response = new ValidationServletResponse();
     
-    if (result.isSuccess()) {
+    if (result.isValid()) {
       response.setValid("true");
     } else {
       response.setValid("false");
@@ -103,9 +103,9 @@ public class ValidationServlet extends HttpServlet {
     return response;
   }
   
-  private String getResponseMessage(SystemStructureValidator.Result result) {
+  private String getResponseMessage(Result result) {
     StringBuilder messageBuilder = new StringBuilder();
-    List<SystemStructureValidator.Diagnostic> diagnostics = result.getDiagnostics();
+    List<Diagnostic> diagnostics = result.getDiagnostics();
     diagnostics.forEach(d -> {
       messageBuilder.append(d.getMessage()).append("\n");
     });

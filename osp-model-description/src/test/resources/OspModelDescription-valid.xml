@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+  <UnitDefinitions>
+    <Unit name="u1">
+      <BaseUnit A="0" cd="0" factor="1" K="0" kg="0" m="0" mol="0" offset="0" rad="0" s="0"/>
+    </Unit>
+    <Unit name="u2">
+      <BaseUnit A="0" cd="0" factor="1" K="0" kg="0" m="0" mol="0" offset="0" rad="0" s="0"/>
+    </Unit>
+    <Unit name="u3">
+      <BaseUnit A="0" cd="0" factor="1" K="0" kg="0" m="0" mol="0" offset="0" rad="0" s="0"/>
+    </Unit>
+  </UnitDefinitions>
+  <VariableGroups>
+    <Generic name="generic">
+      <Variable ref="v1" unit="u1"/>
+      <Variable ref="v2" unit="u2"/>
+      <Variable ref="v3" unit="u3"/>
+    </Generic>
+  </VariableGroups>
+</OspModelDescription>

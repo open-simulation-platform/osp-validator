@@ -1,0 +1,16 @@
+<OspSystemStructure version="0.1" xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
+  <Simulators>
+    <Simulator name="s1" source="./src/test/resources/parsing/xml/dummy.fmu" stepSize="1.051732E7"/>
+    <Simulator name="s2" source="./src/test/resources/parsing/xml/dummy.fmu" stepSize="1.051732E7"/>
+  </Simulators>
+  <Connections>
+    <VariableConnection>
+      <Variable simulator="s1" name="v1"/>
+      <Variable simulator="s2" name="v2"/>
+    </VariableConnection>
+    <VariableGroupConnection>
+      <VariableGroup simulator="s1" name="vg1"/>
+      <VariableGroup simulator="s2" name="vg2"/>
+    </VariableGroupConnection>
+  </Connections>
+</OspSystemStructure>

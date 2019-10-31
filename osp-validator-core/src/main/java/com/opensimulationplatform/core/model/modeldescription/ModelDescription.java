@@ -1,87 +1,158 @@
 package com.opensimulationplatform.core.model.modeldescription;
 
-import com.opensimulationplatform.core.model.OspObject;
-import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.AngularDisplacement;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Charge;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.LinearDisplacement;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Volume;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Pressure;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Torque;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Voltage;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.AngularVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.Current;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.VolumeFlowRate;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.generic.Generic;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.AngularMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.ElectromagneticPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.HydraulicPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.LinearMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.AngularMechanicalQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.ElectromagneticQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.HydraulicQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.LinearMechanicalQuasiPort;
+import com.opensimulationplatform.core.util.modeldescription.ModelDescriptionUtil;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
-public class ModelDescription implements OspObject {
-  private String name;
-  private Map<String, OspPlug> ospPlugs = new TreeMap<>();
-  private Map<String, OspSocket> ospSockets = new TreeMap<>();
-  private Map<String, OspBond> ospBonds = new TreeMap<>();
-  private FmiModelDescription fmiModelDescription;
-  
-  public ModelDescription(FmiModelDescription fmiModelDescription) {
-    this.fmiModelDescription = fmiModelDescription;
+public class ModelDescription {
+  private final List<Unit> units = new ArrayList<>();
+
+  private final List<Variable> variables = new ArrayList<>();
+
+  private final List<Generic> generics = new ArrayList<>();
+
+  private final List<AngularDisplacement> angularDisplacements = new ArrayList<>();
+  private final List<Charge> charges = new ArrayList<>();
+  private final List<LinearDisplacement> linearDisplacements = new ArrayList<>();
+  private final List<Volume> volumes = new ArrayList<>();
+
+  private final List<Force> forces = new ArrayList<>();
+  private final List<Pressure> pressures = new ArrayList<>();
+  private final List<Torque> torques = new ArrayList<>();
+  private final List<Voltage> voltages = new ArrayList<>();
+
+  private final List<AngularVelocity> angularVelocities = new ArrayList<>();
+  private final List<Current> currents = new ArrayList<>();
+  private final List<LinearVelocity> linearVelocities = new ArrayList<>();
+  private final List<VolumeFlowRate> volumeFlowRates = new ArrayList<>();
+
+  private final List<AngularMechanicalPort> angularMechanicalPorts = new ArrayList<>();
+  private final List<ElectromagneticPort> electromagneticPorts = new ArrayList<>();
+  private final List<HydraulicPort> hydraulicPorts = new ArrayList<>();
+  private final List<LinearMechanicalPort> linearMechanicalPorts = new ArrayList<>();
+
+  private final List<AngularMechanicalQuasiPort> angularMechanicalQuasiPorts = new ArrayList<>();
+  private final List<ElectromagneticQuasiPort> electromagneticQuasiPorts = new ArrayList<>();
+  private final List<HydraulicQuasiPort> hydraulicQuasiPorts = new ArrayList<>();
+  private final List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = new ArrayList<>();
+
+  public List<Unit> getUnits() {
+    return units;
   }
-  
-  public ModelDescription() {
+
+  public List<Variable> getVariables() {
+    return variables;
   }
-  
-  public String getName() {
-    return name;
+
+  public List<VariableGroup> getVariableGroups() {
+    return Collections.unmodifiableList(ModelDescriptionUtil.getVariableGroups(this));
   }
-  
-  public void setName(String name) {
-    this.name = name;
+
+  public List<Generic> getGenerics() {
+    return generics;
   }
-  
-  public Map<String, OspPlug> getOspPlugs() {
-    return ospPlugs;
+
+  public List<AngularDisplacement> getAngularDisplacements() {
+    return angularDisplacements;
   }
-  
-  public void setOspPlugs(List<OspPlug> ospPlugs) {
-    ospPlugs.forEach(this::addPlug);
+
+  public List<Charge> getCharges() {
+    return charges;
   }
-  
-  public Map<String, OspSocket> getOspSockets() {
-    return ospSockets;
+
+  public List<LinearDisplacement> getLinearDisplacements() {
+    return linearDisplacements;
   }
-  
-  public void setOspSockets(List<OspSocket> ospSockets) {
-    ospSockets.forEach(this::addSocket);
+
+  public List<Volume> getVolumes() {
+    return volumes;
   }
-  
-  public Map<String, OspBond> getOspBonds() {
-    return ospBonds;
+
+  public List<Force> getForces() {
+    return forces;
   }
-  
-  public void setOspBonds(List<OspBond> ospBonds) {
-    ospBonds.forEach(this::addBond);
+
+  public List<Pressure> getPressures() {
+    return pressures;
   }
-  
-  public FmiModelDescription getFmiModelDescription() {
-    return fmiModelDescription;
+
+  public List<Torque> getTorques() {
+    return torques;
   }
-  
-  public void setFmiModelDescription(FmiModelDescription fmiModelDescription) {
-    this.fmiModelDescription = fmiModelDescription;
+
+  public List<Voltage> getVoltages() {
+    return voltages;
   }
-  
-  public void addPlug(OspPlug ospPlug) {
-    if (ospPlugs.containsKey(ospPlug.getName())) {
-      throw new RuntimeException("Can not add two plugs with the same name");
-    } else {
-      ospPlugs.put(ospPlug.getName(), ospPlug);
-    }
+
+  public List<AngularVelocity> getAngularVelocities() {
+    return angularVelocities;
   }
-  
-  public void addSocket(OspSocket ospSocket) {
-    if (ospSockets.containsKey(ospSocket.getName())) {
-      throw new RuntimeException("Can not add two sockets with the same name");
-    } else {
-      ospSockets.put(ospSocket.getName(), ospSocket);
-    }
+
+  public List<Current> getCurrents() {
+    return currents;
   }
-  
-  public void addBond(OspBond ospBond) {
-    if (ospBonds.containsKey(ospBond.getName())) {
-      throw new RuntimeException("Can not add two bonds with the same name");
-    } else {
-      ospBonds.put(ospBond.getName(), ospBond);
-    }
+
+  public List<LinearVelocity> getLinearVelocities() {
+    return linearVelocities;
+  }
+
+  public List<VolumeFlowRate> getVolumeFlowRates() {
+    return volumeFlowRates;
+  }
+
+  public List<AngularMechanicalPort> getAngularMechanicalPorts() {
+    return angularMechanicalPorts;
+  }
+
+  public List<ElectromagneticPort> getElectromagneticPorts() {
+    return electromagneticPorts;
+  }
+
+  public List<HydraulicPort> getHydraulicPorts() {
+    return hydraulicPorts;
+  }
+
+  public List<LinearMechanicalPort> getLinearMechanicalPorts() {
+    return linearMechanicalPorts;
+  }
+
+  public List<AngularMechanicalQuasiPort> getAngularMechanicalQuasiPorts() {
+    return angularMechanicalQuasiPorts;
+  }
+
+  public List<ElectromagneticQuasiPort> getElectromagneticQuasiPorts() {
+    return electromagneticQuasiPorts;
+  }
+
+  public List<HydraulicQuasiPort> getHydraulicQuasiPorts() {
+    return hydraulicQuasiPorts;
+  }
+
+  public List<LinearMechanicalQuasiPort> getLinearMechanicalQuasiPorts() {
+    return linearMechanicalQuasiPorts;
   }
 }
