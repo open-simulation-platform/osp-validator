@@ -13,7 +13,6 @@
     <module>osp-validator-core</module>
     <module>osp-system-structure</module>
     <module>osp-system-structure-cli</module>
-    <module>osp-system-structure-http</module>
     <module>osp-model-description</module>
     <module>osp-model-description-cli</module>
     <module>osp-validator-api</module>
