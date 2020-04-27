@@ -31,4 +31,12 @@ public class HydraulicQuasiPort extends VariableGroup {
   public void setVolume(Volume volume) {
     this.volume = volume;
   }
+
+  public Pressure getPressure() {
+    return pressure;
+  }
+
+  public Volume getVolume() {
+    return volume;
+  }
 }

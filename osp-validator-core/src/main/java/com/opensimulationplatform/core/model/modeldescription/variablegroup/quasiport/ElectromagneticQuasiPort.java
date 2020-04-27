@@ -31,4 +31,12 @@ public class ElectromagneticQuasiPort extends VariableGroup {
   public void setCharge(Charge charge) {
     this.charge = charge;
   }
+
+  public Voltage getVoltage() {
+    return voltage;
+  }
+
+  public Charge getCharge() {
+    return charge;
+  }
 }

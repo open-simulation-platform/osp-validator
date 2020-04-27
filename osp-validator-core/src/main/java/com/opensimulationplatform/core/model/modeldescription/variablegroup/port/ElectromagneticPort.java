@@ -31,4 +31,12 @@ public class ElectromagneticPort extends VariableGroup {
   public void setCurrent(Current current) {
     this.current = current;
   }
+
+  public Voltage getVoltage() {
+    return voltage;
+  }
+
+  public Current getCurrent() {
+    return current;
+  }
 }

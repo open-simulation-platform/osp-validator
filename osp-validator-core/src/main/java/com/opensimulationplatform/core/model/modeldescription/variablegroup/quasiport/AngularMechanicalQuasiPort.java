@@ -31,4 +31,12 @@ public class AngularMechanicalQuasiPort extends VariableGroup {
   public List<VariableGroup> getVariableGroups() {
     return Arrays.asList(torque, angularDisplacement);
   }
+
+  public Torque getTorque() {
+    return torque;
+  }
+
+  public AngularDisplacement getAngularDisplacement() {
+    return angularDisplacement;
+  }
 }

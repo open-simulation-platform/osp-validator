@@ -20,7 +20,6 @@ public class OspModelDescriptionParser {
       Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription.xsd"));
 
       JAXBContext context = JAXBContext.newInstance(OspModelDescriptionType.class.getPackage().getName());
-
       Unmarshaller unmarshaller = context.createUnmarshaller();
       unmarshaller.setSchema(schema);
 

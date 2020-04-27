@@ -31,4 +31,12 @@ public class LinearMechanicalQuasiPort extends VariableGroup {
   public void setLinearDisplacement(LinearDisplacement linearDisplacement) {
     this.linearDisplacement = linearDisplacement;
   }
+
+  public Force getForce() {
+    return force;
+  }
+
+  public LinearDisplacement getLinearDisplacement() {
+    return linearDisplacement;
+  }
 }

@@ -31,4 +31,12 @@ public class HydraulicPort extends VariableGroup {
   public void setVolumeFlowRate(VolumeFlowRate volumeFlowRate) {
     this.volumeFlowRate = volumeFlowRate;
   }
+
+  public Pressure getPressure() {
+    return pressure;
+  }
+
+  public VolumeFlowRate getVolumeFlowRate() {
+    return volumeFlowRate;
+  }
 }

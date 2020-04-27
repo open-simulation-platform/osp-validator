@@ -11,6 +11,7 @@ public class LinearVelocity extends VariableGroup {
 
   private final List<Variable> variables = new ArrayList<>();
 
+  @Override
   public List<Variable> getVariables() {
     return variables;
   }

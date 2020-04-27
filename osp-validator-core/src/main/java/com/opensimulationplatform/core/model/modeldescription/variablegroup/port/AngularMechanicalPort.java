@@ -21,6 +21,14 @@ public class AngularMechanicalPort extends VariableGroup {
     this.angularVelocity = angularVelocity;
   }
 
+  public Torque getTorque() {
+    return torque;
+  }
+
+  public AngularVelocity getAngularVelocity() {
+    return angularVelocity;
+  }
+
   @Override
   public List<Variable> getVariables() {
     return Collections.emptyList();
