@@ -66,6 +66,7 @@ public class ValidationServerTest {
     assertEquals("false", response.getValid());
     assertFalse(response.getMessage().isEmpty());
     assertEquals(
+        "Validation 'OntologyIsConsistent' failed!\n" +
         "generic DisjointWith velocity\n" +
         "socket SubClassOf has_plug_mate max 1 plug\n" +
         "simulator_KnuckleBoomCrane_generic_plug_actuatorLimits Type plug\n" +
@@ -116,6 +117,7 @@ public class ValidationServerTest {
     assertEquals("false", response.getValid());
     assertFalse(response.getMessage().isEmpty());
     assertEquals(
+        "Validation 'OntologyIsConsistent' failed!\n" +
         "generic DisjointWith velocity\n" +
         "socket SubClassOf has_plug_mate max 1 plug\n" +
         "simulator_KnuckleBoomCrane_generic_plug_actuatorLimits Type plug\n" +

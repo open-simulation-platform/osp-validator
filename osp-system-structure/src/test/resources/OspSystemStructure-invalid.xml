@@ -1,0 +1,12 @@
+<OspSystemStructure version="0.1" xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
+  <Connections>
+    <VariableConnection>
+      <Variable simulator="s1" name="v1"/>
+      <Variable simulator="s2" name="v1"/>
+    </VariableConnection>
+    <VariableGroupConnection>
+      <VariableGroup simulator="s1" name="vg1"/>
+      <VariableGroup simulator="s2" name="vg1"/>
+    </VariableGroupConnection>
+  </Connections>
+</OspSystemStructure>

@@ -1,6 +1,6 @@
-import com.opensimulationplatform.core.model.OspObject;
-import com.opensimulationplatform.core.validator.systemstructure.SystemStructureValidator;
-import com.opensimulationplatform.systemstructure.xml.validator.XmlValidator;
+import com.opensimulationplatform.core.model.ospobject.OspObject;
+import com.opensimulationplatform.core.validation.result.Diagnostic;
+import com.opensimulationplatform.core.validation.result.Result;
 
 import java.io.File;
 import java.util.List;
@@ -9,13 +9,13 @@ class Main {
   public static void main(String[] args) {
     File file = new File("./src/test/resources/validator/xml/OspSystemStructure-invalid.xml");
   
-    SystemStructureValidator.Result result = XmlValidator.validate(file);
+    Result result = XmlValidator.validate(file);
   
-    if (result.isSuccess()) {
+    if (result.isValid()) {
       System.out.println("WOHO!");
     } else {
-      List<SystemStructureValidator.Diagnostic> diagnostics = result.getDiagnostics();
-      for (SystemStructureValidator.Diagnostic diagnostic : diagnostics) {
+      List<Diagnostic> diagnostics = result.getDiagnostics();
+      for (Diagnostic diagnostic : diagnostics) {
         System.out.println("Message:");
         String message = diagnostic.getMessage();
         System.out.println(message);

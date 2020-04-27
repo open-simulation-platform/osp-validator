@@ -1,51 +1,37 @@
 package com.opensimulationplatform.core.model.systemstructure;
 
-import com.opensimulationplatform.core.model.OspObject;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class SystemStructure implements OspObject {
-  private List<OspSimulator> ospSimulators = new ArrayList<>();
-  private List<OspBondConnection> ospBondConnections = new ArrayList<>();
-  private List<OspPlugSocketConnection> ospPlugSocketConnections = new ArrayList<>();
-  private List<OspVariableConnection> ospVariableConnections = new ArrayList<>();
-  
-  public List<OspSimulator> getOspSimulators() {
-    return ospSimulators;
+public class SystemStructure {
+  private final List<Simulator> simulators = new ArrayList<>();
+  private final List<Function> functions = new ArrayList<>();
+  private final List<VariableConnection> variableConnections = new ArrayList<>();
+  private final List<VariableGroupConnection> variableGroupConnections = new ArrayList<>();
+  private final List<SignalConnection> signalConnections = new ArrayList<>();
+  private final List<SignalGroupConnection> signalGroupConnections = new ArrayList<>();
+
+  public List<Simulator> getSimulators() {
+    return simulators;
   }
-  
-  public List<OspBondConnection> getOspBondConnections() {
-    return ospBondConnections;
+
+  public List<Function> getFunctions() {
+    return functions;
   }
-  
-  public List<OspPlugSocketConnection> getOspPlugSocketConnections() {
-    return ospPlugSocketConnections;
+
+  public List<VariableConnection> getVariableConnections() {
+    return variableConnections;
   }
-  
-  public List<OspVariableConnection> getOspVariableConnections() {
-    return ospVariableConnections;
+
+  public List<VariableGroupConnection> getVariableGroupConnections() {
+    return variableGroupConnections;
   }
-  
-  public void addSimulator(OspSimulator ospSimulator) {
-    ospSimulators.add(ospSimulator);
+
+  public List<SignalConnection> getSignalConnections() {
+    return signalConnections;
   }
-  
-  public void addVariableConnection(OspVariableConnection ospVariableConnection) {
-    ospVariableConnections.add(ospVariableConnection);
-  }
-  
-  public void addPlugSocketConnection(OspPlugSocketConnection ospPlugSocketConnection) {
-    ospPlugSocketConnections.add(ospPlugSocketConnection);
-  }
-  
-  public void addBondConnection(OspBondConnection ospBondConnection) {
-    ospBondConnections.add(ospBondConnection);
-  }
-  
-  public OspSimulator getSimulatorByName(String simulatorName) {
-    Optional<OspSimulator> ospSimulator = ospSimulators.stream().filter(s -> s.getName().equals(simulatorName)).findFirst();
-    return ospSimulator.orElse(null);
+
+  public List<SignalGroupConnection> getSignalGroupConnections() {
+    return signalGroupConnections;
   }
 }

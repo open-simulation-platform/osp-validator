@@ -39,12 +39,6 @@ public class CommandLineInterfaceTest {
   }
   
   @Test
-  public void exitIfOspOwlFileDoesNotExist() {
-    exit.expectSystemExitWithStatus(INVALID_INPUT.getExitCode());
-    CommandLineInterface.main(new String[]{"--osp-ontology", "./i-do-not-exist.owl", "--osp-model-description", validModelDescription, "--fmu", fmu});
-  }
-  
-  @Test
   public void exitIfInvalidLogLevelIsSet() {
     System.setProperty("osp.validator.log.level", "invalid-level");
     exit.expectSystemExitWithStatus(INVALID_LOG_LEVEL.getExitCode());
