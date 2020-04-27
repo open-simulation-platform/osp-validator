@@ -6,7 +6,6 @@ import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
-import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,7 +18,6 @@ public class VE_LinearMechanicalPort_1 extends ValidationError<LinearMechanicalP
     OWLConfig config = this.context.getOwlConfig();
     OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_LinearMechanicalPort_1, config.prefixManager);
     Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    config.save(new File("test.owl"));
     return invalidIndividuals.map(individual -> (LinearMechanicalPort) config.getVariableGroup(individual)).collect(Collectors.toList());
   }
 
