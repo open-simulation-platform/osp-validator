@@ -23,7 +23,7 @@ public class AngularVelocityTypeConverter extends Converter<AngularVelocityType,
     angularVelocity.setName(angularVelocityType.getName());
     List<VariableType> variableTypes = angularVelocityType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    angularVelocity.getVariables().addAll(variables);
+    angularVelocity.setVariables(variables);
 
     return angularVelocity;
   }

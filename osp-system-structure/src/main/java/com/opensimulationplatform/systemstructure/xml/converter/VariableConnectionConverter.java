@@ -28,12 +28,12 @@ public class VariableConnectionConverter extends Converter<Connections.VariableC
     VariableEndpoint variableEndpointA = variableEndpoints.get(0);
     VariableEndpoint variableEndpointB = variableEndpoints.get(1);
 
-    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(converterContext.systemStructure, variableEndpointA.getSimulator());
+    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointA.getSimulator());
     Variable variableA = ModelDescriptionUtil.getVariableByName(simulatorA.getModelDescription(), variableEndpointA.getName());
     variableConnection.setSimulatorA(simulatorA);
     variableConnection.setVariableA(variableA);
 
-    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(converterContext.systemStructure, variableEndpointB.getSimulator());
+    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointB.getSimulator());
     Variable variableB = ModelDescriptionUtil.getVariableByName(simulatorB.getModelDescription(), variableEndpointB.getName());
     variableConnection.setSimulatorB(simulatorB);
     variableConnection.setVariableB(variableB);

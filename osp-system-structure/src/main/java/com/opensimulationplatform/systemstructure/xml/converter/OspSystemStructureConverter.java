@@ -13,20 +13,24 @@ import java.util.stream.Collectors;
 
 public class OspSystemStructureConverter extends Converter<OspSystemStructure, SystemStructure> {
 
+  public OspSystemStructureConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public SystemStructure convert(OspSystemStructure ospSystemStructureElement) {
-    SystemStructure systemStructure = converterContext.systemStructure;
+    SystemStructure systemStructure = context.systemStructure;
 
     List<Simulators.Simulator> simulatorElements = ospSystemStructureElement.getSimulators().getSimulator();
-    List<Simulator> simulators = converterContext.simulatorConverter.convert(simulatorElements);
+    List<Simulator> simulators = context.simulatorConverter.convert(simulatorElements);
     systemStructure.getSimulators().addAll(simulators);
 
     List<Connections.VariableConnection> variableConnectionElements = ospSystemStructureElement.getConnections().getVariableConnection();
-    List<VariableConnection> variableConnections = converterContext.variableConnectionConverter.convert(variableConnectionElements);
+    List<VariableConnection> variableConnections = context.variableConnectionConverter.convert(variableConnectionElements);
     systemStructure.getVariableConnections().addAll(variableConnections);
 
     List<Connections.VariableGroupConnection> variableGroupConnectionElements = ospSystemStructureElement.getConnections().getVariableGroupConnection();
-    List<VariableGroupConnection> variableGroupConnections = converterContext.variableGroupConnectionConverter.convert(variableGroupConnectionElements);
+    List<VariableGroupConnection> variableGroupConnections = context.variableGroupConnectionConverter.convert(variableGroupConnectionElements);
     systemStructure.getVariableGroupConnections().addAll(variableGroupConnections);
 
     return systemStructure;

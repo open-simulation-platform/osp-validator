@@ -6,10 +6,12 @@ import com.opensimulationplatform.modeldescription.xml.model.OspModelDescription
 import com.opensimulationplatform.modeldescription.xml.parser.OspModelDescriptionParser;
 
 import java.io.File;
+import java.net.URI;
 
 public class ModelDescriptionFactory {
-  public static ModelDescription create(File ospModelDescription, File fmu) {
-    OspModelDescriptionType ospModelDescriptionType = OspModelDescriptionParser.parse(ospModelDescription);
+  public ModelDescription create(File ospModelDescription, URI fmu) {
+    OspModelDescriptionParser parser = new OspModelDescriptionParser();
+    OspModelDescriptionType ospModelDescriptionType = parser.parse(ospModelDescription);
     OspModelDescriptionTypeConverter converter = new OspModelDescriptionTypeConverter(fmu);
     return converter.convert(ospModelDescriptionType);
   }

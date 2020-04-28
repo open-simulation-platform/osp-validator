@@ -47,7 +47,7 @@ public class GenericTypeConverter extends Converter<GenericType, Generic> {
 
     List<VariableType> variable = genericType.getVariable();
     List<Variable> variables = converterContext.variableTypeConverter.convert(variable);
-    generic.getVariables().addAll(variables);
+    generic.setVariables(variables);
 
     List<AngularDisplacementType> angularDisplacement = genericType.getAngularDisplacement();
     List<AngularDisplacement> angularDisplacements = converterContext.angularDisplacementTypeConverter.convert(angularDisplacement);

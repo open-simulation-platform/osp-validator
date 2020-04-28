@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 public class OspSystemStructureParser {
-  public static OspSystemStructure parse(File ospSystemStructureFile) {
+  public OspSystemStructure parse(File ospSystemStructureFile) {
     try (InputStreamReader reader = new InputStreamReader(new FileInputStream(ospSystemStructureFile), StandardCharsets.UTF_8)) {
       SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
       Schema schema = schemaFactory.newSchema(OspSystemStructureParser.class.getResource("/OspSystemStructure.xsd"));

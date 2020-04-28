@@ -1,6 +1,11 @@
 package com.opensimulationplatform.systemstructure.xml.factory;
 
 import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
+import com.opensimulationplatform.systemstructure.util.DefaultFmuLocator;
+import com.opensimulationplatform.systemstructure.util.DefaultOspModelDescriptionLocator;
+import com.opensimulationplatform.systemstructure.util.FmuLocator;
+import com.opensimulationplatform.systemstructure.util.OspModelDescriptionLocator;
+import com.opensimulationplatform.systemstructure.xml.converter.ConverterContext;
 import com.opensimulationplatform.systemstructure.xml.converter.OspSystemStructureConverter;
 import com.opensimulationplatform.systemstructure.xml.model.OspSystemStructure;
 import com.opensimulationplatform.systemstructure.xml.parser.OspSystemStructureParser;
@@ -8,9 +13,35 @@ import com.opensimulationplatform.systemstructure.xml.parser.OspSystemStructureP
 import java.io.File;
 
 public class SystemStructureFactory {
-  public static SystemStructure create(File ospSystemStructureFile) {
-    OspSystemStructure ospSystemStructure = OspSystemStructureParser.parse(ospSystemStructureFile);
-    OspSystemStructureConverter ospSystemStructureConverter = new OspSystemStructureConverter();
-    return ospSystemStructureConverter.convert(ospSystemStructure);
+
+  private FmuLocator fmuLocator;
+  private OspModelDescriptionLocator ospModelDescriptionLocator;
+
+  public SystemStructure create(File ospSystemStructureFile) {
+    OspSystemStructureParser parser = new OspSystemStructureParser();
+    OspSystemStructure ospSystemStructure = parser.parse(ospSystemStructureFile);
+
+    if (ospModelDescriptionLocator == null) {
+      ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
+    }
+
+    if (fmuLocator == null) {
+      fmuLocator = new DefaultFmuLocator();
+    }
+
+    ConverterContext context = new ConverterContext();
+    context.ospModelDescriptionLocator = ospModelDescriptionLocator;
+    context.fmuLocator = fmuLocator;
+    OspSystemStructureConverter converter = new OspSystemStructureConverter(context);
+
+    return converter.convert(ospSystemStructure);
+  }
+
+  public void setFmuLocator(FmuLocator fmuLocator) {
+    this.fmuLocator = fmuLocator;
+  }
+
+  public void setOspModelDescriptionLocator(OspModelDescriptionLocator ospModelDescriptionLocator) {
+    this.ospModelDescriptionLocator = ospModelDescriptionLocator;
   }
 }

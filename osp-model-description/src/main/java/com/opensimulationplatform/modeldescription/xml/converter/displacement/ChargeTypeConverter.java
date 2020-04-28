@@ -24,7 +24,7 @@ public class ChargeTypeConverter extends Converter<ChargeType, Charge> {
 
     List<VariableType> variableTypes = chargeType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    charge.getVariables().addAll(variables);
+    charge.setVariables(variables);
 
     return charge;
   }

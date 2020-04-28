@@ -11,7 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class OspModelDescriptionParserTest {
   @Test
   public void valid() {
-    OspModelDescriptionType content = OspModelDescriptionParser.parse(TestResources.VALID_OSP_MODEL_DESCRIPTION);
+    OspModelDescriptionParser parser = new OspModelDescriptionParser();
+    OspModelDescriptionType content = parser.parse(TestResources.VALID_OSP_MODEL_DESCRIPTION);
 
     UnitDefinitionsType unitDefinitions = content.getUnitDefinitions();
     List<UnitType> unitTypes = unitDefinitions.getUnit();
@@ -47,6 +48,7 @@ public class OspModelDescriptionParserTest {
 
   @Test (expected = RuntimeException.class)
   public void invalid() {
-    OspModelDescriptionParser.parse(TestResources.INVALID_OSP_MODEL_DESCRIPTION);
+    OspModelDescriptionParser parser = new OspModelDescriptionParser();
+    parser.parse(TestResources.INVALID_OSP_MODEL_DESCRIPTION);
   }
 }

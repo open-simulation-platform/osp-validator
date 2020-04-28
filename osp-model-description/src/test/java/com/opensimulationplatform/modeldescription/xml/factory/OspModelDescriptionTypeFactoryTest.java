@@ -21,9 +21,11 @@ import static org.junit.Assert.fail;
 public class OspModelDescriptionTypeFactoryTest {
   @Test
   public void canCreate() throws Exception {
-    ModelDescription modelDescription = ModelDescriptionFactory.create(TestResources.CRANE_CONTROLLER_XML, TestResources.CRANE_CONTROLLER_FMU);
+    ModelDescriptionFactory factory = new ModelDescriptionFactory();
+    ModelDescription modelDescription = factory.create(TestResources.CRANE_CONTROLLER_XML, TestResources.CRANE_CONTROLLER_FMU.toURI());
 
-    OspModelDescriptionType ospModelDescriptionType = OspModelDescriptionTypeFactory.create(modelDescription);
+    OspModelDescriptionTypeFactory typeFactory = new OspModelDescriptionTypeFactory();
+    OspModelDescriptionType ospModelDescriptionType = typeFactory.create(modelDescription);
 
     ObjectFactory objectFactory = new ObjectFactory();
     JAXBContext jc = JAXBContext.newInstance(ospModelDescriptionType.getClass());

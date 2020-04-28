@@ -6,6 +6,7 @@ import com.opensimulationplatform.modeldescription.xml.factory.ModelDescriptionF
 import com.opensimulationplatform.systemstructure.xml.model.Simulators;
 
 import java.io.File;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,28 +20,17 @@ public class SimulatorConverter extends Converter<Simulators.Simulator, Simulato
   public Simulator convert(Simulators.Simulator simulatorElement) {
     Simulator simulator = new Simulator();
 
-    String name = simulatorElement.getName();
-    String source = simulatorElement.getSource();
-    ModelDescription modelDescription = getModelDescription(source);
-
-    simulator.setName(name);
-    simulator.setModelDescription(modelDescription);
+    simulator.setName(simulatorElement.getName());
+    simulator.setModelDescription(getModelDescription(simulatorElement));
 
     return simulator;
   }
 
-  private ModelDescription getModelDescription(String source) {
-    File fmu = getFmu(source);
-    File ospModelDescriptionFile = getOspModelDescriptionFile(fmu);
-    return ModelDescriptionFactory.create(ospModelDescriptionFile, fmu);
-  }
-
-  private File getFmu(String source) {
-    return new File(source);
-  }
-
-  private File getOspModelDescriptionFile(File fmu) {
-    return new File(fmu.getParent(), fmu.getName().replaceAll(".fmu", "") + "_OspModelDescription.xml");
+  private ModelDescription getModelDescription(Simulators.Simulator simulatorElement) {
+    File ospModelDescriptionFile = context.ospModelDescriptionLocator.get(simulatorElement);
+    URI fmu = context.fmuLocator.get(simulatorElement);
+    ModelDescriptionFactory factory = new ModelDescriptionFactory();
+    return factory.create(ospModelDescriptionFile, fmu);
   }
 
   @Override

@@ -15,7 +15,8 @@ import static org.junit.Assert.assertTrue;
 public class ModelDescriptionFactoryTest {
   @Test
   public void canCreate() {
-    ModelDescription converted = ModelDescriptionFactory.create(TestResources.CRANE_CONTROLLER_XML, TestResources.CRANE_CONTROLLER_FMU);
+    ModelDescriptionFactory factory = new ModelDescriptionFactory();
+    ModelDescription converted = factory.create(TestResources.CRANE_CONTROLLER_XML, TestResources.CRANE_CONTROLLER_FMU.toURI());
 
     List<Variable> variables = converted.getVariables();
 

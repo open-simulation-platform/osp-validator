@@ -3,14 +3,14 @@ package com.opensimulationplatform.systemstructure.xml.converter;
 import java.util.List;
 
 public abstract class Converter<FROM, TO> {
-  protected ConverterContext converterContext;
+  protected ConverterContext context;
 
-  public Converter(ConverterContext converterContext) {
-    this.converterContext = converterContext;
+  public Converter(ConverterContext context) {
+    this.context = context;
   }
 
   public Converter() {
-    this.converterContext = new ConverterContext();
+    this.context = new ConverterContext();
   }
 
   public abstract TO convert(FROM object);

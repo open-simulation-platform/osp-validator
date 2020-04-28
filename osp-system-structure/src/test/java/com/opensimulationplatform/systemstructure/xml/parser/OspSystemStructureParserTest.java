@@ -14,7 +14,8 @@ import static org.junit.Assert.assertEquals;
 public class OspSystemStructureParserTest {
   @Test
   public void valid() {
-    OspSystemStructure ospSystemStructure = OspSystemStructureParser.parse(TestResources.PARSER_SYSTEM_STRUCTURE_VALID_XML);
+    OspSystemStructureParser parser = new OspSystemStructureParser();
+    OspSystemStructure ospSystemStructure = parser.parse(TestResources.PARSER_SYSTEM_STRUCTURE_VALID_XML);
     List<Simulators.Simulator> simulators = ospSystemStructure.getSimulators().getSimulator();
     List<Connections.VariableConnection> variableConnections = ospSystemStructure.getConnections().getVariableConnection();
     List<Connections.VariableGroupConnection> variableGroupConnections = ospSystemStructure.getConnections().getVariableGroupConnection();
@@ -50,6 +51,7 @@ public class OspSystemStructureParserTest {
 
   @Test(expected = RuntimeException.class)
   public void invalid() {
-    OspSystemStructureParser.parse(TestResources.PARSER_SYSTEM_STRUCTURE_INVALID_XML);
+    OspSystemStructureParser parser = new OspSystemStructureParser();
+    parser.parse(TestResources.PARSER_SYSTEM_STRUCTURE_INVALID_XML);
   }
 }

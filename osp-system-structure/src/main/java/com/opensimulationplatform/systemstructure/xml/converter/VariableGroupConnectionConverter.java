@@ -28,12 +28,12 @@ public class VariableGroupConnectionConverter extends Converter<Connections.Vari
     VariableEndpoint variableEndpointA = variableEndpoints.get(0);
     VariableEndpoint variableEndpointB = variableEndpoints.get(1);
 
-    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(converterContext.systemStructure, variableEndpointA.getSimulator());
+    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointA.getSimulator());
     VariableGroup variableGroupA = ModelDescriptionUtil.getVariableGroupByName(simulatorA.getModelDescription(), variableEndpointA.getName());
     variableGroupConnection.setSimulatorA(simulatorA);
     variableGroupConnection.setVariableGroupA(variableGroupA);
 
-    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(converterContext.systemStructure, variableEndpointB.getSimulator());
+    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointB.getSimulator());
     VariableGroup variableGroupB = ModelDescriptionUtil.getVariableGroupByName(simulatorB.getModelDescription(), variableEndpointB.getName());
     variableGroupConnection.setSimulatorB(simulatorB);
     variableGroupConnection.setVariableGroupB(variableGroupB);

@@ -24,7 +24,7 @@ public class AngularDisplacementTypeConverter extends Converter<AngularDisplacem
 
     List<VariableType> variableTypes = angularDisplacementType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    angularDisplacement.getVariables().addAll(variables);
+    angularDisplacement.setVariables(variables);
 
     return angularDisplacement;
   }

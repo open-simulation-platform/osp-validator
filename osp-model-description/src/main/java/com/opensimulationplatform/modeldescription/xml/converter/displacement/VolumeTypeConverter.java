@@ -24,7 +24,7 @@ public class VolumeTypeConverter extends Converter<VolumeType, Volume> {
 
     List<VariableType> variableTypes = volumeType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    volume.getVariables().addAll(variables);
+    volume.setVariables(variables);
 
     return volume;
   }

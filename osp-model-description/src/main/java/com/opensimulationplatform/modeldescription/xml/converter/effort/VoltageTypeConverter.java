@@ -24,7 +24,7 @@ public class VoltageTypeConverter extends Converter<VoltageType, Voltage> {
 
     List<VariableType> variableTypes = voltageType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    voltage.getVariables().addAll(variables);
+    voltage.setVariables(variables);
 
     return voltage;
 

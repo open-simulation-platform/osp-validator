@@ -24,7 +24,7 @@ public class LinearVelocityTypeConverter extends Converter<LinearVelocityType, L
 
     List<VariableType> variableTypes = linearVelocityType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    linearVelocity.getVariables().addAll(variables);
+    linearVelocity.setVariables(variables);
 
     return linearVelocity;
   }

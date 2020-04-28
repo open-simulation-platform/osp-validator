@@ -24,7 +24,7 @@ public class TorqueTypeConverter extends Converter<TorqueType, Torque> {
 
     List<VariableType> variableTypes = torqueType.getVariable();
     List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
-    torque.getVariables().addAll(variables);
+    torque.setVariables(variables);
 
     return torque;
 

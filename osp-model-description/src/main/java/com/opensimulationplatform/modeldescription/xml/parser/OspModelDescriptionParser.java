@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 public class OspModelDescriptionParser {
-  public static OspModelDescriptionType parse(File ospModelDescriptionFile) {
+  public OspModelDescriptionType parse(File ospModelDescriptionFile) {
     try (InputStreamReader reader = new InputStreamReader(new FileInputStream(ospModelDescriptionFile), StandardCharsets.UTF_8)) {
       SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
       Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription.xsd"));

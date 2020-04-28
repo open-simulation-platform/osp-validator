@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OspModelDescriptionTypeFactory {
-  public static OspModelDescriptionType create(ModelDescription modelDescription) {
+  public OspModelDescriptionType create(ModelDescription modelDescription) {
     OspModelDescriptionType ospModelDescriptionType = new OspModelDescriptionType();
 
     ospModelDescriptionType.setVersion(ospModelDescriptionType.getVersion());
@@ -40,7 +40,7 @@ public class OspModelDescriptionTypeFactory {
     return ospModelDescriptionType;
   }
 
-  private static VariableGroupsType getVariableGroupsType(ModelDescription modelDescription) {
+  private VariableGroupsType getVariableGroupsType(ModelDescription modelDescription) {
     VariableGroupsType variableGroups = new VariableGroupsType();
     List<ForceType> forceTypes = variableGroups.getForce();
     for (Force force : modelDescription.getForces()) {
@@ -144,7 +144,7 @@ public class OspModelDescriptionTypeFactory {
     return variableGroups;
   }
 
-  private static UnitDefinitionsType getUnitDefinitionsType(ModelDescription modelDescription) {
+  private UnitDefinitionsType getUnitDefinitionsType(ModelDescription modelDescription) {
     UnitDefinitionsType unitDefinitions = new UnitDefinitionsType();
     List<UnitType> unitTypes = unitDefinitions.getUnit();
     for (Unit unit : modelDescription.getUnits()) {
@@ -153,7 +153,7 @@ public class OspModelDescriptionTypeFactory {
     return unitDefinitions;
   }
 
-  private static UnitType getUnitType(Unit unit) {
+  private UnitType getUnitType(Unit unit) {
     UnitType unitType = new UnitType();
     unitType.setName(unit.getName().get());
     Fmi2Unit.BaseUnit baseUnit = new Fmi2Unit.BaseUnit();
@@ -171,7 +171,7 @@ public class OspModelDescriptionTypeFactory {
     return unitType;
   }
 
-  private static LinearMechanicalPortType getLinearMechanicalPortType(LinearMechanicalPort linearMechanicalPort) {
+  private LinearMechanicalPortType getLinearMechanicalPortType(LinearMechanicalPort linearMechanicalPort) {
     LinearMechanicalPortType linearMechanicalPortType = new LinearMechanicalPortType();
     linearMechanicalPortType.setName(linearMechanicalPort.getName().get());
     linearMechanicalPortType.setForce(getForceType(linearMechanicalPort.getForce()));
@@ -179,7 +179,7 @@ public class OspModelDescriptionTypeFactory {
     return linearMechanicalPortType;
   }
 
-  private static AngularMechanicalPortType getAngularMechanicalPortType(AngularMechanicalPort angularMechanicalPort) {
+  private AngularMechanicalPortType getAngularMechanicalPortType(AngularMechanicalPort angularMechanicalPort) {
     AngularMechanicalPortType angularMechanicalPortType = new AngularMechanicalPortType();
     angularMechanicalPortType.setName(angularMechanicalPort.getName().get());
     angularMechanicalPortType.setTorque(getTorqueType(angularMechanicalPort.getTorque()));
@@ -187,7 +187,7 @@ public class OspModelDescriptionTypeFactory {
     return angularMechanicalPortType;
   }
 
-  private static ElectromagneticPortType getElectromagneticPortType(ElectromagneticPort electromagneticPort) {
+  private ElectromagneticPortType getElectromagneticPortType(ElectromagneticPort electromagneticPort) {
     ElectromagneticPortType electromagneticPortType = new ElectromagneticPortType();
     electromagneticPortType.setName(electromagneticPort.getName().get());
     electromagneticPortType.setVoltage(getVoltageType(electromagneticPort.getVoltage()));
@@ -195,7 +195,7 @@ public class OspModelDescriptionTypeFactory {
     return electromagneticPortType;
   }
 
-  private static HydraulicPortType getHydraulicPortType(HydraulicPort hydraulicPort) {
+  private HydraulicPortType getHydraulicPortType(HydraulicPort hydraulicPort) {
     HydraulicPortType hydraulicPortType = new HydraulicPortType();
     hydraulicPortType.setName(hydraulicPort.getName().get());
     hydraulicPortType.setPressure(getPressureType(hydraulicPort.getPressure()));
@@ -203,7 +203,7 @@ public class OspModelDescriptionTypeFactory {
     return hydraulicPortType;
   }
 
-  private static LinearMechanicalQuasiPortType getLinearMechanicalQuasiPortType(LinearMechanicalQuasiPort linearMechanicalQuasiPort) {
+  private LinearMechanicalQuasiPortType getLinearMechanicalQuasiPortType(LinearMechanicalQuasiPort linearMechanicalQuasiPort) {
     LinearMechanicalQuasiPortType linearMechanicalQuasiPortType = new LinearMechanicalQuasiPortType();
     linearMechanicalQuasiPortType.setName(linearMechanicalQuasiPort.getName().get());
     linearMechanicalQuasiPortType.setForce(getForceType(linearMechanicalQuasiPort.getForce()));
@@ -211,7 +211,7 @@ public class OspModelDescriptionTypeFactory {
     return linearMechanicalQuasiPortType;
   }
 
-  private static AngularMechanicalQuasiPortType getAngularMechanicalQuasiPortType(AngularMechanicalQuasiPort angularMechanicalQuasiPort) {
+  private AngularMechanicalQuasiPortType getAngularMechanicalQuasiPortType(AngularMechanicalQuasiPort angularMechanicalQuasiPort) {
     AngularMechanicalQuasiPortType angularMechanicalQuasiPortType = new AngularMechanicalQuasiPortType();
     angularMechanicalQuasiPortType.setName(angularMechanicalQuasiPort.getName().get());
     angularMechanicalQuasiPortType.setTorque(getTorqueType(angularMechanicalQuasiPort.getTorque()));
@@ -219,7 +219,7 @@ public class OspModelDescriptionTypeFactory {
     return angularMechanicalQuasiPortType;
   }
 
-  private static ElectromagneticQuasiPortType getElectromagneticQuasiPortType(ElectromagneticQuasiPort electromagneticQuasiPort) {
+  private ElectromagneticQuasiPortType getElectromagneticQuasiPortType(ElectromagneticQuasiPort electromagneticQuasiPort) {
     ElectromagneticQuasiPortType electromagneticQuasiPortType = new ElectromagneticQuasiPortType();
     electromagneticQuasiPortType.setName(electromagneticQuasiPort.getName().get());
     electromagneticQuasiPortType.setVoltage(getVoltageType(electromagneticQuasiPort.getVoltage()));
@@ -227,7 +227,7 @@ public class OspModelDescriptionTypeFactory {
     return electromagneticQuasiPortType;
   }
 
-  private static HydraulicQuasiPortType getHydraulicQuasiPortType(HydraulicQuasiPort hydraulicQuasiPort) {
+  private HydraulicQuasiPortType getHydraulicQuasiPortType(HydraulicQuasiPort hydraulicQuasiPort) {
     HydraulicQuasiPortType hydraulicQuasiPortType = new HydraulicQuasiPortType();
     hydraulicQuasiPortType.setName(hydraulicQuasiPort.getName().get());
     hydraulicQuasiPortType.setPressure(getPressureType(hydraulicQuasiPort.getPressure()));
@@ -235,91 +235,91 @@ public class OspModelDescriptionTypeFactory {
     return hydraulicQuasiPortType;
   }
 
-  private static ForceType getForceType(Force force) {
+  private ForceType getForceType(Force force) {
     ForceType forceType = new ForceType();
     forceType.setName(force.getName().get());
     forceType.getVariable().addAll(getVariableTypes(force));
     return forceType;
   }
 
-  private static LinearVelocityType getLinearVelocityType(LinearVelocity linearVelocity) {
+  private LinearVelocityType getLinearVelocityType(LinearVelocity linearVelocity) {
     LinearVelocityType linearVelocityType = new LinearVelocityType();
     linearVelocityType.setName(linearVelocity.getName().get());
     linearVelocityType.getVariable().addAll(getVariableTypes(linearVelocity));
     return linearVelocityType;
   }
 
-  private static LinearDisplacementType getLinearDisplacementType(LinearDisplacement linearDisplacement) {
+  private LinearDisplacementType getLinearDisplacementType(LinearDisplacement linearDisplacement) {
     LinearDisplacementType linearDisplacementType = new LinearDisplacementType();
     linearDisplacementType.setName(linearDisplacement.getName().get());
     linearDisplacementType.getVariable().addAll(getVariableTypes(linearDisplacement));
     return linearDisplacementType;
   }
 
-  private static TorqueType getTorqueType(Torque torque) {
+  private TorqueType getTorqueType(Torque torque) {
     TorqueType torqueType = new TorqueType();
     torqueType.setName(torque.getName().get());
     torqueType.getVariable().addAll(getVariableTypes(torque));
     return torqueType;
   }
 
-  private static AngularVelocityType getAngularVelocityType(AngularVelocity angularVelocity) {
+  private AngularVelocityType getAngularVelocityType(AngularVelocity angularVelocity) {
     AngularVelocityType angularVelocityType = new AngularVelocityType();
     angularVelocityType.setName(angularVelocity.getName().get());
     angularVelocityType.getVariable().addAll(getVariableTypes(angularVelocity));
     return angularVelocityType;
   }
 
-  private static AngularDisplacementType getAngularDisplacementType(AngularDisplacement angularDisplacement) {
+  private AngularDisplacementType getAngularDisplacementType(AngularDisplacement angularDisplacement) {
     AngularDisplacementType angularDisplacementType = new AngularDisplacementType();
     angularDisplacementType.setName(angularDisplacement.getName().get());
     angularDisplacementType.getVariable().addAll(getVariableTypes(angularDisplacement));
     return angularDisplacementType;
   }
 
-  private static VoltageType getVoltageType(Voltage voltage) {
+  private VoltageType getVoltageType(Voltage voltage) {
     VoltageType voltageType = new VoltageType();
     voltageType.setName(voltage.getName().get());
     voltageType.getVariable().addAll(getVariableTypes(voltage));
     return voltageType;
   }
 
-  private static CurrentType getCurrentType(Current current) {
+  private CurrentType getCurrentType(Current current) {
     CurrentType currentType = new CurrentType();
     currentType.setName(current.getName().get());
     currentType.getVariable().addAll(getVariableTypes(current));
     return currentType;
   }
 
-  private static ChargeType getChargeType(Charge charge) {
+  private ChargeType getChargeType(Charge charge) {
     ChargeType chargeType = new ChargeType();
     chargeType.setName(charge.getName().get());
     chargeType.getVariable().addAll(getVariableTypes(charge));
     return chargeType;
   }
 
-  private static PressureType getPressureType(Pressure pressure) {
+  private PressureType getPressureType(Pressure pressure) {
     PressureType pressureType = new PressureType();
     pressureType.setName(pressure.getName().get());
     pressureType.getVariable().addAll(getVariableTypes(pressure));
     return pressureType;
   }
 
-  private static VolumeFlowRateType getVolumeFlowRateType(VolumeFlowRate volumeFlowRate) {
+  private VolumeFlowRateType getVolumeFlowRateType(VolumeFlowRate volumeFlowRate) {
     VolumeFlowRateType volumeFlowRateType = new VolumeFlowRateType();
     volumeFlowRateType.setName(volumeFlowRate.getName().get());
     volumeFlowRateType.getVariable().addAll(getVariableTypes(volumeFlowRate));
     return volumeFlowRateType;
   }
 
-  private static VolumeType getVolumeType(Volume volume) {
+  private VolumeType getVolumeType(Volume volume) {
     VolumeType volumeType = new VolumeType();
     volumeType.setName(volume.getName().get());
     volumeType.getVariable().addAll(getVariableTypes(volume));
     return volumeType;
   }
 
-  private static List<VariableType> getVariableTypes(VariableGroup variableGroup) {
+  private List<VariableType> getVariableTypes(VariableGroup variableGroup) {
     List<Variable> variables = variableGroup.getVariables();
     List<VariableType> variableTypes = new ArrayList<>();
     for (Variable variable : variables) {

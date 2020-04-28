@@ -1,3 +1,5 @@
+package com.opensimulationplatform.api.examples;
+
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
@@ -7,6 +9,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.port
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import com.opensimulationplatform.core.validation.modeldescription.ModelDescriptionValidator;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ValidateModelDescriptionDataModel {
@@ -42,13 +45,11 @@ public class ValidateModelDescriptionDataModel {
 
     Force force = new Force();
     force.setName("force");
-    force.getVariables().add(v1);
-    force.getVariables().add(v2);
+    force.setVariables(Arrays.asList(v1, v2));
 
     LinearVelocity linearVelocity = new LinearVelocity();
     linearVelocity.setName("linearVelocity");
-    linearVelocity.getVariables().add(v3);
-    linearVelocity.getVariables().add(v4);
+    linearVelocity.setVariables(Arrays.asList(v3, v4));
 
     LinearMechanicalPort linearMechanicalPort = new LinearMechanicalPort();
     linearMechanicalPort.setName("linearMechanicalPort");
@@ -56,10 +57,7 @@ public class ValidateModelDescriptionDataModel {
     linearMechanicalPort.setLinearVelocity(linearVelocity);
 
     modelDescription.getUnits().add(unit);
-    modelDescription.getVariables().add(v1);
-    modelDescription.getVariables().add(v2);
-    modelDescription.getVariables().add(v3);
-    modelDescription.getVariables().add(v4);
+    modelDescription.getVariables().addAll(Arrays.asList(v1, v2, v3, v4));
     modelDescription.getForces().add(force);
     modelDescription.getLinearVelocities().add(linearVelocity);
     modelDescription.getLinearMechanicalPorts().add(linearMechanicalPort);
