@@ -4,12 +4,13 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Pressure;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.VolumeFlowRate;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.ndimensionsalvariablegroup.NDimensionalVariableGroup;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class HydraulicPort extends VariableGroup {
+public class HydraulicPort extends NDimensionalVariableGroup {
 
   private Pressure pressure;
   private VolumeFlowRate volumeFlowRate;
@@ -21,22 +22,27 @@ public class HydraulicPort extends VariableGroup {
 
   @Override
   public List<VariableGroup> getVariableGroups() {
-    return Arrays.asList(pressure, volumeFlowRate);
-  }
-
-  public void setPressure(Pressure pressure) {
-    this.pressure = pressure;
-  }
-
-  public void setVolumeFlowRate(VolumeFlowRate volumeFlowRate) {
-    this.volumeFlowRate = volumeFlowRate;
+    return Collections.unmodifiableList(Arrays.asList(pressure, volumeFlowRate));
   }
 
   public Pressure getPressure() {
     return pressure;
   }
 
+  public void setPressure(Pressure pressure) {
+    this.pressure = pressure;
+  }
+
   public VolumeFlowRate getVolumeFlowRate() {
     return volumeFlowRate;
+  }
+
+  public void setVolumeFlowRate(VolumeFlowRate volumeFlowRate) {
+    this.volumeFlowRate = volumeFlowRate;
+  }
+
+  @Override
+  protected int numberOfDimensions() {
+    return 0;
   }
 }

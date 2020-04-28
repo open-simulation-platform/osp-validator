@@ -10,6 +10,7 @@ import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnec
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -34,7 +35,7 @@ public class VariableGroupConnectionsValidatorTest {
     variableA.setType(Variable.Type.REAL);
     variableA.setCausality(Variable.Causality.OUTPUT);
 
-    force.getVariables().add(variableA);
+    force.setVariables(Arrays.asList(variableA));
 
     simulatorA.getModelDescription().getVariables().add(variableA);
     simulatorA.getModelDescription().getForces().add(force);
@@ -55,7 +56,7 @@ public class VariableGroupConnectionsValidatorTest {
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);
 
-    linearVelocity.getVariables().add(variableB);
+    linearVelocity.setVariables(Arrays.asList(variableB));
 
     simulatorB.getModelDescription().getVariables().add(variableB);
     simulatorB.getModelDescription().getLinearVelocities().add(linearVelocity);
@@ -94,7 +95,7 @@ public class VariableGroupConnectionsValidatorTest {
     variableA.setType(Variable.Type.REAL);
     variableA.setCausality(Variable.Causality.OUTPUT);
 
-    forceA.getVariables().add(variableA);
+    forceA.setVariables(Arrays.asList(variableA));
 
     simulatorA.getModelDescription().getVariables().add(variableA);
     simulatorA.getModelDescription().getForces().add(forceA);
@@ -115,7 +116,7 @@ public class VariableGroupConnectionsValidatorTest {
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);
 
-    forceB.getVariables().add(variableB);
+    forceB.setVariables(Arrays.asList(variableB));
 
     simulatorB.getModelDescription().getVariables().add(variableB);
     simulatorB.getModelDescription().getForces().add(forceB);

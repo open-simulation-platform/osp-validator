@@ -21,15 +21,15 @@ public class Name {
     }
   }
 
+  public void setId(ID id) {
+    this.id = id;
+  }
+
   public String get() {
     return name;
   }
 
   public void set(String name) {
     this.name = name;
-  }
-
-  public void setId(ID id) {
-    this.id = id;
   }
 }

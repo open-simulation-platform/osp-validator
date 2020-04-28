@@ -4,12 +4,13 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.LinearDisplacement;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.ndimensionsalvariablegroup.NDimensionalVariableGroup;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class LinearMechanicalQuasiPort extends VariableGroup {
+public class LinearMechanicalQuasiPort extends NDimensionalVariableGroup {
 
   private Force force;
   private LinearDisplacement linearDisplacement;
@@ -21,22 +22,27 @@ public class LinearMechanicalQuasiPort extends VariableGroup {
 
   @Override
   public List<VariableGroup> getVariableGroups() {
-    return Arrays.asList(force, linearDisplacement);
-  }
-
-  public void setForce(Force force) {
-    this.force = force;
-  }
-
-  public void setLinearDisplacement(LinearDisplacement linearDisplacement) {
-    this.linearDisplacement = linearDisplacement;
+    return Collections.unmodifiableList(Arrays.asList(force, linearDisplacement));
   }
 
   public Force getForce() {
     return force;
   }
 
+  public void setForce(Force force) {
+    this.force = force;
+  }
+
   public LinearDisplacement getLinearDisplacement() {
     return linearDisplacement;
+  }
+
+  public void setLinearDisplacement(LinearDisplacement linearDisplacement) {
+    this.linearDisplacement = linearDisplacement;
+  }
+
+  @Override
+  protected int numberOfDimensions() {
+    return 0;
   }
 }

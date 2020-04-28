@@ -4,12 +4,13 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Charge;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Voltage;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.ndimensionsalvariablegroup.NDimensionalVariableGroup;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ElectromagneticQuasiPort extends VariableGroup {
+public class ElectromagneticQuasiPort extends NDimensionalVariableGroup {
 
   private Voltage voltage;
   private Charge charge;
@@ -21,22 +22,27 @@ public class ElectromagneticQuasiPort extends VariableGroup {
 
   @Override
   public List<VariableGroup> getVariableGroups() {
-    return Arrays.asList(voltage, charge);
-  }
-
-  public void setVoltage(Voltage voltage) {
-    this.voltage = voltage;
-  }
-
-  public void setCharge(Charge charge) {
-    this.charge = charge;
+    return Collections.unmodifiableList(Arrays.asList(voltage, charge));
   }
 
   public Voltage getVoltage() {
     return voltage;
   }
 
+  public void setVoltage(Voltage voltage) {
+    this.voltage = voltage;
+  }
+
   public Charge getCharge() {
     return charge;
+  }
+
+  public void setCharge(Charge charge) {
+    this.charge = charge;
+  }
+
+  @Override
+  protected int numberOfDimensions() {
+    return 0;
   }
 }

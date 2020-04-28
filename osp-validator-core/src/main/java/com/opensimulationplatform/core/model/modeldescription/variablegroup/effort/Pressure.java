@@ -1,19 +1,15 @@
 package com.opensimulationplatform.core.model.modeldescription.variablegroup.effort;
 
-import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.ndimensionsalvariablegroup.NDimensionalVariableGroup;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Pressure extends VariableGroup {
-
-  private final List<Variable> variables = new ArrayList<>();
-
+public class Pressure extends NDimensionalVariableGroup {
   @Override
-  public List<Variable> getVariables() {
-    return variables;
+  protected int numberOfDimensions() {
+    return 3;
   }
 
   @Override

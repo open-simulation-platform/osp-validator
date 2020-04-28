@@ -83,6 +83,14 @@ public class OWLConfig {
     });
   }
 
+  private static OWLOntology load(File owlFile) {
+    try {
+      return OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(owlFile);
+    } catch (OWLOntologyCreationException e) {
+      throw new RuntimeException("Error loading ontology from " + owlFile, e);
+    }
+  }
+
   public void save(File owlFile) {
     try {
       OWLOntologyFormat format = ontology.getOWLOntologyManager().getOntologyFormat(ontology);
@@ -110,14 +118,6 @@ public class OWLConfig {
       }
     }
     return prefixManager;
-  }
-
-  private static OWLOntology load(File owlFile) {
-    try {
-      return OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(owlFile);
-    } catch (OWLOntologyCreationException e) {
-      throw new RuntimeException("Error loading ontology from " + owlFile, e);
-    }
   }
 
   public void addObjectPropertyAssertionAxiom(OWLNamedIndividual subject, OWLObjectProperty predicate, OWLNamedIndividual object) {

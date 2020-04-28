@@ -10,6 +10,7 @@ import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -40,7 +41,7 @@ public class SimulatorsValidatorTest {
     v3.setName("v3");
     v3.setType(Variable.Type.REAL);
     v3.setCausality(Variable.Causality.OUTPUT);
-    f1.getVariables().add(v3);
+    f1.setVariables(Arrays.asList(v3));
 
     Force f2 = new Force();
     f2.setName("not-unique");
@@ -48,7 +49,7 @@ public class SimulatorsValidatorTest {
     v4.setName("v4");
     v4.setType(Variable.Type.INTEGER);
     v4.setCausality(Variable.Causality.INPUT);
-    f2.getVariables().add(v4);
+    f2.setVariables(Arrays.asList(v4));
 
     modelDescription.getForces().add(f1);
     modelDescription.getForces().add(f2);
@@ -64,8 +65,7 @@ public class SimulatorsValidatorTest {
     v6.setType(Variable.Type.REAL);
     Force f3 = new Force();
     f3.setName("f3");
-    f3.getVariables().add(v5);
-    f3.getVariables().add(v6);
+    f3.setVariables(Arrays.asList(v5, v6));
 
     modelDescription.getForces().add(f3);
 
@@ -80,8 +80,7 @@ public class SimulatorsValidatorTest {
     v8.setType(Variable.Type.REAL);
     Force f4 = new Force();
     f4.setName("f4");
-    f4.getVariables().add(v7);
-    f4.getVariables().add(v8);
+    f4.setVariables(Arrays.asList(v7, v8));
 
     Variable v9 = new Variable();
     v9.setName("v9");
@@ -93,8 +92,7 @@ public class SimulatorsValidatorTest {
     v10.setType(Variable.Type.REAL);
     LinearVelocity lv1 = new LinearVelocity();
     lv1.setName("lv1");
-    lv1.getVariables().add(v9);
-    lv1.getVariables().add(v10);
+    lv1.setVariables(Arrays.asList(v9, v10));
 
     LinearMechanicalPort lmp1 = new LinearMechanicalPort();
     lmp1.setName("lmp1");
@@ -145,7 +143,7 @@ public class SimulatorsValidatorTest {
     v3.setName("v3");
     v3.setType(Variable.Type.REAL);
     v3.setCausality(Variable.Causality.OUTPUT);
-    f1.getVariables().add(v3);
+    f1.setVariables(Arrays.asList(v3));
 
     Force f2 = new Force();
     f2.setName("f2");
@@ -153,7 +151,7 @@ public class SimulatorsValidatorTest {
     v4.setName("v4");
     v4.setType(Variable.Type.INTEGER);
     v4.setCausality(Variable.Causality.INPUT);
-    f2.getVariables().add(v4);
+    f2.setVariables(Arrays.asList(v4));
 
     modelDescription.getForces().add(f1);
     modelDescription.getForces().add(f2);
@@ -169,8 +167,7 @@ public class SimulatorsValidatorTest {
     v6.setType(Variable.Type.REAL);
     Force f3 = new Force();
     f3.setName("f3");
-    f3.getVariables().add(v5);
-    f3.getVariables().add(v6);
+    f3.setVariables(Arrays.asList(v5, v6));
 
     modelDescription.getForces().add(f3);
 
@@ -185,8 +182,7 @@ public class SimulatorsValidatorTest {
     v8.setType(Variable.Type.REAL);
     Force f4 = new Force();
     f4.setName("f4");
-    f4.getVariables().add(v7);
-    f4.getVariables().add(v8);
+    f4.setVariables(Arrays.asList(v7, v8));
 
     Variable v9 = new Variable();
     v9.setName("v9");
@@ -198,8 +194,7 @@ public class SimulatorsValidatorTest {
     v10.setType(Variable.Type.REAL);
     LinearVelocity lv1 = new LinearVelocity();
     lv1.setName("lv1");
-    lv1.getVariables().add(v9);
-    lv1.getVariables().add(v10);
+    lv1.setVariables(Arrays.asList(v9, v10));
 
     LinearMechanicalPort lmp1 = new LinearMechanicalPort();
     lmp1.setName("lmp1");

@@ -8,6 +8,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.port
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -21,12 +22,12 @@ public class LinearMechanicalPortsValidatorTest {
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.OUTPUT);
     Force force = new Force();
-    force.getVariables().add(v1);
+    force.setVariables(Arrays.asList(v1));
 
     Variable v2 = new Variable();
     v2.setCausality(Variable.Causality.OUTPUT);
     LinearVelocity linearVelocity = new LinearVelocity();
-    linearVelocity.getVariables().add(v2);
+    linearVelocity.setVariables(Arrays.asList(v2));
 
     LinearMechanicalPort linearMechanicalPort = new LinearMechanicalPort();
     linearMechanicalPort.setForce(force);
@@ -48,12 +49,12 @@ public class LinearMechanicalPortsValidatorTest {
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.OUTPUT);
     Force force = new Force();
-    force.getVariables().add(v1);
+    force.setVariables(Arrays.asList(v1));
 
     Variable v2 = new Variable();
     v2.setCausality(Variable.Causality.INPUT);
     LinearVelocity linearVelocity = new LinearVelocity();
-    linearVelocity.getVariables().add(v2);
+    linearVelocity.setVariables(Arrays.asList(v2));
 
     LinearMechanicalPort linearMechanicalPort = new LinearMechanicalPort();
     linearMechanicalPort.setForce(force);

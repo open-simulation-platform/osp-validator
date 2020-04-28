@@ -8,6 +8,7 @@ import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -29,8 +30,7 @@ public class ForcesValidatorTest {
     v2.setType(v1.getType());
     v2.setUnit(v1.getUnit());
 
-    force.getVariables().add(v1);
-    force.getVariables().add(v2);
+    force.setVariables(Arrays.asList(v1, v2));
 
     modelDescription.getForces().add(force);
 
@@ -58,8 +58,7 @@ public class ForcesValidatorTest {
     v2.setUnit(unit);
 
     Force force = new Force();
-    force.getVariables().add(v1);
-    force.getVariables().add(v2);
+    force.setVariables(Arrays.asList(v1, v2));
 
     modelDescription.getForces().add(force);
 

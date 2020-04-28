@@ -9,6 +9,7 @@ import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import com.opensimulationplatform.core.validation.variablegroup.effort.force.VE_LinearVelocity_3;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -30,8 +31,7 @@ public class VE_LinearVelocity_3_Test {
     v2.setType(v1.getType());
     v2.setUnit(v1.getUnit());
 
-    linearVelocity.getVariables().add(v1);
-    linearVelocity.getVariables().add(v2);
+    linearVelocity.setVariables(Arrays.asList(v1, v2));
 
     modelDescription.getLinearVelocities().add(linearVelocity);
 
@@ -59,8 +59,7 @@ public class VE_LinearVelocity_3_Test {
     unit.setExponent(Unit.Exponent.KILOGRAM, 1);
     v2.setUnit(unit);
 
-    linearVelocity.getVariables().add(v1);
-    linearVelocity.getVariables().add(v2);
+    linearVelocity.setVariables(Arrays.asList(v1, v2));
 
     modelDescription.getLinearVelocities().add(linearVelocity);
 

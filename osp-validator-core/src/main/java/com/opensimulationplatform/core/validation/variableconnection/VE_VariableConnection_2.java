@@ -29,6 +29,6 @@ public class VE_VariableConnection_2 extends ValidationError<VariableConnection>
     String variableB = variableConnection.getVariableB().getName().get();
     Variable.Causality causalityB = variableConnection.getVariableA().getCausality();
     return "Variable connection [" + variableA + ", " + variableB + "] is invalid because they have the same " +
-        "causality [" + causalityA + ", " + causalityB +"]";
+        "causality [" + causalityA + ", " + causalityB + "]";
   }
 }

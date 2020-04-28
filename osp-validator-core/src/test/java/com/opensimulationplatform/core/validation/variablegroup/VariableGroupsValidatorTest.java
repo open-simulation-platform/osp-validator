@@ -8,6 +8,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.effo
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -32,8 +33,7 @@ public class VariableGroupsValidatorTest {
     v2.setName("v2");
     v2.setType(Variable.Type.REAL);
     v2.setCausality(Variable.Causality.OUTPUT);
-    f1.getVariables().add(v1);
-    f1.getVariables().add(v2);
+    f1.setVariables(Arrays.asList(v1, v2));
     f1.setName("f1");
 
     Force f2 = new Force();
@@ -47,8 +47,7 @@ public class VariableGroupsValidatorTest {
     v4.setName("v4");
     v4.setType(Variable.Type.INTEGER);
     v4.setCausality(Variable.Causality.OUTPUT);
-    f2.getVariables().add(v3);
-    f2.getVariables().add(v4);
+    f2.setVariables(Arrays.asList(v3, v4));
     f2.setName("f2");
 
     Force f3 = new Force();
@@ -62,8 +61,7 @@ public class VariableGroupsValidatorTest {
     v6.setName("v6");
     v6.setType(Variable.Type.REAL);
     v6.setCausality(Variable.Causality.INPUT);
-    f3.getVariables().add(v5);
-    f3.getVariables().add(v6);
+    f3.setVariables(Arrays.asList(v5, v6));
     f3.setName("f3");
 
     modelDescription.getVariables().add(v1);
@@ -103,8 +101,7 @@ public class VariableGroupsValidatorTest {
     v2.setName("v2");
     v2.setType(Variable.Type.REAL);
     v2.setCausality(Variable.Causality.OUTPUT);
-    f1.getVariables().add(v1);
-    f1.getVariables().add(v2);
+    f1.setVariables(Arrays.asList(v1, v2));
     f1.setName("f1");
 
     modelDescription.getVariables().add(v1);

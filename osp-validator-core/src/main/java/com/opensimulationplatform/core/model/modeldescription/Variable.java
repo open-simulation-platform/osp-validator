@@ -27,20 +27,20 @@ public class Variable {
     return causality;
   }
 
-  public Type getType() {
-    return type;
-  }
-
-  public Unit getUnit() {
-    return unit;
-  }
-
   public void setCausality(Causality causality) {
     this.causality = causality;
   }
 
+  public Type getType() {
+    return type;
+  }
+
   public void setType(Type type) {
     this.type = type;
+  }
+
+  public Unit getUnit() {
+    return unit;
   }
 
   public void setUnit(Unit unit) {

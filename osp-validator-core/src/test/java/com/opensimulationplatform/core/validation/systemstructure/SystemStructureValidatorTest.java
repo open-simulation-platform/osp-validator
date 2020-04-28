@@ -15,6 +15,7 @@ import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -146,7 +147,7 @@ public class SystemStructureValidatorTest {
     Unit u1 = new Unit();
     u1.setExponent(Unit.Exponent.KILOGRAM, 1);
     v3.setUnit(u1);
-    f1.getVariables().add(v3);
+    f1.setVariables(Arrays.asList(v3));
 
     modelDescription.getVariables().add(v3);
 
@@ -156,7 +157,7 @@ public class SystemStructureValidatorTest {
     v4.setName("v4");
     v4.setType(Variable.Type.INTEGER);
     v4.setCausality(Variable.Causality.INPUT);
-    f2.getVariables().add(v4);
+    f2.setVariables(Arrays.asList(v4));
 
     modelDescription.getVariables().add(v4);
     modelDescription.getForces().add(f1);
@@ -175,8 +176,7 @@ public class SystemStructureValidatorTest {
     v6.setUnit(u2);
     Force f3 = new Force();
     f3.setName("f3");
-    f3.getVariables().add(v5);
-    f3.getVariables().add(v6);
+    f3.setVariables(Arrays.asList(v5, v6));
 
     modelDescription.getVariables().add(v5);
     modelDescription.getVariables().add(v6);
@@ -192,8 +192,7 @@ public class SystemStructureValidatorTest {
     v8.setType(Variable.Type.REAL);
     Force f4 = new Force();
     f4.setName("f4");
-    f4.getVariables().add(v7);
-    f4.getVariables().add(v8);
+    f4.setVariables(Arrays.asList(v7, v8));
 
     modelDescription.getVariables().add(v7);
     modelDescription.getVariables().add(v8);
@@ -209,8 +208,7 @@ public class SystemStructureValidatorTest {
     v10.setType(Variable.Type.REAL);
     LinearVelocity lv1 = new LinearVelocity();
     lv1.setName("lv1");
-    lv1.getVariables().add(v9);
-    lv1.getVariables().add(v10);
+    lv1.setVariables(Arrays.asList(v9, v10));
 
     modelDescription.getVariables().add(v9);
     modelDescription.getVariables().add(v10);
@@ -252,7 +250,7 @@ public class SystemStructureValidatorTest {
     Unit u1 = new Unit();
     u1.setExponent(Unit.Exponent.KILOGRAM, 1);
     v3.setUnit(u1);
-    f1.getVariables().add(v3);
+    f1.setVariables(Arrays.asList(v3));
 
     modelDescription.getUnits().add(u1);
     modelDescription.getVariables().add(v3);
@@ -264,7 +262,7 @@ public class SystemStructureValidatorTest {
     v4.setUnit(u1);
     v4.setType(Variable.Type.REAL);
     v4.setCausality(Variable.Causality.INPUT);
-    f2.getVariables().add(v4);
+    f2.setVariables(Arrays.asList(v4));
 
     modelDescription.getVariables().add(v4);
     modelDescription.getForces().add(f1);
@@ -282,8 +280,7 @@ public class SystemStructureValidatorTest {
     v6.setUnit(u1);
     Force f3 = new Force();
     f3.setName("f3");
-    f3.getVariables().add(v5);
-    f3.getVariables().add(v6);
+    f3.setVariables(Arrays.asList(v5, v6));
 
     modelDescription.getVariables().add(v5);
     modelDescription.getVariables().add(v6);
@@ -301,8 +298,7 @@ public class SystemStructureValidatorTest {
     v8.setUnit(u1);
     Force f4 = new Force();
     f4.setName("f4");
-    f4.getVariables().add(v7);
-    f4.getVariables().add(v8);
+    f4.setVariables(Arrays.asList(v7, v8));
 
     modelDescription.getVariables().add(v7);
     modelDescription.getVariables().add(v8);
@@ -320,8 +316,7 @@ public class SystemStructureValidatorTest {
     v10.setUnit(u1);
     LinearVelocity lv1 = new LinearVelocity();
     lv1.setName("lv1");
-    lv1.getVariables().add(v9);
-    lv1.getVariables().add(v10);
+    lv1.setVariables(Arrays.asList(v9, v10));
 
     modelDescription.getVariables().add(v9);
     modelDescription.getVariables().add(v10);

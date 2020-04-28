@@ -28,8 +28,6 @@ import java.util.List;
 
 public class Generic extends VariableGroup {
 
-  private final List<Variable> variables = new ArrayList<>();
-
   private final List<Generic> generics = new ArrayList<>();
 
   private final List<AngularDisplacement> angularDisplacements = new ArrayList<>();
@@ -58,8 +56,8 @@ public class Generic extends VariableGroup {
   private final List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = new ArrayList<>();
 
   @Override
-  public List<Variable> getVariables() {
-    return variables;
+  public void setVariables(List<Variable> variables) {
+    this.variables = variables;
   }
 
   @Override
