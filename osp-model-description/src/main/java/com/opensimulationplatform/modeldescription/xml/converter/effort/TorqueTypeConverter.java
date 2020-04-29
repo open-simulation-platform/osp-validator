@@ -1,7 +1,7 @@
 package com.opensimulationplatform.modeldescription.xml.converter.effort;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Torque;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.TorqueType;

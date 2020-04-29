@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.port;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Pressure;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.VolumeFlowRate;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.HydraulicPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.hydraulicport.HydraulicPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.volumeflowrate.VolumeFlowRate;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.HydraulicPortType;

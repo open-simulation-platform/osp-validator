@@ -3,7 +3,7 @@ package com.opensimulationplatform.systemstructure.xml.converter;
 import java.util.List;
 
 public abstract class Converter<FROM, TO> {
-  protected ConverterContext context;
+  protected final ConverterContext context;
 
   public Converter(ConverterContext context) {
     this.context = context;

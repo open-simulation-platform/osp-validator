@@ -12,8 +12,8 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import java.util.List;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.Simulator;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.*;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.Simulator;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.*;
 
 public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
   public SimulatorOwlBuilder(OWLConfig config) {

@@ -367,18 +367,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_AngularMechanicalPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularMechanicalPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_velocity"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_velocity"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_mechanical_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -400,18 +495,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_AngularMechanicalQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularMechanicalQuasiPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_displacement"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_displacement"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_mechanical_quasi_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -682,18 +872,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_ElectromagneticPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_ElectromagneticPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_current"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_current"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_electromagnetic_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -715,18 +1000,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_ElectromagneticQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_ElectromagneticQuasiPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_charge"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_charge"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_electromagnetic_quasi_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -831,18 +1211,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_HydraulicPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_HydraulicPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_pressure"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_pressure"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_hydraulic_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -864,18 +1339,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_HydraulicQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_HydraulicQuasiPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_pressure"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_volume"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_pressure"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_volume"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_hydraulic_quasi_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -1108,18 +1678,113 @@
     <!-- http://data.dnvgl.com/msmi/VE_LinearMechanicalQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearMechanicalQuasiPort_1">
-        <owl:equivalentClass>
+<owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_force"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_linear_displacement"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_force"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                                            </owl:Restriction>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_linear_displacement"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
                         <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_linear_mechanical_quasi_port"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>

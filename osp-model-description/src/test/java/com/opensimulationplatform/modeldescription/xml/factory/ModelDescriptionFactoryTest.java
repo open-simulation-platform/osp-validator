@@ -3,7 +3,7 @@ package com.opensimulationplatform.modeldescription.xml.factory;
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.generic.Generic;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.LinearMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.modeldescription.TestResources;
 import org.junit.Test;
 

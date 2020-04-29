@@ -84,7 +84,7 @@ public class Unit {
     CANDELA("cd"),
     RADIAN("rad");
 
-    private String symbol;
+    private final String symbol;
 
     Exponent(String symbol) {
       this.symbol = symbol;

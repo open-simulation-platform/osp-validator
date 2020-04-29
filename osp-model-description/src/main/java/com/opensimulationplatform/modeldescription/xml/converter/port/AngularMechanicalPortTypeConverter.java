@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.port;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Torque;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.AngularVelocity;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.AngularMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularmechanicalport.AngularMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularvelocity.AngularVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AngularMechanicalPortType;

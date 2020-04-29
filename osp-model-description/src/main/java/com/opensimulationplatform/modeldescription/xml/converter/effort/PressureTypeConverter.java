@@ -1,7 +1,7 @@
 package com.opensimulationplatform.modeldescription.xml.converter.effort;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Pressure;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.PressureType;

@@ -1,0 +1,22 @@
+package com.opensimulationplatform.core.validation.variablegroup.$PACKAGE_NAME$;
+
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.$PACKAGE_NAME$.$CORE_MODEL_CLASS_NAME$;
+import com.opensimulationplatform.core.validation.ValidationError;
+import com.opensimulationplatform.core.validation.Validator;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class $CLASS_NAME$ extends Validator<$CORE_MODEL_CLASS_NAME$> {
+  private final VE_$CORE_MODEL_CLASS_NAME$_1 ve_$CORE_MODEL_CLASS_NAME_CAMEL_CASE$_1 = new VE_$CORE_MODEL_CLASS_NAME$_1();
+
+  @Override
+  protected List<Validator<?>> getValidators() {
+    return null;
+  }
+
+  @Override
+  protected List<ValidationError<?>> getValidationErrors() {
+    return Arrays.asList(ve_$CORE_MODEL_CLASS_NAME_CAMEL_CASE$_1);
+  }
+}

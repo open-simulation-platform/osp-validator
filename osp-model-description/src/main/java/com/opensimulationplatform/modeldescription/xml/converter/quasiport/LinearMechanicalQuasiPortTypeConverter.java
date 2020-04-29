@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.quasiport;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.LinearDisplacement;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.LinearMechanicalQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.lineardisplacement.LinearDisplacement;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.LinearMechanicalQuasiPortType;

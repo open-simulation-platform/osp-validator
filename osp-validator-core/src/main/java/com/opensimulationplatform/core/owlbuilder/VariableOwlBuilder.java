@@ -11,9 +11,9 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.Variable;
-import static com.opensimulationplatform.gen.model.OntologyIndividuals.*;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.*;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.Variable;
+import static com.opensimulationplatform.gen.owl.model.OntologyIndividuals.*;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.*;
 
 public class VariableOwlBuilder extends OspOwlBuilder<Variable> {
 

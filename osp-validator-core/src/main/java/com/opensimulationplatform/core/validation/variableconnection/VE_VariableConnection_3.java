@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.VE_VariableConnection_3;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_VariableConnection_3;
 
 public class VE_VariableConnection_3 extends ValidationError<VariableConnection> {
   @Override

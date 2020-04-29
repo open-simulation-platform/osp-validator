@@ -1,7 +1,7 @@
 package com.opensimulationplatform.modeldescription.xml.converter.displacement;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Volume;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.VariableType;

@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.port;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Voltage;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.Current;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.ElectromagneticPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.current.Current;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.electromagneticport.ElectromagneticPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.ElectromagneticPortType;

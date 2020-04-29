@@ -2,8 +2,8 @@ package com.opensimulationplatform.core.validation.variablegroupconnection;
 
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
 import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnection;

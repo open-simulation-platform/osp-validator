@@ -2,9 +2,9 @@ package com.opensimulationplatform.core.validation.modeldescription;
 
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.LinearVelocity;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.LinearMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 

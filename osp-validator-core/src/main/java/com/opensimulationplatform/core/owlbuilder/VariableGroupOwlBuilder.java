@@ -2,23 +2,27 @@ package com.opensimulationplatform.core.owlbuilder;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.AngularDisplacement;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Charge;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.LinearDisplacement;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Volume;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Pressure;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Torque;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Voltage;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.AngularVelocity;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.Current;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.LinearVelocity;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.VolumeFlowRate;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angulardisplacement.AngularDisplacement;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularmechanicalport.AngularMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularmechanicalquasiport.AngularMechanicalQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularvelocity.AngularVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.charge.Charge;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.current.Current;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.electromagneticport.ElectromagneticPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.electromagneticquasiport.ElectromagneticQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.generic.Generic;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.AngularMechanicalPort;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.ElectromagneticPort;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.HydraulicPort;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.port.LinearMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.hydraulicport.HydraulicPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.hydraulicquasiport.HydraulicQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.lineardisplacement.LinearDisplacement;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.volumeflowrate.VolumeFlowRate;
 import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -28,9 +32,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.VariableGroup;
-import static com.opensimulationplatform.gen.model.OntologyIndividuals.*;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.*;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VariableGroup;
+import static com.opensimulationplatform.gen.owl.model.OntologyIndividuals.*;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.*;
 
 public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
 
@@ -56,6 +60,10 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     typeMap.put(AngularMechanicalPort.class, ind_vgtype_angular_mechanical_port);
     typeMap.put(ElectromagneticPort.class, ind_vgtype_electromagnetic_port);
     typeMap.put(HydraulicPort.class, ind_vgtype_hydraulic_port);
+    typeMap.put(LinearMechanicalQuasiPort.class, ind_vgtype_linear_mechanical_quasi_port);
+    typeMap.put(AngularMechanicalQuasiPort.class, ind_vgtype_angular_mechanical_quasi_port);
+    typeMap.put(ElectromagneticQuasiPort.class, ind_vgtype_electromagnetic_quasi_port);
+    typeMap.put(HydraulicQuasiPort.class, ind_vgtype_hydraulic_quasi_port);
   }
 
   @Override

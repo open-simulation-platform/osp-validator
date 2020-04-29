@@ -6,7 +6,7 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.Name;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.Name;
 
 public class NameOwlBuilder extends OspOwlBuilder<Name> {
 

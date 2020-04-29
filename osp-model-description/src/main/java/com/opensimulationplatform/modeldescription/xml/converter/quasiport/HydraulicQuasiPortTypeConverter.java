@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.quasiport;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Volume;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Pressure;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.HydraulicQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.hydraulicquasiport.HydraulicQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.HydraulicQuasiPortType;

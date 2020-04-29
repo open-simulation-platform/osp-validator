@@ -1,7 +1,7 @@
 package com.opensimulationplatform.modeldescription.xml.converter.flow;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.AngularVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularvelocity.AngularVelocity;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AngularVelocityType;

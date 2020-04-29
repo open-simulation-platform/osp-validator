@@ -1,7 +1,7 @@
 package com.opensimulationplatform.modeldescription.xml.converter.flow;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.flow.Current;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.current.Current;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.CurrentType;

@@ -4,7 +4,7 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 

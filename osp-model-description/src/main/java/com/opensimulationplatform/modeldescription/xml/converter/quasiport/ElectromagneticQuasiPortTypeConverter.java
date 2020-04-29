@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.quasiport;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.Charge;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Voltage;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.ElectromagneticQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.charge.Charge;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.electromagneticquasiport.ElectromagneticQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.ElectromagneticQuasiPortType;

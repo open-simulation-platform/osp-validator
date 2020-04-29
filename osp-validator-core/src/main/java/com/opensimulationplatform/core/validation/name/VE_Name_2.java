@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.VE_Name_2;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Name_2;
 
 public class VE_Name_2 extends ValidationError<Name> {
   @Override

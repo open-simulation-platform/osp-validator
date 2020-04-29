@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class Simulator {
   private final String id = UUID.randomUUID().toString();
-  private Name name = new Name();
+  private final Name name = new Name();
   private ModelDescription modelDescription = new ModelDescription();
 
   public ID getId() {

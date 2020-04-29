@@ -3,7 +3,7 @@ package com.opensimulationplatform.modeldescription.xml.converter;
 import java.util.List;
 
 public abstract class Converter<FROM, TO> {
-  protected ConverterContext converterContext;
+  protected final ConverterContext converterContext;
 
   public Converter(ConverterContext converterContext) {
     this.converterContext = converterContext;

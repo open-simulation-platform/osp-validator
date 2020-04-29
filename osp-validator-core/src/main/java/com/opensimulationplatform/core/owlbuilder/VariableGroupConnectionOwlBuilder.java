@@ -11,9 +11,9 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import java.util.List;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.VariableGroupConnection;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.op_has_lhs;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.op_has_rhs;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VariableGroupConnection;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.op_has_lhs;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.op_has_rhs;
 import static java.lang.Math.min;
 
 public class VariableGroupConnectionOwlBuilder extends OspOwlBuilder<VariableGroupConnection> {

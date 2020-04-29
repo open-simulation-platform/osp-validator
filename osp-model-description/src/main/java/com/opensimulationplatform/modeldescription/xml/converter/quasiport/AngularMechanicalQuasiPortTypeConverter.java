@@ -1,8 +1,8 @@
 package com.opensimulationplatform.modeldescription.xml.converter.quasiport;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.displacement.AngularDisplacement;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.effort.Torque;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.quasiport.AngularMechanicalQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angulardisplacement.AngularDisplacement;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularmechanicalquasiport.AngularMechanicalQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AngularMechanicalQuasiPortType;

@@ -6,9 +6,9 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
-import static com.opensimulationplatform.gen.model.OntologyClasses.VariableConnection;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.op_has_lhs;
-import static com.opensimulationplatform.gen.model.OntologyObjectProperties.op_has_rhs;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VariableConnection;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.op_has_lhs;
+import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.op_has_rhs;
 
 public class VariableConnectionOwlBuilder extends OspOwlBuilder<VariableConnection> {
   public VariableConnectionOwlBuilder(OWLConfig config) {
