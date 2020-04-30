@@ -6,7 +6,6 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.generic.Generic;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
 import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -33,8 +32,7 @@ public class NamesValidatorTest {
     modelDescription.getGenerics().add(vg2);
 
     NamesValidator namesValidator = new NamesValidator();
-    namesValidator.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate();
+    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate(modelDescription);
 
     assertEquals(2, diagnostics.size());
   }
@@ -68,8 +66,7 @@ public class NamesValidatorTest {
     systemStructure.getSimulators().add(s2);
 
     NamesValidator namesValidator = new NamesValidator();
-    namesValidator.setContext(new ValidationContext(systemStructure));
-    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate();
+    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate(systemStructure);
 
     assertEquals(3, diagnostics.size());
   }
@@ -92,8 +89,7 @@ public class NamesValidatorTest {
     modelDescription.getGenerics().add(vg2);
 
     NamesValidator namesValidator = new NamesValidator();
-    namesValidator.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate();
+    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate(modelDescription);
 
     assertEquals(0, diagnostics.size());
   }
@@ -127,8 +123,7 @@ public class NamesValidatorTest {
     systemStructure.getSimulators().add(s2);
 
     NamesValidator namesValidator = new NamesValidator();
-    namesValidator.setContext(new ValidationContext(systemStructure));
-    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate();
+    List<ValidationDiagnostic<Name>> diagnostics = namesValidator.validate(systemStructure);
 
     assertEquals(0, diagnostics.size());
   }

@@ -1,7 +1,6 @@
 package com.opensimulationplatform.core.validation.variablegroup.angulardisplacement;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.angulardisplacement.AngularDisplacement;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -15,10 +14,9 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Angula
 public class VE_AngularDisplacement_2 extends ValidationError<AngularDisplacement> {
   @Override
   protected List<AngularDisplacement> getInvalidObjects() {
-    OWLConfig config = this.context.getOwlConfig();
-    OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_AngularDisplacement_2, config.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(individual -> (AngularDisplacement) config.getVariableGroup(individual)).collect(Collectors.toList());
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_AngularDisplacement_2, context.owl.prefixManager);
+    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
+    return invalidIndividuals.map(individual -> (AngularDisplacement) context.variableGroups.get(individual)).collect(Collectors.toList());
   }
 
   @Override

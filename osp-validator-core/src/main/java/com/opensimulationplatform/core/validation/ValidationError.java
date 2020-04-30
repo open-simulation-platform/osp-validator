@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract class ValidationError<T> {
 
-  protected ValidationContext context;
+  protected ValidationErrorContext context;
 
-  public void setContext(ValidationContext context) {
+  public void setContext(ValidationErrorContext context) {
     this.context = context;
   }
 

@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.angulardisplacement.AngularDisplacement;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -35,8 +34,7 @@ public class AngularDisplacementValidatorTest {
     modelDescription.getAngularDisplacements().add(angularDisplacement);
 
     AngularDisplacementValidator v = new AngularDisplacementValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<AngularDisplacement>> diagnostics = v.validate();
+    List<ValidationDiagnostic<AngularDisplacement>> diagnostics = v.validate(modelDescription);
 
     assertTrue(diagnostics.isEmpty());
   }
@@ -63,8 +61,7 @@ public class AngularDisplacementValidatorTest {
     modelDescription.getAngularDisplacements().add(angularDisplacement);
 
     AngularDisplacementValidator v = new AngularDisplacementValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<AngularDisplacement>> diagnostics = v.validate();
+    List<ValidationDiagnostic<AngularDisplacement>> diagnostics = v.validate(modelDescription);
 
     assertEquals(3, diagnostics.size());
     for (ValidationDiagnostic<AngularDisplacement> diagnostic : diagnostics) {

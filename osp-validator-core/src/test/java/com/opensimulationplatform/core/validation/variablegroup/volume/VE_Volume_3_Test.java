@@ -1,11 +1,14 @@
 package com.opensimulationplatform.core.validation.variablegroup.volume;
 
-import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
-import com.opensimulationplatform.core.validation.ValidationContext;
+import com.opensimulationplatform.core.owlbuilder.OwlBuilderContext;
+import com.opensimulationplatform.core.owlbuilder.VariableGroupOwlBuilder;
+import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
+import com.opensimulationplatform.core.validation.ValidationErrorContext;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -15,10 +18,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VE_Volume_3_Test {
+
+  private final VE_Volume_3 validationError = new VE_Volume_3();
+  private final VariableGroupOwlBuilder builder = new VariableGroupOwlBuilder();
+  private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
+  private final OwlBuilderContext builderContext = new OwlBuilderContext();
+
+  @Before
+  public void setUp() {
+    builder.setContext(builderContext);
+    builderContext.owl = new OWLConfig();
+
+    validationErrorContext.owl = builderContext.owl;
+    validationErrorContext.variableGroups = builderContext.variableGroups;
+
+    validationError.setContext(validationErrorContext);
+  }
+
   @Test
   public void valid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Volume volume = new Volume();
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.INPUT);
@@ -32,19 +50,16 @@ public class VE_Volume_3_Test {
 
     volume.setVariables(Arrays.asList(v1, v2));
 
-    modelDescription.getVolumes().add(volume);
+    builder.build(volume);
+    builder.complete();
 
-    VE_Volume_3 v = new VE_Volume_3();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Volume>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Volume>> diagnostics = validationError.validate();
 
     assertTrue(diagnostics.isEmpty());
   }
 
   @Test
   public void invalid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Volume volume = new Volume();
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.INPUT);
@@ -60,11 +75,10 @@ public class VE_Volume_3_Test {
 
     volume.setVariables(Arrays.asList(v1, v2));
 
-    modelDescription.getVolumes().add(volume);
+    builder.build(volume);
+    builder.complete();
 
-    VE_Volume_3 v = new VE_Volume_3();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Volume>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Volume>> diagnostics = validationError.validate();
 
     assertEquals(1, diagnostics.size());
     Volume invalidObject = diagnostics.get(0).getValidatedObject();

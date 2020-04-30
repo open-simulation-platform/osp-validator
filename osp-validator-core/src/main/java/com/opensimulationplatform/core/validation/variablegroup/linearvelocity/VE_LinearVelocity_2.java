@@ -1,7 +1,6 @@
 package com.opensimulationplatform.core.validation.variablegroup.linearvelocity;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -15,10 +14,9 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Linear
 public class VE_LinearVelocity_2 extends ValidationError<LinearVelocity> {
   @Override
   protected List<LinearVelocity> getInvalidObjects() {
-    OWLConfig config = this.context.getOwlConfig();
-    OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_LinearVelocity_2, config.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(individual -> (LinearVelocity) config.getVariableGroup(individual)).collect(Collectors.toList());
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_LinearVelocity_2, context.owl.prefixManager);
+    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
+    return invalidIndividuals.map(individual -> (LinearVelocity) context.variableGroups.get(individual)).collect(Collectors.toList());
   }
 
   @Override

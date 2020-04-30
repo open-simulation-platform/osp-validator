@@ -1,7 +1,6 @@
 package com.opensimulationplatform.core.validation.variablegroup.force;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -15,10 +14,9 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Force_
 public class VE_Force_3 extends ValidationError<Force> {
   @Override
   protected List<Force> getInvalidObjects() {
-    OWLConfig config = this.context.getOwlConfig();
-    OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_Force_3, config.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(individual -> (Force) config.getVariableGroup(individual)).collect(Collectors.toList());
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_Force_3, context.owl.prefixManager);
+    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
+    return invalidIndividuals.map(individual -> (Force) context.variableGroups.get(individual)).collect(Collectors.toList());
   }
 
   @Override

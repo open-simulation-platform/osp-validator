@@ -2,7 +2,6 @@ package com.opensimulationplatform.core.validation.variableconnection;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -16,10 +15,9 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Variab
 public class VE_VariableConnection_1 extends ValidationError<VariableConnection> {
   @Override
   protected List<VariableConnection> getInvalidObjects() {
-    OWLConfig config = this.context.getOwlConfig();
-    OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_VariableConnection_1, config.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(config::getVariableConnection).collect(Collectors.toList());
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_VariableConnection_1, context.owl.prefixManager);
+    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
+    return invalidIndividuals.map(context.variableConnections::get).collect(Collectors.toList());
   }
 
   @Override

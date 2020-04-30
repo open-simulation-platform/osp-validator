@@ -4,7 +4,7 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
 import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnection;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -17,47 +17,49 @@ import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.
 import static java.lang.Math.min;
 
 public class VariableGroupConnectionOwlBuilder extends OspOwlBuilder<VariableGroupConnection> {
-  public VariableGroupConnectionOwlBuilder(OWLConfig config) {
-    super(config);
-  }
 
   @Override
   public OWLNamedIndividual build(VariableGroupConnection variableGroupConnection) {
-    OWLNamedIndividual individual = dataFactory.getOWLNamedIndividual(variableGroupConnection.getId().get(), prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variableGroupConnection.getId().get(), context.owl.prefixManager);
+    context.individuals.add(individual);
+    context.variableGroupConnections.put(individual, variableGroupConnection);
 
     setClass(individual);
     setVariableGroupA(variableGroupConnection, individual);
     setVariableGroupB(variableGroupConnection, individual);
     makeNestedVariableConnections(variableGroupConnection);
     makeNestedVariableGroupConnections(variableGroupConnection);
-    setDisjointAxioms(individual);
-
-    config.addVariableGroupConnection(individual, variableGroupConnection);
 
     return individual;
   }
 
   private void setClass(OWLNamedIndividual individual) {
-    OWLClass clazz = dataFactory.getOWLClass(VariableGroupConnection, prefixManager);
-    config.addClassAssertionAxiom(clazz, individual);
+    OWLClass clazz = context.owl.dataFactory.getOWLClass(VariableGroupConnection, context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLClassAssertionAxiom(clazz, individual);
+    context.axioms.add(axiom);
   }
 
   private void setVariableGroupA(VariableGroupConnection variableGroupConnection, OWLNamedIndividual individual) {
-    VariableGroupOwlBuilder variableGroupOwlBuilder = new VariableGroupOwlBuilder(config);
-    OWLObjectProperty hasLeft = dataFactory.getOWLObjectProperty(op_has_lhs, prefixManager);
-    OWLNamedIndividual variableAIndividual = variableGroupOwlBuilder.build(variableGroupConnection.getVariableGroupA());
-    config.addObjectPropertyAssertionAxiom(individual, hasLeft, variableAIndividual);
+    VariableGroupOwlBuilder variableGroupOwlBuilder = new VariableGroupOwlBuilder();
+    variableGroupOwlBuilder.setContext(context);
+    OWLObjectProperty hasLeft = context.owl.dataFactory.getOWLObjectProperty(op_has_lhs, context.owl.prefixManager);
+    OWLNamedIndividual variableGroupAIndividual = variableGroupOwlBuilder.build(variableGroupConnection.getVariableGroupA());
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasLeft, individual, variableGroupAIndividual);
+    context.axioms.add(axiom);
   }
 
   private void setVariableGroupB(VariableGroupConnection variableGroupConnection, OWLNamedIndividual individual) {
-    VariableGroupOwlBuilder variableGroupOwlBuilder = new VariableGroupOwlBuilder(config);
-    OWLObjectProperty hasRight = dataFactory.getOWLObjectProperty(op_has_rhs, prefixManager);
-    OWLNamedIndividual variableBIndividual = variableGroupOwlBuilder.build(variableGroupConnection.getVariableGroupB());
-    config.addObjectPropertyAssertionAxiom(individual, hasRight, variableBIndividual);
+    VariableGroupOwlBuilder variableGroupOwlBuilder = new VariableGroupOwlBuilder();
+    variableGroupOwlBuilder.setContext(context);
+    OWLObjectProperty hasRight = context.owl.dataFactory.getOWLObjectProperty(op_has_rhs, context.owl.prefixManager);
+    OWLNamedIndividual variableGroupBIndividual = variableGroupOwlBuilder.build(variableGroupConnection.getVariableGroupB());
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasRight, individual, variableGroupBIndividual);
+    context.axioms.add(axiom);
   }
 
   private void makeNestedVariableConnections(VariableGroupConnection variableGroupConnection) {
-    VariableConnectionOwlBuilder variableConnectionOwlBuilder = new VariableConnectionOwlBuilder(config);
+    VariableConnectionOwlBuilder variableConnectionOwlBuilder = new VariableConnectionOwlBuilder();
+    variableConnectionOwlBuilder.setContext(context);
     List<Variable> variablesA = variableGroupConnection.getVariableGroupA().getVariables();
     List<Variable> variablesB = variableGroupConnection.getVariableGroupB().getVariables();
     for (int i = 0; i < min(variablesA.size(), variablesB.size()); i++) {
@@ -81,9 +83,5 @@ public class VariableGroupConnectionOwlBuilder extends OspOwlBuilder<VariableGro
       connection.setVariableGroupB(variableGroupsB.get(i));
       this.build(connection);
     }
-  }
-
-  private void setDisjointAxioms(OWLNamedIndividual individual) {
-    config.makeDisjointWithAllIndividualsOfClass(individual, dataFactory.getOWLClass(VariableGroupConnection, prefixManager));
   }
 }

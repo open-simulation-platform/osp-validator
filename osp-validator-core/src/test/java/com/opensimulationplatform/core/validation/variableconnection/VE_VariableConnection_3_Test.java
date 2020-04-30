@@ -1,13 +1,15 @@
 package com.opensimulationplatform.core.validation.variableconnection;
 
-import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
-import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
-import com.opensimulationplatform.core.validation.ValidationContext;
+import com.opensimulationplatform.core.owlbuilder.OwlBuilderContext;
+import com.opensimulationplatform.core.owlbuilder.VariableConnectionOwlBuilder;
+import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
+import com.opensimulationplatform.core.validation.ValidationErrorContext;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -16,14 +18,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VE_VariableConnection_3_Test {
+
+  private final VE_VariableConnection_3 validationError = new VE_VariableConnection_3();
+  private final VariableConnectionOwlBuilder builder = new VariableConnectionOwlBuilder();
+  private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
+  private final OwlBuilderContext builderContext = new OwlBuilderContext();
+
+  @Before
+  public void setUp() {
+    builder.setContext(builderContext);
+    builderContext.owl = new OWLConfig();
+
+    validationErrorContext.owl = builderContext.owl;
+    validationErrorContext.variableConnections = builderContext.variableConnections;
+
+    validationError.setContext(validationErrorContext);
+  }
+
   @Test
   public void invalid() {
-    SystemStructure systemStructure = new SystemStructure();
-    Simulator simulator = new Simulator();
-    systemStructure.getSimulators().add(simulator);
-    ModelDescription modelDescription = new ModelDescription();
-    simulator.setModelDescription(modelDescription);
-
     Unit ua = new Unit();
     ua.setExponent(Unit.Exponent.KILOGRAM, 1);
 
@@ -48,15 +61,11 @@ public class VE_VariableConnection_3_Test {
     vc.setSimulatorA(new Simulator());
     vc.setSimulatorB(new Simulator());
 
-    modelDescription.getUnits().add(ua);
-    modelDescription.getUnits().add(ub);
-    modelDescription.getVariables().add(va);
-    modelDescription.getVariables().add(vb);
-    systemStructure.getVariableConnections().add(vc);
+    builder.build(vc);
+    builder.complete();
 
-    VE_VariableConnection_3 v = new VE_VariableConnection_3();
-    v.setContext(new ValidationContext(systemStructure));
-    List<ValidationDiagnostic<VariableConnection>> diagnostics = v.validate();
+    List<ValidationDiagnostic<VariableConnection>> diagnostics = validationError.validate();
+
     assertEquals(1, diagnostics.size());
     VariableConnection invalidVariableConnection = diagnostics.get(0).getValidatedObject();
     assertEquals(vc, invalidVariableConnection);
@@ -66,12 +75,6 @@ public class VE_VariableConnection_3_Test {
 
   @Test
   public void valid() {
-    SystemStructure systemStructure = new SystemStructure();
-    Simulator simulator = new Simulator();
-    systemStructure.getSimulators().add(simulator);
-    ModelDescription modelDescription = new ModelDescription();
-    simulator.setModelDescription(modelDescription);
-
     Unit ua = new Unit();
     ua.setExponent(Unit.Exponent.KILOGRAM, 1);
 
@@ -96,15 +99,11 @@ public class VE_VariableConnection_3_Test {
     vc.setSimulatorA(new Simulator());
     vc.setSimulatorB(new Simulator());
 
-    modelDescription.getUnits().add(ua);
-    modelDescription.getUnits().add(ub);
-    modelDescription.getVariables().add(va);
-    modelDescription.getVariables().add(vb);
-    systemStructure.getVariableConnections().add(vc);
+    builder.build(vc);
+    builder.complete();
 
-    VE_VariableConnection_3 v = new VE_VariableConnection_3();
-    v.setContext(new ValidationContext(systemStructure));
-    List<ValidationDiagnostic<VariableConnection>> diagnostics = v.validate();
+    List<ValidationDiagnostic<VariableConnection>> diagnostics = validationError.validate();
+
     assertTrue(diagnostics.isEmpty());
   }
 }

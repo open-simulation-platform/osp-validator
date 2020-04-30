@@ -1,7 +1,6 @@
 package com.opensimulationplatform.core.validation.variablegroup.pressure;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -15,10 +14,9 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Pressu
 public class VE_Pressure_1 extends ValidationError<Pressure> {
   @Override
   protected List<Pressure> getInvalidObjects() {
-    OWLConfig config = this.context.getOwlConfig();
-    OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_Pressure_1, config.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(individual -> (Pressure) config.getVariableGroup(individual)).collect(Collectors.toList());
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_Pressure_1, context.owl.prefixManager);
+    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
+    return invalidIndividuals.map(individual -> (Pressure) context.variableGroups.get(individual)).collect(Collectors.toList());
   }
 
   @Override

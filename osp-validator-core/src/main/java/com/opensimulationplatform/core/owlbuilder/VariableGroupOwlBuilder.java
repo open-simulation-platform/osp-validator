@@ -23,7 +23,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.torq
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volumeflowrate.VolumeFlowRate;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -40,9 +40,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
 
   Map<Class<? extends VariableGroup>, String> typeMap = new HashMap<>();
 
-  public VariableGroupOwlBuilder(OWLConfig config) {
-    super(config);
-
+  public VariableGroupOwlBuilder() {
     typeMap.put(Generic.class, ind_vgtype_generic);
     typeMap.put(Force.class, ind_vgtype_force);
     typeMap.put(Pressure.class, ind_vgtype_pressure);
@@ -68,56 +66,60 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
 
   @Override
   public OWLNamedIndividual build(VariableGroup variableGroup) {
-    OWLNamedIndividual individual = dataFactory.getOWLNamedIndividual(variableGroup.getId().get(), prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variableGroup.getId().get(), context.owl.prefixManager);
+    context.individuals.add(individual);
+    context.variableGroups.put(individual, variableGroup);
 
     setClass(individual);
     setName(variableGroup, individual);
     setType(variableGroup, individual);
     setVariables(variableGroup, individual);
     setVariableGroups(variableGroup, individual);
-    setDisjointAxioms(individual);
-
-    config.addVariableGroup(individual, variableGroup);
 
     return individual;
   }
 
   private void setClass(OWLNamedIndividual individual) {
-    OWLClass clazz = dataFactory.getOWLClass(VariableGroup, prefixManager);
-    config.addClassAssertionAxiom(clazz, individual);
+    OWLClass clazz = context.owl.dataFactory.getOWLClass(VariableGroup, context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLClassAssertionAxiom(clazz, individual);
+    context.axioms.add(axiom);
   }
 
   private void setName(VariableGroup variableGroup, OWLNamedIndividual individual) {
-    NameOwlBuilder nameOwlBuilder = new NameOwlBuilder(config);
+    NameOwlBuilder nameOwlBuilder = new NameOwlBuilder();
+    nameOwlBuilder.setContext(context);
     OWLNamedIndividual nameIndividual = nameOwlBuilder.build(variableGroup.getName());
-    OWLObjectProperty hasName = dataFactory.getOWLObjectProperty(op_has_name, prefixManager);
-    config.addObjectPropertyAssertionAxiom(individual, hasName, nameIndividual);
+    OWLObjectProperty hasName = context.owl.dataFactory.getOWLObjectProperty(op_has_name, context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasName, individual, nameIndividual);
+    context.axioms.add(axiom);
   }
 
   private void setType(VariableGroup variableGroup, OWLNamedIndividual individual) {
-    OWLObjectProperty hasVariableGroupType = dataFactory.getOWLObjectProperty(op_has_variable_group_type, prefixManager);
-    OWLNamedIndividual type = dataFactory.getOWLNamedIndividual(typeMap.get(variableGroup.getClass()), prefixManager);
-    config.addObjectPropertyAssertionAxiom(individual, hasVariableGroupType, type);
+    OWLObjectProperty hasVariableGroupType = context.owl.dataFactory.getOWLObjectProperty(op_has_variable_group_type, context.owl.prefixManager);
+    OWLNamedIndividual type = context.owl.dataFactory.getOWLNamedIndividual(typeMap.get(variableGroup.getClass()), context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariableGroupType, individual, type);
+    context.axioms.add(axiom);
   }
 
   private void setVariableGroups(VariableGroup variableGroup, OWLNamedIndividual variableGroupIndividual) {
-    OWLObjectProperty hasVariableGroup = dataFactory.getOWLObjectProperty(op_has_variable_group, prefixManager);
+    OWLObjectProperty hasVariableGroup = context.owl.dataFactory.getOWLObjectProperty(op_has_variable_group, context.owl.prefixManager);
     List<VariableGroup> variableGroups = variableGroup.getVariableGroups();
-    variableGroups.stream()
-        .map(this::build)
-        .forEach(member -> config.addObjectPropertyAssertionAxiom(variableGroupIndividual, hasVariableGroup, member));
+    for (VariableGroup vg : variableGroups) {
+      OWLNamedIndividual vgIndividual = this.build(vg);
+      OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariableGroup, variableGroupIndividual, vgIndividual);
+      context.axioms.add(axiom);
+    }
   }
 
   private void setVariables(VariableGroup variableGroup, OWLNamedIndividual variableGroupIndividual) {
-    VariableOwlBuilder variableOwlBuilder = new VariableOwlBuilder(config);
-    OWLObjectProperty hasVariable = dataFactory.getOWLObjectProperty(op_has_variable, prefixManager);
+    VariableOwlBuilder variableOwlBuilder = new VariableOwlBuilder();
+    variableOwlBuilder.setContext(context);
+    OWLObjectProperty hasVariable = context.owl.dataFactory.getOWLObjectProperty(op_has_variable, context.owl.prefixManager);
     List<Variable> variables = variableGroup.getVariables();
-    variables.stream()
-        .map(variableOwlBuilder::build)
-        .forEach(member -> config.addObjectPropertyAssertionAxiom(variableGroupIndividual, hasVariable, member));
-  }
-
-  private void setDisjointAxioms(OWLNamedIndividual individual) {
-    config.makeDisjointWithAllIndividualsOfClass(individual, dataFactory.getOWLClass(VariableGroup, prefixManager));
+    for (Variable v : variables) {
+      OWLNamedIndividual variableIndividual = variableOwlBuilder.build(v);
+      OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariable, variableGroupIndividual, variableIndividual);
+      context.axioms.add(axiom);
+    }
   }
 }

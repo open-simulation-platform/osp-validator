@@ -6,8 +6,12 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.$EFFORT_PACKAGE_NAME$.$EFFORT_CORE_MODEL_CLASS_NAME$;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.$PACKAGE_NAME$.$CORE_MODEL_CLASS_NAME$;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.$FLOW_PACKAGE_NAME$.$FLOW_CORE_MODEL_CLASS_NAME$;
-import com.opensimulationplatform.core.validation.ValidationContext;
+import com.opensimulationplatform.core.owlbuilder.OwlBuilderContext;
+import com.opensimulationplatform.core.owlbuilder.VariableGroupOwlBuilder;
+import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
+import com.opensimulationplatform.core.validation.ValidationErrorContext;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -17,10 +21,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VE_$CORE_MODEL_CLASS_NAME$_1_Test {
+
+  private final VE_$CORE_MODEL_CLASS_NAME$_1 validationError = new VE_$CORE_MODEL_CLASS_NAME$_1();
+  private final VariableGroupOwlBuilder builder = new VariableGroupOwlBuilder();
+  private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
+  private final OwlBuilderContext builderContext = new OwlBuilderContext();
+
+  @Before
+  public void setUp() {
+    builder.setContext(builderContext);
+    builderContext.owl = new OWLConfig();
+
+    validationErrorContext.owl = builderContext.owl;
+    validationErrorContext.variableGroups = builderContext.variableGroups;
+
+    validationError.setContext(validationErrorContext);
+  }
+
   @Test
   public void invalid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.OUTPUT);
     v1.setUnit(new Unit());
@@ -51,11 +70,10 @@ public class VE_$CORE_MODEL_CLASS_NAME$_1_Test {
     $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.set$EFFORT_CORE_MODEL_CLASS_NAME$($EFFORT_CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
     $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.set$FLOW_CORE_MODEL_CLASS_NAME$($FLOW_CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
 
-    modelDescription.get$CORE_MODEL_CLASS_NAME_PLURAL$().add($CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
+    builder.build($CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
+    builder.complete();
 
-    VE_$CORE_MODEL_CLASS_NAME$_1 v = new VE_$CORE_MODEL_CLASS_NAME$_1();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = v.validate();
+    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = validationError.validate();
 
     assertEquals(1, diagnostics.size());
     $CORE_MODEL_CLASS_NAME$ invalid$CORE_MODEL_CLASS_NAME$ = diagnostics.get(0).getValidatedObject();
@@ -64,8 +82,6 @@ public class VE_$CORE_MODEL_CLASS_NAME$_1_Test {
 
   @Test
   public void valid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.OUTPUT);
     v1.setUnit(new Unit());
@@ -96,11 +112,10 @@ public class VE_$CORE_MODEL_CLASS_NAME$_1_Test {
     $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.set$EFFORT_CORE_MODEL_CLASS_NAME$($EFFORT_CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
     $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.set$FLOW_CORE_MODEL_CLASS_NAME$($FLOW_CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
 
-    modelDescription.get$CORE_MODEL_CLASS_NAME_PLURAL$().add($CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
+    builder.build($CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
+    builder.complete();
 
-    VE_$CORE_MODEL_CLASS_NAME$_1 v = new VE_$CORE_MODEL_CLASS_NAME$_1();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = v.validate();
+    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = validationError.validate();
 
     assertTrue(diagnostics.isEmpty());
   }

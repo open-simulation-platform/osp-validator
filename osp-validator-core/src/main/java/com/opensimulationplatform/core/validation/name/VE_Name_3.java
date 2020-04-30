@@ -2,7 +2,6 @@ package com.opensimulationplatform.core.validation.name;
 
 
 import com.opensimulationplatform.core.model.modeldescription.Name;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -16,10 +15,9 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Name_3
 public class VE_Name_3 extends ValidationError<Name> {
   @Override
   protected List<Name> getInvalidObjects() {
-    OWLConfig config = this.context.getOwlConfig();
-    OWLClass validationErrorClass = config.dataFactory.getOWLClass(VE_Name_3, config.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = config.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(config::getName).collect(Collectors.toList());
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_Name_3, context.owl.prefixManager);
+    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
+    return invalidIndividuals.map(context.names::get).collect(Collectors.toList());
   }
 
   @Override

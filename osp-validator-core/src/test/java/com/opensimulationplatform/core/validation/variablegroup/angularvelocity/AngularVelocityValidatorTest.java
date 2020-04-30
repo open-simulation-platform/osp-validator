@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularvelocity.AngularVelocity;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -35,8 +34,7 @@ public class AngularVelocityValidatorTest {
     modelDescription.getAngularVelocities().add(angularVelocity);
 
     AngularVelocityValidator v = new AngularVelocityValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<AngularVelocity>> diagnostics = v.validate();
+    List<ValidationDiagnostic<AngularVelocity>> diagnostics = v.validate(modelDescription);
 
     assertTrue(diagnostics.isEmpty());
   }
@@ -63,8 +61,7 @@ public class AngularVelocityValidatorTest {
     modelDescription.getAngularVelocities().add(angularVelocity);
 
     AngularVelocityValidator v = new AngularVelocityValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<AngularVelocity>> diagnostics = v.validate();
+    List<ValidationDiagnostic<AngularVelocity>> diagnostics = v.validate(modelDescription);
 
     assertEquals(3, diagnostics.size());
     for (ValidationDiagnostic<AngularVelocity> diagnostic : diagnostics) {

@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -35,8 +34,7 @@ public class VolumeValidatorTest {
     modelDescription.getVolumes().add(volume);
 
     VolumeValidator v = new VolumeValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Volume>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Volume>> diagnostics = v.validate(modelDescription);
 
     assertTrue(diagnostics.isEmpty());
   }
@@ -63,8 +61,7 @@ public class VolumeValidatorTest {
     modelDescription.getVolumes().add(volume);
 
     VolumeValidator v = new VolumeValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Volume>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Volume>> diagnostics = v.validate(modelDescription);
 
     assertEquals(3, diagnostics.size());
     for (ValidationDiagnostic<Volume> diagnostic : diagnostics) {

@@ -2,7 +2,6 @@ package com.opensimulationplatform.core.validation.variable;
 
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -21,8 +20,7 @@ public class VariablesValidatorTest {
     modelDescription.getVariables().add(v1);
 
     VariablesValidator variablesValidator = new VariablesValidator();
-    variablesValidator.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Variable>> diagnostics = variablesValidator.validate();
+    List<ValidationDiagnostic<Variable>> diagnostics = variablesValidator.validate(modelDescription);
 
     assertEquals(1, diagnostics.size());
     Variable invalidVariable = diagnostics.get(0).getValidatedObject();
@@ -39,8 +37,7 @@ public class VariablesValidatorTest {
     modelDescription.getVariables().add(v1);
 
     VariablesValidator variablesValidator = new VariablesValidator();
-    variablesValidator.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Variable>> diagnostics = variablesValidator.validate();
+    List<ValidationDiagnostic<Variable>> diagnostics = variablesValidator.validate(modelDescription);
 
     assertEquals(0, diagnostics.size());
   }

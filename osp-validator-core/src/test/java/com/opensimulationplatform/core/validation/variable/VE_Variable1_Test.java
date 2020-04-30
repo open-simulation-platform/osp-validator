@@ -1,9 +1,12 @@
 package com.opensimulationplatform.core.validation.variable;
 
-import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.validation.ValidationContext;
+import com.opensimulationplatform.core.owlbuilder.OwlBuilderContext;
+import com.opensimulationplatform.core.owlbuilder.VariableOwlBuilder;
+import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
+import com.opensimulationplatform.core.validation.ValidationErrorContext;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,10 +15,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VE_Variable1_Test {
+
+  private final VE_Variable_1 validationError = new VE_Variable_1();
+  private final VariableOwlBuilder builder = new VariableOwlBuilder();
+  private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
+  private final OwlBuilderContext builderContext = new OwlBuilderContext();
+
+  @Before
+  public void setUp() {
+    builder.setContext(builderContext);
+    builderContext.owl = new OWLConfig();
+
+    validationErrorContext.owl = builderContext.owl;
+    validationErrorContext.variables = builderContext.variables;
+
+    validationError.setContext(validationErrorContext);
+  }
+
   @Test
   public void invalid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Variable v1 = new Variable();
     v1.setName("v1");
     v1.setCausality(Variable.Causality.INPUT);
@@ -26,12 +44,12 @@ public class VE_Variable1_Test {
     v2.setCausality(Variable.Causality.UNDEFINED);
     v2.setType(Variable.Type.REAL);
 
-    modelDescription.getVariables().add(v1);
-    modelDescription.getVariables().add(v2);
+    builder.build(v1);
+    builder.build(v2);
+    builder.complete();
 
-    VE_Variable_1 v = new VE_Variable_1();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Variable>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Variable>> diagnostics = validationError.validate();
+
     assertEquals(1, diagnostics.size());
     Variable invalidVariable = diagnostics.get(0).getValidatedObject();
     assertEquals(invalidVariable, v2);
@@ -39,8 +57,6 @@ public class VE_Variable1_Test {
 
   @Test
   public void valid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Variable v1 = new Variable();
     v1.setName("v1");
     v1.setCausality(Variable.Causality.INPUT);
@@ -51,12 +67,12 @@ public class VE_Variable1_Test {
     v2.setCausality(Variable.Causality.INPUT);
     v2.setType(Variable.Type.REAL);
 
-    modelDescription.getVariables().add(v1);
-    modelDescription.getVariables().add(v2);
+    builder.build(v1);
+    builder.build(v2);
+    builder.complete();
 
-    VE_Variable_1 v = new VE_Variable_1();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Variable>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Variable>> diagnostics = validationError.validate();
+
     assertTrue(diagnostics.isEmpty());
   }
 }

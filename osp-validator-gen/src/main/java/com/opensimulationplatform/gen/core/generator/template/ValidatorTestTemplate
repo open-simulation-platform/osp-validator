@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.$PACKAGE_NAME$.$CORE_MODEL_CLASS_NAME$;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -35,8 +34,7 @@ public class $CLASS_NAME$ {
     modelDescription.get$CORE_MODEL_CLASS_NAME_PLURAL$().add($CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
 
     $CORE_MODEL_CLASS_NAME$Validator v = new $CORE_MODEL_CLASS_NAME$Validator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = v.validate();
+    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = v.validate(modelDescription);
 
     assertTrue(diagnostics.isEmpty());
   }
@@ -63,8 +61,7 @@ public class $CLASS_NAME$ {
     modelDescription.get$CORE_MODEL_CLASS_NAME_PLURAL$().add($CORE_MODEL_CLASS_NAME_CAMEL_CASE$);
 
     $CORE_MODEL_CLASS_NAME$Validator v = new $CORE_MODEL_CLASS_NAME$Validator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = v.validate();
+    List<ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$>> diagnostics = v.validate(modelDescription);
 
     assertEquals(3, diagnostics.size());
     for (ValidationDiagnostic<$CORE_MODEL_CLASS_NAME$> diagnostic : diagnostics) {

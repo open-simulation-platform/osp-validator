@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -35,8 +34,7 @@ public class VoltageValidatorTest {
     modelDescription.getVoltages().add(voltage);
 
     VoltageValidator v = new VoltageValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Voltage>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Voltage>> diagnostics = v.validate(modelDescription);
 
     assertTrue(diagnostics.isEmpty());
   }
@@ -63,8 +61,7 @@ public class VoltageValidatorTest {
     modelDescription.getVoltages().add(voltage);
 
     VoltageValidator v = new VoltageValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Voltage>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Voltage>> diagnostics = v.validate(modelDescription);
 
     assertEquals(3, diagnostics.size());
     for (ValidationDiagnostic<Voltage> diagnostic : diagnostics) {

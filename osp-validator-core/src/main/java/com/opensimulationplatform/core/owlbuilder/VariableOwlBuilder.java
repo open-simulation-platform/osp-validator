@@ -3,7 +3,7 @@ package com.opensimulationplatform.core.owlbuilder;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.Variable.Causality;
 import com.opensimulationplatform.core.model.modeldescription.Variable.Type;
-import com.opensimulationplatform.core.owlconfig.OWLConfig;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -20,9 +20,7 @@ public class VariableOwlBuilder extends OspOwlBuilder<Variable> {
   Map<Type, String> typeMap = new HashMap<>();
   Map<Causality, String> causalityMap = new HashMap<>();
 
-  public VariableOwlBuilder(OWLConfig config) {
-    super(config);
-
+  public VariableOwlBuilder() {
     typeMap.put(Type.REAL, ind_datatype_real);
     typeMap.put(Type.INTEGER, ind_datatype_integer);
     typeMap.put(Type.BOOLEAN, ind_datatype_boolean);
@@ -36,52 +34,54 @@ public class VariableOwlBuilder extends OspOwlBuilder<Variable> {
   }
 
   public OWLNamedIndividual build(Variable variable) {
-    OWLNamedIndividual individual = dataFactory.getOWLNamedIndividual(variable.getId().get(), prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variable.getId().get(), context.owl.prefixManager);
+    context.individuals.add(individual);
+    context.variables.put(individual, variable);
 
     setClass(individual);
     setName(variable, individual);
     setCausality(variable, individual);
     setDataType(variable, individual);
     setUnit(variable, individual);
-    setDisjointAxioms(individual);
-
-    config.addVariable(individual, variable);
 
     return individual;
   }
 
-  private void setName(Variable variable, OWLNamedIndividual individual) {
-    NameOwlBuilder nameOwlBuilder = new NameOwlBuilder(config);
-    OWLNamedIndividual nameIndividual = nameOwlBuilder.build(variable.getName());
-    OWLObjectProperty hasName = dataFactory.getOWLObjectProperty(op_has_name, prefixManager);
-    config.addObjectPropertyAssertionAxiom(individual, hasName, nameIndividual);
+  private void setClass(OWLNamedIndividual individual) {
+    OWLClass clazz = context.owl.dataFactory.getOWLClass(Variable, context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLClassAssertionAxiom(clazz, individual);
+    context.axioms.add(axiom);
   }
 
-  private void setClass(OWLNamedIndividual individual) {
-    OWLClass clazz = dataFactory.getOWLClass(Variable, prefixManager);
-    config.addClassAssertionAxiom(clazz, individual);
+  private void setName(Variable variable, OWLNamedIndividual individual) {
+    NameOwlBuilder nameOwlBuilder = new NameOwlBuilder();
+    nameOwlBuilder.setContext(context);
+    OWLNamedIndividual nameIndividual = nameOwlBuilder.build(variable.getName());
+    OWLObjectProperty hasName = context.owl.dataFactory.getOWLObjectProperty(op_has_name, context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasName, individual, nameIndividual);
+    context.axioms.add(axiom);
   }
 
   private void setUnit(Variable variable, OWLNamedIndividual individual) {
-    UnitOwlBuilder unitBuilder = new UnitOwlBuilder(config);
+    UnitOwlBuilder unitBuilder = new UnitOwlBuilder();
+    unitBuilder.setContext(context);
     OWLNamedIndividual unitIndividual = unitBuilder.build(variable.getUnit());
-    OWLObjectProperty hasUnit = dataFactory.getOWLObjectProperty(op_has_unit, prefixManager);
-    config.addObjectPropertyAssertionAxiom(individual, hasUnit, unitIndividual);
+    OWLObjectProperty hasUnit = context.owl.dataFactory.getOWLObjectProperty(op_has_unit, context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasUnit, individual, unitIndividual);
+    context.axioms.add(axiom);
   }
 
   private void setDataType(Variable variable, OWLNamedIndividual individual) {
-    OWLObjectProperty hasDataType = dataFactory.getOWLObjectProperty(op_has_datatype, prefixManager);
-    OWLNamedIndividual dataType = dataFactory.getOWLNamedIndividual(typeMap.get(variable.getType()), prefixManager);
-    config.addObjectPropertyAssertionAxiom(individual, hasDataType, dataType);
+    OWLObjectProperty hasDataType = context.owl.dataFactory.getOWLObjectProperty(op_has_datatype, context.owl.prefixManager);
+    OWLNamedIndividual dataType = context.owl.dataFactory.getOWLNamedIndividual(typeMap.get(variable.getType()), context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasDataType, individual, dataType);
+    context.axioms.add(axiom);
   }
 
   private void setCausality(Variable variable, OWLNamedIndividual individual) {
-    OWLObjectProperty hasCausality = dataFactory.getOWLObjectProperty(op_has_causality, prefixManager);
-    OWLNamedIndividual causality = dataFactory.getOWLNamedIndividual(causalityMap.get(variable.getCausality()), prefixManager);
-    config.addObjectPropertyAssertionAxiom(individual, hasCausality, causality);
-  }
-
-  private void setDisjointAxioms(OWLNamedIndividual individual) {
-    config.makeDisjointWithAllIndividualsOfClass(individual, dataFactory.getOWLClass(Variable, prefixManager));
+    OWLObjectProperty hasCausality = context.owl.dataFactory.getOWLObjectProperty(op_has_causality, context.owl.prefixManager);
+    OWLNamedIndividual causality = context.owl.dataFactory.getOWLNamedIndividual(causalityMap.get(variable.getCausality()), context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasCausality, individual, causality);
+    context.axioms.add(axiom);
   }
 }

@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.charge.Charge;
-import com.opensimulationplatform.core.validation.ValidationContext;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
@@ -35,8 +34,7 @@ public class ChargeValidatorTest {
     modelDescription.getCharges().add(charge);
 
     ChargeValidator v = new ChargeValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Charge>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Charge>> diagnostics = v.validate(modelDescription);
 
     assertTrue(diagnostics.isEmpty());
   }
@@ -63,8 +61,7 @@ public class ChargeValidatorTest {
     modelDescription.getCharges().add(charge);
 
     ChargeValidator v = new ChargeValidator();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<Charge>> diagnostics = v.validate();
+    List<ValidationDiagnostic<Charge>> diagnostics = v.validate(modelDescription);
 
     assertEquals(3, diagnostics.size());
     for (ValidationDiagnostic<Charge> diagnostic : diagnostics) {

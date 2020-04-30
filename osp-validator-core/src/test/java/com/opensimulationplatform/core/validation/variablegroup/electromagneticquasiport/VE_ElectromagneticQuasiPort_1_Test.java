@@ -1,13 +1,16 @@
 package com.opensimulationplatform.core.validation.variablegroup.electromagneticquasiport;
 
-import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.electromagneticquasiport.ElectromagneticQuasiPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.charge.Charge;
-import com.opensimulationplatform.core.validation.ValidationContext;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.electromagneticquasiport.ElectromagneticQuasiPort;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
+import com.opensimulationplatform.core.owlbuilder.OwlBuilderContext;
+import com.opensimulationplatform.core.owlbuilder.VariableGroupOwlBuilder;
+import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
+import com.opensimulationplatform.core.validation.ValidationErrorContext;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -17,10 +20,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VE_ElectromagneticQuasiPort_1_Test {
+
+  private final VE_ElectromagneticQuasiPort_1 validationError = new VE_ElectromagneticQuasiPort_1();
+  private final VariableGroupOwlBuilder builder = new VariableGroupOwlBuilder();
+  private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
+  private final OwlBuilderContext builderContext = new OwlBuilderContext();
+
+  @Before
+  public void setUp() {
+    builder.setContext(builderContext);
+    builderContext.owl = new OWLConfig();
+
+    validationErrorContext.owl = builderContext.owl;
+    validationErrorContext.variableGroups = builderContext.variableGroups;
+
+    validationError.setContext(validationErrorContext);
+  }
+
   @Test
   public void invalid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.OUTPUT);
     v1.setUnit(new Unit());
@@ -51,11 +69,10 @@ public class VE_ElectromagneticQuasiPort_1_Test {
     electromagneticQuasiPort.setVoltage(voltage);
     electromagneticQuasiPort.setCharge(charge);
 
-    modelDescription.getElectromagneticQuasiPorts().add(electromagneticQuasiPort);
+    builder.build(electromagneticQuasiPort);
+    builder.complete();
 
-    VE_ElectromagneticQuasiPort_1 v = new VE_ElectromagneticQuasiPort_1();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<ElectromagneticQuasiPort>> diagnostics = v.validate();
+    List<ValidationDiagnostic<ElectromagneticQuasiPort>> diagnostics = validationError.validate();
 
     assertEquals(1, diagnostics.size());
     ElectromagneticQuasiPort invalidElectromagneticQuasiPort = diagnostics.get(0).getValidatedObject();
@@ -64,8 +81,6 @@ public class VE_ElectromagneticQuasiPort_1_Test {
 
   @Test
   public void valid() {
-    ModelDescription modelDescription = new ModelDescription();
-
     Variable v1 = new Variable();
     v1.setCausality(Variable.Causality.OUTPUT);
     v1.setUnit(new Unit());
@@ -96,11 +111,10 @@ public class VE_ElectromagneticQuasiPort_1_Test {
     electromagneticQuasiPort.setVoltage(voltage);
     electromagneticQuasiPort.setCharge(charge);
 
-    modelDescription.getElectromagneticQuasiPorts().add(electromagneticQuasiPort);
+    builder.build(electromagneticQuasiPort);
+    builder.complete();
 
-    VE_ElectromagneticQuasiPort_1 v = new VE_ElectromagneticQuasiPort_1();
-    v.setContext(new ValidationContext(modelDescription));
-    List<ValidationDiagnostic<ElectromagneticQuasiPort>> diagnostics = v.validate();
+    List<ValidationDiagnostic<ElectromagneticQuasiPort>> diagnostics = validationError.validate();
 
     assertTrue(diagnostics.isEmpty());
   }
