@@ -7,6 +7,7 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,8 +21,15 @@ public class Fmi1ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
   public FmiModelDescription convert(no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription fmiModelDescription) {
     FmiModelDescription fmd = new FmiModelDescription();
 
+    List<Variable> variables = new ArrayList<>();
     List<FmiScalarVariable> scalarVariables = fmiModelDescription.getModelVariables().getScalarVariable();
-    List<Variable> variables = converterContext.fmi1ScalarVariableConverter.convert(scalarVariables);
+    for (FmiScalarVariable scalarVariable : scalarVariables) {
+      String causality = scalarVariable.getCausality();
+      String variability = scalarVariable.getVariability();
+      if ("continuous".equals(variability) && ("input".equals(causality) || "output".equals(causality))) {
+        variables.add(converterContext.fmi1ScalarVariableConverter.convert(scalarVariable));
+      }
+    }
     fmd.setVariables(variables);
 
     return fmd;
