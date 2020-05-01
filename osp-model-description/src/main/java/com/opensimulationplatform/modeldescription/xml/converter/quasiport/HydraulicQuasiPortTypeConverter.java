@@ -23,6 +23,9 @@ public class HydraulicQuasiPortTypeConverter extends Converter<HydraulicQuasiPor
     Pressure pressure = converterContext.pressureTypeConverter.convert(linearMechanicalPortType.getPressure());
     Volume volume = converterContext.volumeTypeConverter.convert(linearMechanicalPortType.getVolume());
 
+    converterContext.modelDescription.getPressures().add(pressure);
+    converterContext.modelDescription.getVolumes().add(volume);
+
     linearMechanicalPort.setName(linearMechanicalPortType.getName());
     linearMechanicalPort.setPressure(pressure);
     linearMechanicalPort.setVolume(volume);

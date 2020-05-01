@@ -23,6 +23,9 @@ public class HydraulicPortTypeConverter extends Converter<HydraulicPortType, Hyd
     Pressure pressure = converterContext.pressureTypeConverter.convert(electromagneticPortType.getPressure());
     VolumeFlowRate volumeFlowRate = converterContext.volumeFlowRateTypeConverter.convert(electromagneticPortType.getVolumeFlowRate());
 
+    converterContext.modelDescription.getPressures().add(pressure);
+    converterContext.modelDescription.getVolumeFlowRates().add(volumeFlowRate);
+
     electromagneticPort.setName(electromagneticPortType.getName());
     electromagneticPort.setPressure(pressure);
     electromagneticPort.setVolumeFlowRate(volumeFlowRate);

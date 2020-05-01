@@ -23,6 +23,9 @@ public class LinearMechanicalPortTypeConverter extends Converter<LinearMechanica
     Force force = converterContext.forceTypeConverter.convert(linearMechanicalPortType.getForce());
     LinearVelocity linearVelocity = converterContext.linearVelocityTypeConverter.convert(linearMechanicalPortType.getLinearVelocity());
 
+    converterContext.modelDescription.getForces().add(force);
+    converterContext.modelDescription.getLinearVelocities().add(linearVelocity);
+
     linearMechanicalPort.setName(linearMechanicalPortType.getName());
     linearMechanicalPort.setForce(force);
     linearMechanicalPort.setLinearVelocity(linearVelocity);

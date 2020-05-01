@@ -44,6 +44,7 @@ public class GenericTypeConverter extends Converter<GenericType, Generic> {
     List<GenericType> genericTypes = genericType.getGeneric();
     List<Generic> generics = converterContext.genericTypeConverter.convert(genericTypes);
     generic.getGenerics().addAll(generics);
+    converterContext.modelDescription.getGenerics().addAll(generics);
 
     List<VariableType> variable = genericType.getVariable();
     List<Variable> variables = converterContext.variableTypeConverter.convert(variable);
@@ -52,82 +53,102 @@ public class GenericTypeConverter extends Converter<GenericType, Generic> {
     List<AngularDisplacementType> angularDisplacement = genericType.getAngularDisplacement();
     List<AngularDisplacement> angularDisplacements = converterContext.angularDisplacementTypeConverter.convert(angularDisplacement);
     generic.getAngularDisplacements().addAll(angularDisplacements);
+    converterContext.modelDescription.getAngularDisplacements().addAll(angularDisplacements);
 
     List<ChargeType> charge = genericType.getCharge();
     List<Charge> charges = converterContext.chargeTypeConverter.convert(charge);
     generic.getCharges().addAll(charges);
+    converterContext.modelDescription.getCharges().addAll(charges);
 
     List<LinearDisplacementType> linearDisplacement = genericType.getLinearDisplacement();
     List<LinearDisplacement> linearDisplacements = converterContext.linearDisplacementTypeConverter.convert(linearDisplacement);
     generic.getLinearDisplacements().addAll(linearDisplacements);
+    converterContext.modelDescription.getLinearDisplacements().addAll(linearDisplacements);
 
     List<VolumeType> volume = genericType.getVolume();
     List<Volume> volumes = converterContext.volumeTypeConverter.convert(volume);
     generic.getVolumes().addAll(volumes);
+    converterContext.modelDescription.getVolumes().addAll(volumes);
 
     List<ForceType> force = genericType.getForce();
     List<Force> forces = converterContext.forceTypeConverter.convert(force);
     generic.getForces().addAll(forces);
+    converterContext.modelDescription.getForces().addAll(forces);
 
     List<PressureType> pressure = genericType.getPressure();
     List<Pressure> pressures = converterContext.pressureTypeConverter.convert(pressure);
     generic.getPressures().addAll(pressures);
+    converterContext.modelDescription.getPressures().addAll(pressures);
 
     List<TorqueType> torque = genericType.getTorque();
     List<Torque> torques = converterContext.torqueTypeConverter.convert(torque);
     generic.getTorques().addAll(torques);
+    converterContext.modelDescription.getTorques().addAll(torques);
 
     List<VoltageType> voltage = genericType.getVoltage();
     List<Voltage> voltages = converterContext.voltageTypeConverter.convert(voltage);
     generic.getVoltages().addAll(voltages);
+    converterContext.modelDescription.getVoltages().addAll(voltages);
 
     List<AngularVelocityType> angularVelocity = genericType.getAngularVelocity();
     List<AngularVelocity> angularVelocities = converterContext.angularVelocityTypeConverter.convert(angularVelocity);
     generic.getAngularVelocities().addAll(angularVelocities);
+    converterContext.modelDescription.getAngularVelocities().addAll(angularVelocities);
 
     List<CurrentType> current = genericType.getCurrent();
     List<Current> currents = converterContext.currentTypeConverter.convert(current);
     generic.getCurrents().addAll(currents);
+    converterContext.modelDescription.getCurrents().addAll(currents);
 
     List<LinearVelocityType> linearVelocity = genericType.getLinearVelocity();
     List<LinearVelocity> linearVelocities = converterContext.linearVelocityTypeConverter.convert(linearVelocity);
     generic.getLinearVelocities().addAll(linearVelocities);
+    converterContext.modelDescription.getLinearVelocities().addAll(linearVelocities);
 
     List<VolumeFlowRateType> volumeFlowRate = genericType.getVolumeFlowRate();
     List<VolumeFlowRate> volumeFlowRates = converterContext.volumeFlowRateTypeConverter.convert(volumeFlowRate);
     generic.getVolumeFlowRates().addAll(volumeFlowRates);
+    converterContext.modelDescription.getVolumeFlowRates().addAll(volumeFlowRates);
 
     List<AngularMechanicalPortType> angularMechanicalPort = genericType.getAngularMechanicalPort();
     List<AngularMechanicalPort> angularMechanicalPorts = converterContext.angularMechanicalPortTypeConverter.convert(angularMechanicalPort);
     generic.getAngularMechanicalPorts().addAll(angularMechanicalPorts);
+    converterContext.modelDescription.getAngularMechanicalPorts().addAll(angularMechanicalPorts);
 
     List<ElectromagneticPortType> electromagneticPort = genericType.getElectromagneticPort();
     List<ElectromagneticPort> electromagneticPorts = converterContext.electromagneticPortTypeConverter.convert(electromagneticPort);
     generic.getElectromagneticPorts().addAll(electromagneticPorts);
+    converterContext.modelDescription.getElectromagneticPorts().addAll(electromagneticPorts);
 
     List<HydraulicPortType> hydraulicPort = genericType.getHydraulicPort();
     List<HydraulicPort> hydraulicPorts = converterContext.hydraulicPortTypeConverter.convert(hydraulicPort);
     generic.getHydraulicPorts().addAll(hydraulicPorts);
+    converterContext.modelDescription.getHydraulicPorts().addAll(hydraulicPorts);
 
     List<LinearMechanicalPortType> linearMechanicalPort = genericType.getLinearMechanicalPort();
     List<LinearMechanicalPort> linearMechanicalPorts = converterContext.linearMechanicalPortTypeConverter.convert(linearMechanicalPort);
     generic.getLinearMechanicalPorts().addAll(linearMechanicalPorts);
+    converterContext.modelDescription.getLinearMechanicalPorts().addAll(linearMechanicalPorts);
 
     List<AngularMechanicalQuasiPortType> angularMechanicalQuasiPort = genericType.getAngularMechanicalQuasiPort();
     List<AngularMechanicalQuasiPort> angularMechanicalQuasiPorts = converterContext.angularMechanicalQuasiPortTypeConverter.convert(angularMechanicalQuasiPort);
     generic.getAngularMechanicalQuasiPorts().addAll(angularMechanicalQuasiPorts);
+    converterContext.modelDescription.getAngularMechanicalQuasiPorts().addAll(angularMechanicalQuasiPorts);
 
     List<ElectromagneticQuasiPortType> electromagneticQuasiPort = genericType.getElectromagneticQuasiPort();
     List<ElectromagneticQuasiPort> electromagneticQuasiPorts = converterContext.electromagneticQuasiPortTypeConverter.convert(electromagneticQuasiPort);
     generic.getElectromagneticQuasiPorts().addAll(electromagneticQuasiPorts);
+    converterContext.modelDescription.getElectromagneticQuasiPorts().addAll(electromagneticQuasiPorts);
 
     List<HydraulicQuasiPortType> hydraulicQuasiPort = genericType.getHydraulicQuasiPort();
     List<HydraulicQuasiPort> hydraulicQuasiPorts = converterContext.hydraulicQuasiPortTypeConverter.convert(hydraulicQuasiPort);
     generic.getHydraulicQuasiPorts().addAll(hydraulicQuasiPorts);
+    converterContext.modelDescription.getHydraulicQuasiPorts().addAll(hydraulicQuasiPorts);
 
     List<LinearMechanicalQuasiPortType> linearMechanicalQuasiPort = genericType.getLinearMechanicalQuasiPort();
     List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = converterContext.linearMechanicalQuasiPortTypeConverter.convert(linearMechanicalQuasiPort);
     generic.getLinearMechanicalQuasiPorts().addAll(linearMechanicalQuasiPorts);
+    converterContext.modelDescription.getLinearMechanicalQuasiPorts().addAll(linearMechanicalQuasiPorts);
 
     return generic;
   }

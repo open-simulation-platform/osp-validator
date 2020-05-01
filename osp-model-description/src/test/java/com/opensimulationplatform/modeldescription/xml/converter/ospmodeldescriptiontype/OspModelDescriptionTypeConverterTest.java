@@ -26,20 +26,20 @@ public class OspModelDescriptionTypeConverterTest {
 
     assertEquals(1, modelDescription.getGenerics().size());
 
-    assertEquals(1, modelDescription.getForces().size());
-    assertEquals(1, modelDescription.getTorques().size());
-    assertEquals(1, modelDescription.getVoltages().size());
-    assertEquals(1, modelDescription.getPressures().size());
+    assertEquals(3, modelDescription.getForces().size());
+    assertEquals(3, modelDescription.getTorques().size());
+    assertEquals(3, modelDescription.getVoltages().size());
+    assertEquals(3, modelDescription.getPressures().size());
 
-    assertEquals(1, modelDescription.getLinearVelocities().size());
-    assertEquals(1, modelDescription.getAngularVelocities().size());
-    assertEquals(1, modelDescription.getCurrents().size());
-    assertEquals(1, modelDescription.getVolumeFlowRates().size());
+    assertEquals(2, modelDescription.getLinearVelocities().size());
+    assertEquals(2, modelDescription.getAngularVelocities().size());
+    assertEquals(2, modelDescription.getCurrents().size());
+    assertEquals(2, modelDescription.getVolumeFlowRates().size());
 
-    assertEquals(1, modelDescription.getLinearDisplacements().size());
-    assertEquals(1, modelDescription.getAngularDisplacements().size());
-    assertEquals(1, modelDescription.getCharges().size());
-    assertEquals(1, modelDescription.getVolumes().size());
+    assertEquals(2, modelDescription.getLinearDisplacements().size());
+    assertEquals(2, modelDescription.getAngularDisplacements().size());
+    assertEquals(2, modelDescription.getCharges().size());
+    assertEquals(2, modelDescription.getVolumes().size());
 
     assertEquals(1, modelDescription.getLinearMechanicalPorts().size());
     assertEquals(1, modelDescription.getAngularMechanicalPorts().size());
@@ -88,48 +88,36 @@ public class OspModelDescriptionTypeConverterTest {
     GenericType genericType = new GenericType();
     variableGroupsType.getGeneric().add(genericType);
 
-    ForceType forceType = new ForceType();
-    TorqueType torqueType = new TorqueType();
-    VoltageType voltageType = new VoltageType();
-    PressureType pressureType = new PressureType();
-    variableGroupsType.getForce().add(forceType);
-    variableGroupsType.getTorque().add(torqueType);
-    variableGroupsType.getVoltage().add(voltageType);
-    variableGroupsType.getPressure().add(pressureType);
+    variableGroupsType.getForce().add(new ForceType());
+    variableGroupsType.getTorque().add(new TorqueType());
+    variableGroupsType.getVoltage().add(new VoltageType());
+    variableGroupsType.getPressure().add(new PressureType());
 
-    LinearVelocityType linearVelocityType = new LinearVelocityType();
-    AngularVelocityType angularVelocityType = new AngularVelocityType();
-    CurrentType currentType = new CurrentType();
-    VolumeFlowRateType volumeFlowRateType = new VolumeFlowRateType();
-    variableGroupsType.getLinearVelocity().add(linearVelocityType);
-    variableGroupsType.getAngularVelocity().add(angularVelocityType);
-    variableGroupsType.getCurrent().add(currentType);
-    variableGroupsType.getVolumeFlowRate().add(volumeFlowRateType);
+    variableGroupsType.getLinearVelocity().add(new LinearVelocityType());
+    variableGroupsType.getAngularVelocity().add(new AngularVelocityType());
+    variableGroupsType.getCurrent().add(new CurrentType());
+    variableGroupsType.getVolumeFlowRate().add(new VolumeFlowRateType());
 
-    LinearDisplacementType linearDisplacementType = new LinearDisplacementType();
-    AngularDisplacementType angularDisplacementType = new AngularDisplacementType();
-    ChargeType chargeType = new ChargeType();
-    VolumeType volumeType = new VolumeType();
-    variableGroupsType.getLinearDisplacement().add(linearDisplacementType);
-    variableGroupsType.getAngularDisplacement().add(angularDisplacementType);
-    variableGroupsType.getCharge().add(chargeType);
-    variableGroupsType.getVolume().add(volumeType);
+    variableGroupsType.getLinearDisplacement().add(new LinearDisplacementType());
+    variableGroupsType.getAngularDisplacement().add(new AngularDisplacementType());
+    variableGroupsType.getCharge().add(new ChargeType());
+    variableGroupsType.getVolume().add(new VolumeType());
 
     LinearMechanicalPortType linearMechanicalPortType = new LinearMechanicalPortType();
-    linearMechanicalPortType.setForce(forceType);
-    linearMechanicalPortType.setLinearVelocity(linearVelocityType);
+    linearMechanicalPortType.setForce(new ForceType());
+    linearMechanicalPortType.setLinearVelocity(new LinearVelocityType());
 
     AngularMechanicalPortType angularMechanicalPortType = new AngularMechanicalPortType();
-    angularMechanicalPortType.setTorque(torqueType);
-    angularMechanicalPortType.setAngularVelocity(angularVelocityType);
+    angularMechanicalPortType.setTorque(new TorqueType());
+    angularMechanicalPortType.setAngularVelocity(new AngularVelocityType());
 
     ElectromagneticPortType electromagneticPortType = new ElectromagneticPortType();
-    electromagneticPortType.setVoltage(voltageType);
-    electromagneticPortType.setCurrent(currentType);
+    electromagneticPortType.setVoltage(new VoltageType());
+    electromagneticPortType.setCurrent(new CurrentType());
 
     HydraulicPortType hydraulicPortType = new HydraulicPortType();
-    hydraulicPortType.setPressure(pressureType);
-    hydraulicPortType.setVolumeFlowRate(volumeFlowRateType);
+    hydraulicPortType.setPressure(new PressureType());
+    hydraulicPortType.setVolumeFlowRate(new VolumeFlowRateType());
 
     variableGroupsType.getLinearMechanicalPort().add(linearMechanicalPortType);
     variableGroupsType.getAngularMechanicalPort().add(angularMechanicalPortType);
@@ -137,20 +125,20 @@ public class OspModelDescriptionTypeConverterTest {
     variableGroupsType.getHydraulicPort().add(hydraulicPortType);
 
     LinearMechanicalQuasiPortType linearMechanicalQuasiPortType = new LinearMechanicalQuasiPortType();
-    linearMechanicalQuasiPortType.setForce(forceType);
-    linearMechanicalQuasiPortType.setLinearDisplacement(linearDisplacementType);
+    linearMechanicalQuasiPortType.setForce(new ForceType());
+    linearMechanicalQuasiPortType.setLinearDisplacement(new LinearDisplacementType());
 
     AngularMechanicalQuasiPortType angularMechanicalQuasiPortType = new AngularMechanicalQuasiPortType();
-    angularMechanicalQuasiPortType.setTorque(torqueType);
-    angularMechanicalQuasiPortType.setAngularDisplacement(angularDisplacementType);
+    angularMechanicalQuasiPortType.setTorque(new TorqueType());
+    angularMechanicalQuasiPortType.setAngularDisplacement(new AngularDisplacementType());
 
     ElectromagneticQuasiPortType electromagneticQuasiPortType = new ElectromagneticQuasiPortType();
-    electromagneticQuasiPortType.setVoltage(voltageType);
-    electromagneticQuasiPortType.setCharge(chargeType);
+    electromagneticQuasiPortType.setVoltage(new VoltageType());
+    electromagneticQuasiPortType.setCharge(new ChargeType());
 
     HydraulicQuasiPortType hydraulicQuasiPortType = new HydraulicQuasiPortType();
-    hydraulicQuasiPortType.setPressure(pressureType);
-    hydraulicQuasiPortType.setVolume(volumeType);
+    hydraulicQuasiPortType.setPressure(new PressureType());
+    hydraulicQuasiPortType.setVolume(new VolumeType());
 
     variableGroupsType.getLinearMechanicalQuasiPort().add(linearMechanicalQuasiPortType);
     variableGroupsType.getAngularMechanicalQuasiPort().add(angularMechanicalQuasiPortType);
