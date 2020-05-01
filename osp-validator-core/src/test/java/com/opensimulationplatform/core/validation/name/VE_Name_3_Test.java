@@ -29,6 +29,7 @@ public class VE_Name_3_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.names = builderContext.names;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }

@@ -30,6 +30,7 @@ public class VE_VariableConnection_1_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variableConnections = builderContext.variableConnections;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }
@@ -83,6 +84,7 @@ public class VE_VariableConnection_1_Test {
     vc.setSimulatorB(new Simulator());
 
     builder.build(vc);
+    builder.complete();
 
     List<ValidationDiagnostic<VariableConnection>> diagnostics = validationError.validate();
     assertTrue(diagnostics.isEmpty());

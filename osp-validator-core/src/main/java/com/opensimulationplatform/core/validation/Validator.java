@@ -20,6 +20,7 @@ public abstract class Validator<T> {
     if (validationErrors != null) {
       ValidationErrorContext validationErrorContext = new ValidationErrorContext();
       validationErrorContext.owl = context.owl;
+      validationErrorContext.invalidIndividuals = context.invalidIndividuals;
       validationErrorContext.names = context.names;
       validationErrorContext.units = context.units;
       validationErrorContext.variables = context.variables;
@@ -27,6 +28,7 @@ public abstract class Validator<T> {
       validationErrorContext.simulators = context.simulators;
       validationErrorContext.variableConnections = context.variableConnections;
       validationErrorContext.variableGroupConnections = context.variableGroupConnections;
+      validationErrorContext.systemStructures = context.systemStructures;
 
       validationErrors.forEach(validationError -> validationError.setContext(validationErrorContext));
     }

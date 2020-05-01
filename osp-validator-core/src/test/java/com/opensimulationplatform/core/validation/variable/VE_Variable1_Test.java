@@ -28,6 +28,7 @@ public class VE_Variable1_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variables = builderContext.variables;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }

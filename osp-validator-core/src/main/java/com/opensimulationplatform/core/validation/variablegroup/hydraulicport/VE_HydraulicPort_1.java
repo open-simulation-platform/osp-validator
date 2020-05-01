@@ -21,9 +21,9 @@ public class VE_HydraulicPort_1 extends ValidationError<HydraulicPort> {
 
   @Override
   protected String getErrorMessage(HydraulicPort hydraulicPort) {
-     return "HydraulicPort '" + hydraulicPort.getName().get() + "' contains incompatible Pressure(" +
-             hydraulicPort.getPressure().getName().get() + ") and VolumeFlowRate(" +
-             hydraulicPort.getVolumeFlowRate().getName().get() + "). " +
-             "The variables in the Pressure variable group must have opposite causality of the variables in the VolumeFlowRate variable group";
+    return "HydraulicPort '" + hydraulicPort.getName().get() + "' contains incompatible Pressure(" +
+        hydraulicPort.getPressure().getName().get() + ") and VolumeFlowRate(" +
+        hydraulicPort.getVolumeFlowRate().getName().get() + "). " +
+        "The variables in the Pressure variable group must have opposite causality of the variables in the VolumeFlowRate variable group";
   }
 }

@@ -34,6 +34,7 @@ public class VE_$CORE_MODEL_CLASS_NAME$_1_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variableGroups = builderContext.variableGroups;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }

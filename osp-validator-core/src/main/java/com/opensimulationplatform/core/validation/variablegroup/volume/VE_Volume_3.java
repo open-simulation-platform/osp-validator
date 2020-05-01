@@ -6,8 +6,8 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Volume_3;
 
@@ -15,8 +15,8 @@ public class VE_Volume_3 extends ValidationError<Volume> {
   @Override
   protected List<Volume> getInvalidObjects() {
     OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_Volume_3, context.owl.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(individual -> (Volume) context.variableGroups.get(individual)).collect(Collectors.toList());
+    Set<OWLNamedIndividual> invalidIndividuals = context.invalidIndividuals.get(validationErrorClass);
+    return invalidIndividuals.stream().map(individual -> (Volume) context.variableGroups.get(individual)).collect(Collectors.toList());
   }
 
   @Override

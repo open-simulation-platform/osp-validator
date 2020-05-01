@@ -10,7 +10,9 @@ import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
 import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnection;
 import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,8 +21,12 @@ import java.util.Set;
 
 public class OwlBuilderContext {
   public OWLConfig owl;
+
   public Set<OWLAxiom> axioms = new HashSet<>();
   public Set<OWLIndividual> individuals = new HashSet<>();
+
+  public Map<OWLClass, Set<OWLNamedIndividual>> invalidIndividuals = new HashMap<>();
+
   public Map<OWLIndividual, Name> names = new HashMap<>();
   public Map<OWLIndividual, Unit> units = new HashMap<>();
   public Map<OWLIndividual, Variable> variables = new HashMap<>();

@@ -30,6 +30,7 @@ public class VE_VariableConnection_2_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variableConnections = builderContext.variableConnections;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }

@@ -32,6 +32,7 @@ public class VE_VariableGroupConnection1_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variableGroupConnections = builderContext.variableGroupConnections;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }

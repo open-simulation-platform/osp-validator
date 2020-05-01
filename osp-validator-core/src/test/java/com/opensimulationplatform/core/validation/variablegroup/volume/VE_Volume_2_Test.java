@@ -31,6 +31,7 @@ public class VE_Volume_2_Test {
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variableGroups = builderContext.variableGroups;
+    validationErrorContext.invalidIndividuals = builderContext.invalidIndividuals;
 
     validationError.setContext(validationErrorContext);
   }

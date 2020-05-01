@@ -6,8 +6,8 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Force_2;
 
@@ -15,8 +15,8 @@ public class VE_Force_2 extends ValidationError<Force> {
   @Override
   protected List<Force> getInvalidObjects() {
     OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_Force_2, context.owl.prefixManager);
-    Stream<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(validationErrorClass, false).getFlattened().stream();
-    return invalidIndividuals.map(individual -> (Force) context.variableGroups.get(individual)).collect(Collectors.toList());
+    Set<OWLNamedIndividual> invalidIndividuals = context.invalidIndividuals.get(validationErrorClass);
+    return invalidIndividuals.stream().map(individual -> (Force) context.variableGroups.get(individual)).collect(Collectors.toList());
   }
 
   @Override
