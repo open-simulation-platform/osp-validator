@@ -48,6 +48,8 @@ public class MainTest {
       if (jaxbObject != null) {
         Location location = locations.get(jaxbObject);
         errorMessages.add("Validation error on line " + location.getLineNumber() + ": " + diagnostic.getErrorMessage());
+      } else {
+        errorMessages.add("Validation error: " + diagnostic.getErrorMessage());
       }
     }
 

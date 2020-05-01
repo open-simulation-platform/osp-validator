@@ -1,5 +1,7 @@
 package com.opensimulationplatform.core.validation.variableconnection;
 
+import com.opensimulationplatform.core.model.modeldescription.Unit;
+import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
 import com.opensimulationplatform.core.validation.ValidationError;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -22,11 +24,17 @@ public class VE_VariableConnection_3 extends ValidationError<VariableConnection>
 
   @Override
   protected String getErrorMessage(VariableConnection variableConnection) {
-    String variableA = variableConnection.getVariableA().getName().get();
-    String unitA = variableConnection.getVariableA().getUnit().getName().get();
-    String variableB = variableConnection.getVariableB().getName().get();
-    String unitB = variableConnection.getVariableA().getUnit().getName().get();
-    return "Variable connection [" + variableA + ", " + variableB + "] is invalid because they have incompatible " +
-        "units [" + unitA + ", " + unitB + "]";
+    Variable variableA = variableConnection.getVariableA();
+    String variableAName = variableA.getName().get();
+    Unit unitA = variableA.getUnit();
+    String unitAName = unitA.getName().get();
+
+    Variable variableB = variableConnection.getVariableB();
+    String variableBName = variableB.getName().get();
+    Unit unitB = variableB.getUnit();
+    String unitBName = unitB.getName().get();
+
+    return "Variable connection [" + variableAName + ", " + variableBName + "] is invalid because they have incompatible " +
+        "units [" + unitAName + ", " + unitBName + "]";
   }
 }

@@ -9,8 +9,8 @@
       <Variable simulator="knuckle_boom_crane" name="Act_Limits[1]"/>
     </VariableConnection>
     <VariableGroupConnection>
-      <VariableGroup simulator="crane_controller" name="linear_mechanical_port"/>
-      <VariableGroup simulator="knuckle_boom_crane" name="linear_mechanical_port"/>
+      <VariableGroup simulator="crane_controller" name="force"/>
+      <VariableGroup simulator="knuckle_boom_crane" name="force"/>
     </VariableGroupConnection>
   </Connections>
 </OspSystemStructure>

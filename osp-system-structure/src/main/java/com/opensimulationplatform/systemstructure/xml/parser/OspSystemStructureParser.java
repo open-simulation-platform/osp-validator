@@ -60,9 +60,5 @@ public class OspSystemStructureParser {
     public void beforeUnmarshal(Object target, Object parent) {
       locations.put(target, reader.getLocation());
     }
-
-    public Location getLocation(Object o) {
-      return locations.get(o);
-    }
   }
 }
