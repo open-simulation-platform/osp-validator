@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<VariableGroups>
+		<Generic name="T_room2">
+			<Variable ref="T_room2"/>			
+		</Generic>
+		<Generic name="T_room1">
+			<Variable ref="T_room1"/>			
+		</Generic>
+		<Generic name="T_clock">
+			<Variable ref="T_clock"/>			
+		</Generic>
+		<Generic name="h_room1">
+			<Variable ref="h_room1"/>			
+		</Generic>
+		<Generic name="h_room2">
+			<Variable ref="h_room2"/>			
+		</Generic>
+	</VariableGroups>
+</OspModelDescription>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<VariableGroups>
+		<Generic name="vesselPosition">
+			<LinearDisplacement name="linearVesselPosition">
+				<Variable ref="y[1]"/>				
+				<Variable ref="y[2]"/>				
+			</LinearDisplacement>
+			<AngularDisplacement name="angularVesselPosition">
+				<Variable ref="y[3]"/>				
+			</AngularDisplacement>
+		</Generic>
+		<Generic name="thrustForce">
+			<Force name="linearThrustForce">
+				<Variable ref="tau[1]"/>				
+				<Variable ref="tau[2]"/>				
+			</Force>
+			<Torque name="angularThrustForce">
+				<Variable ref="tau[3]"/>				
+			</Torque>
+		</Generic>
+		<Generic name="filteredPosition">
+			<LinearDisplacement name="linearFilteredPosition">
+				<Variable ref="y_hat[1]"/>				
+				<Variable ref="y_hat[2]"/>				
+			</LinearDisplacement>
+			<AngularDisplacement name="angularFilteredPosition">
+				<Variable ref="y_hat[3]"/>				
+			</AngularDisplacement>
+		</Generic>
+		<Generic name="filteredVelocity">
+			<LinearVelocity name="linearFilteredVelocity">
+				<Variable ref="v_hat[1]"/>				
+				<Variable ref="v_hat[2]"/>				
+			</LinearVelocity>
+			<AngularVelocity name="angularFilteredVelocity">
+				<Variable ref="v_hat[3]"/>				
+			</AngularVelocity>
+		</Generic>
+	</VariableGroups>
+</OspModelDescription>

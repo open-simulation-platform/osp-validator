@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<VariableGroups>
+		<Generic name="position">
+			<LinearDisplacement name="linearPosition">
+				<Variable ref="q[1]"/>				
+				<Variable ref="q[2]"/>				
+			</LinearDisplacement>
+			<AngularDisplacement name="angularPosition">
+				<Variable ref="q[3]"/>				
+			</AngularDisplacement>
+		</Generic>
+		<Generic name="thrust">
+			<Force name="thrustForce">
+				<Variable ref="Thrust_d[1]"/>				
+				<Variable ref="Thrust_d[2]"/>				
+			</Force>
+			<Torque name="thrustTorque">
+				<Variable ref="Thrust_d[3]"/>				
+			</Torque>
+		</Generic>
+		<AngularDisplacement name="azimuthAngle">
+			<Variable ref="input[1]"/>			
+			<Variable ref="input[2]"/>			
+		</AngularDisplacement>
+	</VariableGroups>
+</OspModelDescription>

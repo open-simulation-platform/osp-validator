@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<VariableGroups>
+		<Generic name="group">
+			<Variable ref="Clock"/>			
+		</Generic>
+		<Generic name="Clock">
+			<Variable ref="Clock"/>			
+		</Generic>
+	</VariableGroups>
+</OspModelDescription>

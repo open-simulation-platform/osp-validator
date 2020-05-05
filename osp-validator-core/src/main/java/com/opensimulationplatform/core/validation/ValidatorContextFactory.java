@@ -7,8 +7,6 @@ import com.opensimulationplatform.core.owlbuilder.OwlBuilderContext;
 import com.opensimulationplatform.core.owlbuilder.SystemStructureOwlBuilder;
 import com.opensimulationplatform.core.owlconfig.OWLConfig;
 
-import java.io.File;
-
 public class ValidatorContextFactory {
   public ValidatorContext create(SystemStructure systemStructure) {
     OwlBuilderContext builderContext = new OwlBuilderContext();
@@ -21,7 +19,6 @@ public class ValidatorContextFactory {
     builderContext.owl.manager.addAxioms(builderContext.owl.ontology, builderContext.axioms);
     builderContext.owl.manager.addAxiom(builderContext.owl.ontology, builderContext.owl.dataFactory.getOWLDifferentIndividualsAxiom(builderContext.individuals));
 
-    builderContext.owl.save(new File("test.owl"));
     builder.complete();
 
     ValidatorContext validatorContext = new ValidatorContext();

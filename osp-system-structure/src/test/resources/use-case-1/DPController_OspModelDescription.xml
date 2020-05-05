@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<VariableGroups>
+		<Generic name="vesselPosition">
+			<LinearDisplacement name="linearVesselPosition">
+				<Variable ref="x"/>				
+				<Variable ref="y"/>				
+			</LinearDisplacement>
+			<AngularDisplacement name="angularVesselPosition">
+				<Variable ref="psi"/>				
+			</AngularDisplacement>
+		</Generic>
+		<Generic name="vesselVelocity">
+			<LinearVelocity name="linearVesselVelocity">
+				<Variable ref="dx"/>				
+				<Variable ref="dy"/>				
+			</LinearVelocity>
+			<AngularVelocity name="angularVesselVelocity">
+				<Variable ref="dpsi"/>				
+			</AngularVelocity>
+		</Generic>
+		<Generic name="vesselPositionReference">
+			<LinearDisplacement name="linearVesselPositionReference">
+				<Variable ref="x_ref"/>				
+				<Variable ref="y_ref"/>				
+			</LinearDisplacement>
+			<AngularDisplacement name="angularVesselPositionReference">
+				<Variable ref="psi_ref"/>				
+			</AngularDisplacement>
+		</Generic>
+		<Generic name="vesselVelocityReference">
+			<LinearVelocity name="linearVesselVelocityReference">
+				<Variable ref="dx_ref"/>				
+				<Variable ref="dy_ref"/>				
+			</LinearVelocity>
+			<AngularVelocity name="angularVesselVelocityReference">
+				<Variable ref="dpsi_ref"/>				
+			</AngularVelocity>
+		</Generic>
+		<Generic name="ThrustCommand">
+			<Force name="linearThrustCommand">
+				<Variable ref="Controlx"/>				
+				<Variable ref="Controly"/>				
+			</Force>
+			<Torque name="angularThrustCommand">
+				<Variable ref="ControlMz"/>				
+			</Torque>
+		</Generic>
+	</VariableGroups>
+</OspModelDescription>
