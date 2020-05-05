@@ -21,6 +21,6 @@ public class VE_Pressure_2 extends ValidationError<Pressure> {
 
   @Override
   protected String getErrorMessage(Pressure pressure) {
-    return "Pressure variable group '" + pressure.getName().get() + "' contains variables with mixed data types";
+    return "Pressure variable group '" + pressure.getName().getId().get() + "' contains variables with mixed data types";
   }
 }

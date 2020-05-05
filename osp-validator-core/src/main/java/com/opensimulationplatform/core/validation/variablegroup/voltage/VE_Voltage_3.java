@@ -21,6 +21,6 @@ public class VE_Voltage_3 extends ValidationError<Voltage> {
 
   @Override
   protected String getErrorMessage(Voltage voltage) {
-    return "Voltage variable group '" + voltage.getName().get() + "' contains variables with incompatible units";
+    return "Voltage variable group '" + voltage.getName().getId().get() + "' contains variables with incompatible units";
   }
 }

@@ -21,6 +21,6 @@ public class VE_Current_2 extends ValidationError<Current> {
 
   @Override
   protected String getErrorMessage(Current current) {
-    return "Current variable group '" + current.getName().get() + "' contains variables with mixed data types";
+    return "Current variable group '" + current.getName().getId().get() + "' contains variables with mixed data types";
   }
 }

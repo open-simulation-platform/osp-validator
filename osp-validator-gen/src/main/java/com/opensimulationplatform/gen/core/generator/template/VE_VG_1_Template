@@ -21,6 +21,6 @@ public class $CLASS_NAME$ extends ValidationError<$CORE_MODEL_CLASS_NAME$> {
 
   @Override
   protected String getErrorMessage($CORE_MODEL_CLASS_NAME$ $CORE_MODEL_CLASS_NAME_CAMEL_CASE$) {
-    return "$CORE_MODEL_CLASS_NAME$ variable group '" + $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.getName().get() + "' contains variables with mixed causalities";
+    return "$CORE_MODEL_CLASS_NAME$ variable group '" + $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.getName().getId().get() + "' contains variables with mixed causalities";
   }
 }

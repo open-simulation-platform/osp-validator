@@ -21,9 +21,9 @@ public class VE_AngularMechanicalQuasiPort_1 extends ValidationError<AngularMech
 
   @Override
   protected String getErrorMessage(AngularMechanicalQuasiPort angularMechanicalQuasiPort) {
-    return "AngularMechanicalQuasiPort '" + angularMechanicalQuasiPort.getName().get() + "' contains incompatible Torque(" +
-        angularMechanicalQuasiPort.getTorque().getName().get() + ") and AngularDisplacement(" +
-        angularMechanicalQuasiPort.getAngularDisplacement().getName().get() + "). " +
-        "The variables in the Torque variable group must have opposite causality of the variables in the AngularDisplacement variable group";
+     return "AngularMechanicalQuasiPort '" + angularMechanicalQuasiPort.getName().getId().get() + "' contains incompatible Torque(" +
+             angularMechanicalQuasiPort.getTorque().getName().getId().get() + ") and AngularDisplacement(" +
+             angularMechanicalQuasiPort.getAngularDisplacement().getName().getId().get() + "). " +
+             "The variables in the Torque variable group must have opposite causality of the variables in the AngularDisplacement variable group";
   }
 }

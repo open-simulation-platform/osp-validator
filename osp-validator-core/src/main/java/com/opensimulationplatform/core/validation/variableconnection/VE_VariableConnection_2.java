@@ -23,9 +23,9 @@ public class VE_VariableConnection_2 extends ValidationError<VariableConnection>
 
   @Override
   protected String getErrorMessage(VariableConnection variableConnection) {
-    String variableA = variableConnection.getVariableA().getName().get();
+    String variableA = variableConnection.getVariableA().getName().getId().get();
     Variable.Causality causalityA = variableConnection.getVariableA().getCausality();
-    String variableB = variableConnection.getVariableB().getName().get();
+    String variableB = variableConnection.getVariableB().getName().getId().get();
     Variable.Causality causalityB = variableConnection.getVariableA().getCausality();
     return "VariableConnection [" + variableA + ", " + variableB + "] is invalid because they have the same " +
         "causality [" + causalityA + ", " + causalityB + "]";

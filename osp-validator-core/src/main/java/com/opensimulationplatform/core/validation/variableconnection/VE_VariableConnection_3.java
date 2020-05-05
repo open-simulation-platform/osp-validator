@@ -25,12 +25,12 @@ public class VE_VariableConnection_3 extends ValidationError<VariableConnection>
   @Override
   protected String getErrorMessage(VariableConnection variableConnection) {
     Variable variableA = variableConnection.getVariableA();
-    String variableAName = variableA.getName().get();
+    String variableAName = variableA.getName().getId().get();
     Unit unitA = variableA.getUnit();
     String unitAName = unitA.getName().get();
 
     Variable variableB = variableConnection.getVariableB();
-    String variableBName = variableB.getName().get();
+    String variableBName = variableB.getName().getId().get();
     Unit unitB = variableB.getUnit();
     String unitBName = unitB.getName().get();
 

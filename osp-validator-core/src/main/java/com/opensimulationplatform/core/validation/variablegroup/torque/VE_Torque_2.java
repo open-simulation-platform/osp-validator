@@ -21,6 +21,6 @@ public class VE_Torque_2 extends ValidationError<Torque> {
 
   @Override
   protected String getErrorMessage(Torque torque) {
-    return "Torque variable group '" + torque.getName().get() + "' contains variables with mixed data types";
+    return "Torque variable group '" + torque.getName().getId().get() + "' contains variables with mixed data types";
   }
 }

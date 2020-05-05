@@ -21,6 +21,6 @@ public class VE_Charge_1 extends ValidationError<Charge> {
 
   @Override
   protected String getErrorMessage(Charge charge) {
-    return "Charge variable group '" + charge.getName().get() + "' contains variables with mixed causalities";
+    return "Charge variable group '" + charge.getName().getId().get() + "' contains variables with mixed causalities";
   }
 }

@@ -21,6 +21,6 @@ public class VE_LinearDisplacement_3 extends ValidationError<LinearDisplacement>
 
   @Override
   protected String getErrorMessage(LinearDisplacement linearDisplacement) {
-    return "LinearDisplacement variable group '" + linearDisplacement.getName().get() + "' contains variables with incompatible units";
+    return "LinearDisplacement variable group '" + linearDisplacement.getName().getId().get() + "' contains variables with incompatible units";
   }
 }

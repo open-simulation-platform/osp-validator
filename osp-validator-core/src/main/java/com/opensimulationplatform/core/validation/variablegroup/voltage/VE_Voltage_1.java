@@ -21,6 +21,6 @@ public class VE_Voltage_1 extends ValidationError<Voltage> {
 
   @Override
   protected String getErrorMessage(Voltage voltage) {
-    return "Voltage variable group '" + voltage.getName().get() + "' contains variables with mixed causalities";
+    return "Voltage variable group '" + voltage.getName().getId().get() + "' contains variables with mixed causalities";
   }
 }

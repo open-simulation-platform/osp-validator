@@ -21,6 +21,6 @@ public class VE_Force_2 extends ValidationError<Force> {
 
   @Override
   protected String getErrorMessage(Force force) {
-    return "Force variable group '" + force.getName().get() + "' contains variables with mixed data types";
+    return "Force variable group '" + force.getName().getId().get() + "' contains variables with mixed data types";
   }
 }

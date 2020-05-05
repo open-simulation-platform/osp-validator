@@ -23,9 +23,9 @@ public class VE_VariableConnection_1 extends ValidationError<VariableConnection>
 
   @Override
   protected String getErrorMessage(VariableConnection variableConnection) {
-    String variableA = variableConnection.getVariableA().getName().get();
+    String variableA = variableConnection.getVariableA().getName().getId().get();
     Variable.Type typeA = variableConnection.getVariableA().getType();
-    String variableB = variableConnection.getVariableB().getName().get();
+    String variableB = variableConnection.getVariableB().getName().getId().get();
     Variable.Type typeB = variableConnection.getVariableA().getType();
     return "VariableConnection [" + variableA + ", " + variableB + "] is invalid because they have different types " +
         "[" + typeA + ", " + typeB + "]";

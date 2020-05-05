@@ -21,6 +21,6 @@ public class VE_Volume_1 extends ValidationError<Volume> {
 
   @Override
   protected String getErrorMessage(Volume volume) {
-    return "Volume variable group '" + volume.getName().get() + "' contains variables with mixed causalities";
+    return "Volume variable group '" + volume.getName().getId().get() + "' contains variables with mixed causalities";
   }
 }

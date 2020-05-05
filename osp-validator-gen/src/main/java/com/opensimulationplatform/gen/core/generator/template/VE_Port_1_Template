@@ -21,9 +21,9 @@ public class $CLASS_NAME$ extends ValidationError<$CORE_MODEL_CLASS_NAME$> {
 
   @Override
   protected String getErrorMessage($CORE_MODEL_CLASS_NAME$ $CORE_MODEL_CLASS_NAME_CAMEL_CASE$) {
-     return "$CORE_MODEL_CLASS_NAME$ '" + $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.getName().get() + "' contains incompatible $EFFORT_CORE_MODEL_CLASS_NAME$(" +
-             $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.get$EFFORT_CORE_MODEL_CLASS_NAME$().getName().get() + ") and $FLOW_CORE_MODEL_CLASS_NAME$(" +
-             $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.get$FLOW_CORE_MODEL_CLASS_NAME$().getName().get() + "). " +
+     return "$CORE_MODEL_CLASS_NAME$ '" + $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.getName().getId().get() + "' contains incompatible $EFFORT_CORE_MODEL_CLASS_NAME$(" +
+             $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.get$EFFORT_CORE_MODEL_CLASS_NAME$().getName().getId().get() + ") and $FLOW_CORE_MODEL_CLASS_NAME$(" +
+             $CORE_MODEL_CLASS_NAME_CAMEL_CASE$.get$FLOW_CORE_MODEL_CLASS_NAME$().getName().getId().get() + "). " +
              "The variables in the $EFFORT_CORE_MODEL_CLASS_NAME$ variable group must have opposite causality of the variables in the $FLOW_CORE_MODEL_CLASS_NAME$ variable group";
   }
 }

@@ -21,6 +21,6 @@ public class VE_Pressure_3 extends ValidationError<Pressure> {
 
   @Override
   protected String getErrorMessage(Pressure pressure) {
-    return "Pressure variable group '" + pressure.getName().get() + "' contains variables with incompatible units";
+    return "Pressure variable group '" + pressure.getName().getId().get() + "' contains variables with incompatible units";
   }
 }

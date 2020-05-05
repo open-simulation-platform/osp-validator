@@ -21,6 +21,6 @@ public class VE_AngularDisplacement_1 extends ValidationError<AngularDisplacemen
 
   @Override
   protected String getErrorMessage(AngularDisplacement angularDisplacement) {
-    return "AngularDisplacement variable group '" + angularDisplacement.getName().get() + "' contains variables with mixed causalities";
+    return "AngularDisplacement variable group '" + angularDisplacement.getName().getId().get() + "' contains variables with mixed causalities";
   }
 }
