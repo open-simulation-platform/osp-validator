@@ -21,12 +21,12 @@ public class SystemStructureFactory {
     OspSystemStructureParser parser = new OspSystemStructureParser();
     OspSystemStructure ospSystemStructure = parser.parse(ospSystemStructureFile);
 
-    if (ospModelDescriptionLocator == null) {
-      ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
+    if (fmuLocator == null) {
+      fmuLocator = new DefaultFmuLocator(ospSystemStructureFile);
     }
 
-    if (fmuLocator == null) {
-      fmuLocator = new DefaultFmuLocator();
+    if (ospModelDescriptionLocator == null) {
+      ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
     }
 
     ConverterContext context = new ConverterContext();

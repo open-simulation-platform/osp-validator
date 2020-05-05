@@ -1,7 +1,7 @@
 <OspSystemStructure version="0.1" xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
   <Simulators>
-    <Simulator name="crane_controller" source="./src/test/resources/CraneController.fmu" stepSize="1.051732E7"/>
-    <Simulator name="knuckle_boom_crane" source="./src/test/resources/KnuckleBoomCrane.fmu" stepSize="1.051732E7"/>
+    <Simulator name="crane_controller" source="CraneController.fmu" stepSize="1.051732E7"/>
+    <Simulator name="knuckle_boom_crane" source="KnuckleBoomCrane.fmu" stepSize="1.051732E7"/>
   </Simulators>
   <Connections>
     <VariableConnection>

@@ -4,15 +4,15 @@
 	<BaseStepSize>0.04</BaseStepSize>
 	<Algorithm>fixedStep</Algorithm>
 	<Simulators>
-		<Simulator name="DP Controller" source="./src/test/resources/use-case-1/DPController.fmu" stepSize="0.0">
+		<Simulator name="DP Controller" source="DPController.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="Observer" source="./src/test/resources/use-case-1/NLPobserver.fmu" stepSize="0.0">
+		<Simulator name="Observer" source="NLPobserver.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="Reference Generator" source="./src/test/resources/use-case-1/ReferenceGenerator.fmu" stepSize="0.0">
+		<Simulator name="Reference Generator" source="ReferenceGenerator.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="Thrust Allocation" source="./src/test/resources/use-case-1/ThMPC.fmu" stepSize="0.0">
+		<Simulator name="Thrust Allocation" source="ThMPC.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="Ship" source="./src/test/resources/use-case-1/OSOM.fmu" stepSize="0.0">
+		<Simulator name="Ship" source="OSOM.fmu" stepSize="0.0">
 		</Simulator>
 	</Simulators>
 	<Connections>

@@ -31,6 +31,7 @@ public class ValidatorContextFactory {
     validatorContext.simulators = builderContext.simulators;
     validatorContext.variableConnections = builderContext.variableConnections;
     validatorContext.variableGroupConnections = builderContext.variableGroupConnections;
+    validatorContext.systemStructures = builderContext.systemStructures;
 
     return validatorContext;
   }

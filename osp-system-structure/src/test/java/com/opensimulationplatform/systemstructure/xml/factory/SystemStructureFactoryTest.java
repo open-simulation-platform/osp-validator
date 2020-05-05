@@ -7,7 +7,6 @@ import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
 import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnection;
 import com.opensimulationplatform.systemstructure.TestResources;
-import com.opensimulationplatform.systemstructure.util.MockFmuLocator;
 import org.junit.Test;
 
 import java.util.List;
@@ -18,7 +17,6 @@ public class SystemStructureFactoryTest {
   @Test
   public void canCreate() {
     SystemStructureFactory factory = new SystemStructureFactory();
-    factory.setFmuLocator(new MockFmuLocator());
     SystemStructure systemStructure = factory.create(TestResources.OSP_SYSTEM_STRUCTURE_CRANE);
 
     List<Simulator> simulators = systemStructure.getSimulators();

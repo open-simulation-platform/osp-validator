@@ -4,7 +4,6 @@ import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import com.opensimulationplatform.core.validation.systemstructure.SystemStructureValidator;
 import com.opensimulationplatform.systemstructure.TestResources;
-import com.opensimulationplatform.systemstructure.util.MockFmuLocator;
 import com.opensimulationplatform.systemstructure.xml.factory.SystemStructureFactory;
 import org.junit.Test;
 
@@ -16,7 +15,6 @@ public class UseCase2 {
   @Test
   public void works() {
     SystemStructureFactory factory = new SystemStructureFactory();
-    factory.setFmuLocator(new MockFmuLocator());
     SystemStructure systemStructure = factory.create(TestResources.OSP_SYSTEM_STRUCTURE_USE_CASE_2);
 
     SystemStructureValidator validator = new SystemStructureValidator();
