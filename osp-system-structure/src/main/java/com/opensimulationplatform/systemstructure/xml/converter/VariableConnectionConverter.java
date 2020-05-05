@@ -4,7 +4,7 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
 import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
 import com.opensimulationplatform.core.util.modeldescription.ModelDescriptionUtil;
-import com.opensimulationplatform.systemstructure.util.SystemStructureUtil;
+import com.opensimulationplatform.core.util.systemstructure.SystemStructureUtil;
 import com.opensimulationplatform.systemstructure.xml.model.Connections;
 import com.opensimulationplatform.systemstructure.xml.model.VariableEndpoint;
 
@@ -28,12 +28,12 @@ public class VariableConnectionConverter extends Converter<Connections.VariableC
     VariableEndpoint variableEndpointA = variableEndpoints.get(0);
     VariableEndpoint variableEndpointB = variableEndpoints.get(1);
 
-    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointA.getSimulator());
+    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointA.getSimulator()).get();
     Variable variableA = ModelDescriptionUtil.getVariableByName(simulatorA.getModelDescription(), variableEndpointA.getName());
     variableConnection.setSimulatorA(simulatorA);
     variableConnection.setVariableA(variableA);
 
-    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointB.getSimulator());
+    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointB.getSimulator()).get();
     Variable variableB = ModelDescriptionUtil.getVariableByName(simulatorB.getModelDescription(), variableEndpointB.getName());
     variableConnection.setSimulatorB(simulatorB);
     variableConnection.setVariableB(variableB);

@@ -23,7 +23,7 @@ public class PressureTypeConverter extends Converter<PressureType, Pressure> {
     pressure.setName(pressureType.getName());
 
     List<VariableType> variableTypes = pressureType.getVariable();
-    List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
+    List<Variable> variables = variableTypes.stream().map(context.variableTypeConverter::convert).collect(Collectors.toList());
     pressure.setVariables(variables);
 
     return pressure;

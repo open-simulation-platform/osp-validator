@@ -20,11 +20,11 @@ public class AngularMechanicalPortTypeConverter extends Converter<AngularMechani
   public AngularMechanicalPort convert(AngularMechanicalPortType angularMechanicalPortType) {
     AngularMechanicalPort angularMechanicalPort = new AngularMechanicalPort();
 
-    Torque torque = converterContext.torqueTypeConverter.convert(angularMechanicalPortType.getTorque());
-    AngularVelocity angularVelocity = converterContext.angularVelocityTypeConverter.convert(angularMechanicalPortType.getAngularVelocity());
+    Torque torque = context.torqueTypeConverter.convert(angularMechanicalPortType.getTorque());
+    AngularVelocity angularVelocity = context.angularVelocityTypeConverter.convert(angularMechanicalPortType.getAngularVelocity());
 
-    converterContext.modelDescription.getTorques().add(torque);
-    converterContext.modelDescription.getAngularVelocities().add(angularVelocity);
+    context.modelDescription.getTorques().add(torque);
+    context.modelDescription.getAngularVelocities().add(angularVelocity);
 
     angularMechanicalPort.setName(angularMechanicalPortType.getName());
     angularMechanicalPort.setTorque(torque);

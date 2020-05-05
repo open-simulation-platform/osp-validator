@@ -23,7 +23,7 @@ public class LinearDisplacementTypeConverter extends Converter<LinearDisplacemen
     linearDisplacement.setName(linearDisplacementType.getName());
 
     List<VariableType> variableTypes = linearDisplacementType.getVariable();
-    List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
+    List<Variable> variables = variableTypes.stream().map(context.variableTypeConverter::convert).collect(Collectors.toList());
     linearDisplacement.setVariables(variables);
 
     return linearDisplacement;

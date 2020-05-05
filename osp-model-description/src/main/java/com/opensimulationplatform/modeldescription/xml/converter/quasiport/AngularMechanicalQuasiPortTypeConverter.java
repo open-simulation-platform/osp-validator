@@ -20,11 +20,11 @@ public class AngularMechanicalQuasiPortTypeConverter extends Converter<AngularMe
   public AngularMechanicalQuasiPort convert(AngularMechanicalQuasiPortType angularMechanicalPortType) {
     AngularMechanicalQuasiPort angularMechanicalPort = new AngularMechanicalQuasiPort();
 
-    Torque torque = converterContext.torqueTypeConverter.convert(angularMechanicalPortType.getTorque());
-    AngularDisplacement angularDisplacement = converterContext.angularDisplacementTypeConverter.convert(angularMechanicalPortType.getAngularDisplacement());
+    Torque torque = context.torqueTypeConverter.convert(angularMechanicalPortType.getTorque());
+    AngularDisplacement angularDisplacement = context.angularDisplacementTypeConverter.convert(angularMechanicalPortType.getAngularDisplacement());
 
-    converterContext.modelDescription.getTorques().add(torque);
-    converterContext.modelDescription.getAngularDisplacements().add(angularDisplacement);
+    context.modelDescription.getTorques().add(torque);
+    context.modelDescription.getAngularDisplacements().add(angularDisplacement);
 
     angularMechanicalPort.setName(angularMechanicalPortType.getName());
     angularMechanicalPort.setTorque(torque);

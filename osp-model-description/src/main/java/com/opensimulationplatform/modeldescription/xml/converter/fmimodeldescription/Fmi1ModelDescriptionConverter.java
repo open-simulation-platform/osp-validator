@@ -27,7 +27,7 @@ public class Fmi1ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
       String causality = scalarVariable.getCausality();
       String variability = scalarVariable.getVariability();
       if ("continuous".equals(variability) && ("input".equals(causality) || "output".equals(causality))) {
-        variables.add(converterContext.fmi1ScalarVariableConverter.convert(scalarVariable));
+        variables.add(context.fmi1ScalarVariableConverter.convert(scalarVariable));
       }
     }
     fmd.setVariables(variables);

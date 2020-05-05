@@ -22,7 +22,7 @@ public class VolumeFlowRateTypeConverter extends Converter<VolumeFlowRateType, V
 
     volumeFlowRate.setName(volumeFlowRateType.getName());
     List<VariableType> variableTypes = volumeFlowRateType.getVariable();
-    List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
+    List<Variable> variables = variableTypes.stream().map(context.variableTypeConverter::convert).collect(Collectors.toList());
     volumeFlowRate.setVariables(variables);
 
     return volumeFlowRate;

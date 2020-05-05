@@ -27,7 +27,7 @@ public class VE_VariableConnection_1 extends ValidationError<VariableConnection>
     Variable.Type typeA = variableConnection.getVariableA().getType();
     String variableB = variableConnection.getVariableB().getName().get();
     Variable.Type typeB = variableConnection.getVariableA().getType();
-    return "Variable connection [" + variableA + ", " + variableB + "] is invalid because they have different types " +
+    return "VariableConnection [" + variableA + ", " + variableB + "] is invalid because they have different types " +
         "[" + typeA + ", " + typeB + "]";
   }
 }

@@ -34,7 +34,7 @@ public class VE_VariableConnection_3 extends ValidationError<VariableConnection>
     Unit unitB = variableB.getUnit();
     String unitBName = unitB.getName().get();
 
-    return "Variable connection [" + variableAName + ", " + variableBName + "] is invalid because they have incompatible " +
+    return "VariableConnection [" + variableAName + ", " + variableBName + "] is invalid because they have incompatible " +
         "units [" + unitAName + ", " + unitBName + "]";
   }
 }

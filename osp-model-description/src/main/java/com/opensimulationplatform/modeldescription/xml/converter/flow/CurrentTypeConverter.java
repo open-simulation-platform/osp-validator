@@ -22,7 +22,7 @@ public class CurrentTypeConverter extends Converter<CurrentType, Current> {
 
     current.setName(currentType.getName());
     List<VariableType> variableTypes = currentType.getVariable();
-    List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
+    List<Variable> variables = variableTypes.stream().map(context.variableTypeConverter::convert).collect(Collectors.toList());
     current.setVariables(variables);
 
     return current;

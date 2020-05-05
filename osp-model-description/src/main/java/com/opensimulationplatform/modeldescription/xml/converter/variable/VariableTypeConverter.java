@@ -18,9 +18,9 @@ public class VariableTypeConverter extends Converter<VariableType, Variable> {
 
   @Override
   public Variable convert(VariableType variableType) {
-    Variable variable = ModelDescriptionUtil.getVariableByName(converterContext.modelDescription, variableType.getRef());
+    Variable variable = ModelDescriptionUtil.getVariableByName(context.modelDescription, variableType.getRef());
 
-    Unit unit = ModelDescriptionUtil.getUnitByName(converterContext.modelDescription, variableType.getUnit());
+    Unit unit = ModelDescriptionUtil.getUnitByName(context.modelDescription, variableType.getUnit());
     if (unit != null && variable != null) {
       variable.setUnit(unit);
     }

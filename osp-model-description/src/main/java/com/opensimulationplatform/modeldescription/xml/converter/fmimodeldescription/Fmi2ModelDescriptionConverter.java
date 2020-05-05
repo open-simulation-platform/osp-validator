@@ -29,7 +29,7 @@ public class Fmi2ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
       String causality = scalarVariable.getCausality();
       String variability = scalarVariable.getVariability();
       if ("continuous".equals(variability) && ("input".equals(causality) || "output".equals(causality))) {
-        variables.add(converterContext.fmi2ScalarVariableConverter.convert(scalarVariable));
+        variables.add(context.fmi2ScalarVariableConverter.convert(scalarVariable));
       }
     }
     fmd.setVariables(variables);
@@ -37,7 +37,7 @@ public class Fmi2ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
     no.ntnu.ihb.fmi4j.modeldescription.fmi2.FmiModelDescription.UnitDefinitions unitDefinitions = fmiModelDescription.getUnitDefinitions();
     if (unitDefinitions != null) {
       List<Fmi2Unit> fmi2Units = unitDefinitions.getUnit();
-      List<Unit> units = converterContext.fmi2UnitConverter.convert(fmi2Units);
+      List<Unit> units = context.fmi2UnitConverter.convert(fmi2Units);
       fmd.setUnits(units);
     }
 

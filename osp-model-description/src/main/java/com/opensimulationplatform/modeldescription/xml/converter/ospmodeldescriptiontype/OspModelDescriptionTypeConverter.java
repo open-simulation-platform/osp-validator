@@ -45,9 +45,9 @@ public class OspModelDescriptionTypeConverter extends Converter<OspModelDescript
     try {
       String fmiVersion = ModelDescriptionParser.extractVersion(fmu.toURL());
       if ("1.0".equals(fmiVersion)) {
-        converterContext.fmiModelDescription = converterContext.fmi1ModelDescriptionConverter.convert(FmuHelper_Fmi1.getFmiModelDescription(fmu));
+        context.fmiModelDescription = context.fmi1ModelDescriptionConverter.convert(FmuHelper_Fmi1.getFmiModelDescription(fmu));
       } else if ("2.0".equals(fmiVersion)) {
-        converterContext.fmiModelDescription = converterContext.fmi2ModelDescriptionConverter.convert(FmuHelper_Fmi2.getFmiModelDescription(fmu));
+        context.fmiModelDescription = context.fmi2ModelDescriptionConverter.convert(FmuHelper_Fmi2.getFmiModelDescription(fmu));
       } else {
         throw new RuntimeException("fmiVersion " + fmiVersion + " not supported");
       }
@@ -58,102 +58,102 @@ public class OspModelDescriptionTypeConverter extends Converter<OspModelDescript
 
   @Override
   public ModelDescription convert(OspModelDescriptionType ospModelDescriptionType) {
-    ModelDescription modelDescription = converterContext.modelDescription;
+    ModelDescription modelDescription = context.modelDescription;
 
-    modelDescription.getVariables().addAll(converterContext.fmiModelDescription.getVariables());
-    modelDescription.getUnits().addAll(converterContext.fmiModelDescription.getUnits());
+    modelDescription.getVariables().addAll(context.fmiModelDescription.getVariables());
+    modelDescription.getUnits().addAll(context.fmiModelDescription.getUnits());
 
     UnitDefinitionsType unitDefinitions = ospModelDescriptionType.getUnitDefinitions();
     if (unitDefinitions != null) {
       List<UnitType> unitTypes = unitDefinitions.getUnit();
-      List<Unit> units = converterContext.unitTypeConverter.convert(unitTypes);
+      List<Unit> units = context.unitTypeConverter.convert(unitTypes);
       modelDescription.getUnits().addAll(units);
     }
 
     VariableGroupsType variableGroups = ospModelDescriptionType.getVariableGroups();
 
     List<GenericType> genericTypes = variableGroups.getGeneric();
-    List<Generic> generics = converterContext.genericTypeConverter.convert(genericTypes);
+    List<Generic> generics = context.genericTypeConverter.convert(genericTypes);
     modelDescription.getGenerics().addAll(generics);
 
     List<AngularDisplacementType> angularDisplacementTypes = variableGroups.getAngularDisplacement();
-    List<AngularDisplacement> angularDisplacements = converterContext.angularDisplacementTypeConverter.convert(angularDisplacementTypes);
+    List<AngularDisplacement> angularDisplacements = context.angularDisplacementTypeConverter.convert(angularDisplacementTypes);
     modelDescription.getAngularDisplacements().addAll(angularDisplacements);
 
     List<ChargeType> chargeTypes = variableGroups.getCharge();
-    List<Charge> charges = converterContext.chargeTypeConverter.convert(chargeTypes);
+    List<Charge> charges = context.chargeTypeConverter.convert(chargeTypes);
     modelDescription.getCharges().addAll(charges);
 
     List<LinearDisplacementType> linearDisplacementTypes = variableGroups.getLinearDisplacement();
-    List<LinearDisplacement> linearDisplacements = converterContext.linearDisplacementTypeConverter.convert(linearDisplacementTypes);
+    List<LinearDisplacement> linearDisplacements = context.linearDisplacementTypeConverter.convert(linearDisplacementTypes);
     modelDescription.getLinearDisplacements().addAll(linearDisplacements);
 
     List<VolumeType> volumeTypes = variableGroups.getVolume();
-    List<Volume> volumes = converterContext.volumeTypeConverter.convert(volumeTypes);
+    List<Volume> volumes = context.volumeTypeConverter.convert(volumeTypes);
     modelDescription.getVolumes().addAll(volumes);
 
     List<ForceType> forceTypes = variableGroups.getForce();
-    List<Force> forces = converterContext.forceTypeConverter.convert(forceTypes);
+    List<Force> forces = context.forceTypeConverter.convert(forceTypes);
     modelDescription.getForces().addAll(forces);
 
     List<PressureType> pressureTypes = variableGroups.getPressure();
-    List<Pressure> pressures = converterContext.pressureTypeConverter.convert(pressureTypes);
+    List<Pressure> pressures = context.pressureTypeConverter.convert(pressureTypes);
     modelDescription.getPressures().addAll(pressures);
 
     List<TorqueType> torqueTypes = variableGroups.getTorque();
-    List<Torque> torques = converterContext.torqueTypeConverter.convert(torqueTypes);
+    List<Torque> torques = context.torqueTypeConverter.convert(torqueTypes);
     modelDescription.getTorques().addAll(torques);
 
     List<VoltageType> voltageTypes = variableGroups.getVoltage();
-    List<Voltage> voltages = converterContext.voltageTypeConverter.convert(voltageTypes);
+    List<Voltage> voltages = context.voltageTypeConverter.convert(voltageTypes);
     modelDescription.getVoltages().addAll(voltages);
 
     List<AngularVelocityType> angularVelocityTypes = variableGroups.getAngularVelocity();
-    List<AngularVelocity> angularVelocities = converterContext.angularVelocityTypeConverter.convert(angularVelocityTypes);
+    List<AngularVelocity> angularVelocities = context.angularVelocityTypeConverter.convert(angularVelocityTypes);
     modelDescription.getAngularVelocities().addAll(angularVelocities);
 
     List<CurrentType> currentTypes = variableGroups.getCurrent();
-    List<Current> currents = converterContext.currentTypeConverter.convert(currentTypes);
+    List<Current> currents = context.currentTypeConverter.convert(currentTypes);
     modelDescription.getCurrents().addAll(currents);
 
     List<LinearVelocityType> linearVelocityTypes = variableGroups.getLinearVelocity();
-    List<LinearVelocity> linearVelocities = converterContext.linearVelocityTypeConverter.convert(linearVelocityTypes);
+    List<LinearVelocity> linearVelocities = context.linearVelocityTypeConverter.convert(linearVelocityTypes);
     modelDescription.getLinearVelocities().addAll(linearVelocities);
 
     List<VolumeFlowRateType> volumeFlowRateTypes = variableGroups.getVolumeFlowRate();
-    List<VolumeFlowRate> volumeFlowRates = converterContext.volumeFlowRateTypeConverter.convert(volumeFlowRateTypes);
+    List<VolumeFlowRate> volumeFlowRates = context.volumeFlowRateTypeConverter.convert(volumeFlowRateTypes);
     modelDescription.getVolumeFlowRates().addAll(volumeFlowRates);
 
     List<AngularMechanicalPortType> angularMechanicalPortTypes = variableGroups.getAngularMechanicalPort();
-    List<AngularMechanicalPort> angularMechanicalPorts = converterContext.angularMechanicalPortTypeConverter.convert(angularMechanicalPortTypes);
+    List<AngularMechanicalPort> angularMechanicalPorts = context.angularMechanicalPortTypeConverter.convert(angularMechanicalPortTypes);
     modelDescription.getAngularMechanicalPorts().addAll(angularMechanicalPorts);
 
     List<ElectromagneticPortType> electromagneticPortTypes = variableGroups.getElectromagneticPort();
-    List<ElectromagneticPort> electromagneticPorts = converterContext.electromagneticPortTypeConverter.convert(electromagneticPortTypes);
+    List<ElectromagneticPort> electromagneticPorts = context.electromagneticPortTypeConverter.convert(electromagneticPortTypes);
     modelDescription.getElectromagneticPorts().addAll(electromagneticPorts);
 
     List<HydraulicPortType> hydraulicPortTypes = variableGroups.getHydraulicPort();
-    List<HydraulicPort> hydraulicPorts = converterContext.hydraulicPortTypeConverter.convert(hydraulicPortTypes);
+    List<HydraulicPort> hydraulicPorts = context.hydraulicPortTypeConverter.convert(hydraulicPortTypes);
     modelDescription.getHydraulicPorts().addAll(hydraulicPorts);
 
     List<LinearMechanicalPortType> linearMechanicalPortTypes = variableGroups.getLinearMechanicalPort();
-    List<LinearMechanicalPort> linearMechanicalPorts = converterContext.linearMechanicalPortTypeConverter.convert(linearMechanicalPortTypes);
+    List<LinearMechanicalPort> linearMechanicalPorts = context.linearMechanicalPortTypeConverter.convert(linearMechanicalPortTypes);
     modelDescription.getLinearMechanicalPorts().addAll(linearMechanicalPorts);
 
     List<AngularMechanicalQuasiPortType> angularMechanicalQuasiPortTypes = variableGroups.getAngularMechanicalQuasiPort();
-    List<AngularMechanicalQuasiPort> angularMechanicalQuasiPorts = converterContext.angularMechanicalQuasiPortTypeConverter.convert(angularMechanicalQuasiPortTypes);
+    List<AngularMechanicalQuasiPort> angularMechanicalQuasiPorts = context.angularMechanicalQuasiPortTypeConverter.convert(angularMechanicalQuasiPortTypes);
     modelDescription.getAngularMechanicalQuasiPorts().addAll(angularMechanicalQuasiPorts);
 
     List<ElectromagneticQuasiPortType> electromagneticQuasiPortTypes = variableGroups.getElectromagneticQuasiPort();
-    List<ElectromagneticQuasiPort> electromagneticQuasiPorts = converterContext.electromagneticQuasiPortTypeConverter.convert(electromagneticQuasiPortTypes);
+    List<ElectromagneticQuasiPort> electromagneticQuasiPorts = context.electromagneticQuasiPortTypeConverter.convert(electromagneticQuasiPortTypes);
     modelDescription.getElectromagneticQuasiPorts().addAll(electromagneticQuasiPorts);
 
     List<HydraulicQuasiPortType> hydraulicQuasiPortTypes = variableGroups.getHydraulicQuasiPort();
-    List<HydraulicQuasiPort> hydraulicQuasiPorts = converterContext.hydraulicQuasiPortTypeConverter.convert(hydraulicQuasiPortTypes);
+    List<HydraulicQuasiPort> hydraulicQuasiPorts = context.hydraulicQuasiPortTypeConverter.convert(hydraulicQuasiPortTypes);
     modelDescription.getHydraulicQuasiPorts().addAll(hydraulicQuasiPorts);
 
     List<LinearMechanicalQuasiPortType> linearMechanicalQuasiPortTypes = variableGroups.getLinearMechanicalQuasiPort();
-    List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = converterContext.linearMechanicalQuasiPortTypeConverter.convert(linearMechanicalQuasiPortTypes);
+    List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = context.linearMechanicalQuasiPortTypeConverter.convert(linearMechanicalQuasiPortTypes);
     modelDescription.getLinearMechanicalQuasiPorts().addAll(linearMechanicalQuasiPorts);
 
     return modelDescription;

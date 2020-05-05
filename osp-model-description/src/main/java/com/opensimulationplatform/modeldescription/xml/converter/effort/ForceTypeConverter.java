@@ -23,11 +23,10 @@ public class ForceTypeConverter extends Converter<ForceType, Force> {
     force.setName(forceType.getName());
 
     List<VariableType> variableTypes = forceType.getVariable();
-    List<Variable> variables = variableTypes.stream().map(converterContext.variableTypeConverter::convert).collect(Collectors.toList());
+    List<Variable> variables = variableTypes.stream().map(context.variableTypeConverter::convert).collect(Collectors.toList());
     force.setVariables(variables);
 
     return force;
-
   }
 
   @Override

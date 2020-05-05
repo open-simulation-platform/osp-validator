@@ -20,11 +20,11 @@ public class ElectromagneticQuasiPortTypeConverter extends Converter<Electromagn
   public ElectromagneticQuasiPort convert(ElectromagneticQuasiPortType linearMechanicalPortType) {
     ElectromagneticQuasiPort linearMechanicalPort = new ElectromagneticQuasiPort();
 
-    Voltage voltage = converterContext.voltageTypeConverter.convert(linearMechanicalPortType.getVoltage());
-    Charge charge = converterContext.chargeTypeConverter.convert(linearMechanicalPortType.getCharge());
+    Voltage voltage = context.voltageTypeConverter.convert(linearMechanicalPortType.getVoltage());
+    Charge charge = context.chargeTypeConverter.convert(linearMechanicalPortType.getCharge());
 
-    converterContext.modelDescription.getVoltages().add(voltage);
-    converterContext.modelDescription.getCharges().add(charge);
+    context.modelDescription.getVoltages().add(voltage);
+    context.modelDescription.getCharges().add(charge);
 
     linearMechanicalPort.setName(linearMechanicalPortType.getName());
     linearMechanicalPort.setVoltage(voltage);

@@ -20,11 +20,11 @@ public class LinearMechanicalQuasiPortTypeConverter extends Converter<LinearMech
   public LinearMechanicalQuasiPort convert(LinearMechanicalQuasiPortType linearMechanicalPortType) {
     LinearMechanicalQuasiPort linearMechanicalPort = new LinearMechanicalQuasiPort();
 
-    Force force = converterContext.forceTypeConverter.convert(linearMechanicalPortType.getForce());
-    LinearDisplacement linearDisplacement = converterContext.linearDisplacementTypeConverter.convert(linearMechanicalPortType.getLinearDisplacement());
+    Force force = context.forceTypeConverter.convert(linearMechanicalPortType.getForce());
+    LinearDisplacement linearDisplacement = context.linearDisplacementTypeConverter.convert(linearMechanicalPortType.getLinearDisplacement());
 
-    converterContext.modelDescription.getForces().add(force);
-    converterContext.modelDescription.getLinearDisplacements().add(linearDisplacement);
+    context.modelDescription.getForces().add(force);
+    context.modelDescription.getLinearDisplacements().add(linearDisplacement);
 
     linearMechanicalPort.setName(linearMechanicalPortType.getName());
     linearMechanicalPort.setForce(force);

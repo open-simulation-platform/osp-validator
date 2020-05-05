@@ -4,7 +4,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.Vari
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
 import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnection;
 import com.opensimulationplatform.core.util.modeldescription.ModelDescriptionUtil;
-import com.opensimulationplatform.systemstructure.util.SystemStructureUtil;
+import com.opensimulationplatform.core.util.systemstructure.SystemStructureUtil;
 import com.opensimulationplatform.systemstructure.xml.model.Connections;
 import com.opensimulationplatform.systemstructure.xml.model.VariableEndpoint;
 
@@ -28,12 +28,12 @@ public class VariableGroupConnectionConverter extends Converter<Connections.Vari
     VariableEndpoint variableEndpointA = variableEndpoints.get(0);
     VariableEndpoint variableEndpointB = variableEndpoints.get(1);
 
-    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointA.getSimulator());
+    Simulator simulatorA = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointA.getSimulator()).get();
     VariableGroup variableGroupA = ModelDescriptionUtil.getVariableGroupByName(simulatorA.getModelDescription(), variableEndpointA.getName());
     variableGroupConnection.setSimulatorA(simulatorA);
     variableGroupConnection.setVariableGroupA(variableGroupA);
 
-    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointB.getSimulator());
+    Simulator simulatorB = SystemStructureUtil.getSimulatorByName(context.systemStructure, variableEndpointB.getSimulator()).get();
     VariableGroup variableGroupB = ModelDescriptionUtil.getVariableGroupByName(simulatorB.getModelDescription(), variableEndpointB.getName());
     variableGroupConnection.setSimulatorB(simulatorB);
     variableGroupConnection.setVariableGroupB(variableGroupB);

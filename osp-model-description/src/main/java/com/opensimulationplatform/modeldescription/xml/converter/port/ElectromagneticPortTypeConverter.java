@@ -20,11 +20,11 @@ public class ElectromagneticPortTypeConverter extends Converter<ElectromagneticP
   public ElectromagneticPort convert(ElectromagneticPortType electromagneticPortType) {
     ElectromagneticPort electromagneticPort = new ElectromagneticPort();
 
-    Voltage voltage = converterContext.voltageTypeConverter.convert(electromagneticPortType.getVoltage());
-    Current current = converterContext.currentTypeConverter.convert(electromagneticPortType.getCurrent());
+    Voltage voltage = context.voltageTypeConverter.convert(electromagneticPortType.getVoltage());
+    Current current = context.currentTypeConverter.convert(electromagneticPortType.getCurrent());
 
-    converterContext.modelDescription.getVoltages().add(voltage);
-    converterContext.modelDescription.getCurrents().add(current);
+    context.modelDescription.getVoltages().add(voltage);
+    context.modelDescription.getCurrents().add(current);
 
     electromagneticPort.setName(electromagneticPortType.getName());
     electromagneticPort.setVoltage(voltage);
