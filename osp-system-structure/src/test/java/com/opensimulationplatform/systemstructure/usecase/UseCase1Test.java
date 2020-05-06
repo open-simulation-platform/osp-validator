@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class UseCase1 {
+public class UseCase1Test {
   @Test
   public void works() {
     SystemStructureFactory factory = new SystemStructureFactory();
