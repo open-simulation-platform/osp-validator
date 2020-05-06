@@ -5,6 +5,7 @@ import com.opensimulationplatform.systemstructure.xml.model.Simulators;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URI;
+import java.util.Optional;
 
 public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLocator {
 
@@ -17,7 +18,7 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
   }
 
   @Override
-  public File get(Simulators.Simulator simulator) {
+  public Optional<File> get(Simulators.Simulator simulator) {
     try {
       URI uri = fmuLocator.get(simulator);
       if ("fmuproxy".equals(uri.getScheme())) {
@@ -25,7 +26,7 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
 
         File parallelToOspSystemStructure = new File(ospSystemStructureFile.getParent(), fmuName + "_OspModelDescription.xml");
         if (parallelToOspSystemStructure.exists()) {
-          return parallelToOspSystemStructure;
+          return Optional.of(parallelToOspSystemStructure);
         }
 
         throw new FileNotFoundException("Could not find OspModelDescription.xml. Tried " + parallelToOspSystemStructure.getAbsolutePath());
@@ -35,15 +36,15 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
 
         File parallelToFmu = new File(fmu.getParent(), fmuName + "_OspModelDescription.xml");
         if (parallelToFmu.exists()) {
-          return parallelToFmu;
+          return Optional.of(parallelToFmu);
         }
 
         File parallelToOspSystemStructure = new File(ospSystemStructureFile.getParent(), fmuName + "_OspModelDescription.xml");
         if (parallelToOspSystemStructure.exists()) {
-          return parallelToOspSystemStructure;
+          return Optional.of(parallelToOspSystemStructure);
         }
 
-        throw new FileNotFoundException("Could not find OspModelDescription.xml. Tried " + parallelToFmu.getAbsolutePath() + " and " + parallelToOspSystemStructure.getAbsolutePath());
+        return Optional.empty();
       } else {
         throw new RuntimeException("Unsupported URI schema: '" + uri.getScheme() + "' in URI: '" + uri + "' . Supported schemas are: [file, fmuproxy]");
       }

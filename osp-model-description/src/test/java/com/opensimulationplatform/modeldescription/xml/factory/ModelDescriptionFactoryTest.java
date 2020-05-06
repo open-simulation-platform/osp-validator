@@ -33,4 +33,13 @@ public class ModelDescriptionFactoryTest {
       assertTrue(variables.containsAll(generic.getVariables()));
     });
   }
+
+  @Test
+  public void canCreateWithoutOspModelDescriptionXml() {
+    ModelDescriptionFactory factory = new ModelDescriptionFactory();
+    ModelDescription converted = factory.create(TestResources.CRANE_CONTROLLER_FMU.toURI());
+
+    assertEquals(12, converted.getVariables().size());
+    assertEquals(0, converted.getVariableGroups().size());
+  }
 }

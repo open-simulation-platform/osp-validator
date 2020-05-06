@@ -8,6 +8,7 @@ import com.opensimulationplatform.systemstructure.xml.model.Simulators;
 import java.io.File;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class SimulatorConverter extends Converter<Simulators.Simulator, Simulator> {
@@ -27,10 +28,14 @@ public class SimulatorConverter extends Converter<Simulators.Simulator, Simulato
   }
 
   private ModelDescription getModelDescription(Simulators.Simulator simulatorElement) {
-    File ospModelDescriptionFile = context.ospModelDescriptionLocator.get(simulatorElement);
+    Optional<File> ospModelDescriptionFile = context.ospModelDescriptionLocator.get(simulatorElement);
     URI fmu = context.fmuLocator.get(simulatorElement);
     ModelDescriptionFactory factory = new ModelDescriptionFactory();
-    return factory.create(ospModelDescriptionFile, fmu);
+    if (ospModelDescriptionFile.isPresent()) {
+      return factory.create(ospModelDescriptionFile.get(), fmu);
+    } else {
+      return factory.create(fmu);
+    }
   }
 
   @Override

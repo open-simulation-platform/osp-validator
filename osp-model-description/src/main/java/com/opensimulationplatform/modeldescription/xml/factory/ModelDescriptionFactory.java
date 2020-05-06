@@ -15,4 +15,10 @@ public class ModelDescriptionFactory {
     OspModelDescriptionTypeConverter converter = new OspModelDescriptionTypeConverter(fmu);
     return converter.convert(ospModelDescriptionType);
   }
+
+  public ModelDescription create(URI fmu) {
+    OspModelDescriptionType ospModelDescriptionType = new OspModelDescriptionType();
+    OspModelDescriptionTypeConverter converter = new OspModelDescriptionTypeConverter(fmu);
+    return converter.convert(ospModelDescriptionType);
+  }
 }
