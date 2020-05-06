@@ -196,4 +196,12 @@ public class ModelDescriptionValidatorTest {
 
     assertTrue(diagnostics.isEmpty());
   }
+
+  @Test
+  public void emptyModelDescription() {
+    ModelDescription modelDescription = new ModelDescription();
+    ModelDescriptionValidator v = new ModelDescriptionValidator();
+    List<ValidationDiagnostic<Object>> diagnostics = v.validate(modelDescription);
+    assertTrue(diagnostics.isEmpty());
+  }
 }

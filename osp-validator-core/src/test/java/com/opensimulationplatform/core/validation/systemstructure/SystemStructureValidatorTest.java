@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SystemStructureValidatorTest {
   @Test
@@ -330,5 +331,13 @@ public class SystemStructureValidatorTest {
     modelDescription.getLinearMechanicalPorts().add(lmp1);
 
     return modelDescription;
+  }
+
+  @Test
+  public void emptySystemStructure() {
+    SystemStructure systemStructure = new SystemStructure();
+    SystemStructureValidator validator = new SystemStructureValidator();
+    List<ValidationDiagnostic<Object>> diagnostics = validator.validate(systemStructure);
+    assertTrue(diagnostics.isEmpty());
   }
 }
