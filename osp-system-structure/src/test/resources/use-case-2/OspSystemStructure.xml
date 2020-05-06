@@ -4,29 +4,29 @@
 	<BaseStepSize>0.1</BaseStepSize>
 	<Algorithm>fixedStep</Algorithm>
 	<Simulators>
-		<Simulator name="Clock" source="./src/test/resources/use-case-2/Clock.fmu" stepSize="0.0">
+		<Simulator name="Clock" source="Clock.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="InnerWall" source="./src/test/resources/use-case-2/InnerWall.fmu" stepSize="0.0">
+		<Simulator name="InnerWall" source="InnerWall.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="OuterWall1" source="./src/test/resources/use-case-2/OuterWall1.fmu" stepSize="0.0">
+		<Simulator name="OuterWall1" source="OuterWall1.fmu" stepSize="0.0">
 			<InitialValues>
 				<InitialValue variable="T_outside">
 					<Real value="5.3"/>					
 				</InitialValue>
 			</InitialValues>
 		</Simulator>
-		<Simulator name="OuterWall2" source="./src/test/resources/use-case-2/OuterWall2.fmu" stepSize="0.0">
+		<Simulator name="OuterWall2" source="OuterWall2.fmu" stepSize="0.0">
 			<InitialValues>
 				<InitialValue variable="T_outside">
 					<Real value="4.9"/>					
 				</InitialValue>
 			</InitialValues>
 		</Simulator>
-		<Simulator name="Room1" source="./src/test/resources/use-case-2/Room1.fmu" stepSize="0.0">
+		<Simulator name="Room1" source="Room1.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="Room2" source="./src/test/resources/use-case-2/Room2.fmu" stepSize="0.0">
+		<Simulator name="Room2" source="Room2.fmu" stepSize="0.0">
 		</Simulator>
-		<Simulator name="TempController" source="./src/test/resources/use-case-2/TempController.fmu" stepSize="0.0">
+		<Simulator name="TempController" source="TempController.fmu" stepSize="0.0">
 		</Simulator>
 	</Simulators>
 	<Connections>
