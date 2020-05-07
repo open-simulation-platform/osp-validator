@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://data.dnvgl.com/msmi/"
-     xml:base="http://data.dnvgl.com/msmi/"
+     xml:base="http://data.dnvgl.com/msmi"
      xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -273,6 +273,182 @@
     
 
 
+    <!-- http://data.dnvgl.com/msmi/VE_Simulator_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Simulator_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Simulator"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_Name_2"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Simulator"/>
+        <rdfs:comment>Class of simulators with non-unique names</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroup_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroup_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_Name_3"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroup"/>
+        <rdfs:comment>Class of VariableGroups with non-unique names</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/Causality -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Causality">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_causality_undefined"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/PredefinedType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/Connection -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Connection">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/DataType -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/DataType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_boolean"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_enum"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_integer"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_real"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_string"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_undefined"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/PredefinedType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/Name -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Name">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
+        <rdfs:comment xml:lang="en">Individuals of type &apos;Name&apos; must be set to be disjoint from all other individuals of type &apos;Name&apos;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/OSPSystemStructure -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/OSPSystemStructure">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_simulator"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/PredefinedType -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/PredefinedType">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
+        <owl:disjointWith rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/Simulator -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Simulator">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/Type -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Type"/>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/Unit -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Unit">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/dp_has_factor"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/dp_has_offset"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Individuals of type &apos;Unit&apos; must be set to be disjoint from all other individuals of type &apos;Unit&apos;.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://data.dnvgl.com/msmi/VE_AngularDisplacement -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularDisplacement">
@@ -367,7 +543,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_AngularMechanicalPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularMechanicalPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -391,7 +567,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_velocity"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -413,7 +589,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_velocity"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -439,7 +615,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_velocity"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -461,7 +637,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_velocity"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -495,7 +671,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_AngularMechanicalQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularMechanicalQuasiPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -519,7 +695,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_displacement"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -541,7 +717,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_displacement"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -567,7 +743,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_displacement"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -589,7 +765,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_displacement"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_torque"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -778,6 +954,54 @@
     
 
 
+    <!-- http://data.dnvgl.com/msmi/VE_Connection -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Connection">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Connection_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Connection_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Connection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
+        <rdfs:comment xml:lang="en">Class of connections with multiple LHSs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Connection_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Connection_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Connection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
+        <rdfs:comment xml:lang="en">Class of connections with multiple RHSs.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://data.dnvgl.com/msmi/VE_Current -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Current">
@@ -872,7 +1096,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_ElectromagneticPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_ElectromagneticPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -896,7 +1120,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_current"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -918,7 +1142,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_current"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -944,7 +1168,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_current"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -966,7 +1190,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_current"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -1000,7 +1224,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_ElectromagneticQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_ElectromagneticQuasiPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -1024,7 +1248,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_charge"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -1046,7 +1270,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_charge"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -1072,7 +1296,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_charge"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -1094,7 +1318,7 @@
                                                     </owl:Restriction>
                                                     <owl:Restriction>
                                                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_charge"/>
+                                                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
@@ -1211,7 +1435,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_HydraulicPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_HydraulicPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -1339,7 +1563,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_HydraulicQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_HydraulicQuasiPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -1550,7 +1774,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_LinearMechanicalPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearMechanicalPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -1678,7 +1902,7 @@
     <!-- http://data.dnvgl.com/msmi/VE_LinearMechanicalQuasiPort_1 -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearMechanicalQuasiPort_1">
-<owl:equivalentClass>
+        <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
@@ -1878,6 +2102,97 @@
     
 
 
+    <!-- http://data.dnvgl.com/msmi/VE_Name -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Name_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Name"/>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Variable"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Name"/>
+        <rdfs:comment xml:lang="en">VE_N_1: Class of names that are assigned to multiple variables. Several variables share the same name.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Name_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Name"/>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Simulator"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Name"/>
+        <rdfs:comment xml:lang="en">VE_N_2: Class of names that are assigned to multiple simulators. Several simulators share the same name.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Name_3 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name_3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Name"/>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Name"/>
+        <rdfs:comment xml:lang="en">VE_N_3: Class of names that are assigned to multiple variable groups. Several variable groups share the same name.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_OSPSystemStructure -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_OSPSystemStructure">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
     <!-- http://data.dnvgl.com/msmi/VE_Pressure -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Pressure">
@@ -1961,6 +2276,14 @@
     
 
 
+    <!-- http://data.dnvgl.com/msmi/VE_Simulator -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Simulator">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
     <!-- http://data.dnvgl.com/msmi/VE_Torque -->
 
     <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Torque">
@@ -2040,6 +2363,291 @@
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Torque"/>
         <rdfs:comment>All variables in variable group of type torque must have same unit</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Unit -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Unit">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Variable -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Variable">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+        <rdfs:comment xml:lang="en">It is assumed that variable instances are associated with values for the attributes name, causality, unit and datatype. Dedicated individuals representing undefined values for datatype and causality must be chosen if a value is not known. The validation error classes detect variable instances with multiple or incorrect values for an attibute or if attribute values are undefined.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_datatype"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
+        <rdfs:comment xml:lang="en">Class of variable connections whose LHS- and RHS-variables are of different datatypes.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                            </owl:Restriction>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
+                                            </owl:Restriction>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                            </owl:Restriction>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
+                                            </owl:Restriction>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
+        <rdfs:comment xml:lang="en">Class of variable connections whose LHS- and RHS-variables are of the same causality.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_3 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_unit"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
+        <rdfs:comment xml:lang="en">Class of variable connections whose LHS- and RHS-variables have different units.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_4 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_4">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_part"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_Variable"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
+        <rdfs:comment>Class of VariableConnections containing invalid Variables</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroup -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroup">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroupConnection -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroupConnection">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroupConnection_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroupConnection_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroupConnection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroupConnection"/>
+        <rdfs:comment>Class of variable group connections whose LHS- and RHS-variable groups do not have the same type.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroupConnection_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroupConnection_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroupConnection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_part"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroup"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroupConnection"/>
+        <rdfs:comment>Class of VariableGroupConnections containing invalid VariableGroups</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroupConnection_3 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroupConnection_3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroupConnection"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_part"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroupConnection"/>
+        <rdfs:comment>Class of VariableGroupConnections containing invalid VariableConnections</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_VariableGroup_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroup_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_Variable"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroup"/>
+        <rdfs:comment>Class of VariableGroups containing invalid Variables</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Variable_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Variable_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Variable"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_undefined"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Variable"/>
+        <rdfs:comment>Variable has undefined causality</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_Variable_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Variable_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Variable"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
+                        <owl:someValuesFrom rdf:resource="http://data.dnvgl.com/msmi/VE_Name_1"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Variable"/>
+        <rdfs:comment>Class of variables with non-unique names</rdfs:comment>
     </owl:Class>
     
 
@@ -2289,474 +2897,6 @@
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Volume"/>
         <rdfs:comment>All variables in variable group of type volume must have same unit</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/Causality -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Causality">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_causality_input"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_causality_output"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_causality_undefined"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/PredefinedType"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/Connection -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Connection">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/DataType -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/DataType">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_boolean"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_enum"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_integer"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_real"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_string"/>
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_datatype_undefined"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/PredefinedType"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/Name -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Name">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
-        <rdfs:comment xml:lang="en">Individuals of type &apos;Name&apos; must be set to be disjoint from all other individuals of type &apos;Name&apos;.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/OSPSystemStructure -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/OSPSystemStructure">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_simulator"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/PredefinedType -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/PredefinedType">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
-        <owl:disjointWith rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/Simulator -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Simulator">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/Type -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Type"/>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/Unit -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/Unit">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/dp_has_factor"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/dp_has_offset"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Individuals of type &apos;Unit&apos; must be set to be disjoint from all other individuals of type &apos;Unit&apos;.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Connection -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Connection">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Connection_1 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Connection_1">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Connection"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
-                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
-        <rdfs:comment xml:lang="en">Class of connections with multiple LHSs.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Connection_2 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Connection_2">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Connection"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
-                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
-        <rdfs:comment xml:lang="en">Class of connections with multiple RHSs.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Name -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Name_1 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name_1">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Name"/>
-                    <owl:Restriction>
-                        <owl:onProperty>
-                            <rdf:Description>
-                                <owl:inverseOf rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
-                            </rdf:Description>
-                        </owl:onProperty>
-                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Variable"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Name"/>
-        <rdfs:comment xml:lang="en">VE_N_1: Class of names that are assigned to multiple variables. Several variables share the same name.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Name_2 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name_2">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Name"/>
-                    <owl:Restriction>
-                        <owl:onProperty>
-                            <rdf:Description>
-                                <owl:inverseOf rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
-                            </rdf:Description>
-                        </owl:onProperty>
-                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Simulator"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Name"/>
-        <rdfs:comment xml:lang="en">VE_N_2: Class of names that are assigned to multiple simulators. Several simulators share the same name.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Name_3 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Name_3">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Name"/>
-                    <owl:Restriction>
-                        <owl:onProperty>
-                            <rdf:Description>
-                                <owl:inverseOf rdf:resource="http://data.dnvgl.com/msmi/op_has_name"/>
-                            </rdf:Description>
-                        </owl:onProperty>
-                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/VariableGroup"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Name"/>
-        <rdfs:comment xml:lang="en">VE_N_3: Class of names that are assigned to multiple variable groups. Several variable groups share the same name.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_OSPSystemStructure -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_OSPSystemStructure">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Simulator -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Simulator">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Unit -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Unit">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Variable -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Variable">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-        <rdfs:comment xml:lang="en">It is assumed that variable instances are associated with values for the attributes name, causality, unit and datatype. Dedicated individuals representing undefined values for datatype and causality must be chosen if a value is not known. The validation error classes detect variable instances with multiple or incorrect values for an attibute or if attribute values are undefined.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_1 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_1">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_datatype"/>
-                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
-        <rdfs:comment xml:lang="en">Class of variable connections whose LHS- and RHS-variables are of different datatypes.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_2 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_2">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Restriction>
-                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
-                                            </owl:Restriction>
-                                        </owl:someValuesFrom>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Restriction>
-                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_input"/>
-                                            </owl:Restriction>
-                                        </owl:someValuesFrom>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_lhs"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Restriction>
-                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
-                                            </owl:Restriction>
-                                        </owl:someValuesFrom>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_rhs"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Restriction>
-                                                <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                                                <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_output"/>
-                                            </owl:Restriction>
-                                        </owl:someValuesFrom>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
-        <rdfs:comment xml:lang="en">Class of variable connections whose LHS- and RHS-variables are of the same causality.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableConnection_3 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableConnection_3">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableConnection"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_unit"/>
-                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableConnection"/>
-        <rdfs:comment xml:lang="en">Class of variable connections whose LHS- and RHS-variables have different units.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableGroup -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroup">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/ValidationError"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableGroupConnection -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroupConnection">
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Connection"/>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_VariableGroupConnection_1 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_VariableGroupConnection_1">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroupConnection"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroupConnection"/>
-        <rdfs:comment>Class of variable group connections whose LHS- and RHS-variable groups do not have the same type.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://data.dnvgl.com/msmi/VE_Variable_1 -->
-
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_Variable_1">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/Variable"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
-                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_causality_undefined"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Variable"/>
-        <rdfs:comment>Variable has undefined causality</rdfs:comment>
     </owl:Class>
     
 

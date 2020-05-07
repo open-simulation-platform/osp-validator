@@ -29,8 +29,11 @@ public class OntologyClasses {
   public static final String VE_Pressure_3 = "VE_Pressure_3";
   public static final String VE_Pressure_2 = "VE_Pressure_2";
   public static final String VE_VariableGroupConnection_1 = "VE_VariableGroupConnection_1";
+  public static final String VE_VariableGroupConnection_3 = "VE_VariableGroupConnection_3";
+  public static final String VE_VariableGroupConnection_2 = "VE_VariableGroupConnection_2";
   public static final String VariableGroup = "VariableGroup";
   public static final String VE_ElectromagneticPort = "VE_ElectromagneticPort";
+  public static final String VE_Simulator_1 = "VE_Simulator_1";
   public static final String VE_Connection_1 = "VE_Connection_1";
   public static final String VE_Connection_2 = "VE_Connection_2";
   public static final String VE_Unit = "VE_Unit";
@@ -72,13 +75,16 @@ public class OntologyClasses {
   public static final String VE_VariableConnection_2 = "VE_VariableConnection_2";
   public static final String VE_ElectromagneticQuasiPort_1 = "VE_ElectromagneticQuasiPort_1";
   public static final String VE_VariableConnection_1 = "VE_VariableConnection_1";
+  public static final String VE_VariableConnection_4 = "VE_VariableConnection_4";
   public static final String VE_VariableConnection_3 = "VE_VariableConnection_3";
   public static final String VE_VariableConnection = "VE_VariableConnection";
   public static final String VE_Force_1 = "VE_Force_1";
   public static final String VE_Force_2 = "VE_Force_2";
   public static final String VE_Force_3 = "VE_Force_3";
   public static final String VE_ElectromagneticPort_1 = "VE_ElectromagneticPort_1";
+  public static final String VE_VariableGroup_1 = "VE_VariableGroup_1";
   public static final String VE_VolumeFlowRate = "VE_VolumeFlowRate";
+  public static final String VE_VariableGroup_2 = "VE_VariableGroup_2";
   public static final String VE_Simulator = "VE_Simulator";
   public static final String Causality = "Causality";
   public static final String Simulator = "Simulator";
@@ -99,6 +105,7 @@ public class OntologyClasses {
   public static final String VE_Variable_1 = "VE_Variable_1";
   public static final String VE_Name_1 = "VE_Name_1";
   public static final String VE_VolumeFlowRate_3 = "VE_VolumeFlowRate_3";
+  public static final String VE_Variable_2 = "VE_Variable_2";
   public static final String OSPSystemStructure = "OSPSystemStructure";
   public static final String VE_LinearMechanicalQuasiPort = "VE_LinearMechanicalQuasiPort";
   
