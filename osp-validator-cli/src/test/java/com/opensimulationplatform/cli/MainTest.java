@@ -16,8 +16,8 @@ public class MainTest {
   }
 
   @Test
-  public void systemExitIfMissingInputArguments() {
-    exit.expectSystemExitWithStatus(-1);
-    Main.main(new String[]{});
+  public void getVersion() {
+    exit.expectSystemExitWithStatus(0);
+    Main.main(new String[]{"-v"});
   }
 }

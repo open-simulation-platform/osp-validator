@@ -22,7 +22,7 @@
       </Force>
       <LinearVelocity name="linear_velocity">
         <Variable ref="p_Crane.f[1]" unit="a"/>
-        <Variable ref="p_Crane.f[2]" unit="a"/>
+        <Variable ref="p_Crane.f[2]" unit="b"/>
         <Variable ref="p_Crane.f[3]" unit="a"/>
       </LinearVelocity>
     </LinearMechanicalPort>

@@ -2,6 +2,7 @@ package com.opensimulationplatform.cli;
 
 import com.opensimulationplatform.cli.terminator.ExitCode;
 import com.opensimulationplatform.cli.terminator.Terminator;
+import com.opensimulationplatform.cli.version.Version;
 import org.apache.commons.cli.*;
 
 import java.io.File;
@@ -15,16 +16,23 @@ public class Main {
         .longOpt("osp_system_structure")
         .argName("osp_system_structure")
         .desc("Path to OspSystemStructure.xml")
-        .required()
         .hasArg()
         .build();
 
+  Option version = Option.builder("v")
+      .longOpt("version")
+      .argName("version")
+      .desc("cli version")
+      .build();
+
     options.addOption(ospSystemStructureOption);
+    options.addOption(version);
 
     CommandLineParser parser = new DefaultParser();
 
     try {
       CommandLine commandLine = parser.parse(options, args);
+
       if (commandLine.hasOption(ospSystemStructureOption.getOpt())) {
         String optionValue = commandLine.getOptionValue(ospSystemStructureOption.getOpt());
         File ospSystemStructureFile = new File(optionValue);
@@ -33,6 +41,10 @@ public class Main {
         for (String errorMessage : errorMessages) {
           System.out.println(errorMessage);
         }
+      }
+
+      if (commandLine.hasOption(version.getOpt())) {
+        System.out.println(Version.getVersionInfo());
       }
 
       Terminator.exit(new ExitCode(0, ""));
