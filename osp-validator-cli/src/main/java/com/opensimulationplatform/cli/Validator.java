@@ -72,107 +72,113 @@ public class Validator {
     for (Simulators.Simulator simulator : ospSystemStructureElement.getSimulators().getSimulator()) {
       FmuLocator fmuLocator = new DefaultFmuLocator(ospSystemStructureFile);
       OspModelDescriptionLocator ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
-      File ospModelDescriptionXml = ospModelDescriptionLocator.get(simulator);
-      OspModelDescriptionParser parser = new OspModelDescriptionParser();
-      OspModelDescriptionType ospModelDescriptionElement = parser.parse(ospModelDescriptionXml);
-      locations.putAll(parser.getLocations());
+      Optional<File> ospModelDescriptionXml = ospModelDescriptionLocator.get(simulator);
 
-      ModelDescriptionFactory factory = new ModelDescriptionFactory();
-      ModelDescription modelDescription = factory.create(ospModelDescriptionXml, fmuLocator.get(simulator));
+      ModelDescription modelDescription;
+      OspModelDescriptionType ospModelDescriptionElement;
+      if (ospModelDescriptionXml.isPresent()) {
+        OspModelDescriptionParser parser = new OspModelDescriptionParser();
+        ospModelDescriptionElement = parser.parse(ospModelDescriptionXml.get());
+        locations.putAll(parser.getLocations());
 
-      ModelDescriptionValidator validator = new ModelDescriptionValidator();
-      diagnostics.addAll(validator.validate(modelDescription));
+        ModelDescriptionFactory factory = new ModelDescriptionFactory();
+        modelDescription = factory.create(ospModelDescriptionXml.get(), fmuLocator.get(simulator));
+        ModelDescriptionValidator validator = new ModelDescriptionValidator();
+        diagnostics.addAll(validator.validate(modelDescription));
 
-      map.putAll(createModelDescriptionMap(ospModelDescriptionElement, modelDescription));
+        map.putAll(createModelDescriptionMap(ospModelDescriptionElement, modelDescription));
+      }
     }
   }
 
   private Map<Object, Object> createModelDescriptionMap(OspModelDescriptionType ospModelDescriptionElement, ModelDescription modelDescription) {
     Map<Object, Object> map = new HashMap<>();
 
+    VariableGroupsType variableGroups = ospModelDescriptionElement.getVariableGroups();
+    if (variableGroups != null) {
+      for (AngularDisplacementType element : variableGroups.getAngularDisplacement()) {
+        addAngularDisplacement(modelDescription, map, element);
+      }
 
-    for (AngularDisplacementType element : ospModelDescriptionElement.getVariableGroups().getAngularDisplacement()) {
-      addAngularDisplacement(modelDescription, map, element);
-    }
+      for (AngularMechanicalPortType element : variableGroups.getAngularMechanicalPort()) {
+        addAngularMechanicalPort(modelDescription, map, element);
+      }
 
-    for (AngularMechanicalPortType element : ospModelDescriptionElement.getVariableGroups().getAngularMechanicalPort()) {
-      addAngularMechanicalPort(modelDescription, map, element);
-    }
+      for (AngularMechanicalQuasiPortType element : variableGroups.getAngularMechanicalQuasiPort()) {
+        addAngularMechanicalQuasiPort(modelDescription, map, element);
+      }
 
-    for (AngularMechanicalQuasiPortType element : ospModelDescriptionElement.getVariableGroups().getAngularMechanicalQuasiPort()) {
-      addAngularMechanicalQuasiPort(modelDescription, map, element);
-    }
+      for (AngularVelocityType element : variableGroups.getAngularVelocity()) {
+        addAngularVelocity(modelDescription, map, element);
+      }
 
-    for (AngularVelocityType element : ospModelDescriptionElement.getVariableGroups().getAngularVelocity()) {
-      addAngularVelocity(modelDescription, map, element);
-    }
+      for (ChargeType element : variableGroups.getCharge()) {
+        addCharge(modelDescription, map, element);
+      }
 
-    for (ChargeType element : ospModelDescriptionElement.getVariableGroups().getCharge()) {
-      addCharge(modelDescription, map, element);
-    }
+      for (CurrentType element : variableGroups.getCurrent()) {
+        addCurrent(modelDescription, map, element);
+      }
 
-    for (CurrentType element : ospModelDescriptionElement.getVariableGroups().getCurrent()) {
-      addCurrent(modelDescription, map, element);
-    }
+      for (ElectromagneticPortType element : variableGroups.getElectromagneticPort()) {
+        addElectromagneticPort(modelDescription, map, element);
+      }
 
-    for (ElectromagneticPortType element : ospModelDescriptionElement.getVariableGroups().getElectromagneticPort()) {
-      addElectromagneticPort(modelDescription, map, element);
-    }
+      for (ElectromagneticQuasiPortType element : variableGroups.getElectromagneticQuasiPort()) {
+        addElectromagneticQuasiPort(modelDescription, map, element);
+      }
 
-    for (ElectromagneticQuasiPortType element : ospModelDescriptionElement.getVariableGroups().getElectromagneticQuasiPort()) {
-      addElectromagneticQuasiPort(modelDescription, map, element);
-    }
+      for (ForceType element : variableGroups.getForce()) {
+        addForce(modelDescription, map, element);
+      }
 
-    for (ForceType element : ospModelDescriptionElement.getVariableGroups().getForce()) {
-      addForce(modelDescription, map, element);
-    }
+      for (HydraulicPortType element : variableGroups.getHydraulicPort()) {
+        addHydraulicPort(modelDescription, map, element);
+      }
 
-    for (HydraulicPortType element : ospModelDescriptionElement.getVariableGroups().getHydraulicPort()) {
-      addHydraulicPort(modelDescription, map, element);
-    }
+      for (HydraulicQuasiPortType element : variableGroups.getHydraulicQuasiPort()) {
+        addHydraulicQuasiPort(modelDescription, map, element);
+      }
 
-    for (HydraulicQuasiPortType element : ospModelDescriptionElement.getVariableGroups().getHydraulicQuasiPort()) {
-      addHydraulicQuasiPort(modelDescription, map, element);
-    }
+      for (LinearDisplacementType element : variableGroups.getLinearDisplacement()) {
+        addLinearDisplacement(modelDescription, map, element);
+      }
 
-    for (LinearDisplacementType element : ospModelDescriptionElement.getVariableGroups().getLinearDisplacement()) {
-      addLinearDisplacement(modelDescription, map, element);
-    }
+      for (LinearMechanicalPortType element : variableGroups.getLinearMechanicalPort()) {
+        addLinearMechanicalPort(modelDescription, map, element);
+      }
 
-    for (LinearMechanicalPortType element : ospModelDescriptionElement.getVariableGroups().getLinearMechanicalPort()) {
-      addLinearMechanicalPort(modelDescription, map, element);
-    }
+      for (LinearMechanicalQuasiPortType element : variableGroups.getLinearMechanicalQuasiPort()) {
+        addLinearMechanicalQuasiPort(modelDescription, map, element);
+      }
 
-    for (LinearMechanicalQuasiPortType element : ospModelDescriptionElement.getVariableGroups().getLinearMechanicalQuasiPort()) {
-      addLinearMechanicalQuasiPort(modelDescription, map, element);
-    }
+      for (LinearVelocityType element : variableGroups.getLinearVelocity()) {
+        addLinearVelocity(modelDescription, map, element);
+      }
 
-    for (LinearVelocityType element : ospModelDescriptionElement.getVariableGroups().getLinearVelocity()) {
-      addLinearVelocity(modelDescription, map, element);
-    }
+      for (PressureType element : variableGroups.getPressure()) {
+        addPressure(modelDescription, map, element);
+      }
 
-    for (PressureType element : ospModelDescriptionElement.getVariableGroups().getPressure()) {
-      addPressure(modelDescription, map, element);
-    }
+      for (TorqueType element : variableGroups.getTorque()) {
+        addTorque(modelDescription, map, element);
+      }
 
-    for (TorqueType element : ospModelDescriptionElement.getVariableGroups().getTorque()) {
-      addTorque(modelDescription, map, element);
-    }
+      for (VoltageType element : variableGroups.getVoltage()) {
+        addVoltage(modelDescription, map, element);
+      }
 
-    for (VoltageType element : ospModelDescriptionElement.getVariableGroups().getVoltage()) {
-      addVoltage(modelDescription, map, element);
-    }
+      for (VolumeType element : variableGroups.getVolume()) {
+        addVolume(modelDescription, map, element);
+      }
 
-    for (VolumeType element : ospModelDescriptionElement.getVariableGroups().getVolume()) {
-      addVolume(modelDescription, map, element);
-    }
+      for (VolumeFlowRateType element : variableGroups.getVolumeFlowRate()) {
+        addVolumeFlowRate(modelDescription, map, element);
+      }
 
-    for (VolumeFlowRateType element : ospModelDescriptionElement.getVariableGroups().getVolumeFlowRate()) {
-      addVolumeFlowRate(modelDescription, map, element);
-    }
-
-    for (GenericType element : ospModelDescriptionElement.getVariableGroups().getGeneric()) {
-      addGeneric(modelDescription, map, element);
+      for (GenericType element : variableGroups.getGeneric()) {
+        addGeneric(modelDescription, map, element);
+      }
     }
 
     return map;
