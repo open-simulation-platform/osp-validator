@@ -1,4 +1,4 @@
-package com.opensimulationplatform.core.validation.variablegroup.general;
+package com.opensimulationplatform.core.validation.variablegroup;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.validation.ValidationError;

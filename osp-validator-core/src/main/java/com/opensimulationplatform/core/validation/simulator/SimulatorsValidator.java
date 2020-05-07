@@ -10,6 +10,8 @@ import java.util.List;
 public class SimulatorsValidator extends Validator<Object> {
   private final ModelDescriptionValidator modelDescriptionValidator = new ModelDescriptionValidator();
 
+  private final VE_Simulator_1 ve_simulator_1 = new VE_Simulator_1();
+
   @Override
   protected List<Validator<?>> getValidators() {
     return Arrays.asList(modelDescriptionValidator);
@@ -17,6 +19,6 @@ public class SimulatorsValidator extends Validator<Object> {
 
   @Override
   protected List<ValidationError<?>> getValidationErrors() {
-    return null;
+    return Arrays.asList(ve_simulator_1);
   }
 }

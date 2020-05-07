@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class VariableGroupsValidator extends Validator<VariableGroup> {
-
   private final AngularDisplacementValidator angularDisplacementValidator = new AngularDisplacementValidator();
   private final AngularVelocityValidator angularVelocityValidator = new AngularVelocityValidator();
   private final ChargeValidator chargeValidator = new ChargeValidator();
@@ -49,6 +48,10 @@ public class VariableGroupsValidator extends Validator<VariableGroup> {
   private final AngularMechanicalQuasiPortValidator angularMechanicalQuasiPortValidator = new AngularMechanicalQuasiPortValidator();
   private final ElectromagneticQuasiPortValidator electromagneticQuasiPortValidator = new ElectromagneticQuasiPortValidator();
   private final HydraulicQuasiPortValidator hydraulicQuasiPortValidator = new HydraulicQuasiPortValidator();
+
+  private final VE_VariableGroup_1 ve_variableGroup_1 = new VE_VariableGroup_1();
+  private final VE_VariableGroup_2 ve_variableGroup_2 = new VE_VariableGroup_2();
+  private final VE_VariableGroup_3 ve_variableGroup_3 = new VE_VariableGroup_3();
 
   @Override
   protected List<Validator<?>> getValidators() {
@@ -78,6 +81,10 @@ public class VariableGroupsValidator extends Validator<VariableGroup> {
 
   @Override
   protected List<ValidationError<?>> getValidationErrors() {
-    return null;
+    return Arrays.asList(
+        ve_variableGroup_1,
+        ve_variableGroup_2,
+        ve_variableGroup_3
+    );
   }
 }

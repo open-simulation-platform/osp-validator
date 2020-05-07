@@ -8,6 +8,7 @@ import com.opensimulationplatform.core.owlbuilder.VariableGroupOwlBuilder;
 import com.opensimulationplatform.core.owlconfig.OWLConfig;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import com.opensimulationplatform.core.validation.ValidationErrorContext;
+import com.opensimulationplatform.core.validation.variablegroup.VE_VariableGroup_1;
 import org.junit.Before;
 import org.junit.Test;
 
