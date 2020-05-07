@@ -24,6 +24,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.volu
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volumeflowrate.VolumeFlowRate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Generic extends VariableGroup {
@@ -86,7 +87,7 @@ public class Generic extends VariableGroup {
     variableGroups.addAll(hydraulicQuasiPorts);
     variableGroups.addAll(linearMechanicalQuasiPorts);
 
-    return variableGroups;
+    return Collections.unmodifiableList(variableGroups);
   }
 
   public List<Generic> getGenerics() {

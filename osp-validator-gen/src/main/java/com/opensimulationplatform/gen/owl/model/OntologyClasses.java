@@ -34,8 +34,6 @@ public class OntologyClasses {
   public static final String VariableGroup = "VariableGroup";
   public static final String VE_ElectromagneticPort = "VE_ElectromagneticPort";
   public static final String VE_Simulator_1 = "VE_Simulator_1";
-  public static final String VE_Connection_1 = "VE_Connection_1";
-  public static final String VE_Connection_2 = "VE_Connection_2";
   public static final String VE_Unit = "VE_Unit";
   public static final String VE_Name = "VE_Name";
   public static final String VE_Variable = "VE_Variable";
@@ -84,6 +82,7 @@ public class OntologyClasses {
   public static final String VE_ElectromagneticPort_1 = "VE_ElectromagneticPort_1";
   public static final String VE_VariableGroup_1 = "VE_VariableGroup_1";
   public static final String VE_VolumeFlowRate = "VE_VolumeFlowRate";
+  public static final String VE_VariableGroup_3 = "VE_VariableGroup_3";
   public static final String VE_VariableGroup_2 = "VE_VariableGroup_2";
   public static final String VE_Simulator = "VE_Simulator";
   public static final String Causality = "Causality";
