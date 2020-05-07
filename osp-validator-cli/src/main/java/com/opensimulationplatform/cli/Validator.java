@@ -32,63 +32,78 @@ import java.util.*;
 
 public class Validator {
   public List<String> validate(File ospSystemStructureFile) {
-    Map<Object, Object> coreToJaxb = new HashMap<>();
-    Map<Object, Location> locations = new HashMap<>();
-    List<ValidationDiagnostic<Object>> diagnostics = new ArrayList<>();
+    List<String> errorMessages = new ArrayList<>();
 
     OspSystemStructureParser parser = new OspSystemStructureParser();
     OspSystemStructure ospSystemStructureElement = parser.parse(ospSystemStructureFile);
-    locations.putAll(parser.getLocations());
+    Map<Object, Location> locations = parser.getLocations();
 
-    addModelDescriptionStuff(ospSystemStructureFile, ospSystemStructureElement, coreToJaxb, locations, diagnostics);
-    addSystemStructureStuff(ospSystemStructureFile, coreToJaxb, diagnostics, ospSystemStructureElement);
+    errorMessages.addAll(getModelDescriptionErrorMessages(ospSystemStructureFile, ospSystemStructureElement));
+    errorMessages.addAll(getSystemStructureErrorMessages(ospSystemStructureFile, ospSystemStructureElement, locations));
 
+    return errorMessages;
+  }
+
+  private List<String> getSystemStructureErrorMessages(File ospSystemStructureFile, OspSystemStructure ospSystemStructureElement, Map<Object, Location> locations) {
+    SystemStructureFactory factory = new SystemStructureFactory();
+    SystemStructure systemStructure = factory.create(ospSystemStructureFile);
+
+    SystemStructureValidator validator = new SystemStructureValidator();
+    List<ValidationDiagnostic<Object>> diagnostics = validator.validate(systemStructure);
+
+    Map<Object, Object> coreToJaxb = createSystemStructureMap(systemStructure, ospSystemStructureElement);
+
+    return getErrorMessages(ospSystemStructureFile, locations, diagnostics, coreToJaxb);
+  }
+
+  private List<String> getModelDescriptionErrorMessages(File ospSystemStructureFile, OspSystemStructure ospSystemStructureElement) {
     List<String> errorMessages = new ArrayList<>();
-    for (ValidationDiagnostic<Object> diagnostic : diagnostics) {
-      Object coreObject = diagnostic.getValidatedObject();
-      Object jaxbObject = coreToJaxb.get(coreObject);
-      if (jaxbObject != null) {
-        Location location = locations.get(jaxbObject);
-        errorMessages.add("Validation error on line " + location.getLineNumber() + ": " + diagnostic.getErrorMessage());
-      } else {
-        errorMessages.add("Validation error: " + diagnostic.getErrorMessage());
+
+    for (Simulators.Simulator simulator : ospSystemStructureElement.getSimulators().getSimulator()) {
+      FmuLocator fmuLocator = new DefaultFmuLocator(ospSystemStructureFile);
+      OspModelDescriptionLocator ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
+      Optional<File> ospModelDescriptionXml = ospModelDescriptionLocator.get(simulator);
+
+      OspModelDescriptionType ospModelDescriptionElement;
+      if (ospModelDescriptionXml.isPresent()) {
+        OspModelDescriptionParser parser = new OspModelDescriptionParser();
+        ospModelDescriptionElement = parser.parse(ospModelDescriptionXml.get());
+        Map<Object, Location> locations = parser.getLocations();
+
+        ModelDescriptionFactory factory = new ModelDescriptionFactory();
+        ModelDescription modelDescription = factory.create(ospModelDescriptionXml.get(), fmuLocator.get(simulator));
+        Simulator s = new Simulator();
+        s.setName(simulator.getName());
+        s.setModelDescription(modelDescription);
+        SystemStructure systemStructure = new SystemStructure();
+        systemStructure.getSimulators().add(s);
+        ModelDescriptionValidator validator = new ModelDescriptionValidator();
+        List<ValidationDiagnostic<Object>> diagnostics = validator.validate(systemStructure);
+
+        Map<Object, Object> coreToJaxb = createModelDescriptionMap(ospModelDescriptionElement, modelDescription);
+
+        errorMessages.addAll(getErrorMessages(ospModelDescriptionXml.get(), locations, diagnostics, coreToJaxb));
       }
     }
 
     return errorMessages;
   }
 
-  private void addSystemStructureStuff(File ospSystemStructureFile, Map<Object, Object> coreToJaxb, List<ValidationDiagnostic<Object>> diagnostics, OspSystemStructure ospSystemStructureElement) {
-    SystemStructureFactory factory = new SystemStructureFactory();
-    SystemStructure systemStructure = factory.create(ospSystemStructureFile);
+  private List<String> getErrorMessages(File file, Map<Object, Location> locations, List<ValidationDiagnostic<Object>> diagnostics, Map<Object, Object> coreToJaxb) {
+    List<String> errorMessages = new ArrayList<>();
 
-    SystemStructureValidator validator = new SystemStructureValidator();
-    diagnostics.addAll(validator.validate(systemStructure));
-
-    addSystemStructureObjects(systemStructure, ospSystemStructureElement, coreToJaxb);
-  }
-
-  private void addModelDescriptionStuff(File ospSystemStructureFile, OspSystemStructure ospSystemStructureElement, Map<Object, Object> map, Map<Object, Location> locations, List<ValidationDiagnostic<Object>> diagnostics) {
-    for (Simulators.Simulator simulator : ospSystemStructureElement.getSimulators().getSimulator()) {
-      FmuLocator fmuLocator = new DefaultFmuLocator(ospSystemStructureFile);
-      OspModelDescriptionLocator ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
-      Optional<File> ospModelDescriptionXml = ospModelDescriptionLocator.get(simulator);
-
-      ModelDescription modelDescription;
-      OspModelDescriptionType ospModelDescriptionElement;
-      if (ospModelDescriptionXml.isPresent()) {
-        OspModelDescriptionParser parser = new OspModelDescriptionParser();
-        ospModelDescriptionElement = parser.parse(ospModelDescriptionXml.get());
-        locations.putAll(parser.getLocations());
-
-        ModelDescriptionFactory factory = new ModelDescriptionFactory();
-        modelDescription = factory.create(ospModelDescriptionXml.get(), fmuLocator.get(simulator));
-        ModelDescriptionValidator validator = new ModelDescriptionValidator();
-        diagnostics.addAll(validator.validate(modelDescription));
-
-        map.putAll(createModelDescriptionMap(ospModelDescriptionElement, modelDescription));
+    for (ValidationDiagnostic<Object> diagnostic : diagnostics) {
+      Object coreObject = diagnostic.getValidatedObject();
+      Object jaxbObject = coreToJaxb.get(coreObject);
+      if (jaxbObject != null) {
+        Location location = locations.get(jaxbObject);
+        errorMessages.add("Validation error in " + file.getAbsolutePath() + " on line " + location.getLineNumber() + ": " + diagnostic.getErrorMessage());
+      } else {
+        errorMessages.add("Validation error in " + file.getAbsolutePath() + ": " + diagnostic.getErrorMessage());
       }
     }
+
+    return errorMessages;
   }
 
   private Map<Object, Object> createModelDescriptionMap(OspModelDescriptionType ospModelDescriptionElement, ModelDescription modelDescription) {
@@ -390,7 +405,9 @@ public class Validator {
     }
   }
 
-  private void addSystemStructureObjects(SystemStructure systemStructure, OspSystemStructure ospSystemStructureElement, Map<Object, Object> map) {
+  private Map<Object, Object> createSystemStructureMap(SystemStructure systemStructure, OspSystemStructure ospSystemStructureElement) {
+    Map<Object, Object> map = new HashMap<>();
+
     List<Simulators.Simulator> simulatorElements = ospSystemStructureElement.getSimulators().getSimulator();
     List<Connections.VariableConnection> variableConnectionElements = ospSystemStructureElement.getConnections().getVariableConnection();
     List<Connections.VariableGroupConnection> variableGroupConnectionElements = ospSystemStructureElement.getConnections().getVariableGroupConnection();
@@ -421,5 +438,7 @@ public class Validator {
       Optional<VariableGroupConnection> variableGroupConnection = SystemStructureUtil.getVariableGroupConnectionByPartNames(systemStructure, simulatorAName, variableGroupAName, simulatorBName, variableGroupBName);
       variableGroupConnection.ifPresent(variableConnection -> map.put(variableConnection, variableGroupConnectionElement));
     }
+
+    return map;
   }
 }
