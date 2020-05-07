@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://data.dnvgl.com/msmi#"
+<rdf:RDF xmlns="http://data.dnvgl.com/msmi/"
      xml:base="http://data.dnvgl.com/msmi"
      xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
