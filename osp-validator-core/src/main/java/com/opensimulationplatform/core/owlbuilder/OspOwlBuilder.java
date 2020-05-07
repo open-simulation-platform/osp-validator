@@ -3,7 +3,6 @@ package com.opensimulationplatform.core.owlbuilder;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
-import java.io.File;
 import java.util.Set;
 
 import static com.opensimulationplatform.gen.owl.model.OntologyClasses.ValidationError;
@@ -28,7 +27,5 @@ public abstract class OspOwlBuilder<T> {
       Set<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(errorClass, false).getFlattened();
       context.invalidIndividuals.put(errorClass, invalidIndividuals);
     }
-
-    context.owl.save(new File("test.owl"));
   }
 }
