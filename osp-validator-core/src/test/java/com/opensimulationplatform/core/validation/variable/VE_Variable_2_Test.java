@@ -10,13 +10,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class VE_Variable1_Test {
+public class VE_Variable_2_Test {
 
-  private final VE_Variable_1 validationError = new VE_Variable_1();
+  private final VE_Variable_2 validationError = new VE_Variable_2();
   private final VariableOwlBuilder builder = new VariableOwlBuilder();
   private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
   private final OwlBuilderContext builderContext = new OwlBuilderContext();
@@ -36,13 +37,13 @@ public class VE_Variable1_Test {
   @Test
   public void invalid() {
     Variable v1 = new Variable();
-    v1.setName("v1");
+    v1.setName("not-unique");
     v1.setCausality(Variable.Causality.INPUT);
     v1.setType(Variable.Type.REAL);
 
     Variable v2 = new Variable();
-    v2.setName("v2");
-    v2.setCausality(Variable.Causality.UNDEFINED);
+    v2.setName("not-unique");
+    v2.setCausality(Variable.Causality.INPUT);
     v2.setType(Variable.Type.REAL);
 
     builder.build(v1);
@@ -50,10 +51,11 @@ public class VE_Variable1_Test {
     builder.complete();
 
     List<ValidationDiagnostic<Variable>> diagnostics = validationError.validate();
+    assertEquals(2, diagnostics.size());
 
-    assertEquals(1, diagnostics.size());
-    Variable invalidVariable = diagnostics.get(0).getValidatedObject();
-    assertEquals(invalidVariable, v2);
+    List<Variable> invalidVariables = diagnostics.stream().map(ValidationDiagnostic::getValidatedObject).collect(Collectors.toList());
+    assertTrue(invalidVariables.contains(v1));
+    assertTrue(invalidVariables.contains(v2));
   }
 
   @Test
