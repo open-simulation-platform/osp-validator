@@ -103,7 +103,7 @@ public class ModelDescriptionValidatorTest {
     ModelDescriptionValidator validator = new ModelDescriptionValidator();
     List<ValidationDiagnostic<Object>> diagnostics = validator.validate(modelDescription);
 
-    assertEquals(5, diagnostics.size());
+    assertEquals(9, diagnostics.size());
   }
 
   @Test

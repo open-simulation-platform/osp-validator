@@ -26,6 +26,7 @@ public class VariableConnectionsValidatorTest {
     Unit unitA = new Unit();
     unitA.setExponent(Unit.Exponent.KILOGRAM, 2);
 
+    variableA.setName("variableA");
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.INTEGER);
     variableA.setCausality(Variable.Causality.INPUT);
@@ -42,6 +43,7 @@ public class VariableConnectionsValidatorTest {
     Unit unitB = new Unit();
     unitB.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableB.setName("variableB");
     variableB.setUnit(unitB);
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);
@@ -76,6 +78,7 @@ public class VariableConnectionsValidatorTest {
     Unit unitA = new Unit();
     unitA.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableA.setName("variableA");
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.REAL);
     variableA.setCausality(Variable.Causality.OUTPUT);
@@ -92,6 +95,7 @@ public class VariableConnectionsValidatorTest {
     Unit unitB = new Unit();
     unitB.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableB.setName("variableB");
     variableB.setUnit(unitB);
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);

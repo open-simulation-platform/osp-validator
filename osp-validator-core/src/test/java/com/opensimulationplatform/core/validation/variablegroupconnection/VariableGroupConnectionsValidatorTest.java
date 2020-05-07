@@ -25,12 +25,14 @@ public class VariableGroupConnectionsValidatorTest {
     Simulator simulatorA = new Simulator();
 
     Force force = new Force();
+    force.setName("force");
 
     Variable variableA = new Variable();
 
     Unit unitA = new Unit();
     unitA.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableA.setName("variableA");
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.REAL);
     variableA.setCausality(Variable.Causality.OUTPUT);
@@ -46,12 +48,14 @@ public class VariableGroupConnectionsValidatorTest {
     Simulator simulatorB = new Simulator();
 
     LinearVelocity linearVelocity = new LinearVelocity();
+    linearVelocity.setName("linearVelocity");
 
     Variable variableB = new Variable();
 
     Unit unitB = new Unit();
     unitB.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableB.setName("variableB");
     variableB.setUnit(unitB);
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);
@@ -85,12 +89,14 @@ public class VariableGroupConnectionsValidatorTest {
     Simulator simulatorA = new Simulator();
 
     Force forceA = new Force();
+    forceA.setName("forceA");
 
     Variable variableA = new Variable();
 
     Unit unitA = new Unit();
     unitA.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableA.setName("variableA");
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.REAL);
     variableA.setCausality(Variable.Causality.OUTPUT);
@@ -106,12 +112,14 @@ public class VariableGroupConnectionsValidatorTest {
     Simulator simulatorB = new Simulator();
 
     Force forceB = new Force();
+    forceB.setName("forceB");
 
     Variable variableB = new Variable();
 
     Unit unitB = new Unit();
     unitB.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    variableB.setName("variableB");
     variableB.setUnit(unitB);
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);

@@ -116,7 +116,7 @@ public class SimulatorsValidatorTest {
     SimulatorsValidator v = new SimulatorsValidator();
     List<ValidationDiagnostic<Object>> diagnostics = v.validate(systemStructure);
 
-    assertEquals(6, diagnostics.size());
+    assertEquals(12, diagnostics.size());
   }
 
   @Test

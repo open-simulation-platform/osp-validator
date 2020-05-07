@@ -69,7 +69,7 @@ public class SystemStructureValidatorTest {
     SystemStructureValidator v = new SystemStructureValidator();
     List<ValidationDiagnostic<Object>> diagnostics = v.validate(systemStructure);
 
-    assertEquals(20, diagnostics.size());
+    assertEquals(30, diagnostics.size());
   }
 
   @Test
