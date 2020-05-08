@@ -33,4 +33,4 @@ $ cd msmi-validator
 $ mvn clean package
 ```
 
-Compiled artifacts are located in: `<module-dir>/target`
+`<module-dir>/target` will contain the compiled artifacts.

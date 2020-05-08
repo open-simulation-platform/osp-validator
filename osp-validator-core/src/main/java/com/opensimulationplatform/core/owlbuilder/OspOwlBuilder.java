@@ -2,6 +2,7 @@ package com.opensimulationplatform.core.owlbuilder;
 
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.reasoner.InferenceType;
 
 import java.util.Set;
 
@@ -21,7 +22,10 @@ public abstract class OspOwlBuilder<T> {
     context.owl.manager.addAxioms(context.owl.ontology, context.axioms);
     context.owl.manager.addAxiom(context.owl.ontology, context.owl.dataFactory.getOWLDifferentIndividualsAxiom(context.individuals));
 
+    context.owl.reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
+
     OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(ValidationError, context.owl.prefixManager);
+
     Set<OWLClass> validationErrorClasses = context.owl.reasoner.getSubClasses(validationErrorClass, false).getFlattened();
     for (OWLClass errorClass : validationErrorClasses) {
       Set<OWLNamedIndividual> invalidIndividuals = context.owl.reasoner.getInstances(errorClass, false).getFlattened();
