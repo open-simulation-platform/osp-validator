@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspSystemStructure xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure" version="0.1">
+	<StartTime>0.0</StartTime>
+	<BaseStepSize>0.1</BaseStepSize>
+	<Algorithm>fixedStep</Algorithm>
+	<Simulators>
+		<Simulator name="Clock" source="Clock.fmu" stepSize="0.0">
+		</Simulator>
+		<Simulator name="InnerWall" source="InnerWall.fmu" stepSize="0.0">
+		</Simulator>
+		<Simulator name="OuterWall1" source="OuterWall1.fmu" stepSize="0.0">
+			<InitialValues>
+				<InitialValue variable="T_outside">
+					<Real value="5.3"/>					
+				</InitialValue>
+			</InitialValues>
+		</Simulator>
+		<Simulator name="OuterWall2" source="OuterWall2.fmu" stepSize="0.0">
+			<InitialValues>
+				<InitialValue variable="T_outside">
+					<Real value="4.9"/>					
+				</InitialValue>
+			</InitialValues>
+		</Simulator>
+		<Simulator name="Room1" source="Room1.fmu" stepSize="0.0">
+		</Simulator>
+		<Simulator name="Room2" source="Room2.fmu" stepSize="0.0">
+		</Simulator>
+		<Simulator name="TempController" source="TempController.fmu" stepSize="0.0">
+		</Simulator>
+	</Simulators>
+	<Connections>
+		<VariableGroupConnection>
+			<VariableGroup simulator="OuterWall1" name="h_wall"/>			
+			<VariableGroup simulator="Room1" name="h_OuterWall"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Room1" name="T_room"/>			
+			<VariableGroup simulator="TempController" name="T_room1"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Clock" name="Clock"/>			
+			<VariableGroup simulator="TempController" name="T_clock"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="OuterWall2" name="h_wall"/>			
+			<VariableGroup simulator="Room2" name="h_OuterWall"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="InnerWall" name="h_wall"/>			
+			<VariableGroup simulator="Room2" name="h_InnerWall"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="InnerWall" name="h_wall"/>			
+			<VariableGroup simulator="Room1" name="h_InnerWall"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="TempController" name="h_room1"/>			
+			<VariableGroup simulator="Room1" name="h_powerHeater"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Room1" name="T_room"/>			
+			<VariableGroup simulator="OuterWall1" name="T_room1"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Room2" name="T_room"/>			
+			<VariableGroup simulator="InnerWall" name="T_room2"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Room2" name="T_room"/>			
+			<VariableGroup simulator="OuterWall2" name="T_room2"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="TempController" name="h_room2"/>			
+			<VariableGroup simulator="Room2" name="h_powerHeater"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Room1" name="T_room"/>			
+			<VariableGroup simulator="InnerWall" name="T_room1"/>			
+		</VariableGroupConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="Room2" name="T_room"/>			
+			<VariableGroup simulator="TempController" name="T_room2"/>			
+		</VariableGroupConnection>
+	</Connections>
+</OspSystemStructure>

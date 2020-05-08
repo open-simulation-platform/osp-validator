@@ -1,0 +1,16 @@
+<OspSystemStructure version="0.1" xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
+  <Simulators>
+    <Simulator name="crane_controller" source="CraneController.fmu" stepSize="1.051732E7"/>
+    <Simulator name="knuckle_boom_crane" source="KnuckleBoomCrane.fmu" stepSize="1.051732E7"/>
+  </Simulators>
+  <Connections>
+    <VariableConnection>
+      <Variable simulator="crane_controller" name="Act_Limits[1]"/>
+      <Variable simulator="knuckle_boom_crane" name="Act_Limits[1]"/>
+    </VariableConnection>
+    <VariableGroupConnection>
+      <VariableGroup simulator="crane_controller" name="linear_mechanical_port"/>
+      <VariableGroup simulator="knuckle_boom_crane" name="linear_mechanical_port"/>
+    </VariableGroupConnection>
+  </Connections>
+</OspSystemStructure>

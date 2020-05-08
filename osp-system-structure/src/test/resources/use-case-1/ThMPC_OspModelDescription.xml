@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<VariableGroups>
+		<Generic name="thrust">
+			<Force name="linearThrust">
+				<Variable ref="refx"/>				
+				<Variable ref="refy"/>				
+			</Force>
+			<Torque name="angularThrust">
+				<Variable ref="refMz"/>				
+			</Torque>
+		</Generic>
+		<Generic name="thrustGlobalCommand">
+			<Force name="linearThrustGlobalCommand">
+				<Variable ref="Fxg"/>				
+				<Variable ref="Fyg"/>				
+			</Force>
+			<Torque name="angularThrustGlobalCommand">
+				<Variable ref="Mzg"/>				
+			</Torque>
+		</Generic>
+		<Generic name="thrustLocalCommand">
+			<Force name="linearThrustLocalCommand">
+				<Variable ref="F1c"/>				
+				<Variable ref="F2c"/>				
+			</Force>
+			<Torque name="angularThrustLocalCommand">
+				<Variable ref="F3c"/>				
+			</Torque>
+		</Generic>
+		<AngularDisplacement name="azimuthAngleCommand">
+			<Variable ref="alpha1"/>			
+			<Variable ref="alpha2"/>			
+		</AngularDisplacement>
+	</VariableGroups>
+</OspModelDescription>

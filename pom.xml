@@ -7,15 +7,14 @@
   <groupId>com.opensimulationplatform</groupId>
   <artifactId>msmi-validator</artifactId>
   <packaging>pom</packaging>
-  <version>0.8.0</version>
+  <version>0.9.0</version>
   <modules>
+    <module>osp-validator-gen</module>
     <module>osp-validator-core</module>
     <module>osp-system-structure</module>
-    <module>osp-system-structure-cli</module>
-    <module>osp-system-structure-http</module>
     <module>osp-model-description</module>
-    <module>osp-model-description-cli</module>
     <module>osp-validator-api</module>
+    <module>osp-validator-cli</module>
   </modules>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>

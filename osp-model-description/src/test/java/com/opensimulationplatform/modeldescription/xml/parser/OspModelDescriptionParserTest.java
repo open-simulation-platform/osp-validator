@@ -10,58 +10,45 @@ import static org.junit.Assert.assertEquals;
 
 public class OspModelDescriptionParserTest {
   @Test
-  public void canParse() {
-    OspModelDescription ospModelDescription = OspModelDescriptionParser.parse(TestResources.MODEL_DEFINITION_XML);
-  
-    List<Plugs.Plug> plugs = ospModelDescription.getPlugs().getPlug();
-    assertEquals(3, plugs.size());
-    for (int i = 0; i < plugs.size(); i++) {
-      Plugs.Plug plug = plugs.get(i);
-      assertEquals("plugType_" + (i + 1), plug.getType());
-      assertEquals("plug_" + (i + 1), plug.getName());
-    
-      List<Variables.Variable> variables = plug.getVariables().getVariable();
-      assertEquals(3, variables.size());
-      for (int j = 0; j < variables.size(); j++) {
-        String variableName = variables.get(j).getName();
-        assertEquals("p_variable_" + ((j + 1) + i * variables.size()), variableName);
-      }
-    }
-  
-    List<Sockets.Socket> sockets = ospModelDescription.getSockets().getSocket();
-    assertEquals(3, sockets.size());
-    for (int i = 0; i < sockets.size(); i++) {
-      Sockets.Socket socket = sockets.get(i);
-      assertEquals("socketType_" + (i + 1), socket.getType());
-      assertEquals("socket_" + (i + 1), socket.getName());
-    
-      List<Variables.Variable> variables = socket.getVariables().getVariable();
-      assertEquals(3, variables.size());
-      for (int j = 0; j < variables.size(); j++) {
-        String variableName = variables.get(j).getName();
-        assertEquals("s_variable_" + ((j + 1) + i * variables.size()), variableName);
-      }
-    }
-  
-    List<Bonds.Bond> bonds = ospModelDescription.getBonds().getBond();
-    assertEquals(2, bonds.size());
-    for (int i = 0; i < bonds.size(); i++) {
-      Bonds.Bond bond = bonds.get(i);
-      assertEquals("bond_" + (i + 1), bond.getName());
-    
-      List<Bonds.Bond.BondPlugs.BondPlug> bondPlugs = bond.getBondPlugs().getBondPlug();
-      assertEquals(1, bondPlugs.size());
-      for (int j = 0; j < bondPlugs.size(); j++) {
-        String plugName = bondPlugs.get(j).getName();
-        assertEquals("plug_" + ((j + 1) + i * bondPlugs.size()), plugName);
-      }
-    
-      List<Bonds.Bond.BondSockets.BondSocket> bondSockets = bond.getBondSockets().getBondSocket();
-      assertEquals(1, bondSockets.size());
-      for (int j = 0; j < bondSockets.size(); j++) {
-        String socketName = bondSockets.get(j).getName();
-        assertEquals("socket_" + ((j + 1) + i * bondSockets.size()), socketName);
-      }
-    }
+  public void valid() {
+    OspModelDescriptionParser parser = new OspModelDescriptionParser();
+    OspModelDescriptionType content = parser.parse(TestResources.VALID_OSP_MODEL_DESCRIPTION);
+
+    UnitDefinitionsType unitDefinitions = content.getUnitDefinitions();
+    List<UnitType> unitTypes = unitDefinitions.getUnit();
+    assertEquals(3, unitTypes.size());
+
+    UnitType u1 = unitTypes.get(0);
+    UnitType u2 = unitTypes.get(1);
+    UnitType u3 = unitTypes.get(2);
+
+    assertEquals("u1", u1.getName());
+    assertEquals("u2", u2.getName());
+    assertEquals("u3", u3.getName());
+
+    List<GenericType> generics = content.getVariableGroups().getGeneric();
+    assertEquals(1, generics.size());
+
+    GenericType genericType = generics.get(0);
+    List<VariableType> variables = genericType.getVariable();
+    assertEquals(3, variables.size());
+
+    VariableType v1 = variables.get(0);
+    VariableType v2 = variables.get(1);
+    VariableType v3 = variables.get(2);
+
+    assertEquals("v1", v1.getRef());
+    assertEquals("v2", v2.getRef());
+    assertEquals("v3", v3.getRef());
+
+    assertEquals("u1", v1.getUnit());
+    assertEquals("u2", v2.getUnit());
+    assertEquals("u3", v3.getUnit());
+  }
+
+  @Test (expected = RuntimeException.class)
+  public void invalid() {
+    OspModelDescriptionParser parser = new OspModelDescriptionParser();
+    parser.parse(TestResources.INVALID_OSP_MODEL_DESCRIPTION);
   }
 }

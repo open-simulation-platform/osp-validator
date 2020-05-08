@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspSystemStructure xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure" version="0.1">
+	<StartTime>0.0</StartTime>
+	<BaseStepSize>1.0E-4</BaseStepSize>
+	<Algorithm>fixedStep</Algorithm>
+	<Simulators>
+		<Simulator name="CraneController" source="CraneController.fmu" stepSize="2.0E-4">
+			<InitialValues>
+				<InitialValue variable="cl1_min">
+					<Real value="2.2"/>					
+				</InitialValue>
+				<InitialValue variable="cl1_max">
+					<Real value="3.8"/>					
+				</InitialValue>
+			</InitialValues>
+		</Simulator>
+		<Simulator name="KnuckleBoomCrane" source="KnuckleBoomCrane.fmu" stepSize="2.03E-4">
+		</Simulator>
+	</Simulators>
+	<Connections>
+		<VariableConnection>
+			<Variable simulator="CraneController" name="p_Crane.e[1]"/>			
+			<Variable simulator="KnuckleBoomCrane" name="p_Crane.e[1]"/>			
+		</VariableConnection>
+		<VariableConnection>
+			<Variable simulator="KnuckleBoomCrane" name="p_Crane.f[1]"/>			
+			<Variable simulator="CraneController" name="p_Crane.f[1]"/>			
+		</VariableConnection>
+	</Connections>
+</OspSystemStructure>
