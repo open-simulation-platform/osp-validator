@@ -47,13 +47,21 @@ public class Main {
         System.out.println(Version.getVersionInfo());
       }
 
+      if (commandLine.getOptions().length == 0) {
+        printHelp(options);
+      }
+
       Terminator.exit(new ExitCode(0, ""));
     } catch (ParseException e) {
-      HelpFormatter formatter = new HelpFormatter();
-      formatter.setWidth(150);
-      formatter.printHelp("java -jar msmi-cli.jar", options);
+      printHelp(options);
 
       Terminator.exit(new ExitCode(-1, e.getMessage()));
     }
+  }
+
+  private static void printHelp(Options options) {
+    HelpFormatter formatter = new HelpFormatter();
+    formatter.setWidth(150);
+    formatter.printHelp("java -jar msmi-cli.jar", options);
   }
 }
