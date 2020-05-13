@@ -62,29 +62,33 @@ public class Main {
     jc.setProgramName("msmi-cli.jar");
 
     try {
-      jc.parse(args);
-
-      String parsedCommand = jc.getParsedCommand();
-      if ("osp-system-structure".equals(parsedCommand)) {
-        Validator v = new Validator();
-        List<String> errorMessages = v.validate(new File(ospSystemStructureCommand.ospSystemStructure));
-        for (String errorMessage : errorMessages) {
-          System.out.println(errorMessage);
-        }
-      } else if ("osp-model-description".equals(parsedCommand)) {
-        Validator v = new Validator();
-        List<String> errorMessages = v.validate(new File(ospModelDescriptionCommand.ospModelDescription), new File(ospModelDescriptionCommand.fmu));
-        for (String errorMessage : errorMessages) {
-          System.out.println(errorMessage);
-        }
-      }
-
-      if (mc.version != null) {
-        System.out.println(Version.getVersionInfo());
-      }
-
-      if (mc.help != null) {
+      if (args.length == 0) {
         jc.usage();
+      } else {
+        jc.parse(args);
+
+        String parsedCommand = jc.getParsedCommand();
+        if ("osp-system-structure".equals(parsedCommand)) {
+          Validator v = new Validator();
+          List<String> errorMessages = v.validate(new File(ospSystemStructureCommand.ospSystemStructure));
+          for (String errorMessage : errorMessages) {
+            System.out.println(errorMessage);
+          }
+        } else if ("osp-model-description".equals(parsedCommand)) {
+          Validator v = new Validator();
+          List<String> errorMessages = v.validate(new File(ospModelDescriptionCommand.ospModelDescription), new File(ospModelDescriptionCommand.fmu));
+          for (String errorMessage : errorMessages) {
+            System.out.println(errorMessage);
+          }
+        }
+
+        if (mc.version != null) {
+          System.out.println(Version.getVersionInfo());
+        }
+
+        if (mc.help != null) {
+          jc.usage();
+        }
       }
 
       Terminator.exit(new ExitCode(0, ""));
