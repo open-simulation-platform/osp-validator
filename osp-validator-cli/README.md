@@ -20,7 +20,7 @@ Usage: msmi-cli.jar [options] [command] [command options]
           -file
             Path to OspSystemStructure.xml
 
-    osp-model-description      Validate OspModelDsecription
+    osp-model-description      Validate OspModelDescription.xml
       Usage: osp-model-description [options]
         Options:
           -file
