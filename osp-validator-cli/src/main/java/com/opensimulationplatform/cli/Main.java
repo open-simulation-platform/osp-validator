@@ -26,7 +26,7 @@ public class Main {
     public String ospSystemStructure;
   }
 
-  @Parameters(commandDescription = "Validate OspModelDsecription")
+  @Parameters(commandDescription = "Validate OspModelDescription.xml")
   public static class OspModelDescriptionCommand {
     @Parameter(names = "-file", description = "Path to OspModelDescription.xml", validateWith = FileExistsValidator.class)
     public String ospModelDescription;
