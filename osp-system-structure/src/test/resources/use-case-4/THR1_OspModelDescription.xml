@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="0.1">
+	<UnitDefinitions>
+	</UnitDefinitions>
+	<VariableGroups>
+		<LinearVelocity name="group">
+			<Variable ref="Current[1]"/>			
+			<Variable ref="Current[2]"/>			
+			<Variable ref="Current[3]"/>			
+		</LinearVelocity>
+	</VariableGroups>
+</OspModelDescription>

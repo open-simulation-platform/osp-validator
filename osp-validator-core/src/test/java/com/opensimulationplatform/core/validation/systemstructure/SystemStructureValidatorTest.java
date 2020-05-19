@@ -4,6 +4,7 @@ import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.generic.Generic;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
@@ -69,7 +70,7 @@ public class SystemStructureValidatorTest {
     SystemStructureValidator v = new SystemStructureValidator();
     List<ValidationDiagnostic<Object>> diagnostics = v.validate(systemStructure);
 
-    assertEquals(30, diagnostics.size());
+    assertEquals(32, diagnostics.size());
   }
 
   @Test
@@ -138,6 +139,11 @@ public class SystemStructureValidatorTest {
 
     modelDescription.getVariables().add(v1);
     modelDescription.getVariables().add(v2);
+
+    Generic g = new Generic();
+    g.setName("variable-container");
+    g.setVariables(Arrays.asList(v1, v2));
+    modelDescription.getGenerics().add(g);
 
     Force f1 = new Force();
     f1.setName("not-unique");

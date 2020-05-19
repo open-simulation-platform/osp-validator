@@ -13,4 +13,5 @@ public class TestResources {
   public static final File OSP_SYSTEM_STRUCTURE_USE_CASE_1 = new File("./src/test/resources/use-case-1/OspSystemStructure.xml");
   public static final File OSP_SYSTEM_STRUCTURE_USE_CASE_2 = new File("./src/test/resources/use-case-2/OspSystemStructure.xml");
   public static final File OSP_SYSTEM_STRUCTURE_USE_CASE_3 = new File("./src/test/resources/use-case-3/OspSystemStructure.xml");
+  public static final File OSP_SYSTEM_STRUCTURE_USE_CASE_4 = new File("./src/test/resources/use-case-4/OspSystemStructure.xml");
 }

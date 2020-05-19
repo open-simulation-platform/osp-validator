@@ -105,7 +105,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     OWLObjectProperty hasVariableGroup = context.owl.dataFactory.getOWLObjectProperty(op_has_variable_group, context.owl.prefixManager);
     List<VariableGroup> variableGroups = variableGroup.getVariableGroups();
     for (VariableGroup vg : variableGroups) {
-      vg.getName().setId(() -> variableGroup.getName().getId().get().replace(variableGroup.getName().get(), "") + vg.getName().get());
+      vg.getName().setId(() -> variableGroup.getName().getId().get().replace("." + variableGroup.getName().get(), ".") + vg.getName().get());
       OWLNamedIndividual vgIndividual = this.build(vg);
       OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariableGroup, variableGroupIndividual, vgIndividual);
       context.axioms.add(axiom);
@@ -118,7 +118,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     OWLObjectProperty hasVariable = context.owl.dataFactory.getOWLObjectProperty(op_has_variable, context.owl.prefixManager);
     List<Variable> variables = variableGroup.getVariables();
     for (Variable v : variables) {
-      v.getName().setId(() -> variableGroup.getName().getId().get().replace(variableGroup.getName().get(), "") + v.getName().get());
+      v.getName().setId(() -> variableGroup.getName().getId().get().replace("." + variableGroup.getName().get(), ".") + v.getName().get());
       OWLNamedIndividual variableIndividual = variableOwlBuilder.build(v);
       OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariable, variableGroupIndividual, variableIndividual);
       context.axioms.add(axiom);

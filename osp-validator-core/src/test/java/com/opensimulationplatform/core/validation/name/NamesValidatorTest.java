@@ -9,6 +9,7 @@ import com.opensimulationplatform.core.model.systemstructure.SystemStructure;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -55,8 +56,10 @@ public class NamesValidatorTest {
 
     Generic vg1 = new Generic();
     vg1.setName("not-unique");
+    vg1.setVariables(Arrays.asList(v1));
     Generic vg2 = new Generic();
     vg2.setName("not-unique");
+    vg2.setVariables(Arrays.asList(v2));
     modelDescription.getGenerics().add(vg1);
     modelDescription.getGenerics().add(vg2);
 
