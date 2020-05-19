@@ -5,7 +5,7 @@
   <parent>
     <artifactId>msmi-validator</artifactId>
     <groupId>com.opensimulationplatform</groupId>
-    <version>0.9.0</version>
+    <version>0.10.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -18,13 +18,14 @@
     <dependency>
       <groupId>com.opensimulationplatform</groupId>
       <artifactId>osp-system-structure</artifactId>
-      <version>0.9.0</version>
+      <version>0.10.0</version>
       <scope>compile</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
     <dependency>
-      <groupId>commons-cli</groupId>
-      <artifactId>commons-cli</artifactId>
-      <version>1.4</version>
+      <groupId>com.beust</groupId>
+      <artifactId>jcommander</artifactId>
+      <version>1.78</version>
     </dependency>
   </dependencies>
 

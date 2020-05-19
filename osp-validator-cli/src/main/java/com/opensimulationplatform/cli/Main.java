@@ -1,67 +1,101 @@
 package com.opensimulationplatform.cli;
 
+import com.beust.jcommander.*;
+import com.beust.jcommander.converters.FileConverter;
 import com.opensimulationplatform.cli.terminator.ExitCode;
 import com.opensimulationplatform.cli.terminator.Terminator;
 import com.opensimulationplatform.cli.version.Version;
-import org.apache.commons.cli.*;
 
 import java.io.File;
 import java.util.List;
 
 public class Main {
-  public static void main(String[] args) {
-    Options options = new Options();
 
-    Option ospSystemStructureOption = Option.builder("osp_system_structure")
-        .longOpt("osp_system_structure")
-        .argName("osp_system_structure")
-        .desc("Path to OspSystemStructure.xml")
-        .hasArg()
-        .build();
 
-  Option version = Option.builder("v")
-      .longOpt("version")
-      .argName("version")
-      .desc("cli version")
-      .build();
+  public static class MainCommand {
+    @Parameter(names = {"--version", "-v"}, description = "Print version")
+    public Boolean version;
 
-    options.addOption(ospSystemStructureOption);
-    options.addOption(version);
+    @Parameter(names = {"--help", "-h"}, description = "Print help")
+    public Boolean help;
+  }
 
-    CommandLineParser parser = new DefaultParser();
+  @Parameters(commandDescription = "Validate OspSystemStructure.xml")
+  public static class OspSystemStructureCommand {
+    @Parameter(names = "-file", description = "Path to OspSystemStructure.xml", validateWith = FileExistsValidator.class)
+    public String ospSystemStructure;
+  }
 
-    try {
-      CommandLine commandLine = parser.parse(options, args);
+  @Parameters(commandDescription = "Validate OspModelDescription.xml")
+  public static class OspModelDescriptionCommand {
+    @Parameter(names = "-file", description = "Path to OspModelDescription.xml", validateWith = FileExistsValidator.class)
+    public String ospModelDescription;
 
-      if (commandLine.hasOption(ospSystemStructureOption.getOpt())) {
-        String optionValue = commandLine.getOptionValue(ospSystemStructureOption.getOpt());
-        File ospSystemStructureFile = new File(optionValue);
-        Validator v = new Validator();
-        List<String> errorMessages = v.validate(ospSystemStructureFile);
-        for (String errorMessage : errorMessages) {
-          System.out.println(errorMessage);
-        }
+    @Parameter(names = "-fmu", description = "Path to fmu", validateWith = FileExistsValidator.class)
+    public String fmu;
+  }
+
+  public static class FileExistsValidator implements IParameterValidator {
+    @Override
+    public void validate(String name, String value) throws ParameterException {
+      File file = getFile(value);
+      if (!file.exists()) {
+        throw new ParameterException(value + " does not exist");
       }
+    }
 
-      if (commandLine.hasOption(version.getOpt())) {
-        System.out.println(Version.getVersionInfo());
-      }
-
-      if (commandLine.getOptions().length == 0) {
-        printHelp(options);
-      }
-
-      Terminator.exit(new ExitCode(0, ""));
-    } catch (ParseException e) {
-      printHelp(options);
-
-      Terminator.exit(new ExitCode(-1, e.getMessage()));
+    File getFile(String value) {
+      return new FileConverter().convert(value);
     }
   }
 
-  private static void printHelp(Options options) {
-    HelpFormatter formatter = new HelpFormatter();
-    formatter.setWidth(150);
-    formatter.printHelp("java -jar msmi-cli.jar", options);
+  public static void main(String[] args) {
+    MainCommand mc = new MainCommand();
+    OspSystemStructureCommand ospSystemStructureCommand = new OspSystemStructureCommand();
+    OspModelDescriptionCommand ospModelDescriptionCommand = new OspModelDescriptionCommand();
+
+    JCommander jc = JCommander.newBuilder()
+        .addObject(mc)
+        .addCommand("osp-system-structure", ospSystemStructureCommand)
+        .addCommand("osp-model-description", ospModelDescriptionCommand)
+        .build();
+    jc.setProgramName("msmi-cli.jar");
+
+    try {
+      if (args.length == 0) {
+        jc.usage();
+      } else {
+        jc.parse(args);
+
+        String parsedCommand = jc.getParsedCommand();
+        if ("osp-system-structure".equals(parsedCommand)) {
+          Validator v = new Validator();
+          List<String> errorMessages = v.validate(new File(ospSystemStructureCommand.ospSystemStructure));
+          for (String errorMessage : errorMessages) {
+            System.out.println(errorMessage);
+          }
+        } else if ("osp-model-description".equals(parsedCommand)) {
+          Validator v = new Validator();
+          List<String> errorMessages = v.validate(new File(ospModelDescriptionCommand.ospModelDescription), new File(ospModelDescriptionCommand.fmu));
+          for (String errorMessage : errorMessages) {
+            System.out.println(errorMessage);
+          }
+        }
+
+        if (mc.version != null) {
+          System.out.println(Version.getVersionInfo());
+        }
+
+        if (mc.help != null) {
+          jc.usage();
+        }
+      }
+
+      Terminator.exit(new ExitCode(0, ""));
+    } catch (ParameterException e) {
+      System.out.println(e.getMessage());
+      jc.usage();
+      Terminator.exit(new ExitCode(-1, "Error during parsing of command line arguments"));
+    }
   }
 }

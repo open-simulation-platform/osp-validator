@@ -3,6 +3,7 @@ package com.opensimulationplatform.core.validation.simulator;
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.generic.Generic;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
@@ -33,6 +34,11 @@ public class SimulatorsValidatorTest {
 
     modelDescription.getVariables().add(v1);
     modelDescription.getVariables().add(v2);
+
+    Generic g = new Generic();
+    g.setName("variable-container");
+    g.setVariables(Arrays.asList(v1, v2));
+    modelDescription.getGenerics().add(g);
 
 
     Force f1 = new Force();
@@ -116,7 +122,7 @@ public class SimulatorsValidatorTest {
     SimulatorsValidator v = new SimulatorsValidator();
     List<ValidationDiagnostic<Object>> diagnostics = v.validate(systemStructure);
 
-    assertEquals(12, diagnostics.size());
+    assertEquals(13, diagnostics.size());
   }
 
   @Test
@@ -135,6 +141,11 @@ public class SimulatorsValidatorTest {
 
     modelDescription.getVariables().add(v1);
     modelDescription.getVariables().add(v2);
+
+    Generic g = new Generic();
+    g.setName("variable-container");
+    g.setVariables(Arrays.asList(v1, v2));
+    modelDescription.getGenerics().add(g);
 
 
     Force f1 = new Force();

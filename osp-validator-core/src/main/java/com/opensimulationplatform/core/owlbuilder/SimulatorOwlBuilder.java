@@ -42,7 +42,11 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
     variableOwlBuilder.setContext(context);
     variableOwlBuilder.setContext(context);
     variables.forEach(variable -> {
-      variable.getName().setId(() -> simulator.getName().get() + "." + variable.getName().get());
+      if ("".equals(simulator.getName().get())) {
+        variable.getName().setId(() -> variable.getName().get());
+      } else {
+        variable.getName().setId(() -> simulator.getName().get() + "." + variable.getName().get());
+      }
       OWLNamedIndividual variableIndividual = variableOwlBuilder.build(variable);
 
       OWLObjectProperty hasVariable = context.owl.dataFactory.getOWLObjectProperty(op_has_variable, context.owl.prefixManager);
@@ -56,7 +60,11 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
     VariableGroupOwlBuilder variableGroupOwlBuilder = new VariableGroupOwlBuilder();
     variableGroupOwlBuilder.setContext(context);
     variableGroups.forEach(variableGroup -> {
-      variableGroup.getName().setId(() -> simulator.getName().get() + "." + variableGroup.getName().get());
+      if ("".equals(simulator.getName().get())) {
+        variableGroup.getName().setId(() -> variableGroup.getName().get());
+      } else {
+        variableGroup.getName().setId(() -> simulator.getName().get() + "." + variableGroup.getName().get());
+      }
       OWLNamedIndividual variableGroupIndividual = variableGroupOwlBuilder.build(variableGroup);
 
       OWLObjectProperty hasVariableGroup = context.owl.dataFactory.getOWLObjectProperty(op_has_variable_group, context.owl.prefixManager);

@@ -26,6 +26,7 @@ public class VE_Variable_2_Test {
   public void setUp() {
     builder.setContext(builderContext);
     builderContext.owl = new OWLConfig();
+    builderContext.owl.removeNakedVariables = false;
 
     validationErrorContext.owl = builderContext.owl;
     validationErrorContext.variables = builderContext.variables;

@@ -12,6 +12,8 @@ import java.io.File;
 import java.util.Map;
 
 public class OWLConfig {
+  public boolean removeNakedVariables;
+
   public final OWLOntology ontology;
   public final OWLOntologyManager manager;
   public final OWLDataFactory dataFactory;

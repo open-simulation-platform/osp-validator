@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OspSystemStructure xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure" version="0.1">
+	<StartTime>0.0</StartTime>
+	<BaseStepSize>0.1</BaseStepSize>
+	<Algorithm>fixedStep</Algorithm>
+	<Simulators>
+		<Simulator name="current" source="Current.fmu" stepSize="1.0">
+		</Simulator>
+		<Simulator name="Clock" source="Clock.fmu" stepSize="1.0">
+		</Simulator>
+		<Simulator name="THR1" source="THR1.fmu" stepSize="1.0">
+		</Simulator>
+	</Simulators>
+	<Connections>
+		<VariableConnection>
+			<Variable simulator="Clock" name="Clock"/>			
+			<Variable simulator="THR1" name="Clock"/>			
+		</VariableConnection>
+		<VariableGroupConnection>
+			<VariableGroup simulator="current" name="speed"/>			
+			<VariableGroup simulator="THR1" name="group"/>			
+		</VariableGroupConnection>
+	</Connections>
+</OspSystemStructure>

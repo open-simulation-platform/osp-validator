@@ -28,6 +28,7 @@ import com.opensimulationplatform.systemstructure.xml.parser.OspSystemStructureP
 
 import javax.xml.stream.Location;
 import java.io.File;
+import java.net.URI;
 import java.util.*;
 
 public class Validator {
@@ -42,6 +43,25 @@ public class Validator {
     errorMessages.addAll(getSystemStructureErrorMessages(ospSystemStructureFile, ospSystemStructureElement, locations));
 
     return errorMessages;
+  }
+
+  public List<String> validate(File ospModelDescription, File fmu) {
+    OspModelDescriptionParser parser = new OspModelDescriptionParser();
+    OspModelDescriptionType ospModelDescriptionElement = parser.parse(ospModelDescription);
+    Map<Object, Location> locations = parser.getLocations();
+
+    ModelDescriptionFactory factory = new ModelDescriptionFactory();
+    ModelDescription modelDescription = factory.create(ospModelDescription, fmu.toURI());
+    Simulator s = new Simulator();
+    s.setModelDescription(modelDescription);
+    SystemStructure systemStructure = new SystemStructure();
+    systemStructure.getSimulators().add(s);
+    ModelDescriptionValidator validator = new ModelDescriptionValidator();
+    List<ValidationDiagnostic<Object>> diagnostics = validator.validate(systemStructure);
+
+    Map<Object, Object> coreToJaxb = createModelDescriptionMap(ospModelDescriptionElement, modelDescription);
+
+    return new ArrayList<>(getErrorMessages(ospModelDescription, locations, diagnostics, coreToJaxb));
   }
 
   private List<String> getSystemStructureErrorMessages(File ospSystemStructureFile, OspSystemStructure ospSystemStructureElement, Map<Object, Location> locations) {
@@ -61,17 +81,18 @@ public class Validator {
 
     for (Simulators.Simulator simulator : ospSystemStructureElement.getSimulators().getSimulator()) {
       FmuLocator fmuLocator = new DefaultFmuLocator(ospSystemStructureFile);
+      URI fmu = fmuLocator.get(simulator);
+
       OspModelDescriptionLocator ospModelDescriptionLocator = new DefaultOspModelDescriptionLocator(ospSystemStructureFile, fmuLocator);
       Optional<File> ospModelDescriptionXml = ospModelDescriptionLocator.get(simulator);
 
-      OspModelDescriptionType ospModelDescriptionElement;
       if (ospModelDescriptionXml.isPresent()) {
         OspModelDescriptionParser parser = new OspModelDescriptionParser();
-        ospModelDescriptionElement = parser.parse(ospModelDescriptionXml.get());
+        OspModelDescriptionType ospModelDescriptionElement = parser.parse(ospModelDescriptionXml.get());
         Map<Object, Location> locations = parser.getLocations();
 
         ModelDescriptionFactory factory = new ModelDescriptionFactory();
-        ModelDescription modelDescription = factory.create(ospModelDescriptionXml.get(), fmuLocator.get(simulator));
+        ModelDescription modelDescription = factory.create(ospModelDescriptionXml.get(), fmu);
         Simulator s = new Simulator();
         s.setName(simulator.getName());
         s.setModelDescription(modelDescription);
