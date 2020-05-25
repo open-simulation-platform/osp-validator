@@ -18,6 +18,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.line
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
@@ -62,6 +63,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     typeMap.put(AngularMechanicalQuasiPort.class, ind_vgtype_angular_mechanical_quasi_port);
     typeMap.put(ElectromagneticQuasiPort.class, ind_vgtype_electromagnetic_quasi_port);
     typeMap.put(HydraulicQuasiPort.class, ind_vgtype_hydraulic_quasi_port);
+    typeMap.put(NmeaGgaFix.class, ind_vgtype_nmea_gga_fix);
   }
 
   @Override

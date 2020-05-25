@@ -52,6 +52,7 @@ public class ModelDescriptionUtil {
     variableGroups.addAll(modelDescription.getElectromagneticQuasiPorts());
     variableGroups.addAll(modelDescription.getHydraulicQuasiPorts());
     variableGroups.addAll(modelDescription.getLinearMechanicalQuasiPorts());
+    variableGroups.addAll(modelDescription.getNmeaGgaFixs());
 
     return variableGroups;
   }

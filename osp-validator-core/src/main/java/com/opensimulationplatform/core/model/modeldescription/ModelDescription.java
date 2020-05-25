@@ -17,6 +17,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.line
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
@@ -59,6 +60,8 @@ public class ModelDescription {
   private final List<ElectromagneticQuasiPort> electromagneticQuasiPorts = new ArrayList<>();
   private final List<HydraulicQuasiPort> hydraulicQuasiPorts = new ArrayList<>();
   private final List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = new ArrayList<>();
+
+  private final List<NmeaGgaFix> nmeaGgaFixs = new ArrayList<>();
 
   public List<Unit> getUnits() {
     return units;
@@ -154,5 +157,9 @@ public class ModelDescription {
 
   public List<LinearMechanicalQuasiPort> getLinearMechanicalQuasiPorts() {
     return linearMechanicalQuasiPorts;
+  }
+
+  public List<NmeaGgaFix> getNmeaGgaFixs() {
+    return nmeaGgaFixs;
   }
 }

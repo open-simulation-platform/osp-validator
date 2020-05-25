@@ -17,6 +17,7 @@ import com.opensimulationplatform.modeldescription.xml.converter.flow.VolumeFlow
 import com.opensimulationplatform.modeldescription.xml.converter.fmimodeldescription.Fmi1ModelDescriptionConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.fmimodeldescription.Fmi2ModelDescriptionConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.generic.GenericTypeConverter;
+import com.opensimulationplatform.modeldescription.xml.converter.nmea.NmeaGgaFixTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.ospmodeldescriptiontype.OspModelDescriptionTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.port.AngularMechanicalPortTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.port.ElectromagneticPortTypeConverter;
@@ -76,6 +77,7 @@ public class ConverterContext {
   public ElectromagneticQuasiPortTypeConverter electromagneticQuasiPortTypeConverter;
   public HydraulicQuasiPortTypeConverter hydraulicQuasiPortTypeConverter;
   public LinearMechanicalQuasiPortTypeConverter linearMechanicalQuasiPortTypeConverter;
+  public NmeaGgaFixTypeConverter nmeaGgaFixTypeConverter;
 
   public ConverterContext() {
     this.modelDescription = new ModelDescription();
@@ -118,5 +120,7 @@ public class ConverterContext {
     this.electromagneticQuasiPortTypeConverter = new ElectromagneticQuasiPortTypeConverter(this);
     this.hydraulicQuasiPortTypeConverter = new HydraulicQuasiPortTypeConverter(this);
     this.linearMechanicalQuasiPortTypeConverter = new LinearMechanicalQuasiPortTypeConverter(this);
+
+    this.nmeaGgaFixTypeConverter = new NmeaGgaFixTypeConverter(this);
   }
 }

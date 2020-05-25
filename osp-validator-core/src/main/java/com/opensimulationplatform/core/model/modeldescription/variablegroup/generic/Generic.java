@@ -17,6 +17,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.line
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
@@ -56,6 +57,8 @@ public class Generic extends VariableGroup {
   private final List<HydraulicQuasiPort> hydraulicQuasiPorts = new ArrayList<>();
   private final List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = new ArrayList<>();
 
+  private final List<NmeaGgaFix> nmeaGgaFixs = new ArrayList<>();
+
   @Override
   public void setVariables(List<Variable> variables) {
     this.variables = variables;
@@ -86,6 +89,7 @@ public class Generic extends VariableGroup {
     variableGroups.addAll(electromagneticQuasiPorts);
     variableGroups.addAll(hydraulicQuasiPorts);
     variableGroups.addAll(linearMechanicalQuasiPorts);
+    variableGroups.addAll(nmeaGgaFixs);
 
     return Collections.unmodifiableList(variableGroups);
   }
@@ -172,5 +176,9 @@ public class Generic extends VariableGroup {
 
   public List<LinearMechanicalQuasiPort> getLinearMechanicalQuasiPorts() {
     return linearMechanicalQuasiPorts;
+  }
+
+  public List<NmeaGgaFix> getNmeaGgaFixs() {
+    return nmeaGgaFixs;
   }
 }

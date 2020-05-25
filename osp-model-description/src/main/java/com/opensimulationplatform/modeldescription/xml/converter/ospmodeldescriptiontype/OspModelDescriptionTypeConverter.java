@@ -18,6 +18,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.line
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
@@ -155,6 +156,10 @@ public class OspModelDescriptionTypeConverter extends Converter<OspModelDescript
       List<LinearMechanicalQuasiPortType> linearMechanicalQuasiPortTypes = variableGroups.getLinearMechanicalQuasiPort();
       List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = context.linearMechanicalQuasiPortTypeConverter.convert(linearMechanicalQuasiPortTypes);
       modelDescription.getLinearMechanicalQuasiPorts().addAll(linearMechanicalQuasiPorts);
+
+      List<NmeaGgaFixType> nmeaGgaFixTypes = variableGroups.getNmeaGgaFix();
+      List<NmeaGgaFix> nmeaGgaFixes = context.nmeaGgaFixTypeConverter.convert(nmeaGgaFixTypes);
+      modelDescription.getNmeaGgaFixs().addAll(nmeaGgaFixes);
     }
 
     return modelDescription;

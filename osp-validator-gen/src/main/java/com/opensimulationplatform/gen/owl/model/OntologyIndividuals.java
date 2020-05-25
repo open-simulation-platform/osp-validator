@@ -13,6 +13,7 @@ public class OntologyIndividuals {
   public static final String ind_vgtype_generic = "ind_vgtype_generic";
   public static final String ind_vgtype_angular_mechanical_quasi_port = "ind_vgtype_angular_mechanical_quasi_port";
   public static final String ind_datatype_undefined = "ind_datatype_undefined";
+  public static final String ind_vgtype_nmea_gga_fix = "ind_vgtype_nmea_gga_fix";
   public static final String ind_causality_input = "ind_causality_input";
   public static final String ind_vgtype_hydraulic_port = "ind_vgtype_hydraulic_port";
   public static final String ind_vgtype_volume_flow_rate = "ind_vgtype_volume_flow_rate";

@@ -70,6 +70,7 @@ public class OntologyClasses {
   public static final String VE_AngularVelocity = "VE_AngularVelocity";
   public static final String VE_AngularDisplacement = "VE_AngularDisplacement";
   public static final String VE_AngularMechanicalPort = "VE_AngularMechanicalPort";
+  public static final String VE_NmeaGgaFix = "VE_NmeaGgaFix";
   public static final String VE_VariableConnection_2 = "VE_VariableConnection_2";
   public static final String VE_ElectromagneticQuasiPort_1 = "VE_ElectromagneticQuasiPort_1";
   public static final String VE_VariableConnection_1 = "VE_VariableConnection_1";
@@ -93,6 +94,7 @@ public class OntologyClasses {
   public static final String VE_VariableGroup = "VE_VariableGroup";
   public static final String VE_Connection = "VE_Connection";
   public static final String VE_Current = "VE_Current";
+  public static final String VE_NmeaGgaFix_1 = "VE_NmeaGgaFix_1";
   public static final String VariableConnection = "VariableConnection";
   public static final String VE_Volume = "VE_Volume";
   public static final String VE_Force = "VE_Force";

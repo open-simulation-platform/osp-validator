@@ -13,26 +13,27 @@ public class Generator {
   private static final File templateDirectory = new File("./osp-validator-gen/src/main/java/com/opensimulationplatform/gen/core/generator/template");
 
   public static void main(String[] args) throws Exception {
-    generatePhysicsVariableGroups();
+    generateVariableGroups();
   }
 
-  private static void generatePhysicsVariableGroups() throws Exception {
-    List<String> physicsVariableGroups = new ArrayList<>();
+  private static void generateVariableGroups() throws Exception {
+    List<String> variableGroups = new ArrayList<>();
 
-    physicsVariableGroups.add("AngularDisplacement");
-    physicsVariableGroups.add("AngularVelocity");
-    physicsVariableGroups.add("Torque");
-    physicsVariableGroups.add("Charge");
-    physicsVariableGroups.add("Current");
-    physicsVariableGroups.add("Voltage");
-    physicsVariableGroups.add("LinearDisplacement");
-    physicsVariableGroups.add("LinearVelocity");
-    physicsVariableGroups.add("Force");
-    physicsVariableGroups.add("Volume");
-    physicsVariableGroups.add("VolumeFlowRate");
-    physicsVariableGroups.add("Pressure");
+    variableGroups.add("AngularDisplacement");
+    variableGroups.add("AngularVelocity");
+    variableGroups.add("Torque");
+    variableGroups.add("Charge");
+    variableGroups.add("Current");
+    variableGroups.add("Voltage");
+    variableGroups.add("LinearDisplacement");
+    variableGroups.add("LinearVelocity");
+    variableGroups.add("Force");
+    variableGroups.add("Volume");
+    variableGroups.add("VolumeFlowRate");
+    variableGroups.add("Pressure");
+    variableGroups.add("NmeaGgaFix");
 
-    for (String name : physicsVariableGroups) {
+    for (String name : variableGroups) {
       generateValidationError_1(name);
       generateValidationError_2(name);
       generateValidationError_3(name);

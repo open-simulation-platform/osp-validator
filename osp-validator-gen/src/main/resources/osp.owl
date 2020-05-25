@@ -2878,6 +2878,39 @@
         <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_Volume"/>
         <rdfs:comment>All variables in variable group of type volume must have same unit</rdfs:comment>
     </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_NmeaGgaFix -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_NmeaGgaFix">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroup"/>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_NmeaGgaFix_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_NmeaGgaFix_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_NmeaGgaFix"/>
+        <rdfs:comment>All variables in variable group of type nmea_gga_fix must have same causality</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -2971,6 +3004,7 @@
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -3190,6 +3224,14 @@
     
 
 
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://data.dnvgl.com/msmi/ind_vgtype_pressure -->
 
     <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_pressure">
@@ -3301,6 +3343,7 @@
             <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_voltage"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix"/>
         </owl:distinctMembers>
     </rdf:Description>
     
