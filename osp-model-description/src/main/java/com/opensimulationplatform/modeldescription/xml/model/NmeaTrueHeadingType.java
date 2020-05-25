@@ -2,21 +2,19 @@
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
- * <p>Java class for AngularVelocityType complex type.
+ * <p>Java class for NmeaTrueHeadingType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AngularVelocityType">
+ * &lt;complexType name="NmeaTrueHeadingType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Variable" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableType" maxOccurs="3"/>
+ *         &lt;element name="Variable" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -27,46 +25,38 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AngularVelocityType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "NmeaTrueHeadingType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
     "variable"
 })
-@XmlSeeAlso({
-    ShaftSpeedType.class
-})
-public class AngularVelocityType {
+public class NmeaTrueHeadingType {
 
     @XmlElement(name = "Variable", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
-    protected List<VariableType> variable;
+    protected VariableType variable;
     @XmlAttribute(name = "name", required = true)
     protected String name;
 
     /**
      * Gets the value of the variable property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the variable property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getVariable().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link VariableType }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link VariableType }
+     *     
      */
-    public List<VariableType> getVariable() {
-        if (variable == null) {
-            variable = new ArrayList<VariableType>();
-        }
-        return this.variable;
+    public VariableType getVariable() {
+        return variable;
+    }
+
+    /**
+     * Sets the value of the variable property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VariableType }
+     *     
+     */
+    public void setVariable(VariableType value) {
+        this.variable = value;
     }
 
     /**

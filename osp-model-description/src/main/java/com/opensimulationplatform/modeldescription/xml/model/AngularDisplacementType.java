@@ -30,6 +30,10 @@ import java.util.List;
 @XmlType(name = "AngularDisplacementType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
     "variable"
 })
+@XmlSeeAlso({
+    AzimuthAngleType.class,
+    BladePitchType.class
+})
 public class AngularDisplacementType {
 
     @XmlElement(name = "Variable", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)

@@ -58,11 +58,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AngularMechanicalPortType }
+     * Create an instance of {@link NmeaTrueHeadingType }
      * 
      */
-    public AngularMechanicalPortType createAngularMechanicalPortType() {
-        return new AngularMechanicalPortType();
+    public NmeaTrueHeadingType createNmeaTrueHeadingType() {
+        return new NmeaTrueHeadingType();
+    }
+
+    /**
+     * Create an instance of {@link ShaftSpeedType }
+     * 
+     */
+    public ShaftSpeedType createShaftSpeedType() {
+        return new ShaftSpeedType();
+    }
+
+    /**
+     * Create an instance of {@link AzimuthAngleType }
+     * 
+     */
+    public AzimuthAngleType createAzimuthAngleType() {
+        return new AzimuthAngleType();
+    }
+
+    /**
+     * Create an instance of {@link ElectricPowerType }
+     * 
+     */
+    public ElectricPowerType createElectricPowerType() {
+        return new ElectricPowerType();
     }
 
     /**
@@ -90,6 +114,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NmeaGgaLatitudeLongitudeType }
+     * 
+     */
+    public NmeaGgaLatitudeLongitudeType createNmeaGgaLatitudeLongitudeType() {
+        return new NmeaGgaLatitudeLongitudeType();
+    }
+
+    /**
      * Create an instance of {@link ElectromagneticPortType }
      * 
      */
@@ -98,43 +130,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AngularDisplacementType }
-     * 
-     */
-    public AngularDisplacementType createAngularDisplacementType() {
-        return new AngularDisplacementType();
-    }
-
-    /**
-     * Create an instance of {@link ElectromagneticQuasiPortType }
-     * 
-     */
-    public ElectromagneticQuasiPortType createElectromagneticQuasiPortType() {
-        return new ElectromagneticQuasiPortType();
-    }
-
-    /**
-     * Create an instance of {@link VoltageType }
-     * 
-     */
-    public VoltageType createVoltageType() {
-        return new VoltageType();
-    }
-
-    /**
      * Create an instance of {@link LinearDisplacementType }
      * 
      */
     public LinearDisplacementType createLinearDisplacementType() {
         return new LinearDisplacementType();
-    }
-
-    /**
-     * Create an instance of {@link VolumeType }
-     * 
-     */
-    public VolumeType createVolumeType() {
-        return new VolumeType();
     }
 
     /**
@@ -162,6 +162,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NmeaMwvType }
+     * 
+     */
+    public NmeaMwvType createNmeaMwvType() {
+        return new NmeaMwvType();
+    }
+
+    /**
      * Create an instance of {@link LinearMechanicalQuasiPortType }
      * 
      */
@@ -170,11 +178,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GenericType }
+     * Create an instance of {@link BatteryFeedbackType }
      * 
      */
-    public GenericType createGenericType() {
-        return new GenericType();
+    public BatteryFeedbackType createBatteryFeedbackType() {
+        return new BatteryFeedbackType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaGstRmsType }
+     * 
+     */
+    public NmeaGstRmsType createNmeaGstRmsType() {
+        return new NmeaGstRmsType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaWindSpeedType }
+     * 
+     */
+    public NmeaWindSpeedType createNmeaWindSpeedType() {
+        return new NmeaWindSpeedType();
     }
 
     /**
@@ -186,6 +210,190 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AngularVelocityType }
+     * 
+     */
+    public AngularVelocityType createAngularVelocityType() {
+        return new AngularVelocityType();
+    }
+
+    /**
+     * Create an instance of {@link AngularAccelerationType }
+     * 
+     */
+    public AngularAccelerationType createAngularAccelerationType() {
+        return new AngularAccelerationType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaSxnType }
+     * 
+     */
+    public NmeaSxnType createNmeaSxnType() {
+        return new NmeaSxnType();
+    }
+
+    /**
+     * Create an instance of {@link UnitDefinitionsType }
+     * 
+     */
+    public UnitDefinitionsType createUnitDefinitionsType() {
+        return new UnitDefinitionsType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaWindDirectionType }
+     * 
+     */
+    public NmeaWindDirectionType createNmeaWindDirectionType() {
+        return new NmeaWindDirectionType();
+    }
+
+    /**
+     * Create an instance of {@link VolumeFlowRateType }
+     * 
+     */
+    public VolumeFlowRateType createVolumeFlowRateType() {
+        return new VolumeFlowRateType();
+    }
+
+    /**
+     * Create an instance of {@link FixedThrusterFeedbackType }
+     * 
+     */
+    public FixedThrusterFeedbackType createFixedThrusterFeedbackType() {
+        return new FixedThrusterFeedbackType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaGstType }
+     * 
+     */
+    public NmeaGstType createNmeaGstType() {
+        return new NmeaGstType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaGgaType }
+     * 
+     */
+    public NmeaGgaType createNmeaGgaType() {
+        return new NmeaGgaType();
+    }
+
+    /**
+     * Create an instance of {@link AzimuthThrusterSetpointType }
+     * 
+     */
+    public AzimuthThrusterSetpointType createAzimuthThrusterSetpointType() {
+        return new AzimuthThrusterSetpointType();
+    }
+
+    /**
+     * Create an instance of {@link AngularMechanicalPortType }
+     * 
+     */
+    public AngularMechanicalPortType createAngularMechanicalPortType() {
+        return new AngularMechanicalPortType();
+    }
+
+    /**
+     * Create an instance of {@link FixedThrusterSetpointType }
+     * 
+     */
+    public FixedThrusterSetpointType createFixedThrusterSetpointType() {
+        return new FixedThrusterSetpointType();
+    }
+
+    /**
+     * Create an instance of {@link AngularDisplacementType }
+     * 
+     */
+    public AngularDisplacementType createAngularDisplacementType() {
+        return new AngularDisplacementType();
+    }
+
+    /**
+     * Create an instance of {@link ElectromagneticQuasiPortType }
+     * 
+     */
+    public ElectromagneticQuasiPortType createElectromagneticQuasiPortType() {
+        return new ElectromagneticQuasiPortType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaGstPositionErrorType }
+     * 
+     */
+    public NmeaGstPositionErrorType createNmeaGstPositionErrorType() {
+        return new NmeaGstPositionErrorType();
+    }
+
+    /**
+     * Create an instance of {@link VoltageType }
+     * 
+     */
+    public VoltageType createVoltageType() {
+        return new VoltageType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaStatusType }
+     * 
+     */
+    public NmeaStatusType createNmeaStatusType() {
+        return new NmeaStatusType();
+    }
+
+    /**
+     * Create an instance of {@link VolumeType }
+     * 
+     */
+    public VolumeType createVolumeType() {
+        return new VolumeType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaThsType }
+     * 
+     */
+    public NmeaThsType createNmeaThsType() {
+        return new NmeaThsType();
+    }
+
+    /**
+     * Create an instance of {@link AzimuthThrusterFeedbackType }
+     * 
+     */
+    public AzimuthThrusterFeedbackType createAzimuthThrusterFeedbackType() {
+        return new AzimuthThrusterFeedbackType();
+    }
+
+    /**
+     * Create an instance of {@link LinearAccelerationType }
+     * 
+     */
+    public LinearAccelerationType createLinearAccelerationType() {
+        return new LinearAccelerationType();
+    }
+
+    /**
+     * Create an instance of {@link GenericType }
+     * 
+     */
+    public GenericType createGenericType() {
+        return new GenericType();
+    }
+
+    /**
+     * Create an instance of {@link GeneratorFeedbackType }
+     * 
+     */
+    public GeneratorFeedbackType createGeneratorFeedbackType() {
+        return new GeneratorFeedbackType();
+    }
+
+    /**
      * Create an instance of {@link VariableType }
      * 
      */
@@ -194,11 +402,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AngularVelocityType }
+     * Create an instance of {@link BusFeedbackType }
      * 
      */
-    public AngularVelocityType createAngularVelocityType() {
-        return new AngularVelocityType();
+    public BusFeedbackType createBusFeedbackType() {
+        return new BusFeedbackType();
     }
 
     /**
@@ -218,11 +426,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UnitDefinitionsType }
+     * Create an instance of {@link NmeaGgaFixType }
      * 
      */
-    public UnitDefinitionsType createUnitDefinitionsType() {
-        return new UnitDefinitionsType();
+    public NmeaGgaFixType createNmeaGgaFixType() {
+        return new NmeaGgaFixType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaTimeType }
+     * 
+     */
+    public NmeaTimeType createNmeaTimeType() {
+        return new NmeaTimeType();
     }
 
     /**
@@ -234,11 +450,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VolumeFlowRateType }
+     * Create an instance of {@link BladePitchType }
      * 
      */
-    public VolumeFlowRateType createVolumeFlowRateType() {
-        return new VolumeFlowRateType();
+    public BladePitchType createBladePitchType() {
+        return new BladePitchType();
     }
 
     /**
@@ -247,6 +463,22 @@ public class ObjectFactory {
      */
     public ChargeType createChargeType() {
         return new ChargeType();
+    }
+
+    /**
+     * Create an instance of {@link FrequencyType }
+     * 
+     */
+    public FrequencyType createFrequencyType() {
+        return new FrequencyType();
+    }
+
+    /**
+     * Create an instance of {@link NmeaGstEllipseType }
+     * 
+     */
+    public NmeaGstEllipseType createNmeaGstEllipseType() {
+        return new NmeaGstEllipseType();
     }
 
     /**

@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.*;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="UnitDefinitions" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}UnitDefinitionsType" minOccurs="0"/>
- *         &lt;element name="VariableGroups" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableGroupsType"/>
+ *         &lt;element name="VariableGroups" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableGroupsType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="0.1" />
  *     &lt;/restriction>
@@ -34,7 +34,7 @@ public class OspModelDescriptionType {
 
     @XmlElement(name = "UnitDefinitions", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
     protected UnitDefinitionsType unitDefinitions;
-    @XmlElement(name = "VariableGroups", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "VariableGroups", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
     protected VariableGroupsType variableGroups;
     @XmlAttribute(name = "version", required = true)
     protected String version;

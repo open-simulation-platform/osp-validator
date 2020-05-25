@@ -7,12 +7,12 @@ import java.util.List;
 
 
 /**
- * <p>Java class for AngularVelocityType complex type.
+ * <p>Java class for AngularAccelerationType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AngularVelocityType">
+ * &lt;complexType name="AngularAccelerationType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,13 +27,10 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AngularVelocityType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "AngularAccelerationType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
     "variable"
 })
-@XmlSeeAlso({
-    ShaftSpeedType.class
-})
-public class AngularVelocityType {
+public class AngularAccelerationType {
 
     @XmlElement(name = "Variable", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
     protected List<VariableType> variable;
