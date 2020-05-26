@@ -1,7 +1,7 @@
 package com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagga;
 
-import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.fixedsizevariablegroup.FixedSizeVariableGroup;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggalatitudelongitude.NmeaGgaLatitudeLongitude;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeatime.NmeaTime;
@@ -10,19 +10,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class NmeaGga extends VariableGroup {
+public class NmeaGga extends FixedSizeVariableGroup {
 
   private NmeaTime nmeaTime;
   private NmeaGgaLatitudeLongitude nmeaGgaLatitudeLongitude;
   private NmeaGgaFix nmeaGgaFix;
 
   @Override
-  public void setVariables(List<Variable> variables) {
-    if (variables.size() != 0) {
-      throw new RuntimeException("NmeaGga variable group can not contain variables");
-    } else {
-      this.variables = variables;
-    }
+  protected int size() {
+    return 0;
   }
 
   @Override
