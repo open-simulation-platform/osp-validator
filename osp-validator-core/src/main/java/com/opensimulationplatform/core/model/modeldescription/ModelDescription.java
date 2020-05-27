@@ -18,6 +18,8 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.line
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggalatitudelongitude.NmeaGgaLatitudeLongitude;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeatime.NmeaTime;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.pressure.Pressure;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.torque.Torque;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
@@ -62,6 +64,8 @@ public class ModelDescription {
   private final List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = new ArrayList<>();
 
   private final List<NmeaGgaFix> nmeaGgaFixs = new ArrayList<>();
+  private List<NmeaTime> nmeaTimes = new ArrayList<>();
+  private List<NmeaGgaLatitudeLongitude> getNmeaGgaLatitudeLongitudes = new ArrayList<>();
 
   public List<Unit> getUnits() {
     return units;
@@ -161,5 +165,13 @@ public class ModelDescription {
 
   public List<NmeaGgaFix> getNmeaGgaFixs() {
     return nmeaGgaFixs;
+  }
+
+  public List<NmeaTime> getNmeaTimes() {
+    return nmeaTimes;
+  }
+
+  public List<NmeaGgaLatitudeLongitude> getNmeaGgaLatitudeLongitudes() {
+    return getNmeaGgaLatitudeLongitudes;
   }
 }

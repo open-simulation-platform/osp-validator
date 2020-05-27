@@ -17,7 +17,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.flow.VolumeFlow
 import com.opensimulationplatform.modeldescription.xml.converter.fmimodeldescription.Fmi1ModelDescriptionConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.fmimodeldescription.Fmi2ModelDescriptionConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.generic.GenericTypeConverter;
-import com.opensimulationplatform.modeldescription.xml.converter.nmea.NmeaGgaFixTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.ospmodeldescriptiontype.OspModelDescriptionTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.port.AngularMechanicalPortTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.port.ElectromagneticPortTypeConverter;
@@ -27,6 +26,9 @@ import com.opensimulationplatform.modeldescription.xml.converter.quasiport.Angul
 import com.opensimulationplatform.modeldescription.xml.converter.quasiport.ElectromagneticQuasiPortTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.quasiport.HydraulicQuasiPortTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.quasiport.LinearMechanicalQuasiPortTypeConverter;
+import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.NmeaGgaFixTypeConverter;
+import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.NmeaGgaLongitudeLatitudeTypeConverter;
+import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.NmeaTimeTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.unit.Fmi2UnitConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.unit.UnitTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.variable.Fmi1ScalarVariableConverter;
@@ -78,6 +80,8 @@ public class ConverterContext {
   public HydraulicQuasiPortTypeConverter hydraulicQuasiPortTypeConverter;
   public LinearMechanicalQuasiPortTypeConverter linearMechanicalQuasiPortTypeConverter;
   public NmeaGgaFixTypeConverter nmeaGgaFixTypeConverter;
+  public NmeaTimeTypeConverter nmeaTimeTypeConverter;
+  public NmeaGgaLongitudeLatitudeTypeConverter nmeaGgaLatitudeLongitudeConverter;
 
   public ConverterContext() {
     this.modelDescription = new ModelDescription();

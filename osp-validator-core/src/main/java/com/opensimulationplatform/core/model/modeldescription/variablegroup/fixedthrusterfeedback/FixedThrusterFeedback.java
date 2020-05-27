@@ -3,6 +3,7 @@ package com.opensimulationplatform.core.model.modeldescription.variablegroup.fix
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.bladepitch.BladePitch;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.fixedsizevariablegroup.FixedSizeVariableGroup;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.shaftspeed.ShaftSpeed;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class FixedThrusterFeedback extends FixedSizeVariableGroup {
 
   private ShaftSpeed shaftSpeed;
   private BladePitch bladePitch;
+  private Force force;
 
   @Override
   protected int size() {
@@ -36,5 +38,13 @@ public class FixedThrusterFeedback extends FixedSizeVariableGroup {
 
   public void setBladePitch(BladePitch bladePitch) {
     this.bladePitch = bladePitch;
+  }
+
+  public Force getForce() {
+    return force;
+  }
+
+  public void setForce(Force force) {
+    this.force = force;
   }
 }

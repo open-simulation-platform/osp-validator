@@ -1,4 +1,4 @@
-package com.opensimulationplatform.modeldescription.xml.converter.nmea;
+package com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggafix.NmeaGgaFix;
