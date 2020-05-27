@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.fixe
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.shaftspeed.ShaftSpeed;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.FixedThrusterFeedbackType;
 
 public class FixedThrusterFeedbackTypeConverter extends Converter<FixedThrusterFeedbackType, FixedThrusterFeedback> {
+  public FixedThrusterFeedbackTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public FixedThrusterFeedback convert(FixedThrusterFeedbackType fixedThrusterFeedbackType) {
     FixedThrusterFeedback fixedThrusterFeedback = new FixedThrusterFeedback();

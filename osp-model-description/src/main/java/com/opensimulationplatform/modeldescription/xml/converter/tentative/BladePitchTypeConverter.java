@@ -3,11 +3,16 @@ package com.opensimulationplatform.modeldescription.xml.converter.tentative;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.bladepitch.BladePitch;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.BladePitchType;
 
 import java.util.List;
 
 public class BladePitchTypeConverter extends Converter<BladePitchType, BladePitch> {
+  public BladePitchTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public BladePitch convert(BladePitchType bladePitchType) {
     BladePitch bladePitch = new BladePitch();

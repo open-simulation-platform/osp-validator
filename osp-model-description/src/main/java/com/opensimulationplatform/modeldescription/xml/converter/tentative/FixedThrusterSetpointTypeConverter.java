@@ -4,9 +4,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.blad
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.fixedthrustersetpoint.FixedThrusterSetpoint;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.shaftspeed.ShaftSpeed;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.FixedThrusterSetpointType;
 
 public class FixedThrusterSetpointTypeConverter extends Converter<FixedThrusterSetpointType, FixedThrusterSetpoint> {
+  public FixedThrusterSetpointTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public FixedThrusterSetpoint convert(FixedThrusterSetpointType fixedThrusterSetpointType) {
     FixedThrusterSetpoint fixedThrusterSetpoint = new FixedThrusterSetpoint();

@@ -6,9 +6,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.blad
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.shaftspeed.ShaftSpeed;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AzimuthThrusterFeedbackType;
 
 public class AzimuthThrusterFeedbackTypeConverter extends Converter<AzimuthThrusterFeedbackType, AzimuthThrusterFeedback> {
+  public AzimuthThrusterFeedbackTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public AzimuthThrusterFeedback convert(AzimuthThrusterFeedbackType azimuthThrusterFeedbackType) {
     AzimuthThrusterFeedback azimuthThrusterFeedback = new AzimuthThrusterFeedback();

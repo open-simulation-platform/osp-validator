@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.elec
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.frequency.Frequency;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.BusFeedbackType;
 
 public class BusFeedbackTypeConverter extends Converter<BusFeedbackType, BusFeedback> {
+  public BusFeedbackTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public BusFeedback convert(BusFeedbackType busFeedbackType) {
     BusFeedback busFeedback = new BusFeedback();

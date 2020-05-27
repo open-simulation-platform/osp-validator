@@ -3,11 +3,16 @@ package com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeawinddirection.NmeaWindDirection;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.NmeaWindDirectionType;
 
 import java.util.List;
 
 public class NmeaWindDirectionTypeConverter extends Converter<NmeaWindDirectionType, NmeaWindDirection> {
+  public NmeaWindDirectionTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public NmeaWindDirection convert(NmeaWindDirectionType nmeaWindDirectionType) {
     NmeaWindDirection nmeaWindDirection = new NmeaWindDirection();

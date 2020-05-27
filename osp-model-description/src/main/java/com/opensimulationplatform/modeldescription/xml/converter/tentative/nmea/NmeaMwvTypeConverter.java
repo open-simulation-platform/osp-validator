@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmea
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeawinddirection.NmeaWindDirection;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeawindspeed.NmeaWindSpeed;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.NmeaMwvType;
 
 public class NmeaMwvTypeConverter extends Converter<NmeaMwvType, NmeaMwv> {
+  public NmeaMwvTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public NmeaMwv convert(NmeaMwvType nmeaMwvType) {
     NmeaMwv nmeaMwv = new NmeaMwv();

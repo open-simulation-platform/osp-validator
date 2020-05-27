@@ -26,9 +26,8 @@ import com.opensimulationplatform.modeldescription.xml.converter.quasiport.Angul
 import com.opensimulationplatform.modeldescription.xml.converter.quasiport.ElectromagneticQuasiPortTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.quasiport.HydraulicQuasiPortTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.quasiport.LinearMechanicalQuasiPortTypeConverter;
-import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.NmeaGgaFixTypeConverter;
-import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.NmeaGgaLongitudeLatitudeTypeConverter;
-import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.NmeaTimeTypeConverter;
+import com.opensimulationplatform.modeldescription.xml.converter.tentative.*;
+import com.opensimulationplatform.modeldescription.xml.converter.tentative.nmea.*;
 import com.opensimulationplatform.modeldescription.xml.converter.unit.Fmi2UnitConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.unit.UnitTypeConverter;
 import com.opensimulationplatform.modeldescription.xml.converter.variable.Fmi1ScalarVariableConverter;
@@ -79,9 +78,37 @@ public class ConverterContext {
   public ElectromagneticQuasiPortTypeConverter electromagneticQuasiPortTypeConverter;
   public HydraulicQuasiPortTypeConverter hydraulicQuasiPortTypeConverter;
   public LinearMechanicalQuasiPortTypeConverter linearMechanicalQuasiPortTypeConverter;
+
   public NmeaGgaFixTypeConverter nmeaGgaFixTypeConverter;
   public NmeaTimeTypeConverter nmeaTimeTypeConverter;
-  public NmeaGgaLongitudeLatitudeTypeConverter nmeaGgaLatitudeLongitudeConverter;
+  public NmeaGgaLatitudeLongitudeTypeConverter nmeaGgaLatitudeLongitudeTypeConverter;
+  public NmeaGstEllipseTypeConverter nmeaGstEllipseTypeConverter;
+  public NmeaGstPositionErrorTypeConverter nmeaGstPositionErrorTypeConverter;
+  public NmeaGstRmsTypeConverter nmeaGstRmsTypeConverter;
+  public NmeaStatusTypeConverter nmeaStatusTypeConverter;
+  public NmeaWindDirectionTypeConverter nmeaWindDirectionTypeConverter;
+  public NmeaWindSpeedTypeConverter nmeaWindSpeedTypeConverter;
+  public NmeaTrueHeadingTypeConverter nmeaTrueHeadingTypeConverter;
+  public AzimuthAngleTypeConverter azimuthAngleTypeConverter;
+  public BladePitchTypeConverter bladePitchTypeConverter;
+  public ShaftSpeedTypeConverter shaftSpeedTypeConverter;
+  public ElectricPowerTypeConverter electricPowerTypeConverter;
+  public FrequencyTypeConverter frequencyTypeConverter;
+  public NmeaGgaTypeConverter nmeaGgaTypeConverter;
+  public NmeaGstTypeConverter nmeaGstTypeConverter;
+  public NmeaMwvTypeConverter nmeaMwvTypeConverter;
+  public NmeaSxnTypeConverter nmeaSxnTypeConverter;
+  public NmeaThsTypeConverter nmeaThsTypeConverter;
+  public AngularAccelerationTypeConverter angularAccelerationTypeConverter;
+  public AzimuthThrusterFeedbackTypeConverter azimuthThrusterFeedbackTypeConverter;
+  public AzimuthThrusterSetpointTypeConverter azimuthThrusterSetpointTypeConverter;
+  public BatteryFeedbackTypeConverter batteryFeedbackTypeConverter;
+  public BusFeedbackTypeConverter busFeedbackTypeConverter;
+  public FixedThrusterFeedbackTypeConverter fixedThrusterFeedbackTypeConverter;
+  public FixedThrusterSetpointTypeConverter fixedThrusterSetpointTypeConverter;
+  public GeneratorFeedbackTypeConverter generatorFeedbackTypeConverter;
+  public LinearAccelerationTypeConverter linearAccelerationTypeConverter;
+
 
   public ConverterContext() {
     this.modelDescription = new ModelDescription();
@@ -126,5 +153,33 @@ public class ConverterContext {
     this.linearMechanicalQuasiPortTypeConverter = new LinearMechanicalQuasiPortTypeConverter(this);
 
     this.nmeaGgaFixTypeConverter = new NmeaGgaFixTypeConverter(this);
+    this.nmeaTimeTypeConverter = new NmeaTimeTypeConverter(this);
+    this.nmeaGgaLatitudeLongitudeTypeConverter = new NmeaGgaLatitudeLongitudeTypeConverter(this);
+    this.nmeaGstEllipseTypeConverter = new NmeaGstEllipseTypeConverter(this);
+    this.nmeaGstPositionErrorTypeConverter = new NmeaGstPositionErrorTypeConverter(this);
+    this.nmeaGstRmsTypeConverter = new NmeaGstRmsTypeConverter(this);
+    this.nmeaStatusTypeConverter = new NmeaStatusTypeConverter(this);
+    this.nmeaWindDirectionTypeConverter = new NmeaWindDirectionTypeConverter(this);
+    this.nmeaWindSpeedTypeConverter = new NmeaWindSpeedTypeConverter(this);
+    this.nmeaTrueHeadingTypeConverter = new NmeaTrueHeadingTypeConverter(this);
+    this.azimuthAngleTypeConverter = new AzimuthAngleTypeConverter(this);
+    this.bladePitchTypeConverter = new BladePitchTypeConverter(this);
+    this.shaftSpeedTypeConverter = new ShaftSpeedTypeConverter(this);
+    this.electricPowerTypeConverter = new ElectricPowerTypeConverter(this);
+    this.frequencyTypeConverter = new FrequencyTypeConverter(this);
+    this.nmeaGgaTypeConverter = new NmeaGgaTypeConverter(this);
+    this.nmeaGstTypeConverter = new NmeaGstTypeConverter(this);
+    this.nmeaMwvTypeConverter = new NmeaMwvTypeConverter(this);
+    this.nmeaSxnTypeConverter = new NmeaSxnTypeConverter(this);
+    this.nmeaThsTypeConverter = new NmeaThsTypeConverter(this);
+    this.angularAccelerationTypeConverter = new AngularAccelerationTypeConverter(this);
+    this.azimuthThrusterFeedbackTypeConverter = new AzimuthThrusterFeedbackTypeConverter(this);
+    this.azimuthThrusterSetpointTypeConverter = new AzimuthThrusterSetpointTypeConverter(this);
+    this.batteryFeedbackTypeConverter = new BatteryFeedbackTypeConverter(this);
+    this.busFeedbackTypeConverter = new BusFeedbackTypeConverter(this);
+    this.fixedThrusterFeedbackTypeConverter = new FixedThrusterFeedbackTypeConverter(this);
+    this.fixedThrusterSetpointTypeConverter = new FixedThrusterSetpointTypeConverter(this);
+    this.generatorFeedbackTypeConverter = new GeneratorFeedbackTypeConverter(this);
+    this.linearAccelerationTypeConverter = new LinearAccelerationTypeConverter(this);
   }
 }

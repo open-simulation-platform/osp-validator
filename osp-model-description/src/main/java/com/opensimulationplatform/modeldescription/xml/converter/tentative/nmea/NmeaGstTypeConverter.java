@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmea
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagstpositionerror.NmeaGstPositionError;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagstrms.NmeaGstRms;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.NmeaGstType;
 
 public class NmeaGstTypeConverter extends Converter<NmeaGstType, NmeaGst> {
+  public NmeaGstTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public NmeaGst convert(NmeaGstType nmeaGstType) {
     NmeaGst nmeaGst = new NmeaGst();

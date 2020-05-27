@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmea
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaggalatitudelongitude.NmeaGgaLatitudeLongitude;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeatime.NmeaTime;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.NmeaGgaType;
 
 public class NmeaGgaTypeConverter extends Converter<NmeaGgaType, NmeaGga> {
+  public NmeaGgaTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public NmeaGga convert(NmeaGgaType nmeaGgaType) {
     NmeaGga nmeaGga = new NmeaGga();
@@ -16,7 +21,7 @@ public class NmeaGgaTypeConverter extends Converter<NmeaGgaType, NmeaGga> {
 
     NmeaTime nmeaTime = context.nmeaTimeTypeConverter.convert(nmeaGgaType.getNmeaTime());
     NmeaGgaFix nmeaGgaFix = context.nmeaGgaFixTypeConverter.convert(nmeaGgaType.getNmeaGgaFix());
-    NmeaGgaLatitudeLongitude nmeaGgaLatitudeLongitude = context.nmeaGgaLatitudeLongitudeConverter.convert(nmeaGgaType.getNmeaGgaLatitudeLongitude());
+    NmeaGgaLatitudeLongitude nmeaGgaLatitudeLongitude = context.nmeaGgaLatitudeLongitudeTypeConverter.convert(nmeaGgaType.getNmeaGgaLatitudeLongitude());
 
     context.modelDescription.getNmeaTimes().add(nmeaTime);
     context.modelDescription.getNmeaGgaFixs().add(nmeaGgaFix);

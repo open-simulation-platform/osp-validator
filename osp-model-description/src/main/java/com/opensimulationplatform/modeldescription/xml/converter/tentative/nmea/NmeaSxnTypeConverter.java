@@ -4,9 +4,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.angu
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeastatus.NmeaStatus;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeasxn.NmeaSxn;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.NmeaSxnType;
 
 public class NmeaSxnTypeConverter extends Converter<NmeaSxnType, NmeaSxn> {
+  public NmeaSxnTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public NmeaSxn convert(NmeaSxnType nmeaSxnType) {
     NmeaSxn nmeaSxn = new NmeaSxn();

@@ -4,9 +4,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmea
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeaths.NmeaThs;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeatrueheading.NmeaTrueHeading;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.NmeaThsType;
 
 public class NmeaThsTypeConverter extends Converter<NmeaThsType, NmeaThs> {
+  public NmeaThsTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public NmeaThs convert(NmeaThsType nmeaThsType) {
     NmeaThs nmeaThs = new NmeaThs();

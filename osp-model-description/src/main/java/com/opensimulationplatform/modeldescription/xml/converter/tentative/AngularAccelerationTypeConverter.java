@@ -3,11 +3,16 @@ package com.opensimulationplatform.modeldescription.xml.converter.tentative;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularacceleration.AngularAcceleration;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AngularAccelerationType;
 
 import java.util.List;
 
 public class AngularAccelerationTypeConverter extends Converter<AngularAccelerationType, AngularAcceleration> {
+  public AngularAccelerationTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public AngularAcceleration convert(AngularAccelerationType angularAccelerationType) {
     AngularAcceleration angularAcceleration = new AngularAcceleration();

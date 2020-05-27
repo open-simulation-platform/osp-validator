@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.freq
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.generatorfeedback.GeneratorFeedback;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.GeneratorFeedbackType;
 
 public class GeneratorFeedbackTypeConverter extends Converter<GeneratorFeedbackType, GeneratorFeedback> {
+  public GeneratorFeedbackTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public GeneratorFeedback convert(GeneratorFeedbackType object) {
     GeneratorFeedback generatorFeedback = new GeneratorFeedback();

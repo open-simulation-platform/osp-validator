@@ -5,9 +5,14 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.azim
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.bladepitch.BladePitch;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.shaftspeed.ShaftSpeed;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
+import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AzimuthThrusterSetpointType;
 
 public class AzimuthThrusterSetpointTypeConverter extends Converter<AzimuthThrusterSetpointType, AzimuthThrusterSetpoint> {
+  public AzimuthThrusterSetpointTypeConverter(ConverterContext context) {
+    super(context);
+  }
+
   @Override
   public AzimuthThrusterSetpoint convert(AzimuthThrusterSetpointType azimuthThrusterSetpointType) {
     AzimuthThrusterSetpoint azimuthThrusterSetpoint = new AzimuthThrusterSetpoint();
