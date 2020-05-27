@@ -5,9 +5,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi2.Fmi2Unit;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static com.opensimulationplatform.core.model.modeldescription.Unit.Exponent.*;
 
 public class Fmi2UnitConverter extends Converter<Fmi2Unit, Unit> {
@@ -35,10 +32,5 @@ public class Fmi2UnitConverter extends Converter<Fmi2Unit, Unit> {
     unit.setExponent(RADIAN, baseUnit.getRad());
 
     return unit;
-  }
-
-  @Override
-  public List<Unit> convert(List<Fmi2Unit> fmi2Units) {
-    return fmi2Units.stream().map(this::convert).collect(Collectors.toList());
   }
 }

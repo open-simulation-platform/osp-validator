@@ -28,9 +28,4 @@ public class LinearDisplacementTypeConverter extends Converter<LinearDisplacemen
 
     return linearDisplacement;
   }
-
-  @Override
-  public List<LinearDisplacement> convert(List<LinearDisplacementType> linearDisplacementTypes) {
-    return linearDisplacementTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

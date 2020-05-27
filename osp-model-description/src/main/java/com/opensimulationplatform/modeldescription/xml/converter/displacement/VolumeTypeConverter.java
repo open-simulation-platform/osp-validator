@@ -28,9 +28,4 @@ public class VolumeTypeConverter extends Converter<VolumeType, Volume> {
 
     return volume;
   }
-
-  @Override
-  public List<Volume> convert(List<VolumeType> volumeTypes) {
-    return volumeTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

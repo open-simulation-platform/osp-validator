@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.LinearMechanicalQuasiPortType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class LinearMechanicalQuasiPortTypeConverter extends Converter<LinearMechanicalQuasiPortType, LinearMechanicalQuasiPort> {
 
   public LinearMechanicalQuasiPortTypeConverter(ConverterContext converterContext) {
@@ -31,10 +28,5 @@ public class LinearMechanicalQuasiPortTypeConverter extends Converter<LinearMech
     linearMechanicalPort.setLinearDisplacement(linearDisplacement);
 
     return linearMechanicalPort;
-  }
-
-  @Override
-  public List<LinearMechanicalQuasiPort> convert(List<LinearMechanicalQuasiPortType> linearMechanicalPortTypes) {
-    return linearMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

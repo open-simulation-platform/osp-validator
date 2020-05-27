@@ -9,7 +9,6 @@ import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Fmi1ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription, FmiModelDescription> {
 
@@ -33,10 +32,5 @@ public class Fmi1ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
     fmd.setVariables(variables);
 
     return fmd;
-  }
-
-  @Override
-  public List<FmiModelDescription> convert(List<no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiModelDescription> fmiModelDescriptions) {
-    return fmiModelDescriptions.stream().map(this::convert).collect(Collectors.toList());
   }
 }

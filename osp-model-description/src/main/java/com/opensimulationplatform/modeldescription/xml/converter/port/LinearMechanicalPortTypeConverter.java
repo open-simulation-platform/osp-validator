@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.LinearMechanicalPortType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class LinearMechanicalPortTypeConverter extends Converter<LinearMechanicalPortType, LinearMechanicalPort> {
 
   public LinearMechanicalPortTypeConverter(ConverterContext converterContext) {
@@ -31,10 +28,5 @@ public class LinearMechanicalPortTypeConverter extends Converter<LinearMechanica
     linearMechanicalPort.setLinearVelocity(linearVelocity);
 
     return linearMechanicalPort;
-  }
-
-  @Override
-  public List<LinearMechanicalPort> convert(List<LinearMechanicalPortType> linearMechanicalPortTypes) {
-    return linearMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

@@ -28,9 +28,4 @@ public class ForceTypeConverter extends Converter<ForceType, Force> {
 
     return force;
   }
-
-  @Override
-  public List<Force> convert(List<ForceType> forceTypes) {
-    return forceTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

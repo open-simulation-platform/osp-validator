@@ -28,9 +28,4 @@ public class AngularDisplacementTypeConverter extends Converter<AngularDisplacem
 
     return angularDisplacement;
   }
-
-  @Override
-  public List<AngularDisplacement> convert(List<AngularDisplacementType> angularDisplacementTypes) {
-    return angularDisplacementTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

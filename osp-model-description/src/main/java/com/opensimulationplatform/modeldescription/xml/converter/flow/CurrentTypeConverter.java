@@ -27,9 +27,4 @@ public class CurrentTypeConverter extends Converter<CurrentType, Current> {
 
     return current;
   }
-
-  @Override
-  public List<Current> convert(List<CurrentType> linearVelocityTypes) {
-    return linearVelocityTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

@@ -29,9 +29,4 @@ public class TorqueTypeConverter extends Converter<TorqueType, Torque> {
     return torque;
 
   }
-
-  @Override
-  public List<Torque> convert(List<TorqueType> torqueTypes) {
-    return torqueTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

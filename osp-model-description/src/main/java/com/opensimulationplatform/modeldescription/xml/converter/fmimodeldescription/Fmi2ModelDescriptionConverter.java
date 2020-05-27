@@ -11,7 +11,6 @@ import no.ntnu.ihb.fmi4j.modeldescription.fmi2.Fmi2Unit;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Fmi2ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.modeldescription.fmi2.FmiModelDescription, FmiModelDescription> {
 
@@ -42,10 +41,5 @@ public class Fmi2ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
     }
 
     return fmd;
-  }
-
-  @Override
-  public List<FmiModelDescription> convert(List<no.ntnu.ihb.fmi4j.modeldescription.fmi2.FmiModelDescription> fmiModelDescriptions) {
-    return fmiModelDescriptions.stream().map(this::convert).collect(Collectors.toList());
   }
 }

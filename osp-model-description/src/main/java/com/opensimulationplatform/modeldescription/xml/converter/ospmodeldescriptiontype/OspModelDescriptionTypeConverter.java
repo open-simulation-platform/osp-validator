@@ -33,7 +33,6 @@ import no.ntnu.ihb.fmi4j.modeldescription.ModelDescriptionParser;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OspModelDescriptionTypeConverter extends Converter<OspModelDescriptionType, ModelDescription> {
 
@@ -163,10 +162,5 @@ public class OspModelDescriptionTypeConverter extends Converter<OspModelDescript
     }
 
     return modelDescription;
-  }
-
-  @Override
-  public List<ModelDescription> convert(List<OspModelDescriptionType> ospModelDescriptionTypes) {
-    return ospModelDescriptionTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

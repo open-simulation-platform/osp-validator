@@ -27,9 +27,4 @@ public class AngularVelocityTypeConverter extends Converter<AngularVelocityType,
 
     return angularVelocity;
   }
-
-  @Override
-  public List<AngularVelocity> convert(List<AngularVelocityType> angularVelocityTypes) {
-    return angularVelocityTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

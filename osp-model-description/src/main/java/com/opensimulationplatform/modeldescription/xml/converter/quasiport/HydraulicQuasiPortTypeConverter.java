@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.HydraulicQuasiPortType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class HydraulicQuasiPortTypeConverter extends Converter<HydraulicQuasiPortType, HydraulicQuasiPort> {
 
   public HydraulicQuasiPortTypeConverter(ConverterContext converterContext) {
@@ -31,10 +28,5 @@ public class HydraulicQuasiPortTypeConverter extends Converter<HydraulicQuasiPor
     linearMechanicalPort.setVolume(volume);
 
     return linearMechanicalPort;
-  }
-
-  @Override
-  public List<HydraulicQuasiPort> convert(List<HydraulicQuasiPortType> linearMechanicalPortTypes) {
-    return linearMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

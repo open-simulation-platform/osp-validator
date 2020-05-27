@@ -27,7 +27,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.ConverterContex
 import com.opensimulationplatform.modeldescription.xml.model.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GenericTypeConverter extends Converter<GenericType, Generic> {
 
@@ -151,10 +150,5 @@ public class GenericTypeConverter extends Converter<GenericType, Generic> {
     context.modelDescription.getLinearMechanicalQuasiPorts().addAll(linearMechanicalQuasiPorts);
 
     return generic;
-  }
-
-  @Override
-  public List<Generic> convert(List<GenericType> genericTypes) {
-    return genericTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

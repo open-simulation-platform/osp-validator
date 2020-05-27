@@ -27,9 +27,4 @@ public class VolumeFlowRateTypeConverter extends Converter<VolumeFlowRateType, V
 
     return volumeFlowRate;
   }
-
-  @Override
-  public List<VolumeFlowRate> convert(List<VolumeFlowRateType> volumeFlowRateTypes) {
-    return volumeFlowRateTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

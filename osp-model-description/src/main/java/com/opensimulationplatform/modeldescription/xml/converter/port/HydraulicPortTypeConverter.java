@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.HydraulicPortType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class HydraulicPortTypeConverter extends Converter<HydraulicPortType, HydraulicPort> {
 
   public HydraulicPortTypeConverter(ConverterContext converterContext) {
@@ -31,10 +28,5 @@ public class HydraulicPortTypeConverter extends Converter<HydraulicPortType, Hyd
     electromagneticPort.setVolumeFlowRate(volumeFlowRate);
 
     return electromagneticPort;
-  }
-
-  @Override
-  public List<HydraulicPort> convert(List<HydraulicPortType> electromagneticPortTypes) {
-    return electromagneticPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

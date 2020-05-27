@@ -28,9 +28,4 @@ public class LinearVelocityTypeConverter extends Converter<LinearVelocityType, L
 
     return linearVelocity;
   }
-
-  @Override
-  public List<LinearVelocity> convert(List<LinearVelocityType> linearVelocityTypes) {
-    return linearVelocityTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

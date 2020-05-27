@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.VariableType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class VariableTypeConverter extends Converter<VariableType, Variable> {
 
   public VariableTypeConverter(ConverterContext converterContext) {
@@ -26,10 +23,5 @@ public class VariableTypeConverter extends Converter<VariableType, Variable> {
     }
 
     return variable;
-  }
-
-  @Override
-  public List<Variable> convert(List<VariableType> variableTypes) {
-    return variableTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

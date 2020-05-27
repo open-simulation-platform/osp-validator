@@ -28,9 +28,4 @@ public class ChargeTypeConverter extends Converter<ChargeType, Charge> {
 
     return charge;
   }
-
-  @Override
-  public List<Charge> convert(List<ChargeType> chargeTypes) {
-    return chargeTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

@@ -29,9 +29,4 @@ public class VoltageTypeConverter extends Converter<VoltageType, Voltage> {
     return voltage;
 
   }
-
-  @Override
-  public List<Voltage> convert(List<VoltageType> voltageTypes) {
-    return voltageTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

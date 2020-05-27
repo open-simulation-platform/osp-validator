@@ -29,9 +29,4 @@ public class PressureTypeConverter extends Converter<PressureType, Pressure> {
     return pressure;
 
   }
-
-  @Override
-  public List<Pressure> convert(List<PressureType> pressureTypes) {
-    return pressureTypes.stream().map(this::convert).collect(Collectors.toList());
-  }
 }

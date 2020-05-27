@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.ElectromagneticQuasiPortType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class ElectromagneticQuasiPortTypeConverter extends Converter<ElectromagneticQuasiPortType, ElectromagneticQuasiPort> {
 
   public ElectromagneticQuasiPortTypeConverter(ConverterContext converterContext) {
@@ -31,10 +28,5 @@ public class ElectromagneticQuasiPortTypeConverter extends Converter<Electromagn
     linearMechanicalPort.setCharge(charge);
 
     return linearMechanicalPort;
-  }
-
-  @Override
-  public List<ElectromagneticQuasiPort> convert(List<ElectromagneticQuasiPortType> linearMechanicalPortTypes) {
-    return linearMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

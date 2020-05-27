@@ -1,31 +1,17 @@
 package com.opensimulationplatform.core.model.modeldescription.variablegroup.azimuthangle;
 
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
+import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.angulardisplacement.AngularDisplacement;
-import com.opensimulationplatform.core.model.modeldescription.variablegroup.fixedsizevariablegroup.FixedSizeVariableGroup;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class AzimuthAngle extends FixedSizeVariableGroup {
-
-  private AngularDisplacement angularDisplacement;
-
+public class AzimuthAngle extends AngularDisplacement {
   @Override
-  protected int size() {
-    return 0;
-  }
-
-  @Override
-  public List<VariableGroup> getVariableGroups() {
-    return Arrays.asList(angularDisplacement);
-  }
-
-  public AngularDisplacement getAngularDisplacement() {
-    return angularDisplacement;
-  }
-
-  public void setAngularDisplacement(AngularDisplacement angularDisplacement) {
-    this.angularDisplacement = angularDisplacement;
+  public void setVariables(List<Variable> variables) {
+    if (variables.size() != 1) {
+      throw new RuntimeException(this.getClass().getSimpleName() + " variable group must contain exactly " + 1 + " variable");
+    } else {
+      this.variables = variables;
+    }
   }
 }

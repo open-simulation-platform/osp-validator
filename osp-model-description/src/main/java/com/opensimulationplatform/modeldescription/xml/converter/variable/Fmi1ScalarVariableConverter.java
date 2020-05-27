@@ -5,9 +5,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static com.opensimulationplatform.core.model.modeldescription.Variable.Causality.INPUT;
 import static com.opensimulationplatform.core.model.modeldescription.Variable.Causality.OUTPUT;
 import static com.opensimulationplatform.core.model.modeldescription.Variable.Type.*;
@@ -53,10 +50,5 @@ public class Fmi1ScalarVariableConverter extends Converter<FmiScalarVariable, Va
     }
 
     return variable;
-  }
-
-  @Override
-  public List<Variable> convert(List<FmiScalarVariable> fmiScalarVariables) {
-    return fmiScalarVariables.stream().map(this::convert).collect(Collectors.toList());
   }
 }

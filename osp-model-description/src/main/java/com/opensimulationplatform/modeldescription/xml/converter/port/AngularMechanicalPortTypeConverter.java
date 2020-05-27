@@ -7,9 +7,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AngularMechanicalPortType;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class AngularMechanicalPortTypeConverter extends Converter<AngularMechanicalPortType, AngularMechanicalPort> {
 
   public AngularMechanicalPortTypeConverter(ConverterContext converterContext) {
@@ -31,10 +28,5 @@ public class AngularMechanicalPortTypeConverter extends Converter<AngularMechani
     angularMechanicalPort.setAngularVelocity(angularVelocity);
 
     return angularMechanicalPort;
-  }
-
-  @Override
-  public List<AngularMechanicalPort> convert(List<AngularMechanicalPortType> angularMechanicalPortTypes) {
-    return angularMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

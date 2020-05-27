@@ -26,9 +26,4 @@ public class NmeaGgaFixTypeConverter extends Converter<NmeaGgaFixType, NmeaGgaFi
 
     return nmeaGgaFix;
   }
-
-  @Override
-  public List<NmeaGgaFix> convert(List<NmeaGgaFixType> nmeaGgaFixType) {
-    return nmeaGgaFixType.stream().map(this::convert).collect(Collectors.toList());
-  }
 }
