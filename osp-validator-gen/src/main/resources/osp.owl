@@ -2881,24 +2881,24 @@
 
 
 
-    <!-- http://data.dnvgl.com/msmi/VE_NmeaGgaFix -->
+    <!-- http://data.dnvgl.com/msmi/VE_AngularAcceleration -->
 
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_NmeaGgaFix">
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularAcceleration">
         <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroup"/>
     </owl:Class>
 
 
 
-    <!-- http://data.dnvgl.com/msmi/VE_NmeaGgaFix_1 -->
+    <!-- http://data.dnvgl.com/msmi/VE_AngularAcceleration_1 -->
 
-    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_NmeaGgaFix_1">
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularAcceleration_1">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
-                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
@@ -2908,8 +2908,141 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_NmeaGgaFix"/>
-        <rdfs:comment>All variables in variable group of type nmea_gga_fix must have same causality</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_AngularAcceleration"/>
+        <rdfs:comment>All variables in variable group of type angular_acceleration must have same causality</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_AngularAcceleration_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularAcceleration_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_datatype"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/DataType"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_AngularAcceleration"/>
+        <rdfs:comment>All variables in variable group of type angular_acceleration must have same data type</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_AngularAcceleration_3 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_AngularAcceleration_3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_unit"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Unit"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_AngularAcceleration"/>
+        <rdfs:comment>All variables in variable group of type angular_acceleration must have same unit</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_LinearAcceleration -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearAcceleration">
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_VariableGroup"/>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_LinearAcceleration_1 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearAcceleration_1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_causality"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Causality"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_LinearAcceleration"/>
+        <rdfs:comment>All variables in variable group of type linear_acceleration must have same causality</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_LinearAcceleration_2 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearAcceleration_2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_datatype"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/DataType"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_LinearAcceleration"/>
+        <rdfs:comment>All variables in variable group of type linear_acceleration must have same data type</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/VE_LinearAcceleration_3 -->
+
+    <owl:Class rdf:about="http://data.dnvgl.com/msmi/VE_LinearAcceleration_3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/VariableGroup"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_variable_group_type"/>
+                        <owl:hasValue rdf:resource="http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://data.dnvgl.com/msmi/op_has_unit"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://data.dnvgl.com/msmi/Unit"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://data.dnvgl.com/msmi/VE_LinearAcceleration"/>
+        <rdfs:comment>All variables in variable group of type linear_acceleration must have same unit</rdfs:comment>
     </owl:Class>
     
 
@@ -3005,6 +3138,33 @@
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_latitude_longitude"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_ellipse"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_position_error"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_mwv"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_status"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_sxn"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_ths"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_time"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_true_heading"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_direction"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_speed"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_angle"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_feedback"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_setpoint"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_battery_feedback"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_blade_pitch"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_bus_feedback"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_electric_power"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_feedback"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_setpoint"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_frequency"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_generator_feedback"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_shaft_speed"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -3224,14 +3384,6 @@
     
 
 
-    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix -->
-
-    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix">
-        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://data.dnvgl.com/msmi/ind_vgtype_pressure -->
 
     <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_pressure">
@@ -3275,6 +3427,230 @@
     <!-- http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate -->
 
     <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_latitude_longitude -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_latitude_longitude">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_ellipse -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_ellipse">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_position_error -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_position_error">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_mwv -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_mwv">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_status -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_status">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_sxn -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_sxn">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_ths -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_ths">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_time -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_time">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_true_heading -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_true_heading">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_direction -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_direction">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_speed -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_speed">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_azimuth_angle -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_angle">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_feedback -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_feedback">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_setpoint -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_setpoint">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_battery_feedback -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_battery_feedback">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_blade_pitch -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_blade_pitch">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_bus_feedback -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_bus_feedback">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_electric_power -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_electric_power">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_feedback -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_feedback">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_setpoint -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_setpoint">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_frequency -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_frequency">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_generator_feedback -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_generator_feedback">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration">
+        <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://data.dnvgl.com/msmi/ind_vgtype_shaft_speed -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_shaft_speed">
         <rdf:type rdf:resource="http://data.dnvgl.com/msmi/VariableGroupType"/>
     </owl:NamedIndividual>
     
@@ -3344,6 +3720,33 @@
             <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_volume_flow_rate"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_fix"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga_latitude_longitude"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gga"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_ellipse"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst_position_error"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_gst"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_mwv"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_status"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_sxn"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_ths"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_time"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_true_heading"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_direction"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_nmea_wind_speed"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_angular_acceleration"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_angle"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_feedback"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_azimuth_thruster_setpoint"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_battery_feedback"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_blade_pitch"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_bus_feedback"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_electric_power"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_feedback"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_fixed_thruster_setpoint"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_frequency"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_generator_feedback"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_linear_acceleration"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/msmi/ind_vgtype_shaft_speed"/>
         </owl:distinctMembers>
     </rdf:Description>
     

@@ -51,7 +51,6 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.torq
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volumeflowrate.VolumeFlowRate;
-import com.opensimulationplatform.core.util.modeldescription.ModelDescriptionUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -90,34 +89,34 @@ public class ModelDescription {
   private final List<LinearMechanicalQuasiPort> linearMechanicalQuasiPorts = new ArrayList<>();
 
   private final List<NmeaGgaFix> nmeaGgaFixs = new ArrayList<>();
-  private List<NmeaTime> nmeaTimes = new ArrayList<>();
-  private List<NmeaGgaLatitudeLongitude> nmeaGgaLatitudeLongitudes = new ArrayList<>();
-  private List<NmeaGstEllipse> nmeaGstEllipses = new ArrayList<>();
-  private List<NmeaGstPositionError> nmeaGstPositionErrors = new ArrayList<>();
-  private List<NmeaGstRms> nmeaGstRmss = new ArrayList<>();
-  private List<NmeaStatus> nmeaStatuses = new ArrayList<>();
-  private List<NmeaWindDirection> nmeaWindDirections = new ArrayList<>();
-  private List<NmeaWindSpeed> nmeaWindSpeeds = new ArrayList<>();
-  private List<NmeaTrueHeading> nmeaTrueHeadings = new ArrayList<>();
-  private List<AzimuthAngle> azimuthAngles = new ArrayList<>();
-  private List<BladePitch> bladePitches = new ArrayList<>();
-  private List<ShaftSpeed> shaftSpeeds = new ArrayList<>();
-  private List<ElectricPower> electricPowers = new ArrayList<>();
-  private List<Frequency> frequencies = new ArrayList<>();
-  private List<NmeaGga> nmeaGgas = new ArrayList<>();
-  private List<NmeaGst> nmeaGsts = new ArrayList<>();
-  private List<NmeaMwv> nmeaMwvs = new ArrayList<>();
-  private List<NmeaSxn> nmeaSxns = new ArrayList<>();
-  private List<NmeaThs> nmeaThss = new ArrayList<>();
-  private List<AngularAcceleration> angularAccelerations = new ArrayList<>();
-  private List<AzimuthThrusterFeedback> azimuthThrusterFeedbacks = new ArrayList<>();
-  private List<AzimuthThrusterSetpoint> azimuthThrusterSetpoints = new ArrayList<>();
-  private List<BatteryFeedback> batteryFeedbacks = new ArrayList<>();
-  private List<BusFeedback> busFeedbacks = new ArrayList<>();
-  private List<FixedThrusterFeedback> fixedThrusterFeedbacks = new ArrayList<>();
-  private List<FixedThrusterSetpoint> fixedThrusterSetpoints = new ArrayList<>();
-  private List<GeneratorFeedback> generatorFeedbacks = new ArrayList<>();
-  private List<LinearAcceleration> linearAccelerations = new ArrayList<>();
+  private final List<NmeaTime> nmeaTimes = new ArrayList<>();
+  private final List<NmeaGgaLatitudeLongitude> nmeaGgaLatitudeLongitudes = new ArrayList<>();
+  private final List<NmeaGstEllipse> nmeaGstEllipses = new ArrayList<>();
+  private final List<NmeaGstPositionError> nmeaGstPositionErrors = new ArrayList<>();
+  private final List<NmeaGstRms> nmeaGstRmss = new ArrayList<>();
+  private final List<NmeaStatus> nmeaStatuses = new ArrayList<>();
+  private final List<NmeaWindDirection> nmeaWindDirections = new ArrayList<>();
+  private final List<NmeaWindSpeed> nmeaWindSpeeds = new ArrayList<>();
+  private final List<NmeaTrueHeading> nmeaTrueHeadings = new ArrayList<>();
+  private final List<AzimuthAngle> azimuthAngles = new ArrayList<>();
+  private final List<BladePitch> bladePitches = new ArrayList<>();
+  private final List<ShaftSpeed> shaftSpeeds = new ArrayList<>();
+  private final List<ElectricPower> electricPowers = new ArrayList<>();
+  private final List<Frequency> frequencies = new ArrayList<>();
+  private final List<NmeaGga> nmeaGgas = new ArrayList<>();
+  private final List<NmeaGst> nmeaGsts = new ArrayList<>();
+  private final List<NmeaMwv> nmeaMwvs = new ArrayList<>();
+  private final List<NmeaSxn> nmeaSxns = new ArrayList<>();
+  private final List<NmeaThs> nmeaThss = new ArrayList<>();
+  private final List<AngularAcceleration> angularAccelerations = new ArrayList<>();
+  private final List<AzimuthThrusterFeedback> azimuthThrusterFeedbacks = new ArrayList<>();
+  private final List<AzimuthThrusterSetpoint> azimuthThrusterSetpoints = new ArrayList<>();
+  private final List<BatteryFeedback> batteryFeedbacks = new ArrayList<>();
+  private final List<BusFeedback> busFeedbacks = new ArrayList<>();
+  private final List<FixedThrusterFeedback> fixedThrusterFeedbacks = new ArrayList<>();
+  private final List<FixedThrusterSetpoint> fixedThrusterSetpoints = new ArrayList<>();
+  private final List<GeneratorFeedback> generatorFeedbacks = new ArrayList<>();
+  private final List<LinearAcceleration> linearAccelerations = new ArrayList<>();
 
 
   public List<Unit> getUnits() {
@@ -129,7 +128,60 @@ public class ModelDescription {
   }
 
   public List<VariableGroup> getVariableGroups() {
-    return Collections.unmodifiableList(ModelDescriptionUtil.getVariableGroups(this));
+    List<VariableGroup> variableGroups = new ArrayList<>();
+
+    variableGroups.addAll(generics);
+    variableGroups.addAll(angularDisplacements);
+    variableGroups.addAll(charges);
+    variableGroups.addAll(linearDisplacements);
+    variableGroups.addAll(volumes);
+    variableGroups.addAll(forces);
+    variableGroups.addAll(pressures);
+    variableGroups.addAll(torques);
+    variableGroups.addAll(voltages);
+    variableGroups.addAll(angularVelocities);
+    variableGroups.addAll(currents);
+    variableGroups.addAll(linearVelocities);
+    variableGroups.addAll(volumeFlowRates);
+    variableGroups.addAll(angularMechanicalPorts);
+    variableGroups.addAll(electromagneticPorts);
+    variableGroups.addAll(hydraulicPorts);
+    variableGroups.addAll(linearMechanicalPorts);
+    variableGroups.addAll(angularMechanicalQuasiPorts);
+    variableGroups.addAll(electromagneticQuasiPorts);
+    variableGroups.addAll(hydraulicQuasiPorts);
+    variableGroups.addAll(linearMechanicalQuasiPorts);
+    variableGroups.addAll(nmeaGgaFixs);
+    variableGroups.addAll(nmeaTimes);
+    variableGroups.addAll(nmeaGgaLatitudeLongitudes);
+    variableGroups.addAll(nmeaGstEllipses);
+    variableGroups.addAll(nmeaGstPositionErrors);
+    variableGroups.addAll(nmeaGstRmss);
+    variableGroups.addAll(nmeaStatuses);
+    variableGroups.addAll(nmeaWindDirections);
+    variableGroups.addAll(nmeaWindSpeeds);
+    variableGroups.addAll(nmeaTrueHeadings);
+    variableGroups.addAll(azimuthAngles);
+    variableGroups.addAll(bladePitches);
+    variableGroups.addAll(shaftSpeeds);
+    variableGroups.addAll(electricPowers);
+    variableGroups.addAll(frequencies);
+    variableGroups.addAll(nmeaGgas);
+    variableGroups.addAll(nmeaGsts);
+    variableGroups.addAll(nmeaMwvs);
+    variableGroups.addAll(nmeaSxns);
+    variableGroups.addAll(nmeaThss);
+    variableGroups.addAll(angularAccelerations);
+    variableGroups.addAll(azimuthThrusterFeedbacks);
+    variableGroups.addAll(azimuthThrusterSetpoints);
+    variableGroups.addAll(batteryFeedbacks);
+    variableGroups.addAll(busFeedbacks);
+    variableGroups.addAll(fixedThrusterFeedbacks);
+    variableGroups.addAll(fixedThrusterSetpoints);
+    variableGroups.addAll(generatorFeedbacks);
+    variableGroups.addAll(linearAccelerations);
+
+    return Collections.unmodifiableList(variableGroups);
   }
 
   public List<Generic> getGenerics() {

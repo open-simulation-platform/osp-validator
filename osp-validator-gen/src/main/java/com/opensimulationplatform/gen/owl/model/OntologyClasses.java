@@ -3,19 +3,26 @@ package com.opensimulationplatform.gen.owl.model;
 public class OntologyClasses {
 
   public static final String VE_AngularDisplacement_2 = "VE_AngularDisplacement_2";
+  public static final String VE_LinearAcceleration_2 = "VE_LinearAcceleration_2";
   public static final String VE_AngularDisplacement_3 = "VE_AngularDisplacement_3";
+  public static final String VE_LinearAcceleration_3 = "VE_LinearAcceleration_3";
   public static final String VE_AngularDisplacement_1 = "VE_AngularDisplacement_1";
   public static final String VE_Current_3 = "VE_Current_3";
   public static final String VE_Current_2 = "VE_Current_2";
   public static final String VE_Current_1 = "VE_Current_1";
   public static final String VE_AngularMechanicalPort_1 = "VE_AngularMechanicalPort_1";
+  public static final String VE_LinearAcceleration_1 = "VE_LinearAcceleration_1";
+  public static final String VE_AngularAcceleration_3 = "VE_AngularAcceleration_3";
   public static final String VE_LinearDisplacement_2 = "VE_LinearDisplacement_2";
+  public static final String VE_AngularAcceleration_2 = "VE_AngularAcceleration_2";
   public static final String VE_LinearDisplacement_1 = "VE_LinearDisplacement_1";
+  public static final String VE_AngularAcceleration_1 = "VE_AngularAcceleration_1";
   public static final String VE_LinearMechanicalQuasiPort_1 = "VE_LinearMechanicalQuasiPort_1";
   public static final String VE_AngularMechanicalQuasiPort_1 = "VE_AngularMechanicalQuasiPort_1";
   public static final String ValidationError = "ValidationError";
   public static final String PredefinedType = "PredefinedType";
   public static final String Thing = "Thing";
+  public static final String VE_AngularAcceleration = "VE_AngularAcceleration";
   public static final String VE_Voltage_1 = "VE_Voltage_1";
   public static final String VE_Voltage_2 = "VE_Voltage_2";
   public static final String VE_Voltage_3 = "VE_Voltage_3";
@@ -31,6 +38,7 @@ public class OntologyClasses {
   public static final String VE_VariableGroupConnection_1 = "VE_VariableGroupConnection_1";
   public static final String VE_VariableGroupConnection_3 = "VE_VariableGroupConnection_3";
   public static final String VE_VariableGroupConnection_2 = "VE_VariableGroupConnection_2";
+  public static final String VE_LinearAcceleration = "VE_LinearAcceleration";
   public static final String VariableGroup = "VariableGroup";
   public static final String VE_ElectromagneticPort = "VE_ElectromagneticPort";
   public static final String VE_Simulator_1 = "VE_Simulator_1";
@@ -70,7 +78,6 @@ public class OntologyClasses {
   public static final String VE_AngularVelocity = "VE_AngularVelocity";
   public static final String VE_AngularDisplacement = "VE_AngularDisplacement";
   public static final String VE_AngularMechanicalPort = "VE_AngularMechanicalPort";
-  public static final String VE_NmeaGgaFix = "VE_NmeaGgaFix";
   public static final String VE_VariableConnection_2 = "VE_VariableConnection_2";
   public static final String VE_ElectromagneticQuasiPort_1 = "VE_ElectromagneticQuasiPort_1";
   public static final String VE_VariableConnection_1 = "VE_VariableConnection_1";
@@ -94,7 +101,6 @@ public class OntologyClasses {
   public static final String VE_VariableGroup = "VE_VariableGroup";
   public static final String VE_Connection = "VE_Connection";
   public static final String VE_Current = "VE_Current";
-  public static final String VE_NmeaGgaFix_1 = "VE_NmeaGgaFix_1";
   public static final String VariableConnection = "VariableConnection";
   public static final String VE_Volume = "VE_Volume";
   public static final String VE_Force = "VE_Force";

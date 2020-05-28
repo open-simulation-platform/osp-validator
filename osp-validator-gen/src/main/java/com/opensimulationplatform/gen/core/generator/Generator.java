@@ -32,6 +32,33 @@ public class Generator {
     variableGroups.add("VolumeFlowRate");
     variableGroups.add("Pressure");
     variableGroups.add("NmeaGgaFix");
+    variableGroups.add("NmeaGgaLatitudeLongitude");
+    variableGroups.add("NmeaGga");
+    variableGroups.add("NmeaGstEllipse");
+    variableGroups.add("NmeaGstPositionError");
+    variableGroups.add("NmeaGst");
+    variableGroups.add("NmeaMwv");
+    variableGroups.add("NmeaStatus");
+    variableGroups.add("NmeaSxn");
+    variableGroups.add("NmeaThs");
+    variableGroups.add("NmeaTime");
+    variableGroups.add("NmeaTrueHeading");
+    variableGroups.add("NmeaWindDirection");
+    variableGroups.add("NmeaWindSpeed");
+    variableGroups.add("AngularAcceleration");
+    variableGroups.add("AzimuthAngle");
+    variableGroups.add("AzimuthThrusterFeedback");
+    variableGroups.add("AzimuthThrusterSetpoint");
+    variableGroups.add("BatteryFeedback");
+    variableGroups.add("BladePitch");
+    variableGroups.add("BusFeedback");
+    variableGroups.add("ElectricPower");
+    variableGroups.add("FixedThrusterFeedback");
+    variableGroups.add("FixedThrusterSetpoint");
+    variableGroups.add("Frequency");
+    variableGroups.add("GeneratorFeedback");
+    variableGroups.add("LinearAcceleration");
+    variableGroups.add("ShaftSpeed");
 
     for (String name : variableGroups) {
       generateValidationError_1(name);
