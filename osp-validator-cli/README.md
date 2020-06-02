@@ -3,7 +3,7 @@ A java command line interface tool for validating `OspSystemStructure.xml` and `
 
 # Usage
 After building the project by following the build instructions [here](../README.md), `msmi-cli.jar` can be found in
-`msmi-validator/osp-validator-cli/target` and used as follows:
+`osp-validator/osp-validator-cli/target` and used as follows:
 
 ```
 $ java -jar msmi-cli.jar

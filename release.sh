@@ -4,16 +4,16 @@ regex_release='^[0-9]+[.][0-9]+[.][0-9]+$'
 regex_snapshot='^[0-9]+[.][0-9]+[.][0-9]+[-]SNAPSHOT$'
 
 while ! [[ "$msmi_validator_version" =~ $regex_release ]]; do
-  echo -n "Enter msmi-validator version to release on the format: 'MAJOR.MINOR.BUILD': "
+  echo -n "Enter osp-validator version to release on the format: 'MAJOR.MINOR.BUILD': "
   read -r msmi_validator_version
 done
 
 while ! [[ "$msmi_validator_bump_version" =~ $regex_snapshot ]]; do
-  echo -n "Enter msmi-validator bump version on the format: 'MAJOR.MINOR.BUILD-SNAPSHOT': "
+  echo -n "Enter osp-validator bump version on the format: 'MAJOR.MINOR.BUILD-SNAPSHOT': "
   read -r msmi_validator_bump_version
 done
 
-echo -n "Creating msmi-validator release: $msmi_validator_version. Bumping msmi-validator version to: $msmi_validator_bump_version. Press Enter to continue, CTRL-C to abort: "
+echo -n "Creating osp-validator release: $msmi_validator_version. Bumping osp-validator version to: $msmi_validator_bump_version. Press Enter to continue, CTRL-C to abort: "
 read -r dummy
 
 git checkout develop

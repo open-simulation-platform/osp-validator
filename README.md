@@ -28,8 +28,8 @@ maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.
 
 # Build
 ```
-$ git clone git@github.com:open-simulation-platform/msmi-validator.git
-$ cd msmi-validator
+$ git clone git@github.com:open-simulation-platform/osp-validator.git
+$ cd osp-validator
 $ mvn clean package
 ```
 
