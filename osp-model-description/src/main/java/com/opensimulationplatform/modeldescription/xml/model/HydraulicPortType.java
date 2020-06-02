@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Pressure" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}PressureType"/>
- *         &lt;element name="VolumeFlowRate" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VolumeFlowRateType"/>
+ *         &lt;element name="Pressure" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}PressureType"/>
+ *         &lt;element name="VolumeFlowRate" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VolumeFlowRateType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HydraulicPortType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "HydraulicPortType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
     "pressure",
     "volumeFlowRate"
 })
 public class HydraulicPortType {
 
-    @XmlElement(name = "Pressure", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Pressure", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected PressureType pressure;
-    @XmlElement(name = "VolumeFlowRate", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "VolumeFlowRate", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected VolumeFlowRateType volumeFlowRate;
     @XmlAttribute(name = "name", required = true)
     protected String name;

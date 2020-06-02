@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Torque" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}TorqueType"/>
- *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularDisplacementType"/>
+ *         &lt;element name="Torque" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}TorqueType"/>
+ *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularDisplacementType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AngularMechanicalQuasiPortType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "AngularMechanicalQuasiPortType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
     "torque",
     "angularDisplacement"
 })
 public class AngularMechanicalQuasiPortType {
 
-    @XmlElement(name = "Torque", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Torque", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected TorqueType torque;
-    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected AngularDisplacementType angularDisplacement;
     @XmlAttribute(name = "name", required = true)
     protected String name;

@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="ShaftSpeedType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularVelocityType">
+ *     &lt;restriction base="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularVelocityType">
  *       &lt;sequence>
- *         &lt;element name="Variable" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableType"/>
+ *         &lt;element name="Variable" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VariableType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ShaftSpeedType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+@XmlType(name = "ShaftSpeedType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
 public class ShaftSpeedType
     extends AngularVelocityType
 {

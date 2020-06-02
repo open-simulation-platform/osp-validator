@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="1.0">
+<OspModelDescription xmlns="http://opensimulationplatform.com/osp-is/OSPModelDescription" version="1.0">
 	<VariableGroups>
 		<Generic name="group">
 			<Variable ref="Clock"/>			

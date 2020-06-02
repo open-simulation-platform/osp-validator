@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="BladePitchType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularDisplacementType">
+ *     &lt;restriction base="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularDisplacementType">
  *       &lt;sequence>
- *         &lt;element name="Variable" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableType"/>
+ *         &lt;element name="Variable" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VariableType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "BladePitchType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+@XmlType(name = "BladePitchType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
 public class BladePitchType
     extends AngularDisplacementType
 {

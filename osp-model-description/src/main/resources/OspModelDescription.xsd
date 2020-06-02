@@ -6,8 +6,8 @@
   -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-           targetNamespace="http://opensimulationplatform.com/MSMI/OSPModelDescription"
-           xmlns:osp="http://opensimulationplatform.com/MSMI/OSPModelDescription"
+           targetNamespace="http://opensimulationplatform.com/osp-is/OSPModelDescription"
+           xmlns:osp="http://opensimulationplatform.com/osp-is/OSPModelDescription"
            version="1.0">
   <xs:include schemaLocation="fmi2Unit.xsd"/>
 

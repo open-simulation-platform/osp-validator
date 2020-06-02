@@ -25,56 +25,56 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Generic" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}GenericType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Force" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ForceType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Torque" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}TorqueType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Voltage" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VoltageType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Pressure" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}PressureType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="LinearVelocity" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}LinearVelocityType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AngularVelocity" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularVelocityType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Current" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}CurrentType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="VolumeFlowRate" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VolumeFlowRateType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="LinearDisplacement" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}LinearDisplacementType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularDisplacementType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Charge" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ChargeType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Volume" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VolumeType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="LinearAcceleration" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}LinearAccelerationType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AngularAcceleration" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularAccelerationType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="LinearMechanicalPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}LinearMechanicalPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AngularMechanicalPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularMechanicalPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="ElectromagneticPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ElectromagneticPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="HydraulicPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}HydraulicPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="LinearMechanicalQuasiPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}LinearMechanicalQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AngularMechanicalQuasiPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularMechanicalQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="ElectromagneticQuasiPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ElectromagneticQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="HydraulicQuasiPort" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}HydraulicQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="ElectricPower" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ElectricPowerType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Frequency" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}FrequencyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaTime" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaTimeType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaStatus" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaStatusType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGgaLatitudeLongitude" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGgaLatitudeLongitudeType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGgaFix" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGgaFixType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGga" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGgaType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGstRms" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGstRmsType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGstEllipse" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGstEllipseType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGstPositionError" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGstPositionErrorType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaGst" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGstType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaWindDirection" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaWindDirectionType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaWindSpeed" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaWindSpeedType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaMwv" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaMwvType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaTrueHeading" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaTrueHeadingType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaThs" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaThsType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NmeaSxn" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaSxnType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="BatteryFeedback" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}BatteryFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="GeneratorFeedback" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}GeneratorFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="BusFeedback" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}BusFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="ShaftSpeed" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ShaftSpeedType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AzimuthAngle" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AzimuthAngleType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="BladePitch" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}BladePitchType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="FixedThrusterSetpoint" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}FixedThrusterSetpointType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="FixedThrusterFeedback" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}FixedThrusterFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AzimuthThrusterSetpoint" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AzimuthThrusterSetpointType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="AzimuthThrusterFeedback" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AzimuthThrusterFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Generic" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}GenericType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Force" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ForceType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Torque" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}TorqueType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Voltage" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VoltageType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Pressure" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}PressureType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="LinearVelocity" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}LinearVelocityType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AngularVelocity" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularVelocityType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Current" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}CurrentType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="VolumeFlowRate" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VolumeFlowRateType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="LinearDisplacement" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}LinearDisplacementType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularDisplacementType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Charge" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ChargeType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Volume" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VolumeType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="LinearAcceleration" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}LinearAccelerationType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AngularAcceleration" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularAccelerationType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="LinearMechanicalPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}LinearMechanicalPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AngularMechanicalPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularMechanicalPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ElectromagneticPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ElectromagneticPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="HydraulicPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}HydraulicPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="LinearMechanicalQuasiPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}LinearMechanicalQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AngularMechanicalQuasiPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularMechanicalQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ElectromagneticQuasiPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ElectromagneticQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="HydraulicQuasiPort" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}HydraulicQuasiPortType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ElectricPower" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ElectricPowerType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Frequency" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}FrequencyType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaTime" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaTimeType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaStatus" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaStatusType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGgaLatitudeLongitude" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGgaLatitudeLongitudeType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGgaFix" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGgaFixType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGga" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGgaType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGstRms" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGstRmsType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGstEllipse" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGstEllipseType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGstPositionError" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGstPositionErrorType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaGst" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaGstType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaWindDirection" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaWindDirectionType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaWindSpeed" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaWindSpeedType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaMwv" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaMwvType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaTrueHeading" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaTrueHeadingType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaThs" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaThsType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NmeaSxn" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaSxnType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="BatteryFeedback" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}BatteryFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="GeneratorFeedback" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}GeneratorFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="BusFeedback" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}BusFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ShaftSpeed" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ShaftSpeedType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AzimuthAngle" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AzimuthAngleType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="BladePitch" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}BladePitchType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="FixedThrusterSetpoint" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}FixedThrusterSetpointType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="FixedThrusterFeedback" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}FixedThrusterFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AzimuthThrusterSetpoint" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AzimuthThrusterSetpointType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AzimuthThrusterFeedback" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AzimuthThrusterFeedbackType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -84,7 +84,7 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "VariableGroupsType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "VariableGroupsType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
     "generic",
     "force",
     "torque",
@@ -138,105 +138,105 @@ import java.util.List;
 })
 public class VariableGroupsType {
 
-    @XmlElement(name = "Generic", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Generic", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<GenericType> generic;
-    @XmlElement(name = "Force", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Force", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<ForceType> force;
-    @XmlElement(name = "Torque", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Torque", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<TorqueType> torque;
-    @XmlElement(name = "Voltage", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Voltage", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<VoltageType> voltage;
-    @XmlElement(name = "Pressure", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Pressure", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<PressureType> pressure;
-    @XmlElement(name = "LinearVelocity", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "LinearVelocity", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<LinearVelocityType> linearVelocity;
-    @XmlElement(name = "AngularVelocity", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AngularVelocity", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AngularVelocityType> angularVelocity;
-    @XmlElement(name = "Current", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Current", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<CurrentType> current;
-    @XmlElement(name = "VolumeFlowRate", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "VolumeFlowRate", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<VolumeFlowRateType> volumeFlowRate;
-    @XmlElement(name = "LinearDisplacement", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "LinearDisplacement", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<LinearDisplacementType> linearDisplacement;
-    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AngularDisplacementType> angularDisplacement;
-    @XmlElement(name = "Charge", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Charge", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<ChargeType> charge;
-    @XmlElement(name = "Volume", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Volume", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<VolumeType> volume;
-    @XmlElement(name = "LinearAcceleration", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "LinearAcceleration", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<LinearAccelerationType> linearAcceleration;
-    @XmlElement(name = "AngularAcceleration", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AngularAcceleration", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AngularAccelerationType> angularAcceleration;
-    @XmlElement(name = "LinearMechanicalPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "LinearMechanicalPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<LinearMechanicalPortType> linearMechanicalPort;
-    @XmlElement(name = "AngularMechanicalPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AngularMechanicalPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AngularMechanicalPortType> angularMechanicalPort;
-    @XmlElement(name = "ElectromagneticPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "ElectromagneticPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<ElectromagneticPortType> electromagneticPort;
-    @XmlElement(name = "HydraulicPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "HydraulicPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<HydraulicPortType> hydraulicPort;
-    @XmlElement(name = "LinearMechanicalQuasiPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "LinearMechanicalQuasiPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<LinearMechanicalQuasiPortType> linearMechanicalQuasiPort;
-    @XmlElement(name = "AngularMechanicalQuasiPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AngularMechanicalQuasiPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AngularMechanicalQuasiPortType> angularMechanicalQuasiPort;
-    @XmlElement(name = "ElectromagneticQuasiPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "ElectromagneticQuasiPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<ElectromagneticQuasiPortType> electromagneticQuasiPort;
-    @XmlElement(name = "HydraulicQuasiPort", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "HydraulicQuasiPort", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<HydraulicQuasiPortType> hydraulicQuasiPort;
-    @XmlElement(name = "ElectricPower", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "ElectricPower", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<ElectricPowerType> electricPower;
-    @XmlElement(name = "Frequency", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Frequency", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<FrequencyType> frequency;
-    @XmlElement(name = "NmeaTime", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaTime", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaTimeType> nmeaTime;
-    @XmlElement(name = "NmeaStatus", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaStatus", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaStatusType> nmeaStatus;
-    @XmlElement(name = "NmeaGgaLatitudeLongitude", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGgaLatitudeLongitude", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGgaLatitudeLongitudeType> nmeaGgaLatitudeLongitude;
-    @XmlElement(name = "NmeaGgaFix", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGgaFix", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGgaFixType> nmeaGgaFix;
-    @XmlElement(name = "NmeaGga", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGga", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGgaType> nmeaGga;
-    @XmlElement(name = "NmeaGstRms", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGstRms", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGstRmsType> nmeaGstRms;
-    @XmlElement(name = "NmeaGstEllipse", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGstEllipse", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGstEllipseType> nmeaGstEllipse;
-    @XmlElement(name = "NmeaGstPositionError", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGstPositionError", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGstPositionErrorType> nmeaGstPositionError;
-    @XmlElement(name = "NmeaGst", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaGst", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaGstType> nmeaGst;
-    @XmlElement(name = "NmeaWindDirection", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaWindDirection", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaWindDirectionType> nmeaWindDirection;
-    @XmlElement(name = "NmeaWindSpeed", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaWindSpeed", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaWindSpeedType> nmeaWindSpeed;
-    @XmlElement(name = "NmeaMwv", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaMwv", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaMwvType> nmeaMwv;
-    @XmlElement(name = "NmeaTrueHeading", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaTrueHeading", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaTrueHeadingType> nmeaTrueHeading;
-    @XmlElement(name = "NmeaThs", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaThs", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaThsType> nmeaThs;
-    @XmlElement(name = "NmeaSxn", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "NmeaSxn", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<NmeaSxnType> nmeaSxn;
-    @XmlElement(name = "BatteryFeedback", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "BatteryFeedback", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<BatteryFeedbackType> batteryFeedback;
-    @XmlElement(name = "GeneratorFeedback", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "GeneratorFeedback", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<GeneratorFeedbackType> generatorFeedback;
-    @XmlElement(name = "BusFeedback", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "BusFeedback", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<BusFeedbackType> busFeedback;
-    @XmlElement(name = "ShaftSpeed", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "ShaftSpeed", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<ShaftSpeedType> shaftSpeed;
-    @XmlElement(name = "AzimuthAngle", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AzimuthAngle", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AzimuthAngleType> azimuthAngle;
-    @XmlElement(name = "BladePitch", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "BladePitch", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<BladePitchType> bladePitch;
-    @XmlElement(name = "FixedThrusterSetpoint", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "FixedThrusterSetpoint", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<FixedThrusterSetpointType> fixedThrusterSetpoint;
-    @XmlElement(name = "FixedThrusterFeedback", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "FixedThrusterFeedback", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<FixedThrusterFeedbackType> fixedThrusterFeedback;
-    @XmlElement(name = "AzimuthThrusterSetpoint", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AzimuthThrusterSetpoint", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AzimuthThrusterSetpointType> azimuthThrusterSetpoint;
-    @XmlElement(name = "AzimuthThrusterFeedback", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "AzimuthThrusterFeedback", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<AzimuthThrusterFeedbackType> azimuthThrusterFeedback;
 
     /**

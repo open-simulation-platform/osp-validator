@@ -69,7 +69,7 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "fmi2Unit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "fmi2Unit", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
     "baseUnit",
     "displayUnit"
 })
@@ -78,9 +78,9 @@ import java.util.List;
 })
 public class Fmi2Unit {
 
-    @XmlElement(name = "BaseUnit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "BaseUnit", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected Fmi2Unit.BaseUnit baseUnit;
-    @XmlElement(name = "DisplayUnit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "DisplayUnit", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected List<Fmi2Unit.DisplayUnit> displayUnit;
     @XmlAttribute(name = "name", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)

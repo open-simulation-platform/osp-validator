@@ -20,10 +20,10 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ShaftSpeed" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ShaftSpeedType" minOccurs="0"/>
- *         &lt;element name="AzimuthAngle" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AzimuthAngleType"/>
- *         &lt;element name="BladePitch" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}BladePitchType" minOccurs="0"/>
- *         &lt;element name="Force" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ForceType"/>
+ *         &lt;element name="ShaftSpeed" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ShaftSpeedType" minOccurs="0"/>
+ *         &lt;element name="AzimuthAngle" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AzimuthAngleType"/>
+ *         &lt;element name="BladePitch" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}BladePitchType" minOccurs="0"/>
+ *         &lt;element name="Force" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ForceType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AzimuthThrusterFeedbackType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "AzimuthThrusterFeedbackType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
     "shaftSpeed",
     "azimuthAngle",
     "bladePitch",
@@ -42,13 +42,13 @@ import javax.xml.bind.annotation.*;
 })
 public class AzimuthThrusterFeedbackType {
 
-    @XmlElement(name = "ShaftSpeed", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "ShaftSpeed", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected ShaftSpeedType shaftSpeed;
-    @XmlElement(name = "AzimuthAngle", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "AzimuthAngle", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected AzimuthAngleType azimuthAngle;
-    @XmlElement(name = "BladePitch", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "BladePitch", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription")
     protected BladePitchType bladePitch;
-    @XmlElement(name = "Force", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Force", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected ForceType force;
     @XmlAttribute(name = "name", required = true)
     protected String name;

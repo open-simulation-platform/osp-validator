@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularDisplacementType"/>
- *         &lt;element name="NmeaStatus" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaStatusType"/>
+ *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularDisplacementType"/>
+ *         &lt;element name="NmeaStatus" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaStatusType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NmeaSxnType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "NmeaSxnType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
     "angularDisplacement",
     "nmeaStatus"
 })
 public class NmeaSxnType {
 
-    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected AngularDisplacementType angularDisplacement;
-    @XmlElement(name = "NmeaStatus", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaStatus", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
     protected NmeaStatusType nmeaStatus;
     @XmlAttribute(name = "name", required = true)
     protected String name;

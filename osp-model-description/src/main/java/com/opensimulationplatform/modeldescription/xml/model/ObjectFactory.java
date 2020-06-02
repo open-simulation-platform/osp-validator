@@ -30,7 +30,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _OspModelDescription_QNAME = new QName("http://opensimulationplatform.com/MSMI/OSPModelDescription", "OspModelDescription");
+    private final static QName _OspModelDescription_QNAME = new QName("http://opensimulationplatform.com/osp-is/OSPModelDescription", "OspModelDescription");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.opensimulationplatform.modeldescription.xml.model
@@ -507,7 +507,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link OspModelDescriptionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", name = "OspModelDescription")
+    @XmlElementDecl(namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", name = "OspModelDescription")
     public JAXBElement<OspModelDescriptionType> createOspModelDescription(OspModelDescriptionType value) {
         return new JAXBElement<OspModelDescriptionType>(_OspModelDescription_QNAME, OspModelDescriptionType.class, null, value);
     }

@@ -20,6 +20,7 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:untitled-ontology-450="http://data.dnvgl.com/semantics/untitled-ontology-450/">
     <owl:Ontology rdf:about="http://data.dnvgl.com/msmi">
+        <owl:versionIRI rdf:resource="http://data.dnvgl.com/msmi/1.0.0"/>
         <terms:license rdf:resource="https://mozilla.org/MPL/2.0/"/>
         <terms:title>The Marine Systems Model Interface Ontology</terms:title>
         <rdfs:label>MSMI Ontology</rdfs:label>
