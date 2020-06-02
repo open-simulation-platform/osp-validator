@@ -1,19 +1,24 @@
-# Description
+Description
+===========
 This is a java project consisting of a java library and a command line interface tool to validate FMUs and simulation
 configurations against the [open simulation platform](https://www.opensimulationplatform.com) specification.
 
-# Prerequisites
-### Windows
+Prerequisites
+=============
+Windows
+-------
 java: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_windows_hotspot_8u222b10.msi
 \
 maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
 
-### Linux
+Linux
+-----
 java: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u222b10.tar.gz
 \
 maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
 
-# Modules
+Modules
+=======
 [osp-validator-api](/osp-validator-api/README.md)
 
 [osp-validator-core](/osp-validator-core/README.md)
@@ -26,7 +31,8 @@ maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.
 
 [osp-validator-gen](/osp-validator-gen/README.md)
 
-# Build
+Build
+=====
 ```
 $ git clone git@github.com:open-simulation-platform/osp-validator.git
 $ cd osp-validator

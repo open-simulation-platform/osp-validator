@@ -20,3 +20,9 @@ other than its author.
 Before a pull request can be approved and merged into the code base, the author 
 must sign the "OSP Contributor License Agreement". This agreement is pending, but 
 will be included in this repository with guidelines once concluded.
+
+
+Workflow
+--------
+This repository uses the [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) 
+workflow
