@@ -7,6 +7,7 @@ import com.opensimulationplatform.systemstructure.xml.model.Simulators;
 import com.opensimulationplatform.systemstructure.xml.model.VariableEndpoint;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -17,8 +18,17 @@ public class OspSystemStructureParserTest {
     OspSystemStructureParser parser = new OspSystemStructureParser();
     OspSystemStructure ospSystemStructure = parser.parse(TestResources.PARSER_SYSTEM_STRUCTURE_VALID_XML);
     List<Simulators.Simulator> simulators = ospSystemStructure.getSimulators().getSimulator();
-    List<Connections.VariableConnection> variableConnections = ospSystemStructure.getConnections().getVariableConnection();
-    List<Connections.VariableGroupConnection> variableGroupConnections = ospSystemStructure.getConnections().getVariableGroupConnection();
+
+    List<Object> connectionElements = ospSystemStructure.getConnections().getVariableConnectionOrSignalConnectionOrVariableGroupConnection();
+    List<Connections.VariableConnection> variableConnections = new ArrayList<>();
+    List<Connections.VariableGroupConnection> variableGroupConnections = new ArrayList<>();
+    for (Object connectionElement : connectionElements) {
+      if (connectionElement instanceof Connections.VariableConnection) {
+        variableConnections.add((Connections.VariableConnection) connectionElement);
+      } else if (connectionElement instanceof Connections.VariableGroupConnection) {
+        variableGroupConnections.add((Connections.VariableGroupConnection) connectionElement);
+      }
+    }
 
     assertEquals(2, simulators.size());
     Simulators.Simulator s1 = simulators.get(0);
