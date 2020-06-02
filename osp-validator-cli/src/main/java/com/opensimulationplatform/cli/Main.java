@@ -65,7 +65,7 @@ public class Main {
         .addCommand("osp-system-structure", ospSystemStructureCommand)
         .addCommand("osp-model-description", ospModelDescriptionCommand)
         .build();
-    jc.setProgramName("msmi-cli.jar");
+    jc.setProgramName("osp-cli.jar");
 
     try {
       if (args.length == 0) {
