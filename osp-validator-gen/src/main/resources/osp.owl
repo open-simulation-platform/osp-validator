@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
 <rdf:RDF xmlns="http://data.dnvgl.com/msmi/"
      xml:base="http://data.dnvgl.com/msmi"
      xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/"
@@ -14,7 +20,7 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:untitled-ontology-450="http://data.dnvgl.com/semantics/untitled-ontology-450/">
     <owl:Ontology rdf:about="http://data.dnvgl.com/msmi">
-        <terms:license rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
+        <terms:license rdf:resource="https://mozilla.org/MPL/2.0/"/>
         <terms:title>The Marine Systems Model Interface Ontology</terms:title>
         <rdfs:label>MSMI Ontology</rdfs:label>
     </owl:Ontology>
