@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Variable" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VariableType"/>
+ *         &lt;element name="Variable" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VariableType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -31,12 +31,12 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NmeaGstRmsType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
+@XmlType(name = "NmeaGstRmsType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "variable"
 })
 public class NmeaGstRmsType {
 
-    @XmlElement(name = "Variable", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "Variable", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected VariableType variable;
     @XmlAttribute(name = "name", required = true)
     protected String name;

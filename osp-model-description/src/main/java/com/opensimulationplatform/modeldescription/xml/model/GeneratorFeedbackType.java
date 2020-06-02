@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ElectricPower" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}ElectricPowerType"/>
- *         &lt;element name="Voltage" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VoltageType"/>
- *         &lt;element name="Frequency" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}FrequencyType"/>
+ *         &lt;element name="ElectricPower" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}ElectricPowerType"/>
+ *         &lt;element name="Voltage" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VoltageType"/>
+ *         &lt;element name="Frequency" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}FrequencyType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -33,18 +33,18 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GeneratorFeedbackType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
+@XmlType(name = "GeneratorFeedbackType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "electricPower",
     "voltage",
     "frequency"
 })
 public class GeneratorFeedbackType {
 
-    @XmlElement(name = "ElectricPower", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "ElectricPower", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected ElectricPowerType electricPower;
-    @XmlElement(name = "Voltage", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "Voltage", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected VoltageType voltage;
-    @XmlElement(name = "Frequency", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "Frequency", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected FrequencyType frequency;
     @XmlAttribute(name = "name", required = true)
     protected String name;

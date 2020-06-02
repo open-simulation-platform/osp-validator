@@ -3,6 +3,10 @@ Description
 This is a java project consisting of a java library and a command line interface tool to validate FMUs and simulation
 configurations against the [open simulation platform](https://www.opensimulationplatform.com) specification.
 
+IMPORTRANT
+----------
+This `osp-validator` version only works with `OspSystemStructure.xml` files based on this xsd: `https://open-simulation-platform.com/xsd/OspSystemStructure-0.1.xsd` 
+
 Prerequisites
 =============
 Windows

@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Pressure" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}PressureType"/>
- *         &lt;element name="Volume" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}VolumeType"/>
+ *         &lt;element name="Pressure" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}PressureType"/>
+ *         &lt;element name="Volume" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VolumeType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HydraulicQuasiPortType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
+@XmlType(name = "HydraulicQuasiPortType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "pressure",
     "volume"
 })
 public class HydraulicQuasiPortType {
 
-    @XmlElement(name = "Pressure", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "Pressure", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected PressureType pressure;
-    @XmlElement(name = "Volume", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "Volume", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected VolumeType volume;
     @XmlAttribute(name = "name", required = true)
     protected String name;

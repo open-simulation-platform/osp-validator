@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Torque" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}TorqueType"/>
- *         &lt;element name="AngularVelocity" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}AngularVelocityType"/>
+ *         &lt;element name="Torque" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}TorqueType"/>
+ *         &lt;element name="AngularVelocity" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}AngularVelocityType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AngularMechanicalPortType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
+@XmlType(name = "AngularMechanicalPortType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "torque",
     "angularVelocity"
 })
 public class AngularMechanicalPortType {
 
-    @XmlElement(name = "Torque", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "Torque", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected TorqueType torque;
-    @XmlElement(name = "AngularVelocity", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "AngularVelocity", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected AngularVelocityType angularVelocity;
     @XmlAttribute(name = "name", required = true)
     protected String name;

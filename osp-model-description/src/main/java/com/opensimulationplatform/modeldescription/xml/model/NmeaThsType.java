@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="NmeaTrueHeading" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaTrueHeadingType"/>
- *         &lt;element name="NmeaStatus" type="{http://opensimulationplatform.com/osp-is/OSPModelDescription}NmeaStatusType"/>
+ *         &lt;element name="NmeaTrueHeading" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaTrueHeadingType"/>
+ *         &lt;element name="NmeaStatus" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaStatusType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NmeaThsType", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", propOrder = {
+@XmlType(name = "NmeaThsType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "nmeaTrueHeading",
     "nmeaStatus"
 })
 public class NmeaThsType {
 
-    @XmlElement(name = "NmeaTrueHeading", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaTrueHeading", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaTrueHeadingType nmeaTrueHeading;
-    @XmlElement(name = "NmeaStatus", namespace = "http://opensimulationplatform.com/osp-is/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaStatus", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaStatusType nmeaStatus;
     @XmlAttribute(name = "name", required = true)
     protected String name;
