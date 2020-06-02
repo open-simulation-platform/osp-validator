@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="UnitDefinitions" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}UnitDefinitionsType" minOccurs="0"/>
  *         &lt;element name="VariableGroups" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableGroupsType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="0.1" />
+ *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="1.0" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -103,7 +103,7 @@ public class OspModelDescriptionType {
      */
     public String getVersion() {
         if (version == null) {
-            return "0.1";
+            return "1.0";
         } else {
             return version;
         }

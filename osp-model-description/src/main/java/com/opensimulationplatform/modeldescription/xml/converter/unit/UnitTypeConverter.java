@@ -37,6 +37,7 @@ public class UnitTypeConverter extends Converter<UnitType, Unit> {
     unit.setExponent(MOL, baseUnit.getMol());
     unit.setExponent(CANDELA, baseUnit.getCd());
     unit.setExponent(RADIAN, baseUnit.getRad());
+    unit.setExponent(PERCENT, baseUnit.getPercent());
 
     return unit;
   }

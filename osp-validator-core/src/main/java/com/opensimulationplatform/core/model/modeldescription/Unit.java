@@ -27,6 +27,7 @@ public class Unit {
     exponents.put(MOL, 0);
     exponents.put(CANDELA, 0);
     exponents.put(RADIAN, 0);
+    exponents.put(PERCENT, 0);
   }
 
   public ID getId() {
@@ -88,7 +89,8 @@ public class Unit {
     KELVIN("K"),
     MOL("mol"),
     CANDELA("cd"),
-    RADIAN("rad");
+    RADIAN("rad"),
+    PERCENT("percent");
 
     private final String symbol;
 

@@ -94,6 +94,11 @@
                             <xs:documentation>Exponent of SI derived unit "rad"</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
+                    <xs:attribute name="percent" type="xs:int" default="0">
+                        <xs:annotation>
+                            <xs:documentation>Exponent of unit "%"</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
                     <xs:attribute name="factor" type="xs:double" default="1"/>
                     <xs:attribute name="offset" type="xs:double" default="0"/>
                 </xs:complexType>

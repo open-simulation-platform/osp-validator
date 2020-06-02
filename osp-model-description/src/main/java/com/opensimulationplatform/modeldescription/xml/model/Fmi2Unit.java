@@ -39,6 +39,7 @@ import java.util.List;
  *                 &lt;attribute name="mol" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
  *                 &lt;attribute name="cd" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
  *                 &lt;attribute name="rad" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
+ *                 &lt;attribute name="percent" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
  *                 &lt;attribute name="factor" type="{http://www.w3.org/2001/XMLSchema}double" default="1" />
  *                 &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
  *               &lt;/restriction>
@@ -181,6 +182,7 @@ public class Fmi2Unit {
      *       &lt;attribute name="mol" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
      *       &lt;attribute name="cd" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
      *       &lt;attribute name="rad" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
+     *       &lt;attribute name="percent" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
      *       &lt;attribute name="factor" type="{http://www.w3.org/2001/XMLSchema}double" default="1" />
      *       &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
      *     &lt;/restriction>
@@ -210,6 +212,8 @@ public class Fmi2Unit {
         protected Integer cd;
         @XmlAttribute(name = "rad")
         protected Integer rad;
+        @XmlAttribute(name = "percent")
+        protected Integer percent;
         @XmlAttribute(name = "factor")
         protected Double factor;
         @XmlAttribute(name = "offset")
@@ -437,6 +441,34 @@ public class Fmi2Unit {
          */
         public void setRad(Integer value) {
             this.rad = value;
+        }
+
+        /**
+         * Gets the value of the percent property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link Integer }
+         *     
+         */
+        public int getPercent() {
+            if (percent == null) {
+                return  0;
+            } else {
+                return percent;
+            }
+        }
+
+        /**
+         * Sets the value of the percent property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Integer }
+         *     
+         */
+        public void setPercent(Integer value) {
+            this.percent = value;
         }
 
         /**
