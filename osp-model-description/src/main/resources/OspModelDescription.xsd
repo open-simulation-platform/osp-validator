@@ -543,7 +543,7 @@
       <xs:element type="osp:UnitDefinitionsType" name="UnitDefinitions" minOccurs="0"/>
       <xs:element type="osp:VariableGroupsType" name="VariableGroups" minOccurs="0"/>
     </xs:sequence>
-    <xs:attribute name="version" type="xs:string" use="required" fixed="0.1">
+    <xs:attribute name="version" type="xs:string" use="required" fixed="1.0">
       <xs:annotation>
         <xs:documentation>OspModelDescription version</xs:documentation>
       </xs:annotation>
