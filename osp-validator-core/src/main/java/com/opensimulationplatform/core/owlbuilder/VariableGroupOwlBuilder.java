@@ -43,6 +43,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmea
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagst.NmeaGst;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagstellipse.NmeaGstEllipse;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagstpositionerror.NmeaGstPositionError;
+import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeagstrms.NmeaGstRms;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeamwv.NmeaMwv;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeastatus.NmeaStatus;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.nmeasxn.NmeaSxn;
@@ -124,6 +125,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     typeMap.put(Volume.class, ind_vgtype_volume);
     typeMap.put(Frequency.class, ind_vgtype_frequency);
     typeMap.put(FixedThrusterSetpoint.class, ind_vgtype_fixed_thruster_setpoint);
+    typeMap.put(NmeaGstRms.class, ind_vgtype_nmea_gst_rms);
   }
 
   @Override

@@ -1,9 +1,3 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
 package com.opensimulationplatform.gen.owl.model;
 
 public class OntologyObjectProperties {
@@ -18,8 +12,8 @@ public class OntologyObjectProperties {
   public static final String op_has_variable_group = "op_has_variable_group";
   public static final String op_has_unit = "op_has_unit";
   public static final String op_has_lhs = "op_has_lhs";
-  public static final String op_has_datatype = "op_has_datatype";
   public static final String op_has_connection = "op_has_connection";
+  public static final String op_has_datatype = "op_has_datatype";
   public static final String op_has_exponent_meter = "op_has_exponent_meter";
   public static final String op_has_causality = "op_has_causality";
   public static final String op_has_exponent_candela = "op_has_exponent_candela";

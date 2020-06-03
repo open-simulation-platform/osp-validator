@@ -3147,6 +3147,7 @@
                     <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gga_fix"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gga_latitude_longitude"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gga"/>
+                    <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_rms"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_ellipse"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_position_error"/>
                     <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst"/>
@@ -3463,6 +3464,14 @@
 
 
 
+    <!-- http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_rms -->
+
+    <owl:NamedIndividual rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_rms">
+        <rdf:type rdf:resource="http://data.dnvgl.com/osp/VariableGroupType"/>
+    </owl:NamedIndividual>
+
+
+
     <!-- http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_ellipse -->
 
     <owl:NamedIndividual rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_ellipse">
@@ -3729,6 +3738,7 @@
             <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gga_fix"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gga_latitude_longitude"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gga"/>
+            <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_rms"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_ellipse"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst_position_error"/>
             <rdf:Description rdf:about="http://data.dnvgl.com/osp/ind_vgtype_nmea_gst"/>

@@ -1,17 +1,11 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
 package com.opensimulationplatform.gen.owl.model;
 
 public class OntologyClasses {
 
-  public static final String VE_AngularDisplacement_2 = "VE_AngularDisplacement_2";
   public static final String VE_LinearAcceleration_2 = "VE_LinearAcceleration_2";
-  public static final String VE_AngularDisplacement_3 = "VE_AngularDisplacement_3";
+  public static final String VE_AngularDisplacement_2 = "VE_AngularDisplacement_2";
   public static final String VE_LinearAcceleration_3 = "VE_LinearAcceleration_3";
+  public static final String VE_AngularDisplacement_3 = "VE_AngularDisplacement_3";
   public static final String VE_AngularDisplacement_1 = "VE_AngularDisplacement_1";
   public static final String VE_Current_3 = "VE_Current_3";
   public static final String VE_Current_2 = "VE_Current_2";
@@ -24,8 +18,8 @@ public class OntologyClasses {
   public static final String VE_LinearDisplacement_1 = "VE_LinearDisplacement_1";
   public static final String VE_AngularAcceleration_1 = "VE_AngularAcceleration_1";
   public static final String VE_LinearMechanicalQuasiPort_1 = "VE_LinearMechanicalQuasiPort_1";
-  public static final String VE_AngularMechanicalQuasiPort_1 = "VE_AngularMechanicalQuasiPort_1";
   public static final String ValidationError = "ValidationError";
+  public static final String VE_AngularMechanicalQuasiPort_1 = "VE_AngularMechanicalQuasiPort_1";
   public static final String PredefinedType = "PredefinedType";
   public static final String Thing = "Thing";
   public static final String VE_AngularAcceleration = "VE_AngularAcceleration";
@@ -50,8 +44,8 @@ public class OntologyClasses {
   public static final String VE_Simulator_1 = "VE_Simulator_1";
   public static final String VE_Unit = "VE_Unit";
   public static final String VE_Name = "VE_Name";
-  public static final String VE_Variable = "VE_Variable";
   public static final String VE_HydraulicPort = "VE_HydraulicPort";
+  public static final String VE_Variable = "VE_Variable";
   public static final String VE_LinearMechanicalPort = "VE_LinearMechanicalPort";
   public static final String VE_HydraulicQuasiPort = "VE_HydraulicQuasiPort";
   public static final String VE_AngularMechanicalQuasiPort = "VE_AngularMechanicalQuasiPort";
@@ -94,8 +88,8 @@ public class OntologyClasses {
   public static final String VE_Force_2 = "VE_Force_2";
   public static final String VE_Force_3 = "VE_Force_3";
   public static final String VE_ElectromagneticPort_1 = "VE_ElectromagneticPort_1";
-  public static final String VE_VariableGroup_1 = "VE_VariableGroup_1";
   public static final String VE_VolumeFlowRate = "VE_VolumeFlowRate";
+  public static final String VE_VariableGroup_1 = "VE_VariableGroup_1";
   public static final String VE_VariableGroup_3 = "VE_VariableGroup_3";
   public static final String VE_VariableGroup_2 = "VE_VariableGroup_2";
   public static final String VE_Simulator = "VE_Simulator";
