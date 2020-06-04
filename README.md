@@ -5,7 +5,8 @@ configurations against the [open simulation platform](https://www.opensimulation
 
 IMPORTRANT
 ----------
-This `osp-validator` version only works with `OspSystemStructure.xml` files based on this xsd: `https://open-simulation-platform.com/xsd/OspSystemStructure-0.1.xsd` 
+This `osp-validator` version only works with `OspSystemStructure.xml` files based on 
+[this](https://opensimulationplatform.com/xsd/OspSystemStructure-0.1.xsd) xsd
 
 Prerequisites
 =============
