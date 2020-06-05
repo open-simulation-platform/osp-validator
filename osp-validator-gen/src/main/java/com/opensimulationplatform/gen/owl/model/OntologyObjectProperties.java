@@ -7,8 +7,8 @@ public class OntologyObjectProperties {
   public static final String op_has_exponent = "op_has_exponent";
   public static final String op_has_part = "op_has_part";
   public static final String op_has_exponent_kelvin = "op_has_exponent_kelvin";
-  public static final String op_has_connection_direct = "op_has_connection_direct";
   public static final String op_has_exponent_kilogram = "op_has_exponent_kilogram";
+  public static final String op_has_connection_direct = "op_has_connection_direct";
   public static final String op_has_variable_group = "op_has_variable_group";
   public static final String op_has_unit = "op_has_unit";
   public static final String op_has_lhs = "op_has_lhs";

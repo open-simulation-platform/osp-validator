@@ -13,10 +13,10 @@ public class OntologyClasses {
   public static final String VE_AngularMechanicalPort_1 = "VE_AngularMechanicalPort_1";
   public static final String VE_LinearAcceleration_1 = "VE_LinearAcceleration_1";
   public static final String VE_AngularAcceleration_3 = "VE_AngularAcceleration_3";
-  public static final String VE_LinearDisplacement_2 = "VE_LinearDisplacement_2";
   public static final String VE_AngularAcceleration_2 = "VE_AngularAcceleration_2";
-  public static final String VE_LinearDisplacement_1 = "VE_LinearDisplacement_1";
+  public static final String VE_LinearDisplacement_2 = "VE_LinearDisplacement_2";
   public static final String VE_AngularAcceleration_1 = "VE_AngularAcceleration_1";
+  public static final String VE_LinearDisplacement_1 = "VE_LinearDisplacement_1";
   public static final String VE_LinearMechanicalQuasiPort_1 = "VE_LinearMechanicalQuasiPort_1";
   public static final String ValidationError = "ValidationError";
   public static final String VE_AngularMechanicalQuasiPort_1 = "VE_AngularMechanicalQuasiPort_1";
@@ -40,8 +40,8 @@ public class OntologyClasses {
   public static final String VE_VariableGroupConnection_2 = "VE_VariableGroupConnection_2";
   public static final String VE_LinearAcceleration = "VE_LinearAcceleration";
   public static final String VariableGroup = "VariableGroup";
-  public static final String VE_ElectromagneticPort = "VE_ElectromagneticPort";
   public static final String VE_Simulator_1 = "VE_Simulator_1";
+  public static final String VE_ElectromagneticPort = "VE_ElectromagneticPort";
   public static final String VE_Unit = "VE_Unit";
   public static final String VE_Name = "VE_Name";
   public static final String VE_HydraulicPort = "VE_HydraulicPort";
@@ -59,8 +59,8 @@ public class OntologyClasses {
   public static final String VE_Charge_1 = "VE_Charge_1";
   public static final String VE_Charge_2 = "VE_Charge_2";
   public static final String VE_LinearVelocity_3 = "VE_LinearVelocity_3";
-  public static final String Type = "Type";
   public static final String VE_LinearVelocity_1 = "VE_LinearVelocity_1";
+  public static final String Type = "Type";
   public static final String VE_LinearVelocity_2 = "VE_LinearVelocity_2";
   public static final String VE_LinearMechanicalPort_1 = "VE_LinearMechanicalPort_1";
   public static final String VE_HydraulicQuasiPort_1 = "VE_HydraulicQuasiPort_1";
@@ -75,12 +75,12 @@ public class OntologyClasses {
   public static final String VE_AngularVelocity_3 = "VE_AngularVelocity_3";
   public static final String VE_AngularVelocity_2 = "VE_AngularVelocity_2";
   public static final String VE_AngularVelocity_1 = "VE_AngularVelocity_1";
-  public static final String VE_AngularVelocity = "VE_AngularVelocity";
   public static final String VE_AngularDisplacement = "VE_AngularDisplacement";
+  public static final String VE_AngularVelocity = "VE_AngularVelocity";
   public static final String VE_AngularMechanicalPort = "VE_AngularMechanicalPort";
   public static final String VE_VariableConnection_2 = "VE_VariableConnection_2";
-  public static final String VE_ElectromagneticQuasiPort_1 = "VE_ElectromagneticQuasiPort_1";
   public static final String VE_VariableConnection_1 = "VE_VariableConnection_1";
+  public static final String VE_ElectromagneticQuasiPort_1 = "VE_ElectromagneticQuasiPort_1";
   public static final String VE_VariableConnection_4 = "VE_VariableConnection_4";
   public static final String VE_VariableConnection_3 = "VE_VariableConnection_3";
   public static final String VE_VariableConnection = "VE_VariableConnection";
@@ -111,8 +111,8 @@ public class OntologyClasses {
   public static final String VE_Name_3 = "VE_Name_3";
   public static final String VE_Variable_1 = "VE_Variable_1";
   public static final String VE_Name_1 = "VE_Name_1";
-  public static final String VE_VolumeFlowRate_3 = "VE_VolumeFlowRate_3";
   public static final String VE_Variable_2 = "VE_Variable_2";
+  public static final String VE_VolumeFlowRate_3 = "VE_VolumeFlowRate_3";
   public static final String OSPSystemStructure = "OSPSystemStructure";
   public static final String VE_LinearMechanicalQuasiPort = "VE_LinearMechanicalQuasiPort";
   
