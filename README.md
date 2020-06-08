@@ -1,7 +1,9 @@
 Description
 ===========
-This is a java project consisting of a java library and a command line interface tool to validate FMUs and simulation
-configurations against the [open simulation platform](https://www.opensimulationplatform.com) specification.
+Supports version 1.0 of [OSP-IS](https://www.opensimulationplatform.com/assets/osp-is.pdf)
+
+This is a java project consisting of a java library, and a command line interface tool to validate FMUs and simulation
+configurations against OSP-IS.
 
 IMPORTRANT
 ----------
@@ -12,15 +14,15 @@ Prerequisites
 =============
 Windows
 -------
-java: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_windows_hotspot_8u222b10.msi
+[java](https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_windows_hotspot_8u222b10.msi)
 \
-maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
+[maven](http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip)
 
 Linux
 -----
-java: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u222b10.tar.gz
+[java](https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u222b10.tar.gz)
 \
-maven: http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+[maven](http://apache.uib.no/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz)
 
 Modules
 =======
