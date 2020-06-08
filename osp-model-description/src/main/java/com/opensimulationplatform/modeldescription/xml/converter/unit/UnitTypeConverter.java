@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.unit;
 
 import com.opensimulationplatform.core.model.modeldescription.Unit;
@@ -5,9 +11,6 @@ import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.Fmi2Unit;
 import com.opensimulationplatform.modeldescription.xml.model.UnitType;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.opensimulationplatform.core.model.modeldescription.Unit.Exponent.*;
 
@@ -34,12 +37,8 @@ public class UnitTypeConverter extends Converter<UnitType, Unit> {
     unit.setExponent(MOL, baseUnit.getMol());
     unit.setExponent(CANDELA, baseUnit.getCd());
     unit.setExponent(RADIAN, baseUnit.getRad());
+    unit.setExponent(PERCENT, baseUnit.getPercent());
 
     return unit;
-  }
-
-  @Override
-  public List<Unit> convert(List<UnitType> unitTypes) {
-    return unitTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

@@ -1,13 +1,16 @@
-# Description
+Description
+===========
 A java command line interface tool for validating `OspSystemStructure.xml` and `OspModelDescription.xml` files.
 
-# Usage
-After building the project by following the build instructions [here](../README.md), `msmi-cli.jar` can be found in
-`msmi-validator/osp-validator-cli/target` and used as follows:
+
+Usage
+=====
+After building the project by following the build instructions [here](../README.md), `osp-cli.jar` can be found in
+`osp-validator/osp-validator-cli/target` and used as follows:
 
 ```
-$ java -jar msmi-cli.jar
-Usage: msmi-cli.jar [options] [command] [command options]
+$ java -jar osp-cli.jar
+Usage: osp-cli.jar [options] [command] [command options]
   Options:
     --help, -h
       Print help

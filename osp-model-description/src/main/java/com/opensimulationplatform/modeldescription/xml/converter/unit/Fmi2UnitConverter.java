@@ -1,12 +1,15 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.unit;
 
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi2.Fmi2Unit;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.opensimulationplatform.core.model.modeldescription.Unit.Exponent.*;
 
@@ -35,10 +38,5 @@ public class Fmi2UnitConverter extends Converter<Fmi2Unit, Unit> {
     unit.setExponent(RADIAN, baseUnit.getRad());
 
     return unit;
-  }
-
-  @Override
-  public List<Unit> convert(List<Fmi2Unit> fmi2Units) {
-    return fmi2Units.stream().map(this::convert).collect(Collectors.toList());
   }
 }

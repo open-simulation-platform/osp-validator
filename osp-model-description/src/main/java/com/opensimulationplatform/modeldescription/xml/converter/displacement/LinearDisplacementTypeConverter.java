@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.displacement;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
@@ -27,10 +33,5 @@ public class LinearDisplacementTypeConverter extends Converter<LinearDisplacemen
     linearDisplacement.setVariables(variables);
 
     return linearDisplacement;
-  }
-
-  @Override
-  public List<LinearDisplacement> convert(List<LinearDisplacementType> linearDisplacementTypes) {
-    return linearDisplacementTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

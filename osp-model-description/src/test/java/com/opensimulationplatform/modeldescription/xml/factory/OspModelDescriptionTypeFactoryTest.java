@@ -32,7 +32,7 @@ public class OspModelDescriptionTypeFactoryTest {
     JAXBSource source = new JAXBSource(jc, objectFactory.createOspModelDescription(ospModelDescriptionType));
 
     SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-    Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription.xsd"));
+    Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription-1.0.0.xsd"));
 
     Validator validator = schema.newValidator();
     validator.setErrorHandler(new ErrorHandler() {

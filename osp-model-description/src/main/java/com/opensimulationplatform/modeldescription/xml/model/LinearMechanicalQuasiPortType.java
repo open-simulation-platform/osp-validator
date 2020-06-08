@@ -1,4 +1,10 @@
 
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
@@ -14,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Force" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ForceType"/>
- *         &lt;element name="LinearDisplacement" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}LinearDisplacementType"/>
+ *         &lt;element name="Force" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}ForceType"/>
+ *         &lt;element name="LinearDisplacement" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}LinearDisplacementType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -26,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LinearMechanicalQuasiPortType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "LinearMechanicalQuasiPortType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "force",
     "linearDisplacement"
 })
 public class LinearMechanicalQuasiPortType {
 
-    @XmlElement(name = "Force", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Force", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected ForceType force;
-    @XmlElement(name = "LinearDisplacement", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "LinearDisplacement", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected LinearDisplacementType linearDisplacement;
     @XmlAttribute(name = "name", required = true)
     protected String name;

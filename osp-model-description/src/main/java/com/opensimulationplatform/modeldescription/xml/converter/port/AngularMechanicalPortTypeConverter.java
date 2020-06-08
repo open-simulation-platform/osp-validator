@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.port;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.angularmechanicalport.AngularMechanicalPort;
@@ -6,9 +12,6 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.torq
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.AngularMechanicalPortType;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class AngularMechanicalPortTypeConverter extends Converter<AngularMechanicalPortType, AngularMechanicalPort> {
 
@@ -31,10 +34,5 @@ public class AngularMechanicalPortTypeConverter extends Converter<AngularMechani
     angularMechanicalPort.setAngularVelocity(angularVelocity);
 
     return angularMechanicalPort;
-  }
-
-  @Override
-  public List<AngularMechanicalPort> convert(List<AngularMechanicalPortType> angularMechanicalPortTypes) {
-    return angularMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

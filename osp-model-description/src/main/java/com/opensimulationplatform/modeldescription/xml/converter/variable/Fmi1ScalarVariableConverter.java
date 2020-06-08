@@ -1,12 +1,15 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.variable;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi1.FmiScalarVariable;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.opensimulationplatform.core.model.modeldescription.Variable.Causality.INPUT;
 import static com.opensimulationplatform.core.model.modeldescription.Variable.Causality.OUTPUT;
@@ -53,10 +56,5 @@ public class Fmi1ScalarVariableConverter extends Converter<FmiScalarVariable, Va
     }
 
     return variable;
-  }
-
-  @Override
-  public List<Variable> convert(List<FmiScalarVariable> fmiScalarVariables) {
-    return fmiScalarVariables.stream().map(this::convert).collect(Collectors.toList());
   }
 }

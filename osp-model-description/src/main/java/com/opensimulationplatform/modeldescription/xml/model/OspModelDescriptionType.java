@@ -1,4 +1,10 @@
 
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
@@ -14,10 +20,10 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="UnitDefinitions" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}UnitDefinitionsType" minOccurs="0"/>
- *         &lt;element name="VariableGroups" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableGroupsType"/>
+ *         &lt;element name="UnitDefinitions" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}UnitDefinitionsType" minOccurs="0"/>
+ *         &lt;element name="VariableGroups" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VariableGroupsType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="0.1" />
+ *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" fixed="1.0" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -26,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "OspModelDescriptionType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "OspModelDescriptionType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "unitDefinitions",
     "variableGroups"
 })
 public class OspModelDescriptionType {
 
-    @XmlElement(name = "UnitDefinitions", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "UnitDefinitions", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
     protected UnitDefinitionsType unitDefinitions;
-    @XmlElement(name = "VariableGroups", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "VariableGroups", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
     protected VariableGroupsType variableGroups;
     @XmlAttribute(name = "version", required = true)
     protected String version;
@@ -97,7 +103,7 @@ public class OspModelDescriptionType {
      */
     public String getVersion() {
         if (version == null) {
-            return "0.1";
+            return "1.0";
         } else {
             return version;
         }

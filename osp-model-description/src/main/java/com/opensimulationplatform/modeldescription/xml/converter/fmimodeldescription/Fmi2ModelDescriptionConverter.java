@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.fmimodeldescription;
 
 
@@ -11,7 +17,6 @@ import no.ntnu.ihb.fmi4j.modeldescription.fmi2.Fmi2Unit;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Fmi2ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.modeldescription.fmi2.FmiModelDescription, FmiModelDescription> {
 
@@ -42,10 +47,5 @@ public class Fmi2ModelDescriptionConverter extends Converter<no.ntnu.ihb.fmi4j.m
     }
 
     return fmd;
-  }
-
-  @Override
-  public List<FmiModelDescription> convert(List<no.ntnu.ihb.fmi4j.modeldescription.fmi2.FmiModelDescription> fmiModelDescriptions) {
-    return fmiModelDescriptions.stream().map(this::convert).collect(Collectors.toList());
   }
 }

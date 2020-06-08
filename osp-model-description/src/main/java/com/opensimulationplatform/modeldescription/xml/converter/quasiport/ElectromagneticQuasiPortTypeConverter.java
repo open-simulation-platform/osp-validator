@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.quasiport;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.charge.Charge;
@@ -6,9 +12,6 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.volt
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.ElectromagneticQuasiPortType;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ElectromagneticQuasiPortTypeConverter extends Converter<ElectromagneticQuasiPortType, ElectromagneticQuasiPort> {
 
@@ -31,10 +34,5 @@ public class ElectromagneticQuasiPortTypeConverter extends Converter<Electromagn
     linearMechanicalPort.setCharge(charge);
 
     return linearMechanicalPort;
-  }
-
-  @Override
-  public List<ElectromagneticQuasiPort> convert(List<ElectromagneticQuasiPortType> linearMechanicalPortTypes) {
-    return linearMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

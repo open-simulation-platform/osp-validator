@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.quasiport;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.force.Force;
@@ -6,9 +12,6 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.line
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.LinearMechanicalQuasiPortType;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class LinearMechanicalQuasiPortTypeConverter extends Converter<LinearMechanicalQuasiPortType, LinearMechanicalQuasiPort> {
 
@@ -31,10 +34,5 @@ public class LinearMechanicalQuasiPortTypeConverter extends Converter<LinearMech
     linearMechanicalPort.setLinearDisplacement(linearDisplacement);
 
     return linearMechanicalPort;
-  }
-
-  @Override
-  public List<LinearMechanicalQuasiPort> convert(List<LinearMechanicalQuasiPortType> linearMechanicalPortTypes) {
-    return linearMechanicalPortTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

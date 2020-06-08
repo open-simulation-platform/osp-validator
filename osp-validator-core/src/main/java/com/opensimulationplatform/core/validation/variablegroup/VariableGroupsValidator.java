@@ -1,8 +1,15 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.core.validation.variablegroup;
 
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.validation.ValidationError;
 import com.opensimulationplatform.core.validation.Validator;
+import com.opensimulationplatform.core.validation.variablegroup.angularacceleration.AngularAccelerationValidator;
 import com.opensimulationplatform.core.validation.variablegroup.angulardisplacement.AngularDisplacementValidator;
 import com.opensimulationplatform.core.validation.variablegroup.angularmechanicalport.AngularMechanicalPortValidator;
 import com.opensimulationplatform.core.validation.variablegroup.angularmechanicalquasiport.AngularMechanicalQuasiPortValidator;
@@ -14,6 +21,7 @@ import com.opensimulationplatform.core.validation.variablegroup.electromagneticq
 import com.opensimulationplatform.core.validation.variablegroup.force.ForceValidator;
 import com.opensimulationplatform.core.validation.variablegroup.hydraulicport.HydraulicPortValidator;
 import com.opensimulationplatform.core.validation.variablegroup.hydraulicquasiport.HydraulicQuasiPortValidator;
+import com.opensimulationplatform.core.validation.variablegroup.linearacceleration.LinearAccelerationValidator;
 import com.opensimulationplatform.core.validation.variablegroup.lineardisplacement.LinearDisplacementValidator;
 import com.opensimulationplatform.core.validation.variablegroup.linearmechanicalport.LinearMechanicalPortValidator;
 import com.opensimulationplatform.core.validation.variablegroup.linearmechanicalquasiport.LinearMechanicalQuasiPortValidator;
@@ -48,6 +56,8 @@ public class VariableGroupsValidator extends Validator<VariableGroup> {
   private final AngularMechanicalQuasiPortValidator angularMechanicalQuasiPortValidator = new AngularMechanicalQuasiPortValidator();
   private final ElectromagneticQuasiPortValidator electromagneticQuasiPortValidator = new ElectromagneticQuasiPortValidator();
   private final HydraulicQuasiPortValidator hydraulicQuasiPortValidator = new HydraulicQuasiPortValidator();
+  private final LinearAccelerationValidator linearAccelerationValidator = new LinearAccelerationValidator();
+  private final AngularAccelerationValidator angularAccelerationValidator = new AngularAccelerationValidator();
 
   private final VE_VariableGroup_1 ve_variableGroup_1 = new VE_VariableGroup_1();
   private final VE_VariableGroup_2 ve_variableGroup_2 = new VE_VariableGroup_2();
@@ -75,7 +85,9 @@ public class VariableGroupsValidator extends Validator<VariableGroup> {
         linearMechanicalQuasiPortValidator,
         angularMechanicalQuasiPortValidator,
         electromagneticQuasiPortValidator,
-        hydraulicQuasiPortValidator
+        hydraulicQuasiPortValidator,
+        linearAccelerationValidator,
+        angularAccelerationValidator
     );
   }
 

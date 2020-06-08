@@ -1,4 +1,10 @@
 
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
@@ -14,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Voltage" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VoltageType"/>
- *         &lt;element name="Charge" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}ChargeType"/>
+ *         &lt;element name="Voltage" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VoltageType"/>
+ *         &lt;element name="Charge" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}ChargeType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -26,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ElectromagneticQuasiPortType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "ElectromagneticQuasiPortType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "voltage",
     "charge"
 })
 public class ElectromagneticQuasiPortType {
 
-    @XmlElement(name = "Voltage", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Voltage", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected VoltageType voltage;
-    @XmlElement(name = "Charge", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Charge", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected ChargeType charge;
     @XmlAttribute(name = "name", required = true)
     protected String name;

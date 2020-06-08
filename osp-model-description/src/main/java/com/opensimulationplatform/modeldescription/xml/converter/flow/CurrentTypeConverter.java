@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.flow;
 
 import com.opensimulationplatform.core.model.modeldescription.Variable;
@@ -26,10 +32,5 @@ public class CurrentTypeConverter extends Converter<CurrentType, Current> {
     current.setVariables(variables);
 
     return current;
-  }
-
-  @Override
-  public List<Current> convert(List<CurrentType> linearVelocityTypes) {
-    return linearVelocityTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

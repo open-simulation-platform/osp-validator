@@ -1,4 +1,10 @@
 
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
@@ -16,7 +22,7 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Variable" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableType" maxOccurs="3"/>
+ *         &lt;element name="Variable" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VariableType" maxOccurs="3"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -27,12 +33,12 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TorqueType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "TorqueType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "variable"
 })
 public class TorqueType {
 
-    @XmlElement(name = "Variable", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Variable", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected List<VariableType> variable;
     @XmlAttribute(name = "name", required = true)
     protected String name;

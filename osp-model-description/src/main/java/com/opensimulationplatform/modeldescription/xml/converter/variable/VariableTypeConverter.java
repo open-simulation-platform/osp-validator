@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.converter.variable;
 
 import com.opensimulationplatform.core.model.modeldescription.Unit;
@@ -6,9 +12,6 @@ import com.opensimulationplatform.core.util.modeldescription.ModelDescriptionUti
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.VariableType;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class VariableTypeConverter extends Converter<VariableType, Variable> {
 
@@ -26,10 +29,5 @@ public class VariableTypeConverter extends Converter<VariableType, Variable> {
     }
 
     return variable;
-  }
-
-  @Override
-  public List<Variable> convert(List<VariableType> variableTypes) {
-    return variableTypes.stream().map(this::convert).collect(Collectors.toList());
   }
 }

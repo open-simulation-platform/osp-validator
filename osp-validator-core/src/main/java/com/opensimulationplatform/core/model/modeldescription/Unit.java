@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.core.model.modeldescription;
 
 import com.opensimulationplatform.core.model.ID;
@@ -21,6 +27,7 @@ public class Unit {
     exponents.put(MOL, 0);
     exponents.put(CANDELA, 0);
     exponents.put(RADIAN, 0);
+    exponents.put(PERCENT, 0);
   }
 
   public ID getId() {
@@ -82,7 +89,8 @@ public class Unit {
     KELVIN("K"),
     MOL("mol"),
     CANDELA("cd"),
-    RADIAN("rad");
+    RADIAN("rad"),
+    PERCENT("percent");
 
     private final String symbol;
 

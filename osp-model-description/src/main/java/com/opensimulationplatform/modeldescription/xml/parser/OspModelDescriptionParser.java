@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.parser;
 
 import com.opensimulationplatform.modeldescription.xml.model.OspModelDescriptionType;
@@ -27,7 +33,7 @@ public class OspModelDescriptionParser {
       XMLStreamReader reader = inputFactory.createXMLStreamReader(fileInputStream);
       listener = new LocationListener(reader);
 
-      Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription.xsd"));
+      Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription-1.0.0.xsd"));
 
       JAXBContext context = JAXBContext.newInstance(OspModelDescriptionType.class.getPackage().getName());
 

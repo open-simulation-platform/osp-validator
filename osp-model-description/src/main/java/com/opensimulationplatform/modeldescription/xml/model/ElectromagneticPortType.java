@@ -1,4 +1,10 @@
 
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
@@ -14,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Voltage" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VoltageType"/>
- *         &lt;element name="Current" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}CurrentType"/>
+ *         &lt;element name="Voltage" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VoltageType"/>
+ *         &lt;element name="Current" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}CurrentType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -26,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ElectromagneticPortType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "ElectromagneticPortType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "voltage",
     "current"
 })
 public class ElectromagneticPortType {
 
-    @XmlElement(name = "Voltage", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Voltage", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected VoltageType voltage;
-    @XmlElement(name = "Current", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Current", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected CurrentType current;
     @XmlAttribute(name = "name", required = true)
     protected String name;

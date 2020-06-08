@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.gen.core.generator;
 
 import java.io.File;
@@ -13,26 +19,54 @@ public class Generator {
   private static final File templateDirectory = new File("./osp-validator-gen/src/main/java/com/opensimulationplatform/gen/core/generator/template");
 
   public static void main(String[] args) throws Exception {
-    generatePhysicsVariableGroups();
+    generateVariableGroups();
   }
 
-  private static void generatePhysicsVariableGroups() throws Exception {
-    List<String> physicsVariableGroups = new ArrayList<>();
+  private static void generateVariableGroups() throws Exception {
+    List<String> variableGroups = new ArrayList<>();
 
-    physicsVariableGroups.add("AngularDisplacement");
-    physicsVariableGroups.add("AngularVelocity");
-    physicsVariableGroups.add("Torque");
-    physicsVariableGroups.add("Charge");
-    physicsVariableGroups.add("Current");
-    physicsVariableGroups.add("Voltage");
-    physicsVariableGroups.add("LinearDisplacement");
-    physicsVariableGroups.add("LinearVelocity");
-    physicsVariableGroups.add("Force");
-    physicsVariableGroups.add("Volume");
-    physicsVariableGroups.add("VolumeFlowRate");
-    physicsVariableGroups.add("Pressure");
+    variableGroups.add("AngularDisplacement");
+    variableGroups.add("AngularVelocity");
+    variableGroups.add("Torque");
+    variableGroups.add("Charge");
+    variableGroups.add("Current");
+    variableGroups.add("Voltage");
+    variableGroups.add("LinearDisplacement");
+    variableGroups.add("LinearVelocity");
+    variableGroups.add("Force");
+    variableGroups.add("Volume");
+    variableGroups.add("VolumeFlowRate");
+    variableGroups.add("Pressure");
+    variableGroups.add("NmeaGgaFix");
+    variableGroups.add("NmeaGgaLatitudeLongitude");
+    variableGroups.add("NmeaGga");
+    variableGroups.add("NmeaGstEllipse");
+    variableGroups.add("NmeaGstPositionError");
+    variableGroups.add("NmeaGst");
+    variableGroups.add("NmeaMwv");
+    variableGroups.add("NmeaStatus");
+    variableGroups.add("NmeaSxn");
+    variableGroups.add("NmeaThs");
+    variableGroups.add("NmeaTime");
+    variableGroups.add("NmeaTrueHeading");
+    variableGroups.add("NmeaWindDirection");
+    variableGroups.add("NmeaWindSpeed");
+    variableGroups.add("AngularAcceleration");
+    variableGroups.add("AzimuthAngle");
+    variableGroups.add("AzimuthThrusterFeedback");
+    variableGroups.add("AzimuthThrusterSetpoint");
+    variableGroups.add("BatteryFeedback");
+    variableGroups.add("BladePitch");
+    variableGroups.add("BusFeedback");
+    variableGroups.add("ElectricPower");
+    variableGroups.add("FixedThrusterFeedback");
+    variableGroups.add("FixedThrusterSetpoint");
+    variableGroups.add("Frequency");
+    variableGroups.add("GeneratorFeedback");
+    variableGroups.add("LinearAcceleration");
+    variableGroups.add("ShaftSpeed");
 
-    for (String name : physicsVariableGroups) {
+    for (String name : variableGroups) {
       generateValidationError_1(name);
       generateValidationError_2(name);
       generateValidationError_3(name);

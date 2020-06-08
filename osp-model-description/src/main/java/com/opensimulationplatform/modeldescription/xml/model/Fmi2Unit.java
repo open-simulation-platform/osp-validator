@@ -1,4 +1,10 @@
 
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package com.opensimulationplatform.modeldescription.xml.model;
 
 import javax.xml.bind.annotation.*;
@@ -33,6 +39,7 @@ import java.util.List;
  *                 &lt;attribute name="mol" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
  *                 &lt;attribute name="cd" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
  *                 &lt;attribute name="rad" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
+ *                 &lt;attribute name="percent" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
  *                 &lt;attribute name="factor" type="{http://www.w3.org/2001/XMLSchema}double" default="1" />
  *                 &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
  *               &lt;/restriction>
@@ -62,7 +69,7 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "fmi2Unit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "fmi2Unit", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "baseUnit",
     "displayUnit"
 })
@@ -71,9 +78,9 @@ import java.util.List;
 })
 public class Fmi2Unit {
 
-    @XmlElement(name = "BaseUnit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "BaseUnit", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
     protected Fmi2Unit.BaseUnit baseUnit;
-    @XmlElement(name = "DisplayUnit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "DisplayUnit", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
     protected List<Fmi2Unit.DisplayUnit> displayUnit;
     @XmlAttribute(name = "name", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
@@ -175,6 +182,7 @@ public class Fmi2Unit {
      *       &lt;attribute name="mol" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
      *       &lt;attribute name="cd" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
      *       &lt;attribute name="rad" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
+     *       &lt;attribute name="percent" type="{http://www.w3.org/2001/XMLSchema}int" default="0" />
      *       &lt;attribute name="factor" type="{http://www.w3.org/2001/XMLSchema}double" default="1" />
      *       &lt;attribute name="offset" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
      *     &lt;/restriction>
@@ -204,6 +212,8 @@ public class Fmi2Unit {
         protected Integer cd;
         @XmlAttribute(name = "rad")
         protected Integer rad;
+        @XmlAttribute(name = "percent")
+        protected Integer percent;
         @XmlAttribute(name = "factor")
         protected Double factor;
         @XmlAttribute(name = "offset")
@@ -431,6 +441,34 @@ public class Fmi2Unit {
          */
         public void setRad(Integer value) {
             this.rad = value;
+        }
+
+        /**
+         * Gets the value of the percent property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link Integer }
+         *     
+         */
+        public int getPercent() {
+            if (percent == null) {
+                return  0;
+            } else {
+                return percent;
+            }
+        }
+
+        /**
+         * Sets the value of the percent property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Integer }
+         *     
+         */
+        public void setPercent(Integer value) {
+            this.percent = value;
         }
 
         /**
