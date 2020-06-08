@@ -1,18 +1,13 @@
 
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
 package com.opensimulationplatform.systemstructure.xml.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -24,7 +19,7 @@ import java.util.List;
  * &lt;complexType name="connections">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
+ *       &lt;choice maxOccurs="unbounded">
  *         &lt;element name="VariableConnection" maxOccurs="unbounded" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -71,7 +66,7 @@ import java.util.List;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *       &lt;/sequence>
+ *       &lt;/choice>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -81,136 +76,48 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "connections", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure", propOrder = {
-    "variableConnection",
-    "signalConnection",
-    "variableGroupConnection",
-    "signalGroupConnection"
+    "variableConnectionOrSignalConnectionOrVariableGroupConnection"
 })
 public class Connections {
 
-    @XmlElement(name = "VariableConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure")
-    protected List<Connections.VariableConnection> variableConnection;
-    @XmlElement(name = "SignalConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure")
-    protected List<Connections.SignalConnection> signalConnection;
-    @XmlElement(name = "VariableGroupConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure")
-    protected List<Connections.VariableGroupConnection> variableGroupConnection;
-    @XmlElement(name = "SignalGroupConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure")
-    protected List<Connections.SignalGroupConnection> signalGroupConnection;
+    @XmlElements({
+        @XmlElement(name = "VariableConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure", type = Connections.VariableConnection.class),
+        @XmlElement(name = "SignalConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure", type = Connections.SignalConnection.class),
+        @XmlElement(name = "VariableGroupConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure", type = Connections.VariableGroupConnection.class),
+        @XmlElement(name = "SignalGroupConnection", namespace = "http://opensimulationplatform.com/MSMI/OSPSystemStructure", type = Connections.SignalGroupConnection.class)
+    })
+    protected List<Object> variableConnectionOrSignalConnectionOrVariableGroupConnection;
 
     /**
-     * Gets the value of the variableConnection property.
+     * Gets the value of the variableConnectionOrSignalConnectionOrVariableGroupConnection property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the variableConnection property.
+     * This is why there is not a <CODE>set</CODE> method for the variableConnectionOrSignalConnectionOrVariableGroupConnection property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getVariableConnection().add(newItem);
+     *    getVariableConnectionOrSignalConnectionOrVariableGroupConnection().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Connections.VariableConnection }
-     * 
-     * 
-     */
-    public List<Connections.VariableConnection> getVariableConnection() {
-        if (variableConnection == null) {
-            variableConnection = new ArrayList<Connections.VariableConnection>();
-        }
-        return this.variableConnection;
-    }
-
-    /**
-     * Gets the value of the signalConnection property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the signalConnection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSignalConnection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
      * {@link Connections.SignalConnection }
-     * 
-     * 
-     */
-    public List<Connections.SignalConnection> getSignalConnection() {
-        if (signalConnection == null) {
-            signalConnection = new ArrayList<Connections.SignalConnection>();
-        }
-        return this.signalConnection;
-    }
-
-    /**
-     * Gets the value of the variableGroupConnection property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the variableGroupConnection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getVariableGroupConnection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
      * {@link Connections.VariableGroupConnection }
-     * 
-     * 
-     */
-    public List<Connections.VariableGroupConnection> getVariableGroupConnection() {
-        if (variableGroupConnection == null) {
-            variableGroupConnection = new ArrayList<Connections.VariableGroupConnection>();
-        }
-        return this.variableGroupConnection;
-    }
-
-    /**
-     * Gets the value of the signalGroupConnection property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the signalGroupConnection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSignalGroupConnection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
      * {@link Connections.SignalGroupConnection }
      * 
      * 
      */
-    public List<Connections.SignalGroupConnection> getSignalGroupConnection() {
-        if (signalGroupConnection == null) {
-            signalGroupConnection = new ArrayList<Connections.SignalGroupConnection>();
+    public List<Object> getVariableConnectionOrSignalConnectionOrVariableGroupConnection() {
+        if (variableConnectionOrSignalConnectionOrVariableGroupConnection == null) {
+            variableConnectionOrSignalConnectionOrVariableGroupConnection = new ArrayList<Object>();
         }
-        return this.signalGroupConnection;
+        return this.variableConnectionOrSignalConnectionOrVariableGroupConnection;
     }
 
 

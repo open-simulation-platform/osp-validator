@@ -436,8 +436,17 @@ public class Validator {
     Map<Object, Object> map = new HashMap<>();
 
     List<Simulators.Simulator> simulatorElements = ospSystemStructureElement.getSimulators().getSimulator();
-    List<Connections.VariableConnection> variableConnectionElements = ospSystemStructureElement.getConnections().getVariableConnection();
-    List<Connections.VariableGroupConnection> variableGroupConnectionElements = ospSystemStructureElement.getConnections().getVariableGroupConnection();
+
+    List<Object> connectionElements = ospSystemStructureElement.getConnections().getVariableConnectionOrSignalConnectionOrVariableGroupConnection();
+    List<Connections.VariableConnection> variableConnectionElements = new ArrayList<>();
+    List<Connections.VariableGroupConnection> variableGroupConnectionElements = new ArrayList<>();
+    for (Object connectionElement : connectionElements) {
+      if (connectionElement instanceof Connections.VariableConnection) {
+        variableConnectionElements.add((Connections.VariableConnection) connectionElement);
+      } else if (connectionElement instanceof Connections.VariableGroupConnection) {
+        variableGroupConnectionElements.add((Connections.VariableGroupConnection) connectionElement);
+      }
+    }
 
     for (Simulators.Simulator simulatorElement : simulatorElements) {
       Optional<Simulator> simulator = SystemStructureUtil.getSimulatorByName(systemStructure, simulatorElement.getName());

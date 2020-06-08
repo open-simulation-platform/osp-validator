@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="NmeaTime" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaTimeType"/>
- *         &lt;element name="NmeaGgaLatitudeLongitude" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGgaLatitudeLongitudeType"/>
- *         &lt;element name="NmeaGgaFix" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaGgaFixType"/>
+ *         &lt;element name="NmeaTime" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaTimeType"/>
+ *         &lt;element name="NmeaGgaLatitudeLongitude" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaGgaLatitudeLongitudeType"/>
+ *         &lt;element name="NmeaGgaFix" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaGgaFixType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -33,18 +33,18 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NmeaGgaType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "NmeaGgaType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "nmeaTime",
     "nmeaGgaLatitudeLongitude",
     "nmeaGgaFix"
 })
 public class NmeaGgaType {
 
-    @XmlElement(name = "NmeaTime", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaTime", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaTimeType nmeaTime;
-    @XmlElement(name = "NmeaGgaLatitudeLongitude", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaGgaLatitudeLongitude", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaGgaLatitudeLongitudeType nmeaGgaLatitudeLongitude;
-    @XmlElement(name = "NmeaGgaFix", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaGgaFix", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaGgaFixType nmeaGgaFix;
     @XmlAttribute(name = "name", required = true)
     protected String name;

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="UnitType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://opensimulationplatform.com/MSMI/OSPModelDescription}fmi2Unit">
+ *     &lt;extension base="{https://open-simulation-platform.com/OspModelDescription/1.0.0}fmi2Unit">
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "UnitType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+@XmlType(name = "UnitType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
 public class UnitType
     extends Fmi2Unit
 {

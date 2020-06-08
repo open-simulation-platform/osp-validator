@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="AzimuthAngleType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularDisplacementType">
+ *     &lt;restriction base="{https://open-simulation-platform.com/OspModelDescription/1.0.0}AngularDisplacementType">
  *       &lt;sequence>
- *         &lt;element name="Variable" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}VariableType"/>
+ *         &lt;element name="Variable" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}VariableType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AzimuthAngleType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+@XmlType(name = "AzimuthAngleType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
 public class AzimuthAngleType
     extends AngularDisplacementType
 {

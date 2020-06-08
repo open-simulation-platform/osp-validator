@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Torque" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}TorqueType"/>
- *         &lt;element name="AngularDisplacement" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}AngularDisplacementType"/>
+ *         &lt;element name="Torque" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}TorqueType"/>
+ *         &lt;element name="AngularDisplacement" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}AngularDisplacementType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AngularMechanicalQuasiPortType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "AngularMechanicalQuasiPortType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "torque",
     "angularDisplacement"
 })
 public class AngularMechanicalQuasiPortType {
 
-    @XmlElement(name = "Torque", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "Torque", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected TorqueType torque;
-    @XmlElement(name = "AngularDisplacement", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "AngularDisplacement", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected AngularDisplacementType angularDisplacement;
     @XmlAttribute(name = "name", required = true)
     protected String name;

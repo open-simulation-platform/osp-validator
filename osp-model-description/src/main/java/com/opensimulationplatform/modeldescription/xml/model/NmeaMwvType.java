@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="NmeaWindDirection" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaWindDirectionType"/>
- *         &lt;element name="NmeaWindSpeed" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaWindSpeedType"/>
- *         &lt;element name="NmeaStatus" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}NmeaStatusType"/>
+ *         &lt;element name="NmeaWindDirection" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaWindDirectionType"/>
+ *         &lt;element name="NmeaWindSpeed" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaWindSpeedType"/>
+ *         &lt;element name="NmeaStatus" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}NmeaStatusType"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -33,18 +33,18 @@ import javax.xml.bind.annotation.*;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NmeaMwvType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "NmeaMwvType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "nmeaWindDirection",
     "nmeaWindSpeed",
     "nmeaStatus"
 })
 public class NmeaMwvType {
 
-    @XmlElement(name = "NmeaWindDirection", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaWindDirection", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaWindDirectionType nmeaWindDirection;
-    @XmlElement(name = "NmeaWindSpeed", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaWindSpeed", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaWindSpeedType nmeaWindSpeed;
-    @XmlElement(name = "NmeaStatus", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", required = true)
+    @XmlElement(name = "NmeaStatus", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", required = true)
     protected NmeaStatusType nmeaStatus;
     @XmlAttribute(name = "name", required = true)
     protected String name;

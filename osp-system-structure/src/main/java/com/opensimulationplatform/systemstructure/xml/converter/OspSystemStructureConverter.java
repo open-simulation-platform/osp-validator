@@ -14,6 +14,7 @@ import com.opensimulationplatform.systemstructure.xml.model.Connections;
 import com.opensimulationplatform.systemstructure.xml.model.OspSystemStructure;
 import com.opensimulationplatform.systemstructure.xml.model.Simulators;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +32,20 @@ public class OspSystemStructureConverter extends Converter<OspSystemStructure, S
     List<Simulator> simulators = context.simulatorConverter.convert(simulatorElements);
     systemStructure.getSimulators().addAll(simulators);
 
-    List<Connections.VariableConnection> variableConnectionElements = ospSystemStructureElement.getConnections().getVariableConnection();
+    List<Object> connectionElements = ospSystemStructureElement.getConnections().getVariableConnectionOrSignalConnectionOrVariableGroupConnection();
+    List<Connections.VariableConnection> variableConnectionElements = new ArrayList<>();
+    List<Connections.VariableGroupConnection> variableGroupConnectionElements = new ArrayList<>();
+    for (Object connectionElement : connectionElements) {
+      if (connectionElement instanceof Connections.VariableConnection) {
+        variableConnectionElements.add((Connections.VariableConnection) connectionElement);
+      } else if (connectionElement instanceof Connections.VariableGroupConnection) {
+        variableGroupConnectionElements.add((Connections.VariableGroupConnection) connectionElement);
+      }
+    }
+
     List<VariableConnection> variableConnections = context.variableConnectionConverter.convert(variableConnectionElements);
     systemStructure.getVariableConnections().addAll(variableConnections);
 
-    List<Connections.VariableGroupConnection> variableGroupConnectionElements = ospSystemStructureElement.getConnections().getVariableGroupConnection();
     List<VariableGroupConnection> variableGroupConnections = context.variableGroupConnectionConverter.convert(variableGroupConnectionElements);
     systemStructure.getVariableGroupConnections().addAll(variableGroupConnections);
 

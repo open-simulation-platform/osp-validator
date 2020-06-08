@@ -25,7 +25,7 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *         &lt;element name="Unit" type="{http://opensimulationplatform.com/MSMI/OSPModelDescription}UnitType"/>
+ *         &lt;element name="Unit" type="{https://open-simulation-platform.com/OspModelDescription/1.0.0}UnitType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,12 +35,12 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "UnitDefinitionsType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription", propOrder = {
+@XmlType(name = "UnitDefinitionsType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0", propOrder = {
     "unit"
 })
 public class UnitDefinitionsType {
 
-    @XmlElement(name = "Unit", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+    @XmlElement(name = "Unit", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
     protected List<UnitType> unit;
 
     /**

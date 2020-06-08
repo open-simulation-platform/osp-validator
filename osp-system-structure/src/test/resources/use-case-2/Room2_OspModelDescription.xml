@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<OspModelDescription xmlns="http://opensimulationplatform.com/MSMI/OSPModelDescription" version="1.0">
+<OspModelDescription xmlns="https://open-simulation-platform.com/OspModelDescription/1.0.0" version="1.0">
 	<VariableGroups>
 		<Generic name="h_InnerWall">
 			<Variable ref="h_InnerWall"/>			

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "VariableType", namespace = "http://opensimulationplatform.com/MSMI/OSPModelDescription")
+@XmlType(name = "VariableType", namespace = "https://open-simulation-platform.com/OspModelDescription/1.0.0")
 public class VariableType {
 
     @XmlAttribute(name = "ref", required = true)
