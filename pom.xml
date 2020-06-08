@@ -13,7 +13,7 @@
   <groupId>com.opensimulationplatform</groupId>
   <artifactId>osp-validator</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>0.12.0-SNAPSHOT</version>
   <modules>
     <module>osp-validator-gen</module>
     <module>osp-validator-core</module>
