@@ -25,7 +25,16 @@ will be included in this repository with guidelines once concluded.
 Workflow
 --------
 This repository uses the [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) 
-workflow
+workflow. In short, it means the following:
+
+**Branch types**
+* `master`  - Only contains release commits.
+* `develop` - All development happens on this branch.
+* `feature` - Branches from `develop` and are merged back into `develop`.
+* `release` - Branches from `develop`. Final touches before releasing. When ready to release, merge into `master` and 
+back into `develop`.
+* `hotfix` - Branches from `master`. When hotfix is ready, merge back into `master` for new hotfix release and into 
+`develop`.
 
 
 Creating new releases
