@@ -27,7 +27,7 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
   public Optional<File> get(Simulators.Simulator simulator) {
     try {
       URI uri = fmuLocator.get(simulator);
-      if ("fmuproxy".equals(uri.getScheme())) {
+      if ("fmu-proxy".equals(uri.getScheme())) {
         String fmuName = new File(uri.getPath()).getName().replaceAll(".fmu", "");
 
         File parallelToOspSystemStructure = new File(ospSystemStructureFile.getParent(), fmuName + "_OspModelDescription.xml");
@@ -52,7 +52,7 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
 
         return Optional.empty();
       } else {
-        throw new RuntimeException("Unsupported URI schema: '" + uri.getScheme() + "' in URI: '" + uri + "' . Supported schemas are: [file, fmuproxy]");
+        throw new RuntimeException("Unsupported URI schema: '" + uri.getScheme() + "' in URI: '" + uri + "' . Supported schemas are: [file, fmu-proxy]");
       }
     } catch (Exception e) {
       throw new RuntimeException(e);
