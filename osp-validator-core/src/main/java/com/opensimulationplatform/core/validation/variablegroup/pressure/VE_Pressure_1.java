@@ -27,6 +27,6 @@ public class VE_Pressure_1 extends ValidationError<Pressure> {
 
   @Override
   protected String getErrorMessage(Pressure pressure) {
-    return "Pressure variable group '" + pressure.getName().getId().get() + "' contains variables with mixed causalities";
+    return "Pressure variable group '" + pressure.getName().getId().toString() + "' contains variables with mixed causalities";
   }
 }

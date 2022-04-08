@@ -27,6 +27,6 @@ public class VE_AngularDisplacement_3 extends ValidationError<AngularDisplacemen
 
   @Override
   protected String getErrorMessage(AngularDisplacement angularDisplacement) {
-    return "AngularDisplacement variable group '" + angularDisplacement.getName().getId().get() + "' contains variables with incompatible units";
+    return "AngularDisplacement variable group '" + angularDisplacement.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

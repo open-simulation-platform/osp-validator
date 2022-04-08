@@ -11,15 +11,14 @@ import com.opensimulationplatform.core.validation.ValidationErrorContext;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class VE_VariableConnection_1_Test {
+public class VE_VariableConnection_5_Test {
 
-  private final VE_VariableConnection_1 validationError = new VE_VariableConnection_1();
+  private final VE_VariableConnection_5 validationError = new VE_VariableConnection_5();
   private final VariableConnectionOwlBuilder builder = new VariableConnectionOwlBuilder();
   private final ValidationErrorContext validationErrorContext = new ValidationErrorContext();
   private final OwlBuilderContext builderContext = new OwlBuilderContext();
@@ -42,11 +41,13 @@ public class VE_VariableConnection_1_Test {
     va.setName("va");
     va.setType(Variable.Type.REAL);
     va.setCausality(Variable.Causality.INPUT);
+    va.setAxis(Variable.Axis.X);
 
     Variable vb = new Variable();
     vb.setName("vb");
-    vb.setType(Variable.Type.INTEGER);
+    vb.setType(Variable.Type.REAL);
     vb.setCausality(Variable.Causality.OUTPUT);
+    vb.setAxis(Variable.Axis.Y);
 
     VariableConnection vc = new VariableConnection();
     vc.setVariableA(va);
@@ -55,9 +56,6 @@ public class VE_VariableConnection_1_Test {
     vc.setSimulatorB(new Simulator());
 
     builder.build(vc);
-
-    builderContext.owl.save(new File("VE_VariableConnection_1_Test.owl"));
-
     builder.complete();
 
     List<ValidationDiagnostic<VariableConnection>> diagnostics = validationError.validate();
@@ -75,11 +73,13 @@ public class VE_VariableConnection_1_Test {
     va.setName("va");
     va.setType(Variable.Type.REAL);
     va.setCausality(Variable.Causality.INPUT);
+    va.setAxis(Variable.Axis.X);
 
     Variable vb = new Variable();
     vb.setName("vb");
     vb.setType(Variable.Type.REAL);
     vb.setCausality(Variable.Causality.OUTPUT);
+    vb.setAxis(Variable.Axis.X);
 
     VariableConnection vc = new VariableConnection();
     vc.setVariableA(va);

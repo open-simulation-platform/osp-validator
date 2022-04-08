@@ -28,6 +28,23 @@ public class VariableTypeConverter extends Converter<VariableType, Variable> {
       variable.setUnit(unit);
     }
 
+    if (variable != null) {
+      switch (variableType.getAxis()) {
+        case X:
+          variable.setAxis(Variable.Axis.X);
+          break;
+        case Y:
+          variable.setAxis(Variable.Axis.X);
+          break;
+        case Z:
+          variable.setAxis(Variable.Axis.X);
+          break;
+        default:
+          variable.setAxis(Variable.Axis.UNDEFINED);
+          break;
+      }
+    }
+
     return variable;
   }
 }

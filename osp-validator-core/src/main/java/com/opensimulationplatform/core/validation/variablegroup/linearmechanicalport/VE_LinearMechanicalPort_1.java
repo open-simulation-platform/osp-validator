@@ -27,9 +27,9 @@ public class VE_LinearMechanicalPort_1 extends ValidationError<LinearMechanicalP
 
   @Override
   protected String getErrorMessage(LinearMechanicalPort linearMechanicalPort) {
-     return "LinearMechanicalPort '" + linearMechanicalPort.getName().getId().get() + "' contains incompatible Force(" +
-             linearMechanicalPort.getForce().getName().getId().get() + ") and LinearVelocity(" +
-             linearMechanicalPort.getLinearVelocity().getName().getId().get() + "). " +
+     return "LinearMechanicalPort '" + linearMechanicalPort.getName().getId().toString() + "' contains incompatible Force(" +
+             linearMechanicalPort.getForce().getName().getId().toString() + ") and LinearVelocity(" +
+             linearMechanicalPort.getLinearVelocity().getName().getId().toString() + "). " +
              "The variables in the Force variable group must have opposite causality of the variables in the LinearVelocity variable group";
   }
 }

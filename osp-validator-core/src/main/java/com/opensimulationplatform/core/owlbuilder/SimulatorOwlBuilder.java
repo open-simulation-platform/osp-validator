@@ -24,7 +24,7 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
 
   @Override
   public OWLNamedIndividual build(Simulator simulator) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(simulator.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(simulator.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.simulators.put(individual, simulator);
 
@@ -49,9 +49,9 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
     variableOwlBuilder.setContext(context);
     variables.forEach(variable -> {
       if ("".equals(simulator.getName().get())) {
-        variable.getName().setId(() -> variable.getName().get());
+        variable.getName().setId(variable.getName().get());
       } else {
-        variable.getName().setId(() -> simulator.getName().get() + "." + variable.getName().get());
+        variable.getName().setId(simulator.getName().get() + "." + variable.getName().get());
       }
       OWLNamedIndividual variableIndividual = variableOwlBuilder.build(variable);
 
@@ -67,9 +67,9 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
     variableGroupOwlBuilder.setContext(context);
     variableGroups.forEach(variableGroup -> {
       if ("".equals(simulator.getName().get())) {
-        variableGroup.getName().setId(() -> variableGroup.getName().get());
+        variableGroup.getName().setId(variableGroup.getName().get());
       } else {
-        variableGroup.getName().setId(() -> simulator.getName().get() + "." + variableGroup.getName().get());
+        variableGroup.getName().setId(simulator.getName().get() + "." + variableGroup.getName().get());
       }
       OWLNamedIndividual variableGroupIndividual = variableGroupOwlBuilder.build(variableGroup);
 

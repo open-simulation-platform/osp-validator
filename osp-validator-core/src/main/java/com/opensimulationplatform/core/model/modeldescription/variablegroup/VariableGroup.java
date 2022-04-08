@@ -13,15 +13,14 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 public abstract class VariableGroup {
-  private final String id = UUID.randomUUID().toString();
+  private final ID id = new ID();
   private final Name name = new Name();
   protected List<Variable> variables = new ArrayList<>();
 
   public ID getId() {
-    return () -> id;
+    return id;
   }
 
   public Name getName() {

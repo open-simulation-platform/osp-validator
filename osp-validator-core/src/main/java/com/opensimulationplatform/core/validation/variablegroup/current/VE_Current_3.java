@@ -27,6 +27,6 @@ public class VE_Current_3 extends ValidationError<Current> {
 
   @Override
   protected String getErrorMessage(Current current) {
-    return "Current variable group '" + current.getName().getId().get() + "' contains variables with incompatible units";
+    return "Current variable group '" + current.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

@@ -27,9 +27,9 @@ public class VE_ElectromagneticQuasiPort_1 extends ValidationError<Electromagnet
 
   @Override
   protected String getErrorMessage(ElectromagneticQuasiPort electromagneticQuasiPort) {
-     return "ElectromagneticQuasiPort '" + electromagneticQuasiPort.getName().getId().get() + "' contains incompatible Voltage(" +
-             electromagneticQuasiPort.getVoltage().getName().getId().get() + ") and Charge(" +
-             electromagneticQuasiPort.getCharge().getName().getId().get() + "). " +
+     return "ElectromagneticQuasiPort '" + electromagneticQuasiPort.getName().getId().toString() + "' contains incompatible Voltage(" +
+             electromagneticQuasiPort.getVoltage().getName().getId().toString() + ") and Charge(" +
+             electromagneticQuasiPort.getCharge().getName().getId().toString() + "). " +
              "The variables in the Voltage variable group must have opposite causality of the variables in the Charge variable group";
   }
 }

@@ -17,14 +17,15 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_VariableConnection_1;
+//import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_VariableConnection_5;
 
-public class VE_VariableConnection_1 extends ValidationError<VariableConnection> {
+public class VE_VariableConnection_5 extends ValidationError<VariableConnection> {
   @Override
   protected List<VariableConnection> getInvalidObjects() {
-    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_VariableConnection_1, context.owl.prefixManager);
-    Set<OWLNamedIndividual> invalidIndividuals = context.invalidIndividuals.get(validationErrorClass);
-    return invalidIndividuals.stream().map(context.variableConnections::get).filter(Objects::nonNull).collect(Collectors.toList());
+//    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_VariableConnection_5, context.owl.prefixManager);
+//    Set<OWLNamedIndividual> invalidIndividuals = context.invalidIndividuals.get(validationErrorClass);
+//    return invalidIndividuals.stream().map(context.variableConnections::get).filter(Objects::nonNull).collect(Collectors.toList());
+    return null;
   }
 
   @Override
@@ -33,7 +34,7 @@ public class VE_VariableConnection_1 extends ValidationError<VariableConnection>
     Variable.Type typeA = variableConnection.getVariableA().getType();
     String variableB = variableConnection.getVariableB().getName().getId().toString();
     Variable.Type typeB = variableConnection.getVariableA().getType();
-    return "VariableConnection [" + variableA + ", " + variableB + "] is invalid because they have different types " +
+    return "VariableConnection [" + variableA + ", " + variableB + "] is invalid because they have different axis " +
         "[" + typeA + ", " + typeB + "]";
   }
 }

@@ -9,17 +9,15 @@ package com.opensimulationplatform.core.model.systemstructure;
 import com.opensimulationplatform.core.model.ID;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 
-import java.util.UUID;
-
 public class VariableConnection {
-  private final String id = UUID.randomUUID().toString();
+  private final ID id = new ID();
   private Variable variableA;
   private Variable variableB;
   private Simulator simulatorA;
   private Simulator simulatorB;
 
   public ID getId() {
-    return () -> id;
+    return id;
   }
 
   public Variable getVariableA() {

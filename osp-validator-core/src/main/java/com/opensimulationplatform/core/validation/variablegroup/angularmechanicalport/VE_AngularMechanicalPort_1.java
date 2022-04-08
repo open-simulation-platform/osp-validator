@@ -27,9 +27,9 @@ public class VE_AngularMechanicalPort_1 extends ValidationError<AngularMechanica
 
   @Override
   protected String getErrorMessage(AngularMechanicalPort angularMechanicalPort) {
-     return "AngularMechanicalPort '" + angularMechanicalPort.getName().getId().get() + "' contains incompatible Torque(" +
-             angularMechanicalPort.getTorque().getName().getId().get() + ") and AngularVelocity(" +
-             angularMechanicalPort.getAngularVelocity().getName().getId().get() + "). " +
+     return "AngularMechanicalPort '" + angularMechanicalPort.getName().getId().toString() + "' contains incompatible Torque(" +
+             angularMechanicalPort.getTorque().getName().getId().toString() + ") and AngularVelocity(" +
+             angularMechanicalPort.getAngularVelocity().getName().getId().toString() + "). " +
              "The variables in the Torque variable group must have opposite causality of the variables in the AngularVelocity variable group";
   }
 }

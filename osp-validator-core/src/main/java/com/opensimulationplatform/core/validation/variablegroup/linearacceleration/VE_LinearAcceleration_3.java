@@ -27,6 +27,6 @@ public class VE_LinearAcceleration_3 extends ValidationError<LinearAcceleration>
 
   @Override
   protected String getErrorMessage(LinearAcceleration linearAcceleration) {
-    return "LinearAcceleration variable group '" + linearAcceleration.getName().getId().get() + "' contains variables with incompatible units";
+    return "LinearAcceleration variable group '" + linearAcceleration.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

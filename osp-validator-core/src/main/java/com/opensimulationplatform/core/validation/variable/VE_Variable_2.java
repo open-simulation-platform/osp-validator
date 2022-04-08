@@ -28,6 +28,6 @@ public class VE_Variable_2 extends ValidationError<Variable> {
 
   @Override
   protected String getErrorMessage(Variable variable) {
-    return "Variable '" + variable.getName().getId().get() + "' does not have a unique name";
+    return "Variable '" + variable.getName().getId().toString() + "' does not have a unique name";
   }
 }

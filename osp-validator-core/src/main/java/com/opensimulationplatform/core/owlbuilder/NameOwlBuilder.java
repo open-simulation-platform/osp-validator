@@ -16,7 +16,7 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.Name;
 public class NameOwlBuilder extends OspOwlBuilder<Name> {
   @Override
   public OWLNamedIndividual build(Name name) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(name.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(name.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.names.put(individual, name);
 

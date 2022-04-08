@@ -27,6 +27,6 @@ public class VE_Torque_3 extends ValidationError<Torque> {
 
   @Override
   protected String getErrorMessage(Torque torque) {
-    return "Torque variable group '" + torque.getName().getId().get() + "' contains variables with incompatible units";
+    return "Torque variable group '" + torque.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

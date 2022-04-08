@@ -52,8 +52,8 @@ public class VE_VariableConnection_3_Test {
 
     Variable vb = new Variable();
     vb.setName("vb");
-    vb.setType(Variable.Type.INTEGER);
-    vb.setCausality(Variable.Causality.INPUT);
+    vb.setType(Variable.Type.REAL);
+    vb.setCausality(Variable.Causality.OUTPUT);
     vb.setUnit(ub);
 
     VariableConnection vc = new VariableConnection();
@@ -90,8 +90,8 @@ public class VE_VariableConnection_3_Test {
 
     Variable vb = new Variable();
     vb.setName("vb");
-    vb.setType(Variable.Type.INTEGER);
-    vb.setCausality(Variable.Causality.INPUT);
+    vb.setType(Variable.Type.REAL);
+    vb.setCausality(Variable.Causality.OUTPUT);
     vb.setUnit(ub);
 
     VariableConnection vc = new VariableConnection();

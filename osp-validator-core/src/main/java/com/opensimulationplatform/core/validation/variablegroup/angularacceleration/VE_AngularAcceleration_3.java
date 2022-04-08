@@ -27,6 +27,6 @@ public class VE_AngularAcceleration_3 extends ValidationError<AngularAcceleratio
 
   @Override
   protected String getErrorMessage(AngularAcceleration angularAcceleration) {
-    return "AngularAcceleration variable group '" + angularAcceleration.getName().getId().get() + "' contains variables with incompatible units";
+    return "AngularAcceleration variable group '" + angularAcceleration.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

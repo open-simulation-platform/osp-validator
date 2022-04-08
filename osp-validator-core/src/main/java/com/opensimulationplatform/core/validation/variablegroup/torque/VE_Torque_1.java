@@ -27,6 +27,6 @@ public class VE_Torque_1 extends ValidationError<Torque> {
 
   @Override
   protected String getErrorMessage(Torque torque) {
-    return "Torque variable group '" + torque.getName().getId().get() + "' contains variables with mixed causalities";
+    return "Torque variable group '" + torque.getName().getId().toString() + "' contains variables with mixed causalities";
   }
 }

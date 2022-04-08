@@ -45,7 +45,7 @@ public abstract class Validator<T> {
     }
   }
 
-  public List<ValidationDiagnostic<T>> validate() {
+  private List<ValidationDiagnostic<T>> validate() {
     List<ValidationDiagnostic<T>> diagnostics = new ArrayList<>();
 
     List<ValidationError<?>> validationErrors = getValidationErrors();

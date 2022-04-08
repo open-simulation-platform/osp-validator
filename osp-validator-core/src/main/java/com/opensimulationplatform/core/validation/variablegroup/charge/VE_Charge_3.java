@@ -27,6 +27,6 @@ public class VE_Charge_3 extends ValidationError<Charge> {
 
   @Override
   protected String getErrorMessage(Charge charge) {
-    return "Charge variable group '" + charge.getName().getId().get() + "' contains variables with incompatible units";
+    return "Charge variable group '" + charge.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

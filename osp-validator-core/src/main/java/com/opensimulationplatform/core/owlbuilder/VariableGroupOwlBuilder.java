@@ -58,6 +58,7 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.torq
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.voltage.Voltage;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volume.Volume;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.volumeflowrate.VolumeFlowRate;
+import com.opensimulationplatform.core.model.systemstructure.Simulator;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -66,6 +67,8 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VariableGroup;
 import static com.opensimulationplatform.gen.owl.model.OntologyIndividuals.*;
@@ -130,7 +133,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
 
   @Override
   public OWLNamedIndividual build(VariableGroup variableGroup) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variableGroup.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variableGroup.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.variableGroups.put(individual, variableGroup);
 
@@ -169,7 +172,7 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     OWLObjectProperty hasVariableGroup = context.owl.dataFactory.getOWLObjectProperty(op_has_variable_group, context.owl.prefixManager);
     List<VariableGroup> variableGroups = variableGroup.getVariableGroups();
     for (VariableGroup vg : variableGroups) {
-      vg.getName().setId(() -> variableGroup.getName().getId().get().replace("." + variableGroup.getName().get(), ".") + vg.getName().get());
+      vg.getName().setId(getSimulatorName(vg) + "." + vg.getName().get());
       OWLNamedIndividual vgIndividual = this.build(vg);
       OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariableGroup, variableGroupIndividual, vgIndividual);
       context.axioms.add(axiom);
@@ -182,10 +185,30 @@ public class VariableGroupOwlBuilder extends OspOwlBuilder<VariableGroup> {
     OWLObjectProperty hasVariable = context.owl.dataFactory.getOWLObjectProperty(op_has_variable, context.owl.prefixManager);
     List<Variable> variables = variableGroup.getVariables();
     for (Variable v : variables) {
-      v.getName().setId(() -> variableGroup.getName().getId().get().replace("." + variableGroup.getName().get(), ".") + v.getName().get());
+      v.getName().setId(getSimulatorName(v) + "." + v.getName().get());
       OWLNamedIndividual variableIndividual = variableOwlBuilder.build(v);
       OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariable, variableGroupIndividual, variableIndividual);
       context.axioms.add(axiom);
     }
+  }
+
+  private String getSimulatorName(VariableGroup variableGroup) {
+    Stream<Simulator> simulators = context.simulators.values().stream();
+
+    Optional<Simulator> simulator = simulators
+        .filter(s -> s.getModelDescription().getVariableGroups().contains(variableGroup))
+        .findFirst();
+
+    return simulator.map(value -> value.getName().get()).orElse(null);
+  }
+
+  private String getSimulatorName(Variable variable) {
+    Stream<Simulator> simulators = context.simulators.values().stream();
+
+    Optional<Simulator> simulator = simulators
+        .filter(s -> s.getModelDescription().getVariables().contains(variable))
+        .findFirst();
+
+    return simulator.map(value -> value.getName().get()).orElse(null);
   }
 }

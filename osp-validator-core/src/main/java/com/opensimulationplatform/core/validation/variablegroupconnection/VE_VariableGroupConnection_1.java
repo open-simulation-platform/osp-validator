@@ -28,9 +28,9 @@ public class VE_VariableGroupConnection_1 extends ValidationError<VariableGroupC
 
   @Override
   protected String getErrorMessage(VariableGroupConnection variableGroupConnection) {
-    String variableGroupA = variableGroupConnection.getVariableGroupA().getName().getId().get();
+    String variableGroupA = variableGroupConnection.getVariableGroupA().getName().getId().toString();
     String typeA = variableGroupConnection.getVariableGroupA().getClass().getSimpleName();
-    String variableGroupB = variableGroupConnection.getVariableGroupB().getName().getId().get();
+    String variableGroupB = variableGroupConnection.getVariableGroupB().getName().getId().toString();
     String typeB = variableGroupConnection.getVariableGroupB().getClass().getSimpleName();
     return "VariableGroupConnection [" + variableGroupA + ", " + variableGroupB + "] is invalid because they have " +
         "different types [" + typeA + ", " + typeB + "]";

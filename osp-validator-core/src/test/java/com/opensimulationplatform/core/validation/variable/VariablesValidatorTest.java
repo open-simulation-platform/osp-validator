@@ -17,6 +17,7 @@ public class VariablesValidatorTest {
     v1.setName("v1");
     v1.setCausality(Variable.Causality.UNDEFINED);
     v1.setType(Variable.Type.UNDEFINED);
+    v1.setAxis(Variable.Axis.UNDEFINED);
     modelDescription.getVariables().add(v1);
 
     VariablesValidator variablesValidator = new VariablesValidator();
@@ -34,6 +35,7 @@ public class VariablesValidatorTest {
     v1.setName("v1");
     v1.setCausality(Variable.Causality.INPUT);
     v1.setType(Variable.Type.REAL);
+    v1.setAxis(Variable.Axis.X);
     modelDescription.getVariables().add(v1);
 
     VariablesValidator variablesValidator = new VariablesValidator();

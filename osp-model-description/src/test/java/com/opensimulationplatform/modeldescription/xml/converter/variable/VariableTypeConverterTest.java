@@ -3,6 +3,7 @@ package com.opensimulationplatform.modeldescription.xml.converter.variable;
 import com.opensimulationplatform.core.model.modeldescription.Unit;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
+import com.opensimulationplatform.modeldescription.xml.model.AxisType;
 import com.opensimulationplatform.modeldescription.xml.model.VariableType;
 import org.junit.Test;
 
@@ -23,6 +24,7 @@ public class VariableTypeConverterTest {
 
     VariableType variableType = new VariableType();
     variableType.setRef(v.getName().get());
+    variableType.setAxis(AxisType.X);
     variableType.setUnit(u.getName().get());
 
     VariableTypeConverter variableTypeConverter = new VariableTypeConverter(converterContext);
@@ -30,5 +32,6 @@ public class VariableTypeConverterTest {
 
     assertEquals(v, variable);
     assertEquals(u, variable.getUnit());
+    assertEquals(Variable.Axis.X, variable.getAxis());
   }
 }

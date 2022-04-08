@@ -13,7 +13,6 @@ import com.opensimulationplatform.core.model.systemstructure.VariableConnection;
 import com.opensimulationplatform.core.model.systemstructure.VariableGroupConnection;
 import com.opensimulationplatform.core.util.modeldescription.ModelDescriptionUtil;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
-import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -123,7 +122,6 @@ public class SystemStructureValidatorTest {
     assertEquals(0, diagnostics.size());
   }
 
-  @NotNull
   private ModelDescription createInvalidModelDescription() {
     ModelDescription modelDescription = new ModelDescription();
 
@@ -231,7 +229,6 @@ public class SystemStructureValidatorTest {
     return modelDescription;
   }
 
-  @NotNull
   private ModelDescription createValidModelDescription() {
     ModelDescription modelDescription = new ModelDescription();
 

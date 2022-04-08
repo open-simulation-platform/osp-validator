@@ -10,15 +10,13 @@ import com.opensimulationplatform.core.model.ID;
 import com.opensimulationplatform.core.model.modeldescription.ModelDescription;
 import com.opensimulationplatform.core.model.modeldescription.Name;
 
-import java.util.UUID;
-
 public class Simulator {
-  private final String id = UUID.randomUUID().toString();
+  private final ID id = new ID();
   private final Name name = new Name();
   private ModelDescription modelDescription = new ModelDescription();
 
   public ID getId() {
-    return () -> id;
+    return id;
   }
 
   public Name getName() {
