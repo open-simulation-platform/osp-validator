@@ -17,15 +17,14 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-//import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_VariableConnection_5;
+import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_VariableConnection_5;
 
 public class VE_VariableConnection_5 extends ValidationError<VariableConnection> {
   @Override
   protected List<VariableConnection> getInvalidObjects() {
-//    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_VariableConnection_5, context.owl.prefixManager);
-//    Set<OWLNamedIndividual> invalidIndividuals = context.invalidIndividuals.get(validationErrorClass);
-//    return invalidIndividuals.stream().map(context.variableConnections::get).filter(Objects::nonNull).collect(Collectors.toList());
-    return null;
+    OWLClass validationErrorClass = context.owl.dataFactory.getOWLClass(VE_VariableConnection_5, context.owl.prefixManager);
+    Set<OWLNamedIndividual> invalidIndividuals = context.invalidIndividuals.get(validationErrorClass);
+    return invalidIndividuals.stream().map(context.variableConnections::get).filter(Objects::nonNull).collect(Collectors.toList());
   }
 
   @Override

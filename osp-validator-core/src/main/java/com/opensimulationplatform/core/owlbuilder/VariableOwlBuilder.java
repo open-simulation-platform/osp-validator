@@ -40,9 +40,10 @@ public class VariableOwlBuilder extends OspOwlBuilder<Variable> {
     causalityMap.put(Causality.OUTPUT, ind_causality_output);
     causalityMap.put(Causality.UNDEFINED, ind_causality_undefined);
 
-    axisMap.put(Axis.X, null);
-    axisMap.put(Axis.Y, null);
-    axisMap.put(Axis.Z, null);
+    axisMap.put(Axis.X, ind_axis_x);
+    axisMap.put(Axis.Y, ind_axis_y);
+    axisMap.put(Axis.Z, ind_axis_z);
+    axisMap.put(Axis.UNDEFINED, ind_axis_undefined);
   }
 
   public OWLNamedIndividual build(Variable variable) {
@@ -55,6 +56,7 @@ public class VariableOwlBuilder extends OspOwlBuilder<Variable> {
     setCausality(variable, individual);
     setDataType(variable, individual);
     setUnit(variable, individual);
+    setAxis(variable, individual);
 
     return individual;
   }
@@ -97,10 +99,10 @@ public class VariableOwlBuilder extends OspOwlBuilder<Variable> {
     context.axioms.add(axiom);
   }
 
-//  private void setAxis(Variable variable, OWLNamedIndividual individual) {
-//    OWLObjectProperty hasAxis = context.owl.dataFactory.getOWLObjectProperty(op_has_axis, context.owl.prefixManager);
-//    OWLNamedIndividual axis = context.owl.dataFactory.getOWLNamedIndividual(axisMap.get(variable.getAxis()), context.owl.prefixManager);
-//    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasAxis, individual, axis);
-//    context.axioms.add(axiom);
-//  }
+  private void setAxis(Variable variable, OWLNamedIndividual individual) {
+    OWLObjectProperty hasAxis = context.owl.dataFactory.getOWLObjectProperty(op_has_axis, context.owl.prefixManager);
+    OWLNamedIndividual axis = context.owl.dataFactory.getOWLNamedIndividual(axisMap.get(variable.getAxis()), context.owl.prefixManager);
+    OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasAxis, individual, axis);
+    context.axioms.add(axiom);
+  }
 }

@@ -34,10 +34,10 @@ public class VariableTypeConverter extends Converter<VariableType, Variable> {
           variable.setAxis(Variable.Axis.X);
           break;
         case Y:
-          variable.setAxis(Variable.Axis.X);
+          variable.setAxis(Variable.Axis.Y);
           break;
         case Z:
-          variable.setAxis(Variable.Axis.X);
+          variable.setAxis(Variable.Axis.Z);
           break;
         default:
           variable.setAxis(Variable.Axis.UNDEFINED);
