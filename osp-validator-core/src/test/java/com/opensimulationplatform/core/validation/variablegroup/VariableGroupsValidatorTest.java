@@ -26,6 +26,7 @@ public class VariableGroupsValidatorTest {
     v1.setName("v1");
     v1.setType(Variable.Type.REAL);
     v1.setCausality(Variable.Causality.OUTPUT);
+    v1.setAxis(Variable.Axis.X);
     Variable v2 = new Variable();
     Unit u2 = new Unit();
     u2.setExponent(Unit.Exponent.KILOGRAM, 2);
@@ -33,6 +34,7 @@ public class VariableGroupsValidatorTest {
     v2.setName("v2");
     v2.setType(Variable.Type.REAL);
     v2.setCausality(Variable.Causality.OUTPUT);
+    v2.setAxis(Variable.Axis.X);
     f1.setVariables(Arrays.asList(v1, v2));
     f1.setName("f1");
 
@@ -42,11 +44,13 @@ public class VariableGroupsValidatorTest {
     v3.setName("v3");
     v3.setType(Variable.Type.REAL);
     v3.setCausality(Variable.Causality.OUTPUT);
+    v3.setAxis(Variable.Axis.Y);
     Variable v4 = new Variable();
     v4.setUnit(u1);
     v4.setName("v4");
     v4.setType(Variable.Type.INTEGER);
     v4.setCausality(Variable.Causality.OUTPUT);
+    v4.setAxis(Variable.Axis.Y);
     f2.setVariables(Arrays.asList(v3, v4));
     f2.setName("f2");
 
@@ -56,11 +60,13 @@ public class VariableGroupsValidatorTest {
     v5.setName("v5");
     v5.setType(Variable.Type.REAL);
     v5.setCausality(Variable.Causality.OUTPUT);
+    v5.setAxis(Variable.Axis.Z);
     Variable v6 = new Variable();
     v6.setUnit(u1);
     v6.setName("v6");
     v6.setType(Variable.Type.REAL);
     v6.setCausality(Variable.Causality.INPUT);
+    v6.setAxis(Variable.Axis.Z);
     f3.setVariables(Arrays.asList(v5, v6));
     f3.setName("f3");
 
@@ -81,7 +87,7 @@ public class VariableGroupsValidatorTest {
     VariableGroupsValidator v = new VariableGroupsValidator();
     List<ValidationDiagnostic<VariableGroup>> diagnostics = v.validate(modelDescription);
 
-    assertEquals(3, diagnostics.size());
+    assertEquals(6, diagnostics.size());
   }
 
   @Test
@@ -89,26 +95,30 @@ public class VariableGroupsValidatorTest {
     ModelDescription modelDescription = new ModelDescription();
 
     Force f1 = new Force();
-    Variable v1 = new Variable();
+    f1.setName("f1");
+
     Unit u1 = new Unit();
     u1.setExponent(Unit.Exponent.KILOGRAM, 1);
-    v1.setUnit(u1);
+
+    Variable v1 = new Variable();
     v1.setName("v1");
+    v1.setUnit(u1);
     v1.setType(Variable.Type.REAL);
     v1.setCausality(Variable.Causality.OUTPUT);
+    v1.setAxis(Variable.Axis.X);
+
     Variable v2 = new Variable();
-    v2.setUnit(u1);
     v2.setName("v2");
+    v2.setUnit(u1);
     v2.setType(Variable.Type.REAL);
     v2.setCausality(Variable.Causality.OUTPUT);
+    v2.setAxis(Variable.Axis.Y);
+
     f1.setVariables(Arrays.asList(v1, v2));
-    f1.setName("f1");
 
     modelDescription.getVariables().add(v1);
     modelDescription.getVariables().add(v2);
-
     modelDescription.getUnits().add(u1);
-
     modelDescription.getForces().add(f1);
 
     VariableGroupsValidator v = new VariableGroupsValidator();

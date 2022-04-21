@@ -18,6 +18,7 @@ public class VariableConnectionsValidator extends Validator<VariableConnection> 
   private final VE_VariableConnection_2 ve_variableConnection_2 = new VE_VariableConnection_2();
   private final VE_VariableConnection_3 ve_variableConnection_3 = new VE_VariableConnection_3();
   private final VE_VariableConnection_4 ve_variableConnection_4 = new VE_VariableConnection_4();
+  private final VE_VariableConnection_5 ve_variableConnection_5 = new VE_VariableConnection_5();
 
   @Override
   protected List<Validator<?>> getValidators() {
@@ -30,7 +31,8 @@ public class VariableConnectionsValidator extends Validator<VariableConnection> 
         ve_variableConnection_1,
         ve_variableConnection_2,
         ve_variableConnection_3,
-        ve_variableConnection_4
+        ve_variableConnection_4,
+        ve_variableConnection_5
     );
   }
 }

@@ -30,6 +30,7 @@ public class VariableConnectionsValidatorTest {
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.INTEGER);
     variableA.setCausality(Variable.Causality.INPUT);
+    variableA.setAxis(Variable.Axis.X);
 
     simulatorA.getModelDescription().getVariables().add(variableA);
 
@@ -47,6 +48,7 @@ public class VariableConnectionsValidatorTest {
     variableB.setUnit(unitB);
     variableB.setType(Variable.Type.REAL);
     variableB.setCausality(Variable.Causality.INPUT);
+    variableB.setAxis(Variable.Axis.Y);
 
     simulatorB.getModelDescription().getVariables().add(variableB);
 
@@ -62,7 +64,7 @@ public class VariableConnectionsValidatorTest {
 
     List<ValidationDiagnostic<VariableConnection>> diagnostics = validator.validate(systemStructure);
 
-    assertEquals(3, diagnostics.size());
+    assertEquals(4, diagnostics.size());
   }
 
   @Test
