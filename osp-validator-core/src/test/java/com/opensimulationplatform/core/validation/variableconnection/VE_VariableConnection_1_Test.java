@@ -55,9 +55,6 @@ public class VE_VariableConnection_1_Test {
     vc.setSimulatorB(new Simulator());
 
     builder.build(vc);
-
-    builderContext.owl.save(new File("VE_VariableConnection_1_Test.owl"));
-
     builder.complete();
 
     List<ValidationDiagnostic<VariableConnection>> diagnostics = validationError.validate();

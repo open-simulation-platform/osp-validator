@@ -30,10 +30,12 @@ public class VE_VariableConnection_5 extends ValidationError<VariableConnection>
   @Override
   protected String getErrorMessage(VariableConnection variableConnection) {
     String variableA = variableConnection.getVariableA().getName().getId().toString();
-    Variable.Type typeA = variableConnection.getVariableA().getType();
+    Variable.Axis axisA = variableConnection.getVariableA().getAxis();
+
     String variableB = variableConnection.getVariableB().getName().getId().toString();
-    Variable.Type typeB = variableConnection.getVariableA().getType();
+    Variable.Axis axisB = variableConnection.getVariableB().getAxis();
+
     return "VariableConnection [" + variableA + ", " + variableB + "] is invalid because they have different axis " +
-        "[" + typeA + ", " + typeB + "]";
+        "[" + axisA + ", " + axisB + "]";
   }
 }

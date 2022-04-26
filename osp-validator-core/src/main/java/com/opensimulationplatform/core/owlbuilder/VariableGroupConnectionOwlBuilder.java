@@ -20,6 +20,8 @@ import java.util.List;
 import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VariableGroupConnection;
 import static com.opensimulationplatform.gen.owl.model.OntologyObjectProperties.*;
 import static java.lang.Math.min;
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 
 public class VariableGroupConnectionOwlBuilder extends OspOwlBuilder<VariableGroupConnection> {
 
@@ -65,8 +67,21 @@ public class VariableGroupConnectionOwlBuilder extends OspOwlBuilder<VariableGro
   private void makeNestedVariableConnections(VariableGroupConnection variableGroupConnection, OWLNamedIndividual individual) {
     VariableConnectionOwlBuilder variableConnectionOwlBuilder = new VariableConnectionOwlBuilder();
     variableConnectionOwlBuilder.setContext(context);
-    List<Variable> variablesA = variableGroupConnection.getVariableGroupA().getVariables();
-    List<Variable> variablesB = variableGroupConnection.getVariableGroupB().getVariables();
+
+    List<Variable> variablesA = variableGroupConnection
+        .getVariableGroupA()
+        .getVariables()
+        .stream()
+        .sorted(comparing(Variable::getAxis))
+        .collect(toList());
+
+    List<Variable> variablesB = variableGroupConnection
+        .getVariableGroupB()
+        .getVariables()
+        .stream()
+        .sorted(comparing(Variable::getAxis))
+        .collect(toList());
+
     for (int i = 0; i < min(variablesA.size(), variablesB.size()); i++) {
       VariableConnection connection = new VariableConnection();
       connection.setSimulatorA(variableGroupConnection.getSimulatorA());
