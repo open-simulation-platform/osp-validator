@@ -7,5 +7,5 @@
 package com.opensimulationplatform.gen.util.resource;
 
 public class Resources {
-  public static final Resource OSP_OWL =  new Resource("/osp_labelled_modified.ttl");
+  public static final Resource OSP_OWL =  new Resource("/osp.ttl");
 }
