@@ -63,7 +63,7 @@ import com.opensimulationplatform.modeldescription.util.FmuHelper_Fmi2;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.*;
-import no.ntnu.ihb.fmi4j.modeldescription.ModelDescriptionParser;
+import no.ntnu.ihb.fmi4j.modeldescription.util.FmiModelDescriptionUtil;
 
 import java.net.URI;
 import java.util.List;
@@ -75,19 +75,18 @@ public class OspModelDescriptionTypeConverter extends Converter<OspModelDescript
   }
 
   public OspModelDescriptionTypeConverter(URI fmu) {
-    super();
-    try {
-      String fmiVersion = ModelDescriptionParser.extractVersion(fmu.toURL());
-      if ("1.0".equals(fmiVersion)) {
-        context.fmiModelDescription = context.fmi1ModelDescriptionConverter.convert(FmuHelper_Fmi1.getFmiModelDescription(fmu));
-      } else if ("2.0".equals(fmiVersion)) {
-        context.fmiModelDescription = context.fmi2ModelDescriptionConverter.convert(FmuHelper_Fmi2.getFmiModelDescription(fmu));
-      } else {
-        throw new RuntimeException("fmiVersion " + fmiVersion + " not supported");
-      }
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+	try {
+		String fmiVersion = FmiModelDescriptionUtil.extractVersion(fmu.toURL());
+		if ("1.0".equals(fmiVersion)) {
+			context.fmiModelDescription = context.fmi1ModelDescriptionConverter.convert(FmuHelper_Fmi1.getFmiModelDescription(fmu));
+		} else if ("2.0".equals(fmiVersion)) {
+			context.fmiModelDescription = context.fmi2ModelDescriptionConverter.convert(FmuHelper_Fmi2.getFmiModelDescription(fmu));
+		} else {
+			throw new RuntimeException("fmiVersion " + fmiVersion + " not supported");
+		}
+	} catch (Exception e) {
+		throw new RuntimeException(e);
+	}
   }
 
   @Override

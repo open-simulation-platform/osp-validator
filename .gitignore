@@ -28,3 +28,7 @@ target/
 
 *.iml
 git.info
+#ignore eclipse projects
+*.project
+*.prefs
+*.classpath
