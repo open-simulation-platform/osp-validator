@@ -92,6 +92,7 @@ public class OntologyClasses {
   public static final String VE_VolumeFlowRate = "osp:VE_VolumeFlowRate";
   public static final String VE_VariableGroup_1 = "osp:VE_VariableGroup_1";
   public static final String VE_VariableGroup_3 = "osp:VE_VariableGroup_3";
+  public static final String VE_VariableGroup_4 = "osp:VE_VariableGroup_4";
   public static final String VE_VariableGroup_2 = "osp:VE_VariableGroup_2";
   public static final String VE_Simulator = "osp:VE_Simulator";
   public static final String Causality = "osp:Causality";
