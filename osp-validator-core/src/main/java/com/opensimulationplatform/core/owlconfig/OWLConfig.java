@@ -37,8 +37,6 @@ public class OWLConfig {
 
   public void save(File owlFile) {
 
-    public boolean useXML = false;
-
 
     try {
       OWLOntologyFormat format = ontology.getOWLOntologyManager().getOntologyFormat(ontology);

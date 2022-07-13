@@ -106,9 +106,13 @@ public class ModelDescriptionValidatorTest {
     ModelDescriptionValidator validator = new ModelDescriptionValidator();
     List<ValidationDiagnostic<Object>> diagnostics = validator.validate(modelDescription);
 
-    ValidatorContext context = validator.getContext();
+    /*
+    For debugging. Saves built ontology to .ttl file for inspection
 
+    ValidatorContext context = validator.getContext();
     context.owl.save(new File("modelDescriptionvalidatorTest.ttl"));
+
+     */
 
     assertEquals(9, diagnostics.size());
   }
