@@ -119,5 +119,11 @@ public class OntologyClasses {
   public static final String VE_VolumeFlowRate_3 = "osp:VE_VolumeFlowRate_3";
   public static final String OSPSystemStructure = "osp:OSPSystemStructure";
   public static final String VE_LinearMechanicalQuasiPort = "osp:VE_LinearMechanicalQuasiPort";
-  
+  public static final String VE_Variable_4 = "osp:VE_Variable_4";
+  public static final String VE_Variable_5 = "osp:VE_Variable_5";
+  public static final String VE_Variable_6 = "osp:VE_Variable_6";
+
+
+
+
 }

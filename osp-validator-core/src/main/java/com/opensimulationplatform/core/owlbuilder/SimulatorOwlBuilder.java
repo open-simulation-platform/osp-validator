@@ -10,10 +10,7 @@ import com.opensimulationplatform.core.model.modeldescription.Name;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.*;
 
 import java.util.List;
 
@@ -58,6 +55,19 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
       OWLObjectProperty hasVariable = context.owl.dataFactory.getOWLObjectProperty(op_has_variable, context.owl.prefixManager);
       OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariable, simulatorIndividual, variableIndividual);
       context.axioms.add(axiom);
+
+      /*
+      For debugging purposes
+
+      Annotating variable individuals with their variable name using rdfs:label
+
+
+      OWLAnnotationProperty rdfsLabel = context.owl.dataFactory.getOWLAnnotationProperty("rdfs:label", context.owl.prefixManager);
+      OWLLiteral lit = context.owl.dataFactory.getOWLLiteral(variable.getName().get());
+      OWLAxiom axiom2 = context.owl.dataFactory.getOWLAnnotationAssertionAxiom(rdfsLabel, variableIndividual.getIRI(), lit);
+      context.axioms.add(axiom2);
+
+       */
     });
   }
 

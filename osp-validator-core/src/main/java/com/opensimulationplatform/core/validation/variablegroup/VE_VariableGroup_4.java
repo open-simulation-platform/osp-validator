@@ -21,7 +21,7 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.VE_Variab
 
 public class VE_VariableGroup_4 extends ValidationError<VariableGroup> {
 
-  public boolean useOntology = false;
+  public boolean useOntology = true;
 
   @Override
   protected List<VariableGroup> getInvalidObjects () {
@@ -42,6 +42,7 @@ public class VE_VariableGroup_4 extends ValidationError<VariableGroup> {
 
         if (axes.size() != axes.stream().distinct().count()) {
           invalidObjects.add(vg);
+
         }
       }
 

@@ -7,6 +7,7 @@
 package com.opensimulationplatform.core.owlconfig;
 
 import com.opensimulationplatform.gen.util.resource.Resources;
+import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
@@ -35,9 +36,20 @@ public class OWLConfig {
   }
 
   public void save(File owlFile) {
+
+    public boolean useXML = false;
+
+
     try {
       OWLOntologyFormat format = ontology.getOWLOntologyManager().getOntologyFormat(ontology);
+
+      /*
+      Save to XML format
+
       OWLXMLOntologyFormat owlFormat = new OWLXMLOntologyFormat();
+       */
+      TurtleOntologyFormat owlFormat = new TurtleOntologyFormat();
+
       if (format.isPrefixOWLOntologyFormat()) {
         owlFormat.copyPrefixesFrom(format.asPrefixOWLOntologyFormat());
       }

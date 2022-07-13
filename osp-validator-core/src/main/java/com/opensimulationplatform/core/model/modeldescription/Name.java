@@ -29,6 +29,14 @@ public class Name {
 
   public void setId(String id) {
     this.id = new ID(id);
+
+    /*
+    For debugging
+
+    System.out.println(id + " : " + this.id);
+     */
+
+
   }
 
   public String get() {

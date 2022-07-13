@@ -15,6 +15,11 @@ import java.util.List;
 public abstract class Validator<T> {
   protected ValidatorContext context;
 
+  public ValidatorContext getContext(){
+    return context;
+
+  }
+
   protected abstract List<Validator<?>> getValidators();
 
   protected abstract List<ValidationError<?>> getValidationErrors();
