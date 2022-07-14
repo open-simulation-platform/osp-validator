@@ -2069,6 +2069,21 @@ osp:VE_VariableGroupConnection_3 rdf:type owl:Class ;
                                  rdfs:label "VE_VariableGroupConnection_3" .
 
 
+###  http://data.dnv.com/ontology/osp/rdl/VE_VariableGroupConnection_5
+osp:VE_VariableGroupConnection_5 rdf:type owl:Class ;
+                                 owl:equivalentClass [ owl:intersectionOf ( osp:VariableGroupConnection
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty osp:op_has_connection ;
+                                                                              owl:someValuesFrom osp:VE_VariableGroupConnection
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ;
+                                 rdfs:subClassOf osp:VE_VariableGroupConnection ;
+                                 rdfs:comment "Class of variable-group connections referring to an invalid variable group connection" ;
+                                 rdfs:label "VE_VariableGroupConnection_5" .
+
+
 ###  http://data.dnv.com/ontology/osp/rdl/VE_VariableGroup_1
 osp:VE_VariableGroup_1 rdf:type owl:Class ;
                        owl:equivalentClass [ owl:intersectionOf ( osp:VariableGroup
@@ -3089,15 +3104,15 @@ osp:ind_vgtype_volume_flow_rate rdf:type owl:NamedIndividual ,
 #    Rules
 #################################################################
 
-<vg> rdf:type swrl:Variable .
+<http://data.dnv.com/ontology/osp/ont/vg> rdf:type swrl:Variable .
 
-<v1> rdf:type swrl:Variable .
+<http://data.dnv.com/ontology/osp/ont/v1> rdf:type swrl:Variable .
 
-<v2> rdf:type swrl:Variable .
+<http://data.dnv.com/ontology/osp/ont/v2> rdf:type swrl:Variable .
 
-<a1> rdf:type swrl:Variable .
+<http://data.dnv.com/ontology/osp/ont/a1> rdf:type swrl:Variable .
 
-<a2> rdf:type swrl:Variable .
+<http://data.dnv.com/ontology/osp/ont/a2> rdf:type swrl:Variable .
 
 osp-swrl:vc rdf:type swrl:Variable .
 
@@ -3175,65 +3190,65 @@ osp-swrl:vgt rdf:type swrl:Variable .
    swrl:body [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate osp:VariableGroup ;
-                           swrl:argument1 <vg>
+                           swrl:argument1 <http://data.dnv.com/ontology/osp/ont/vg>
                          ] ;
                rdf:rest [ rdf:type swrl:AtomList ;
                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
                                       swrl:propertyPredicate osp:op_has_variable ;
-                                      swrl:argument1 <vg> ;
-                                      swrl:argument2 <v1>
+                                      swrl:argument1 <http://data.dnv.com/ontology/osp/ont/vg> ;
+                                      swrl:argument2 <http://data.dnv.com/ontology/osp/ont/v1>
                                     ] ;
                           rdf:rest [ rdf:type swrl:AtomList ;
                                      rdf:first [ rdf:type swrl:ClassAtom ;
                                                  swrl:classPredicate osp:Variable ;
-                                                 swrl:argument1 <v1>
+                                                 swrl:argument1 <http://data.dnv.com/ontology/osp/ont/v1>
                                                ] ;
                                      rdf:rest [ rdf:type swrl:AtomList ;
                                                 rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
                                                             swrl:propertyPredicate osp:op_has_variable ;
-                                                            swrl:argument1 <vg> ;
-                                                            swrl:argument2 <v2>
+                                                            swrl:argument1 <http://data.dnv.com/ontology/osp/ont/vg> ;
+                                                            swrl:argument2 <http://data.dnv.com/ontology/osp/ont/v2>
                                                           ] ;
                                                 rdf:rest [ rdf:type swrl:AtomList ;
                                                            rdf:first [ rdf:type swrl:ClassAtom ;
                                                                        swrl:classPredicate osp:Variable ;
-                                                                       swrl:argument1 <v2>
+                                                                       swrl:argument1 <http://data.dnv.com/ontology/osp/ont/v2>
                                                                      ] ;
                                                            rdf:rest [ rdf:type swrl:AtomList ;
                                                                       rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
-                                                                                  swrl:argument1 <v1> ;
-                                                                                  swrl:argument2 <v2>
+                                                                                  swrl:argument1 <http://data.dnv.com/ontology/osp/ont/v1> ;
+                                                                                  swrl:argument2 <http://data.dnv.com/ontology/osp/ont/v2>
                                                                                 ] ;
                                                                       rdf:rest [ rdf:type swrl:AtomList ;
                                                                                  rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
                                                                                              swrl:propertyPredicate osp:op_has_axis ;
-                                                                                             swrl:argument1 <v1> ;
-                                                                                             swrl:argument2 <a1>
+                                                                                             swrl:argument1 <http://data.dnv.com/ontology/osp/ont/v1> ;
+                                                                                             swrl:argument2 <http://data.dnv.com/ontology/osp/ont/a1>
                                                                                            ] ;
                                                                                  rdf:rest [ rdf:type swrl:AtomList ;
                                                                                             rdf:first [ rdf:type swrl:ClassAtom ;
                                                                                                         swrl:classPredicate osp:Axis ;
-                                                                                                        swrl:argument1 <a1>
+                                                                                                        swrl:argument1 <http://data.dnv.com/ontology/osp/ont/a1>
                                                                                                       ] ;
                                                                                             rdf:rest [ rdf:type swrl:AtomList ;
                                                                                                        rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
                                                                                                                    swrl:propertyPredicate osp:op_has_axis ;
-                                                                                                                   swrl:argument1 <v2> ;
-                                                                                                                   swrl:argument2 <a2>
+                                                                                                                   swrl:argument1 <http://data.dnv.com/ontology/osp/ont/v2> ;
+                                                                                                                   swrl:argument2 <http://data.dnv.com/ontology/osp/ont/a2>
                                                                                                                  ] ;
                                                                                                        rdf:rest [ rdf:type swrl:AtomList ;
                                                                                                                   rdf:first [ rdf:type swrl:ClassAtom ;
                                                                                                                               swrl:classPredicate osp:Axis ;
-                                                                                                                              swrl:argument1 <a2>
+                                                                                                                              swrl:argument1 <http://data.dnv.com/ontology/osp/ont/a2>
                                                                                                                             ] ;
                                                                                                                   rdf:rest [ rdf:type swrl:AtomList ;
                                                                                                                              rdf:first [ rdf:type swrl:SameIndividualAtom ;
-                                                                                                                                         swrl:argument1 <a1> ;
-                                                                                                                                         swrl:argument2 <a2>
+                                                                                                                                         swrl:argument1 <http://data.dnv.com/ontology/osp/ont/a1> ;
+                                                                                                                                         swrl:argument2 <http://data.dnv.com/ontology/osp/ont/a2>
                                                                                                                                        ] ;
                                                                                                                              rdf:rest [ rdf:type swrl:AtomList ;
                                                                                                                                         rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
-                                                                                                                                                    swrl:argument1 <a1> ;
+                                                                                                                                                    swrl:argument1 <http://data.dnv.com/ontology/osp/ont/a1> ;
                                                                                                                                                     swrl:argument2 osp:ind_axis_undefined
                                                                                                                                                   ] ;
                                                                                                                                         rdf:rest rdf:nil
@@ -3252,7 +3267,7 @@ osp-swrl:vgt rdf:type swrl:Variable .
    swrl:head [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate osp:VE_VariableGroup_4 ;
-                           swrl:argument1 <vg>
+                           swrl:argument1 <http://data.dnv.com/ontology/osp/ont/vg>
                          ] ;
                rdf:rest rdf:nil
              ]

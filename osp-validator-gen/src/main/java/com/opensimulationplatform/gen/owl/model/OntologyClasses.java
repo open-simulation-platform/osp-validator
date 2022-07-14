@@ -38,6 +38,7 @@ public class OntologyClasses {
   public static final String VE_VariableGroupConnection_1 = "osp:VE_VariableGroupConnection_1";
   public static final String VE_VariableGroupConnection_3 = "osp:VE_VariableGroupConnection_3";
   public static final String VE_VariableGroupConnection_2 = "osp:VE_VariableGroupConnection_2";
+  public static final String VE_VariableGroupConnection_4 = "osp:VE_VariableGroupConnection_4";
   public static final String VE_LinearAcceleration = "osp:VE_LinearAcceleration";
   public static final String VariableGroup = "osp:VariableGroup";
   public static final String VE_Simulator_1 = "osp:VE_Simulator_1";
