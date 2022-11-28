@@ -1,9 +1,11 @@
 Description
 ===========
-Supports version 1.0 of [OSP-IS](https://opensimulationplatform.com/specification)
+Supports version 1.0.1 of [OSP-IS](https://opensimulationplatform.com/specification)
 
 This is a java project consisting of a java library, and a command line interface tool to validate FMUs and simulation
 configurations against OSP-IS.
+
+OSP-IS has been updated in version 1.0.1 to support variable axis properties. 
 
 IMPORTRANT
 ----------
