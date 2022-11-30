@@ -28,7 +28,7 @@ git branch release/"$osp_validator_version"
 mvn versions:set -DgenerateBackupPoms=false -DnewVersion="$osp_validator_bump_version" versions:commit
 mvn dependency:tree -D verbose | grep conflict
 
-git commit -am "Bumped to next SNAPTHOT version"
+git commit -am "Bumped to next SNAPSHOT version"
 git push --set-upstream origin develop
 
 git checkout release/"$osp_validator_version"
