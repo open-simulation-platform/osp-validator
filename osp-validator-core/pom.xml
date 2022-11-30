@@ -80,7 +80,7 @@
               <descriptorRefs>
                 <descriptorRef>jar-with-dependencies</descriptorRef>
               </descriptorRefs>
-              <finalName>${artifactId}-${parent.version}-deps</finalName>
+              <finalName>${project.artifactId}-${project.parent.version}-deps</finalName>
               <appendAssemblyId>false</appendAssemblyId>
             </configuration>
           </execution>
