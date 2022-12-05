@@ -9,7 +9,6 @@ package com.opensimulationplatform.systemstructure.util;
 import com.opensimulationplatform.systemstructure.xml.model.Simulators;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.Optional;
 
@@ -27,16 +26,7 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
   public Optional<File> get(Simulators.Simulator simulator) {
     try {
       URI uri = fmuLocator.get(simulator);
-      if ("fmu-proxy".equals(uri.getScheme())) {
-        String fmuName = new File(uri.getPath()).getName().replaceAll(".fmu", "");
-
-        File parallelToOspSystemStructure = new File(ospSystemStructureFile.getParent(), fmuName + "_OspModelDescription.xml");
-        if (parallelToOspSystemStructure.exists()) {
-          return Optional.of(parallelToOspSystemStructure);
-        }
-
-        throw new FileNotFoundException("Could not find OspModelDescription.xml. Tried " + parallelToOspSystemStructure.getAbsolutePath());
-      } else if ("file".equals(uri.getScheme())) {
+        if ("file".equals(uri.getScheme())) {
         File fmu = new File(uri);
         String fmuName = fmu.getName().replaceAll(".fmu", "");
 
@@ -52,7 +42,7 @@ public class DefaultOspModelDescriptionLocator implements OspModelDescriptionLoc
 
         return Optional.empty();
       } else {
-        throw new RuntimeException("Unsupported URI schema: '" + uri.getScheme() + "' in URI: '" + uri + "' . Supported schemas are: [file, fmu-proxy]");
+        throw new RuntimeException("Unsupported URI schema: '" + uri.getScheme() + "' in URI: '" + uri + "' . Supported schemas are: [file, proxyfmu]");
       }
     } catch (Exception e) {
       throw new RuntimeException(e);
