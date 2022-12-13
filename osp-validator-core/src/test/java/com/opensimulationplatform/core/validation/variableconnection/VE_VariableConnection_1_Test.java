@@ -11,6 +11,7 @@ import com.opensimulationplatform.core.validation.ValidationErrorContext;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -45,7 +46,7 @@ public class VE_VariableConnection_1_Test {
     Variable vb = new Variable();
     vb.setName("vb");
     vb.setType(Variable.Type.INTEGER);
-    vb.setCausality(Variable.Causality.INPUT);
+    vb.setCausality(Variable.Causality.OUTPUT);
 
     VariableConnection vc = new VariableConnection();
     vc.setVariableA(va);
@@ -75,7 +76,7 @@ public class VE_VariableConnection_1_Test {
     Variable vb = new Variable();
     vb.setName("vb");
     vb.setType(Variable.Type.REAL);
-    vb.setCausality(Variable.Causality.INPUT);
+    vb.setCausality(Variable.Causality.OUTPUT);
 
     VariableConnection vc = new VariableConnection();
     vc.setVariableA(va);

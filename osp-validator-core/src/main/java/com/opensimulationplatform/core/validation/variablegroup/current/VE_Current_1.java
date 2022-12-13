@@ -27,6 +27,6 @@ public class VE_Current_1 extends ValidationError<Current> {
 
   @Override
   protected String getErrorMessage(Current current) {
-    return "Current variable group '" + current.getName().getId().get() + "' contains variables with mixed causalities";
+    return "Current variable group '" + current.getName().getId().toString() + "' contains variables with mixed causalities";
   }
 }

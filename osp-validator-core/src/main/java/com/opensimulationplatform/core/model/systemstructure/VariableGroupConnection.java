@@ -9,17 +9,15 @@ package com.opensimulationplatform.core.model.systemstructure;
 import com.opensimulationplatform.core.model.ID;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 
-import java.util.UUID;
-
 public class VariableGroupConnection {
-  private final String id = UUID.randomUUID().toString();
+  private final ID id = new ID();
   private VariableGroup variableGroupA;
   private VariableGroup variableGroupB;
   private Simulator simulatorA;
   private Simulator simulatorB;
 
   public ID getId() {
-    return () -> id;
+    return id;
   }
 
   public VariableGroup getVariableGroupA() {

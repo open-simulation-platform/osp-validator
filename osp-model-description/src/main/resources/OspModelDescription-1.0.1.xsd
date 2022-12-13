@@ -5,9 +5,16 @@
   ~ License, v. 2.0. If a copy of the MPL was not distributed with this
   ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
   -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:osp="https://open-simulation-platform.com/OspModelDescription/1.0.0" targetNamespace="https://open-simulation-platform.com/OspModelDescription/1.0.0" elementFormDefault="qualified" version="1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:osp="https://open-simulation-platform.com/OspModelDescription/1.0.1" targetNamespace="https://open-simulation-platform.com/OspModelDescription/1.0.1" elementFormDefault="qualified" version="1.0">
 	<xs:include schemaLocation="fmi2Unit.xsd"/>
 	<xs:element name="OspModelDescription" type="osp:OspModelDescriptionType"/>
+	<xs:simpleType name="AxisType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="x"/>
+			<xs:enumeration value="y"/>
+			<xs:enumeration value="z"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="UnitType">
 		<xs:annotation>
 			<xs:documentation>Using same method to define units as in fmi2Unit.xsd, but have extended it with one more BaseUnit: percent.</xs:documentation>
@@ -36,6 +43,11 @@
 		<xs:attribute name="unit" use="optional">
 			<xs:annotation>
 				<xs:documentation>Name of UnitType defined either in this document under UnitDefinitions or in the fmi modelDescription.xml if it is of FMI version 2.0 or greater</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="axis" type="osp:AxisType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Name of AxisType. Must be "x", "y" or "z".</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

@@ -27,6 +27,6 @@ public class VE_VariableGroup_3 extends ValidationError<VariableGroup> {
 
   @Override
   protected String getErrorMessage(VariableGroup variableGroup) {
-    return "VariableGroup '" + variableGroup.getName().getId().get() + "' contains invalid nested VariableGroups";
+    return "VariableGroup '" + variableGroup.getName().getId().toString() + "' contains invalid nested VariableGroups";
   }
 }

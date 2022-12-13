@@ -24,19 +24,18 @@ public class VariableGroupConnectionsValidatorTest {
 
     Simulator simulatorA = new Simulator();
 
-    Force force = new Force();
-    force.setName("force");
+    Unit unitA = new Unit();
+    unitA.setExponent(Unit.Exponent.METER, 1);
 
     Variable variableA = new Variable();
-
-    Unit unitA = new Unit();
-    unitA.setExponent(Unit.Exponent.KILOGRAM, 1);
-
     variableA.setName("variableA");
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.REAL);
-    variableA.setCausality(Variable.Causality.OUTPUT);
+    variableA.setCausality(Variable.Causality.UNDEFINED);
+    variableA.setAxis(Variable.Axis.X);
 
+    Force force = new Force();
+    force.setName("force");
     force.setVariables(Arrays.asList(variableA));
 
     simulatorA.getModelDescription().getVariables().add(variableA);
@@ -47,19 +46,18 @@ public class VariableGroupConnectionsValidatorTest {
 
     Simulator simulatorB = new Simulator();
 
-    LinearVelocity linearVelocity = new LinearVelocity();
-    linearVelocity.setName("linearVelocity");
-
-    Variable variableB = new Variable();
-
     Unit unitB = new Unit();
     unitB.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    Variable variableB = new Variable();
     variableB.setName("variableB");
     variableB.setUnit(unitB);
-    variableB.setType(Variable.Type.REAL);
-    variableB.setCausality(Variable.Causality.INPUT);
+    variableB.setType(Variable.Type.INTEGER);
+    variableB.setCausality(Variable.Causality.OUTPUT);
+    variableB.setAxis(Variable.Axis.Y);
 
+    LinearVelocity linearVelocity = new LinearVelocity();
+    linearVelocity.setName("linearVelocity");
     linearVelocity.setVariables(Arrays.asList(variableB));
 
     simulatorB.getModelDescription().getVariables().add(variableB);
@@ -77,7 +75,7 @@ public class VariableGroupConnectionsValidatorTest {
 
     List<ValidationDiagnostic<VariableGroupConnection>> diagnostics = validator.validate(systemStructure);
 
-    assertEquals(1, diagnostics.size());
+    assertEquals(4, diagnostics.size());
   }
 
   @Test
@@ -88,49 +86,47 @@ public class VariableGroupConnectionsValidatorTest {
 
     Simulator simulatorA = new Simulator();
 
-    Force forceA = new Force();
-    forceA.setName("forceA");
-
-    Variable variableA = new Variable();
-
     Unit unitA = new Unit();
     unitA.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    Variable variableA = new Variable();
     variableA.setName("variableA");
     variableA.setUnit(unitA);
     variableA.setType(Variable.Type.REAL);
-    variableA.setCausality(Variable.Causality.OUTPUT);
+    variableA.setCausality(Variable.Causality.INPUT);
+    variableA.setAxis(Variable.Axis.X);
 
-    forceA.setVariables(Arrays.asList(variableA));
+    Force f1 = new Force();
+    f1.setName("f1");
+    f1.setVariables(Arrays.asList(variableA));
 
     simulatorA.getModelDescription().getVariables().add(variableA);
-    simulatorA.getModelDescription().getForces().add(forceA);
+    simulatorA.getModelDescription().getForces().add(f1);
 
     variableGroupConnection.setSimulatorA(simulatorA);
-    variableGroupConnection.setVariableGroupA(forceA);
+    variableGroupConnection.setVariableGroupA(f1);
 
     Simulator simulatorB = new Simulator();
-
-    Force forceB = new Force();
-    forceB.setName("forceB");
-
-    Variable variableB = new Variable();
 
     Unit unitB = new Unit();
     unitB.setExponent(Unit.Exponent.KILOGRAM, 1);
 
+    Variable variableB = new Variable();
     variableB.setName("variableB");
     variableB.setUnit(unitB);
     variableB.setType(Variable.Type.REAL);
-    variableB.setCausality(Variable.Causality.INPUT);
+    variableB.setCausality(Variable.Causality.OUTPUT);
+    variableB.setAxis(Variable.Axis.X);
 
-    forceB.setVariables(Arrays.asList(variableB));
+    Force f2 = new Force();
+    f2.setName("f2");
+    f2.setVariables(Arrays.asList(variableB));
 
     simulatorB.getModelDescription().getVariables().add(variableB);
-    simulatorB.getModelDescription().getForces().add(forceB);
+    simulatorB.getModelDescription().getForces().add(f2);
 
     variableGroupConnection.setSimulatorB(simulatorB);
-    variableGroupConnection.setVariableGroupB(forceB);
+    variableGroupConnection.setVariableGroupB(f2);
 
     systemStructure.getSimulators().add(simulatorA);
     systemStructure.getSimulators().add(simulatorB);

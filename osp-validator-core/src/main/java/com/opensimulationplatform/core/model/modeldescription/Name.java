@@ -23,12 +23,20 @@ public class Name {
     if (id != null) {
       return id;
     } else {
-      return () -> name;
+      return new ID(name);
     }
   }
 
-  public void setId(ID id) {
-    this.id = id;
+  public void setId(String id) {
+    this.id = new ID(id);
+
+    /*
+    For debugging
+
+    System.out.println(id + " : " + this.id);
+     */
+
+
   }
 
   public String get() {

@@ -27,6 +27,6 @@ public class VE_VariableGroup_2 extends ValidationError<VariableGroup> {
 
   @Override
   protected String getErrorMessage(VariableGroup variableGroup) {
-    return "VariableGroup '" + variableGroup.getName().getId().get() + "' does not have a unique name";
+    return "VariableGroup '" + variableGroup.getName().getId().toString() + "' does not have a unique name";
   }
 }

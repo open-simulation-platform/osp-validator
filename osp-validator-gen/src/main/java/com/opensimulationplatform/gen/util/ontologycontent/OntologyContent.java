@@ -16,6 +16,8 @@ import org.semanticweb.owlapi.model.*;
 import java.util.Map;
 
 public class OntologyContent {
+  public static final String PREFIX = "osp:";
+
   private final Map<String, OWLClass> classes;
   private final Map<String, OWLObjectProperty> objectProperties;
   private final Map<String, OWLDataProperty> dataProperties;

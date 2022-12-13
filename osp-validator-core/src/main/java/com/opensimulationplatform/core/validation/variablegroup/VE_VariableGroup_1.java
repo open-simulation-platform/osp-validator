@@ -27,6 +27,6 @@ public class VE_VariableGroup_1 extends ValidationError<VariableGroup> {
 
   @Override
   protected String getErrorMessage(VariableGroup variableGroup) {
-    return "VariableGroup '" + variableGroup.getName().getId().get() + "' contains invalid variables";
+    return "VariableGroup '" + variableGroup.getName().getId().toString() + "' contains invalid variables";
   }
 }

@@ -62,6 +62,7 @@ public class VariableGroupsValidator extends Validator<VariableGroup> {
   private final VE_VariableGroup_1 ve_variableGroup_1 = new VE_VariableGroup_1();
   private final VE_VariableGroup_2 ve_variableGroup_2 = new VE_VariableGroup_2();
   private final VE_VariableGroup_3 ve_variableGroup_3 = new VE_VariableGroup_3();
+  private final VE_VariableGroup_4 ve_variableGroup_4 = new VE_VariableGroup_4();
 
   @Override
   protected List<Validator<?>> getValidators() {
@@ -96,7 +97,8 @@ public class VariableGroupsValidator extends Validator<VariableGroup> {
     return Arrays.asList(
         ve_variableGroup_1,
         ve_variableGroup_2,
-        ve_variableGroup_3
+        ve_variableGroup_3,
+        ve_variableGroup_4
     );
   }
 }

@@ -1,14 +1,16 @@
 Description
 ===========
-Supports version 1.0 of [OSP-IS](https://opensimulationplatform.com/specification)
+Supports version 1.0.1 of [OSP-IS](https://opensimulationplatform.com/specification)
 
 This is a java project consisting of a java library, and a command line interface tool to validate FMUs and simulation
 configurations against OSP-IS.
 
+OSP-IS has been updated in version 1.0.1 to support variable axis properties. 
+
 IMPORTRANT
 ----------
 This `osp-validator` version only works with `OspSystemStructure.xml` files based on 
-[this](https://opensimulationplatform.com/xsd/OspSystemStructure-0.1.xsd) xsd
+[this](https://opensimulationplatform.com/xsd/OspModelDescription-1.0.1.xsd) xsd
 
 Prerequisites
 =============

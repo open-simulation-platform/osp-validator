@@ -27,9 +27,9 @@ public class VE_ElectromagneticPort_1 extends ValidationError<ElectromagneticPor
 
   @Override
   protected String getErrorMessage(ElectromagneticPort electromagneticPort) {
-     return "ElectromagneticPort '" + electromagneticPort.getName().getId().get() + "' contains incompatible Voltage(" +
-             electromagneticPort.getVoltage().getName().getId().get() + ") and Current(" +
-             electromagneticPort.getCurrent().getName().getId().get() + "). " +
+     return "ElectromagneticPort '" + electromagneticPort.getName().getId().toString() + "' contains incompatible Voltage(" +
+             electromagneticPort.getVoltage().getName().getId().toString() + ") and Current(" +
+             electromagneticPort.getCurrent().getName().getId().toString() + "). " +
              "The variables in the Voltage variable group must have opposite causality of the variables in the Current variable group";
   }
 }

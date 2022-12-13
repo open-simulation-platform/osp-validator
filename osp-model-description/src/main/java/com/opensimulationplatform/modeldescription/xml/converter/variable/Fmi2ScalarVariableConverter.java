@@ -9,6 +9,8 @@ package com.opensimulationplatform.modeldescription.xml.converter.variable;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.modeldescription.xml.converter.Converter;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
+
+import no.ntnu.ihb.fmi4j.modeldescription.fmi2.Fmi2Causality;
 import no.ntnu.ihb.fmi4j.modeldescription.fmi2.Fmi2ScalarVariable;
 
 import static com.opensimulationplatform.core.model.modeldescription.Variable.Causality.INPUT;
@@ -27,10 +29,10 @@ public class Fmi2ScalarVariableConverter extends Converter<Fmi2ScalarVariable, V
 
     variable.setName(fmi2ScalarVariable.getName());
 
-    String fmiCausality = fmi2ScalarVariable.getCausality();
-    if (fmiCausality.equals("input")) {
+    Fmi2Causality fmiCausality = fmi2ScalarVariable.getCausality();
+    if (fmiCausality==Fmi2Causality.input) {
       variable.setCausality(INPUT);
-    } else if (fmiCausality.equals("output")) {
+    } else if (fmiCausality==Fmi2Causality.output) {
       variable.setCausality(OUTPUT);
     } else {
       variable.setCausality(Variable.Causality.UNDEFINED);

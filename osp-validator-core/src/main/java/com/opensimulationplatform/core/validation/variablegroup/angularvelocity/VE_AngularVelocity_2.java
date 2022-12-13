@@ -27,6 +27,6 @@ public class VE_AngularVelocity_2 extends ValidationError<AngularVelocity> {
 
   @Override
   protected String getErrorMessage(AngularVelocity angularVelocity) {
-    return "AngularVelocity variable group '" + angularVelocity.getName().getId().get() + "' contains variables with mixed data types";
+    return "AngularVelocity variable group '" + angularVelocity.getName().getId().toString() + "' contains variables with mixed data types";
   }
 }

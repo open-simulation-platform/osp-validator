@@ -44,7 +44,7 @@ public class VE_VariableConnection_2_Test {
 
     Variable vb = new Variable();
     vb.setName("vb");
-    vb.setType(Variable.Type.INTEGER);
+    vb.setType(Variable.Type.REAL);
     vb.setCausality(Variable.Causality.INPUT);
 
     VariableConnection vc = new VariableConnection();

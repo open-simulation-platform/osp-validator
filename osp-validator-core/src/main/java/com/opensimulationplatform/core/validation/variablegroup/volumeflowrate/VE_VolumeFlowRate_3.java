@@ -27,6 +27,6 @@ public class VE_VolumeFlowRate_3 extends ValidationError<VolumeFlowRate> {
 
   @Override
   protected String getErrorMessage(VolumeFlowRate volumeFlowRate) {
-    return "VolumeFlowRate variable group '" + volumeFlowRate.getName().getId().get() + "' contains variables with incompatible units";
+    return "VolumeFlowRate variable group '" + volumeFlowRate.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

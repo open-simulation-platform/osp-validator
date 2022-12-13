@@ -6,6 +6,23 @@
 
 package com.opensimulationplatform.core.model;
 
-public interface ID {
-  String get();
+import java.util.UUID;
+
+import static com.opensimulationplatform.gen.util.ontologycontent.OntologyContent.PREFIX;
+
+public class ID {
+
+  private final String id;
+
+  public ID(String id) {
+    this.id = PREFIX + UUID.nameUUIDFromBytes(id.replace(PREFIX, "").getBytes());
+  }
+
+  public ID() {
+    this.id = PREFIX + UUID.randomUUID();
+  }
+
+  public String toString() {
+    return id;
+  }
 }

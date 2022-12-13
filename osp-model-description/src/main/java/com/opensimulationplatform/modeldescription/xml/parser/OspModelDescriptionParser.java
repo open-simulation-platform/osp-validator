@@ -33,7 +33,7 @@ public class OspModelDescriptionParser {
       XMLStreamReader reader = inputFactory.createXMLStreamReader(fileInputStream);
       listener = new LocationListener(reader);
 
-      Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription-1.0.0.xsd"));
+      Schema schema = schemaFactory.newSchema(OspModelDescriptionParser.class.getResource("/OspModelDescription-1.0.1.xsd"));
 
       JAXBContext context = JAXBContext.newInstance(OspModelDescriptionType.class.getPackage().getName());
 

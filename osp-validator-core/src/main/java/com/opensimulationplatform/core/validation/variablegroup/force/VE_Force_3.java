@@ -27,6 +27,6 @@ public class VE_Force_3 extends ValidationError<Force> {
 
   @Override
   protected String getErrorMessage(Force force) {
-    return "Force variable group '" + force.getName().getId().get() + "' contains variables with incompatible units";
+    return "Force variable group '" + force.getName().getId().toString() + "' contains variables with incompatible units";
   }
 }

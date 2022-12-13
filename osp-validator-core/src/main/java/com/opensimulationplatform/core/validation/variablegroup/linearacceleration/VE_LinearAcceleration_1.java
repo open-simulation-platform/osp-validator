@@ -27,6 +27,6 @@ public class VE_LinearAcceleration_1 extends ValidationError<LinearAcceleration>
 
   @Override
   protected String getErrorMessage(LinearAcceleration linearAcceleration) {
-    return "LinearAcceleration variable group '" + linearAcceleration.getName().getId().get() + "' contains variables with mixed causalities";
+    return "LinearAcceleration variable group '" + linearAcceleration.getName().getId().toString() + "' contains variables with mixed causalities";
   }
 }
