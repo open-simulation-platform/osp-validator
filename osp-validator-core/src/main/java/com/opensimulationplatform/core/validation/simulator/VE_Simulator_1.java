@@ -28,6 +28,6 @@ public class VE_Simulator_1 extends ValidationError<Simulator> {
 
   @Override
   protected String getErrorMessage(Simulator simulator) {
-    return "Simulator '" + simulator.getName().getId().get() + "' does not have a unique name";
+    return "Simulator '" + simulator.getName().getId().toString() + "' does not have a unique name";
   }
 }

@@ -31,18 +31,19 @@ public class Unit {
   }
 
   public ID getId() {
-    return () -> {
-      List<Unit.Exponent> exponents = getExponents();
-      StringBuilder stringBuilder = new StringBuilder();
-      for (Unit.Exponent exponent : exponents) {
-        stringBuilder
-            .append(exponent.getSymbol())
-            .append("_")
-            .append(getExponent(exponent))
-            .append("_");
-      }
-      return stringBuilder.delete(stringBuilder.lastIndexOf("_"), stringBuilder.length()).toString();
-    };
+    StringBuilder stringBuilder = new StringBuilder();
+
+    for (Unit.Exponent exponent : getExponents()) {
+      stringBuilder
+          .append(exponent.getSymbol())
+          .append("_")
+          .append(getExponent(exponent))
+          .append("_");
+    }
+
+    String id = stringBuilder.delete(stringBuilder.lastIndexOf("_"), stringBuilder.length()).toString();
+
+    return new ID(id);
   }
 
   public Name getName() {

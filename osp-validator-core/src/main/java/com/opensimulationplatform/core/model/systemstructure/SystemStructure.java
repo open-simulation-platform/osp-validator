@@ -10,10 +10,9 @@ import com.opensimulationplatform.core.model.ID;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class SystemStructure {
-  private final String id = UUID.randomUUID().toString();
+  private final ID id = new ID();
   private final List<Simulator> simulators = new ArrayList<>();
   private final List<Function> functions = new ArrayList<>();
   private final List<VariableConnection> variableConnections = new ArrayList<>();
@@ -22,7 +21,7 @@ public class SystemStructure {
   private final List<SignalGroupConnection> signalGroupConnections = new ArrayList<>();
 
   public ID getId() {
-    return () -> id;
+    return id;
   }
 
   public List<Simulator> getSimulators() {

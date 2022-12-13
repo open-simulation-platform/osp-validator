@@ -6,8 +6,11 @@ import com.opensimulationplatform.core.model.modeldescription.variablegroup.forc
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearmechanicalport.LinearMechanicalPort;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.linearvelocity.LinearVelocity;
 import com.opensimulationplatform.core.validation.ValidationDiagnostic;
+import com.opensimulationplatform.core.validation.ValidatorContext;
 import org.junit.Test;
+import org.semanticweb.owlapi.model.IRI;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -102,6 +105,14 @@ public class ModelDescriptionValidatorTest {
 
     ModelDescriptionValidator validator = new ModelDescriptionValidator();
     List<ValidationDiagnostic<Object>> diagnostics = validator.validate(modelDescription);
+
+    /*
+    For debugging. Saves built ontology to .ttl file for inspection
+
+    ValidatorContext context = validator.getContext();
+    context.owl.save(new File("modelDescriptionvalidatorTest.ttl"));
+
+     */
 
     assertEquals(9, diagnostics.size());
   }

@@ -27,6 +27,6 @@ public class VE_LinearDisplacement_2 extends ValidationError<LinearDisplacement>
 
   @Override
   protected String getErrorMessage(LinearDisplacement linearDisplacement) {
-    return "LinearDisplacement variable group '" + linearDisplacement.getName().getId().get() + "' contains variables with mixed data types";
+    return "LinearDisplacement variable group '" + linearDisplacement.getName().getId().toString() + "' contains variables with mixed data types";
   }
 }

@@ -6,7 +6,6 @@ import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.modeldescription.util.FmiModelDescription;
 import com.opensimulationplatform.modeldescription.xml.converter.ConverterContext;
 import com.opensimulationplatform.modeldescription.xml.model.*;
-import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -52,7 +51,6 @@ public class OspModelDescriptionTypeConverterTest {
     assertEquals(1, modelDescription.getHydraulicQuasiPorts().size());
   }
 
-  @NotNull
   private ConverterContext getConverterContext() {
     ConverterContext converterContext = new ConverterContext();
 
@@ -68,7 +66,6 @@ public class OspModelDescriptionTypeConverterTest {
     return converterContext;
   }
 
-  @NotNull
   private OspModelDescriptionType getOspModelDescriptionType() {
     OspModelDescriptionType ospModelDescriptionType = new OspModelDescriptionType();
 

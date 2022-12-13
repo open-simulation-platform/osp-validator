@@ -27,6 +27,6 @@ public class VE_LinearAcceleration_2 extends ValidationError<LinearAcceleration>
 
   @Override
   protected String getErrorMessage(LinearAcceleration linearAcceleration) {
-    return "LinearAcceleration variable group '" + linearAcceleration.getName().getId().get() + "' contains variables with mixed data types";
+    return "LinearAcceleration variable group '" + linearAcceleration.getName().getId().toString() + "' contains variables with mixed data types";
   }
 }

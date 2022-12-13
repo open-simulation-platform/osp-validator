@@ -27,6 +27,6 @@ public class VE_Volume_2 extends ValidationError<Volume> {
 
   @Override
   protected String getErrorMessage(Volume volume) {
-    return "Volume variable group '" + volume.getName().getId().get() + "' contains variables with mixed data types";
+    return "Volume variable group '" + volume.getName().getId().toString() + "' contains variables with mixed data types";
   }
 }

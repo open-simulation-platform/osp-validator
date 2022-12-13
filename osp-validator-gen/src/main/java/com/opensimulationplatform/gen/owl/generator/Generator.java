@@ -51,7 +51,15 @@ class Generator {
   }
 
   private static void addField(StringBuilder objectProperties, String name) {
-    objectProperties.append("public static final String ").append(name).append(" = ").append("\"").append(name).append("\"").append(";\n  ");
+    objectProperties
+        .append("public static final String ")
+        .append(name)
+        .append(" = ")
+        .append("\"")
+        .append(OntologyContent.PREFIX)
+        .append(name)
+        .append("\"")
+        .append(";\n  ");
   }
 
   private static String getContentForDataPropertiesDataModel(OntologyContent content) {

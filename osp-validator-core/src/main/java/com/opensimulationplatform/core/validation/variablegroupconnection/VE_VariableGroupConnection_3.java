@@ -28,8 +28,8 @@ public class VE_VariableGroupConnection_3 extends ValidationError<VariableGroupC
 
   @Override
   protected String getErrorMessage(VariableGroupConnection variableGroupConnection) {
-    String variableGroupA = variableGroupConnection.getVariableGroupA().getName().getId().get();
-    String variableGroupB = variableGroupConnection.getVariableGroupB().getName().getId().get();
+    String variableGroupA = variableGroupConnection.getVariableGroupA().getName().getId().toString();
+    String variableGroupB = variableGroupConnection.getVariableGroupB().getName().getId().toString();
     return "VariableGroupConnection [" + variableGroupA + ", " + variableGroupB + "] contains incompatible VariableGroups. " +
         "Resulting VariableConnections becomes invalid";
   }

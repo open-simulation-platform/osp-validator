@@ -5,11 +5,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            targetNamespace="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
            xmlns:osp="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
-           version="0.1">
+           version="0.1.1">
     <xs:element name="OspSystemStructure">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="StartTime" minOccurs="0" default="0.0" type="xs:double"/>
+                <xs:element name="EndTime" minOccurs="0" type="xs:double"/>
                 <xs:element name="BaseStepSize" minOccurs="0" type="xs:double"/>
                 <xs:element name="Algorithm" minOccurs="0" default="fixedStep" type="xs:string"/>
                 <xs:element name="Simulators" type="osp:simulators"/>
@@ -73,7 +74,7 @@
                         <xs:element name="InitialValues" minOccurs="0">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="InitialValue" maxOccurs="unbounded">
+                                    <xs:element name="InitialValue" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:choice>
                                                 <xs:element name="Real">

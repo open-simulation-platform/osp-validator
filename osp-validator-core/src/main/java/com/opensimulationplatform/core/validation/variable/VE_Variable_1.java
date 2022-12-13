@@ -28,6 +28,6 @@ public class VE_Variable_1 extends ValidationError<Variable> {
 
   @Override
   protected String getErrorMessage(Variable variable) {
-    return "Causality of variable '" + variable.getName().getId().get() + "' is undefined";
+    return "Causality of variable '" + variable.getName().getId().toString() + "' is undefined";
   }
 }

@@ -38,9 +38,9 @@
       <version>1.3.8.4</version>
     </dependency>
     <dependency>
-      <groupId>com.github.NTNU-IHB.FMI4j</groupId>
-      <artifactId>fmi-base</artifactId>
-      <version>v0.22.4</version>
+      <groupId>info.laht.fmi4j</groupId>
+  	  <artifactId>fmi-md</artifactId>
+      <version>0.37.2</version>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>
@@ -80,7 +80,7 @@
               <descriptorRefs>
                 <descriptorRef>jar-with-dependencies</descriptorRef>
               </descriptorRefs>
-              <finalName>${artifactId}-${parent.version}-deps</finalName>
+              <finalName>${project.artifactId}-${project.parent.version}-deps</finalName>
               <appendAssemblyId>false</appendAssemblyId>
             </configuration>
           </execution>

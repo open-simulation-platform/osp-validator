@@ -8,17 +8,16 @@ package com.opensimulationplatform.core.model.modeldescription;
 
 import com.opensimulationplatform.core.model.ID;
 
-import java.util.UUID;
-
 public class Variable {
-  private final String id = UUID.randomUUID().toString();
+  private final ID id = new ID();
   private final Name name = new Name();
   private Causality causality = Causality.UNDEFINED;
   private Type type = Type.UNDEFINED;
+  private Axis axis = Axis.UNDEFINED;
   private Unit unit = new Unit();
 
   public ID getId() {
-    return () -> id;
+    return id;
   }
 
   public Name getName() {
@@ -53,11 +52,17 @@ public class Variable {
     this.unit = unit;
   }
 
-  public enum Causality {
-    OUTPUT, INPUT, UNDEFINED
+  public void setAxis(Axis axis) {
+    this.axis = axis;
   }
 
-  public enum Type {
-    REAL, INTEGER, BOOLEAN, STRING, ENUM, UNDEFINED
+  public Axis getAxis() {
+    return axis;
   }
+
+  public enum Causality {INPUT, OUTPUT, UNDEFINED}
+
+  public enum Type {BOOLEAN, ENUM, INTEGER, REAL, STRING, UNDEFINED}
+
+  public enum Axis {UNDEFINED, X, Y, Z}
 }

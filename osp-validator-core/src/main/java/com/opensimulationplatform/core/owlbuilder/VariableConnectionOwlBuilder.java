@@ -20,7 +20,7 @@ public class VariableConnectionOwlBuilder extends OspOwlBuilder<VariableConnecti
 
   @Override
   public OWLNamedIndividual build(VariableConnection variableConnection) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variableConnection.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(variableConnection.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.variableConnections.put(individual, variableConnection);
 

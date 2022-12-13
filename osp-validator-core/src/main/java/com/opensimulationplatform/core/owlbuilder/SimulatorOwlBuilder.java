@@ -10,10 +10,7 @@ import com.opensimulationplatform.core.model.modeldescription.Name;
 import com.opensimulationplatform.core.model.modeldescription.Variable;
 import com.opensimulationplatform.core.model.modeldescription.variablegroup.VariableGroup;
 import com.opensimulationplatform.core.model.systemstructure.Simulator;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.*;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
 
   @Override
   public OWLNamedIndividual build(Simulator simulator) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(simulator.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(simulator.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.simulators.put(individual, simulator);
 
@@ -49,15 +46,28 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
     variableOwlBuilder.setContext(context);
     variables.forEach(variable -> {
       if ("".equals(simulator.getName().get())) {
-        variable.getName().setId(() -> variable.getName().get());
+        variable.getName().setId(variable.getName().get());
       } else {
-        variable.getName().setId(() -> simulator.getName().get() + "." + variable.getName().get());
+        variable.getName().setId(simulator.getName().get() + "." + variable.getName().get());
       }
       OWLNamedIndividual variableIndividual = variableOwlBuilder.build(variable);
 
       OWLObjectProperty hasVariable = context.owl.dataFactory.getOWLObjectProperty(op_has_variable, context.owl.prefixManager);
       OWLAxiom axiom = context.owl.dataFactory.getOWLObjectPropertyAssertionAxiom(hasVariable, simulatorIndividual, variableIndividual);
       context.axioms.add(axiom);
+
+      /*
+      For debugging purposes
+
+      Annotating variable individuals with their variable name using rdfs:label
+
+
+      OWLAnnotationProperty rdfsLabel = context.owl.dataFactory.getOWLAnnotationProperty("rdfs:label", context.owl.prefixManager);
+      OWLLiteral lit = context.owl.dataFactory.getOWLLiteral(variable.getName().get());
+      OWLAxiom axiom2 = context.owl.dataFactory.getOWLAnnotationAssertionAxiom(rdfsLabel, variableIndividual.getIRI(), lit);
+      context.axioms.add(axiom2);
+
+       */
     });
   }
 
@@ -67,9 +77,9 @@ public class SimulatorOwlBuilder extends OspOwlBuilder<Simulator> {
     variableGroupOwlBuilder.setContext(context);
     variableGroups.forEach(variableGroup -> {
       if ("".equals(simulator.getName().get())) {
-        variableGroup.getName().setId(() -> variableGroup.getName().get());
+        variableGroup.getName().setId(variableGroup.getName().get());
       } else {
-        variableGroup.getName().setId(() -> simulator.getName().get() + "." + variableGroup.getName().get());
+        variableGroup.getName().setId(simulator.getName().get() + "." + variableGroup.getName().get());
       }
       OWLNamedIndividual variableGroupIndividual = variableGroupOwlBuilder.build(variableGroup);
 

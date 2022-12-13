@@ -27,6 +27,6 @@ public class VE_LinearDisplacement_1 extends ValidationError<LinearDisplacement>
 
   @Override
   protected String getErrorMessage(LinearDisplacement linearDisplacement) {
-    return "LinearDisplacement variable group '" + linearDisplacement.getName().getId().get() + "' contains variables with mixed causalities";
+    return "LinearDisplacement variable group '" + linearDisplacement.getName().getId().toString() + "' contains variables with mixed causalities";
   }
 }

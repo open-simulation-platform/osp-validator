@@ -15,6 +15,15 @@ import java.util.List;
 public abstract class Validator<T> {
   protected ValidatorContext context;
 
+  /*/
+  For debugging. Will return context object to access ontology for inspection
+
+  public ValidatorContext getContext(){
+    return context;
+
+  }
+   */
+
   protected abstract List<Validator<?>> getValidators();
 
   protected abstract List<ValidationError<?>> getValidationErrors();
@@ -45,7 +54,7 @@ public abstract class Validator<T> {
     }
   }
 
-  public List<ValidationDiagnostic<T>> validate() {
+  private List<ValidationDiagnostic<T>> validate() {
     List<ValidationDiagnostic<T>> diagnostics = new ArrayList<>();
 
     List<ValidationError<?>> validationErrors = getValidationErrors();

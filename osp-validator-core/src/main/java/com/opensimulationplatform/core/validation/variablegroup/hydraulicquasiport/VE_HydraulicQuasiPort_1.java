@@ -27,9 +27,9 @@ public class VE_HydraulicQuasiPort_1 extends ValidationError<HydraulicQuasiPort>
 
   @Override
   protected String getErrorMessage(HydraulicQuasiPort hydraulicQuasiPort) {
-     return "HydraulicQuasiPort '" + hydraulicQuasiPort.getName().getId().get() + "' contains incompatible Pressure(" +
-             hydraulicQuasiPort.getPressure().getName().getId().get() + ") and Volume(" +
-             hydraulicQuasiPort.getVolume().getName().getId().get() + "). " +
+     return "HydraulicQuasiPort '" + hydraulicQuasiPort.getName().getId().toString() + "' contains incompatible Pressure(" +
+             hydraulicQuasiPort.getPressure().getName().getId().toString() + ") and Volume(" +
+             hydraulicQuasiPort.getVolume().getName().getId().toString() + "). " +
              "The variables in the Pressure variable group must have opposite causality of the variables in the Volume variable group";
   }
 }

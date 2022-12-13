@@ -16,7 +16,7 @@ import static com.opensimulationplatform.gen.owl.model.OntologyClasses.OSPSystem
 public class SystemStructureOwlBuilder extends OspOwlBuilder<SystemStructure> {
   @Override
   public OWLNamedIndividual build(SystemStructure systemStructure) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(systemStructure.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(systemStructure.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.systemStructures.put(individual, systemStructure);
 

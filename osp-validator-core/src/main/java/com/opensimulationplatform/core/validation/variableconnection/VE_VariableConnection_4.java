@@ -30,10 +30,10 @@ public class VE_VariableConnection_4 extends ValidationError<VariableConnection>
   @Override
   protected String getErrorMessage(VariableConnection variableConnection) {
     Variable variableA = variableConnection.getVariableA();
-    String variableAName = variableA.getName().getId().get();
+    String variableAName = variableA.getName().getId().toString();
 
     Variable variableB = variableConnection.getVariableB();
-    String variableBName = variableB.getName().getId().get();
+    String variableBName = variableB.getName().getId().toString();
 
     return "VariableConnection [" + variableAName + ", " + variableBName + "] contains invalid variables";
   }

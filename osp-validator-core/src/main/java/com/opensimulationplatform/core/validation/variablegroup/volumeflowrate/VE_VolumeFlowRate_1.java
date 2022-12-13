@@ -27,6 +27,6 @@ public class VE_VolumeFlowRate_1 extends ValidationError<VolumeFlowRate> {
 
   @Override
   protected String getErrorMessage(VolumeFlowRate volumeFlowRate) {
-    return "VolumeFlowRate variable group '" + volumeFlowRate.getName().getId().get() + "' contains variables with mixed causalities";
+    return "VolumeFlowRate variable group '" + volumeFlowRate.getName().getId().toString() + "' contains variables with mixed causalities";
   }
 }

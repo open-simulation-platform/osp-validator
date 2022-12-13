@@ -17,7 +17,7 @@ public class UnitOwlBuilder extends OspOwlBuilder<Unit> {
 
   @Override
   public OWLNamedIndividual build(Unit unit) {
-    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(unit.getId().get(), context.owl.prefixManager);
+    OWLNamedIndividual individual = context.owl.dataFactory.getOWLNamedIndividual(unit.getId().toString(), context.owl.prefixManager);
     context.individuals.add(individual);
     context.units.put(individual, unit);
 
